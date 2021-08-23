@@ -24,6 +24,7 @@ The following _ListPaymentpoints_ request retrieves information about all the pa
 
 ```bash
 curl https://api.mobilepay.dk/v1/paymentpoints \
+  -X POST \
   -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {ACCESS_TOKEN}' \
   -H 'Content-Type: application/json'
