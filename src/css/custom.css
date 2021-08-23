@@ -1,0 +1,55 @@
+/* stylelint-disable docusaurus/copyright-header */
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+/* Colour variables */
+
+/* You can override the default Infima variables here. */
+:root {
+  --mpBlue: #5a78ff;
+  --mpBlue120: #4961cd;
+  --mpBlue80: #7b93ff;
+  --darkBlue80: #635b6b;
+  --darkBlue: #3c3246;
+  --darkBlue120: #312939;
+  --darkBlue140: #231e27;
+  --darkBlue160: #151217;
+  --beige: #f5f5f2;
+  --beige120: #e8e8e5;
+  --ifm-color-primary: var(--mpBlue);
+  --ifm-color-primary-dark: var(--mpBlue120);
+  --ifm-color-primary-darker: var(--mpBlue120);
+  --ifm-color-primary-darkest: var(--mpBlue120);
+  --ifm-color-primary-light: var(--mpBlue80);
+  --ifm-color-primary-lighter: var(--mpBlue80);
+  --ifm-color-primary-lightest: var(--mpBlue80);
+  --ifm-code-font-size: 95%;
+  --ifm-background-color: var(--beige);
+  --ifm-font-color-base: var(--darkBlue);
+  --ifm-menu-color: var(--darkBlue80);
+}
+pre code {
+  background-color: var(--darkBlue120);
+}
+.footer {
+  background-color: var(--darkBlue160);
+}
+.docusaurus-highlight-code-line {
+  background-color: var(--darkBlue120);
+  display: block;
+  margin: 0 calc(-1 * var(--ifm-pre-padding));
+  padding: 0 var(--ifm-pre-padding);
+}
+html[data-theme='dark'] pre code {
+  background-color: var(--darkBlue120);
+}
+html[data-theme='dark'] {
+  --ifm-background-color: var(--darkBlue140);
+  --ifm-font-color-base: var(--beige);
+  --ifm-navbar-background-color: var(--darkBlue160);
+  --ifm-menu-color: var(--beige);
+  --ifm-color-primary: var(--mpBlue80);
+  --ifm-menu-color-active: var(--mpBlue80);
+}
