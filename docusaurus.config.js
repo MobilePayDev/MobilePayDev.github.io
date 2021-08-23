@@ -5,7 +5,7 @@ module.exports = {
   title: 'MobilePay Developer',
   tagline: 'MobilePay Developer',
   url: 'https://mobilepaydev.github.io',
-  baseUrl: '/',
+  baseUrl: '/MobilePay-Payments-API/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
