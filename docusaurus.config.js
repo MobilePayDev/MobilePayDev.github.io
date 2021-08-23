@@ -10,7 +10,8 @@ module.exports = {
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'MobilePayDev',
-  projectName: 'MobilePay-Payments-API', // Usually your repo name.
+  projectName: 'MobilePay-Payments-API',
+  trailingSlash: false,
   themeConfig: {
     announcementBar: {
       id: 'wip', // Any value that will identify this message.
