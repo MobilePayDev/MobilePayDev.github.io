@@ -57,7 +57,8 @@ module.exports = {
       copyright: `Copyright © ${new Date().getFullYear()} MobilePay. Built with Docusaurus.`
     },
     prism: {
-      theme: darkCodeTheme
+      theme: darkCodeTheme,
+      additionalLanguages: ['java', 'kotlin'],
     }
   },
   presets: [
