@@ -51,19 +51,6 @@ These are the statuses this service could possibly return:
 
 If your flow requires payments to be captured (not just reserved), consider polling the status checking service while status is "Reserved".
 
-### Redirect from MobilePay
-
-Example how to handle automatic redirect from the MobilePay app:
-```swift
-class AppDelegate: NSObject, UIApplicationDelegate {
-
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
-        // Validate that url is from MobilePay and check payment status - poll if needed.
-        return true
-    }
-}
-```
-
 ### App switching
 
 Example how to handle case when user manually switches to your app:
@@ -76,6 +63,19 @@ let observer = NotificationCenter.default.addObserver(forName: UIApplication.did
 Don't forget to unregister from notification when it's not needed:
 ```swift
 NotificationCenter.default.removeObserver(observer)
+```
+
+### Redirect from MobilePay
+
+Example how to handle automatic redirect from the MobilePay app:
+```swift
+class AppDelegate: NSObject, UIApplicationDelegate {
+
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        // Validate that url is from MobilePay and check payment status - poll if needed.
+        return true
+    }
+}
 ```
 
 :::tip Want to make the flow faster?
