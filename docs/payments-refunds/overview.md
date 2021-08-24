@@ -8,9 +8,6 @@ The Payments API lets developers process payments. Applications can call Payment
 
 The following topics gives more information:
 
-- [Working with Dates](/docs/build-basics#working-with-dates)
-- [Working with Monetary Amounts](/docs/build-basics#working-with-monetary-amounts)
 - [Take Payments](/docs/payments-refunds/take-payments)
 - [Refund Payments](/docs/payments-refunds/refund-payments)
 - [Error Codes](/docs/payments-refunds/error-codes)
-- [Webhooks](/docs/webhooks-api)

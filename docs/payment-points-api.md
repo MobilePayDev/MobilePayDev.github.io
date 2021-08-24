@@ -8,9 +8,9 @@ This topic explains what payment points are and how to manage them.
 
 ## Overview
 
-When a merchant signs up to use Payments API, the merchant needs to create a payment point.
+After signing up to use Payments API, merchant needs to create a payment point.
 
-A business can have multiple payment points. Each payment point is as a location, and it has a MobilePay-assigned payment point ID. Establishing multiple payment points is optional, but useful for reporting and tracking sales over time. Most customer-related transactions must be to a specific payment point in the API call.
+Single business can have multiple payment points. Each payment point is as a location, and it has a MobilePay-assigned payment point ID. Establishing multiple payment points is optional, but useful for reporting and tracking sales over time. Most customer-related transactions must be to a specific payment point in the API call.
 
 ## Management of payment points
 
@@ -20,9 +20,9 @@ Creating, editing payment points is done in _MobilePay Portal_. The payment poin
 
 ## Retrieve a list of payment points
 
-The following _ListPaymentpoints_ request retrieves information about all the payment points for a merchant account usable with Payments API.
+The following request retrieves information about all the payment points for a merchant account usable with Payments API.
 
-```bash
+```bash title="Retrieve all payment points"
 curl https://api.mobilepay.dk/v1/paymentpoints \
   -X POST \
   -H 'x-ibm-client-id: {CLIENT_ID}' \
@@ -32,6 +32,6 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 
 ## Setting up Custom Payment Reference
 
-If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. Franchisee. You can find details on a default MobilePay reference [here](https://developer.mobilepay.dk/transactionreporting-api).
+If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. You can find details on a default MobilePay reference [here](https://developer.mobilepay.dk/transactionreporting-api).
 
 **Include video**

@@ -10,14 +10,14 @@ Not all MobilePay integrations require webhooks.
 
 ## When to Use Webhooks
 
-Many events that occur within a MobilePay account have synchronous results-immediate. For example, a successful payment initiation will return _Payment_ object. Such requests don't require webhooks, as the key information is already available.
+Many events that occur within a MobilePay account have synchronous results immediately. E.g., a successful payment initiation will return _Payment_ object. Such requests don't require webhooks, as the key information is already available.
 
-Other events that occur are asynchronous: happening at a later time and not directly in response to your code's execution. With those APIs, MobilePay needs to notify your integration about changes to the status of an object so your integration can take subsequent steps.
+Other events that occur are asynchronous: happening at a later time and not directly in response to your code's execution. With those APIs, MobilePay needs to notify your integration about changes to the state of an object so your integration can take subsequent steps.
 
 The specific actions your webhook endpoint may take differs based upon the event. I.e.:
 
 - Capturing a payment when payment state has changed (user has approved it).
-- Updating records in your systems when paymentpoint is activated and ready to be used.
+- Updating records in your systems when payment point is activated and ready to be used.
 
 ## Best Practices for Using Webhooks
 
@@ -25,7 +25,7 @@ Review these best practices to ensure your webhooks remain secure and function s
 
 ### Event Types
 
-You should subscribe to the types of events required by your integration. Listening for extra events will put extra strain on yours/ours infrastructure and is not recommended.
+You should subscribe to the types of events required by your integration. Listening for extra events will put extra strain on your/our infrastructure and is not recommended.
 
 You can change the events by updating your webhooks configuration.
 
@@ -35,7 +35,7 @@ If a 2xx HTTP status code is not received within a reasonable time or a status c
 
 ### Check the Webhook Signatures
 
-All webhook notifications from MobilePay include an x-mobilepay-signature header. The value of this header is an HMAC-SHA1 signature generated using your webhook signature key, the notification URL, and the body of the request (excluding all whitespace). You can validate the webhook notification by generating the HMAC-SHA1 in your code and comparing it to the signature of the event notification you received.
+All webhook notifications from MobilePay include an `x-mobilepay-signature header`. The value of this header is an HMAC-SHA1 signature generated using your webhook signature key, the notification URL, and the body of the request (excluding all whitespaces). You can validate the webhook notification by generating the HMAC-SHA1 in your code and comparing it to the signature of the event notification you received.
 
 ### Test Webhooks
 
@@ -45,13 +45,13 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 
 ### Payment Points API
 
-| Event                 | Description                                                                      |
-| --------------------- | -------------------------------------------------------------------------------- |
-| paymentpoint.approved | Published when newly created payment point is approved. Relevant to integrators. |
+| Event                 | Description                                                                                           |
+| --------------------- | ----------------------------------------------------------------------------------------------------- |
+| paymentpoint.approved | Published when newly created payment point is approved and ready to be used. Relevant to integrators. |
 
 ### Payments API
 
-| Event            | Description                                                                           |
-| ---------------- | ------------------------------------------------------------------------------------- |
-| payment.reserved | Published when payment has been approved by MobilePay user, and ready to be captured. |
-| payment.expired  | Published when initiated payment didn't have user interactions for 5-10 minutes.      |
+| Event            | Description                                                                               |
+| ---------------- | ----------------------------------------------------------------------------------------- |
+| payment.reserved | Published when payment has been approved by MobilePay user and is ready to be captured.   |
+| payment.expired  | Published when initiated payment didn't have any user interactions for 5-10 minutes.      |
