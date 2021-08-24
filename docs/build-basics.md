@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Build Basics
 
-To build great applications with the MobilePay APIs, you should learn about the basic design principles that form the foundation of MobilePay APIs. These principles include base elements of the data model, secured access, error handling, and more.
+To build great applications with MobilePay APIs, you should learn about the basic design principles that form the foundation of MobilePay APIs. These principles include base elements of the data model, secured access, error handling, and more.
 
 ## Using the REST API
 
