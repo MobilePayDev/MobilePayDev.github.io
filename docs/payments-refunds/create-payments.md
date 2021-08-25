@@ -26,7 +26,7 @@ curl https://api.mobilepay.dk/v1/payments \
   }'
 ```
 
-```json title="Respone JSON"
+```json title="Respone JSON example"
 {
   "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
   "mobilePayAppRedirectUri": "mobilepay://merchant_payments?payment_id=186d2b31-ff25-4414-9fd1-bfe9807fa8b7"
@@ -47,14 +47,14 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID} \
   -H 'Authorization: Bearer {API_KEY}'
 ```
 
-```json title="Respone JSON"
+```json title="Respone JSON example"
 {
   "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
   "amount": 12.5,
   "description": "Lorem ipsum",
   "paymentPointId": "7347ba06-95c5-4181-82e5-7c7a23609a0e",
   "reference": "DFX101103518",
-  "redirectUri": "mobilepay://merchant_payments?payment_id=186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
+  "mobilePayAppRedirectUri": "mobilepay://merchant_payments?payment_id=186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
   "state": "initiated",
   "initiatedOn": "2021-08-20T05:18:07Z",
   "lastUpdatedOn": "2021-08-21T08:45:32Z",
@@ -81,6 +81,29 @@ curl https://api.mobilepay.dk/v1/payments \
   -X GET \
   -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}'
+```
+
+```json title="Respone JSON example"
+{
+  "pageSize": 1,
+  "nextPageNumber": 2,
+  "payments": [
+    {
+      "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
+      "amount": 12.5,
+      "description": "Lorem ipsum",
+      "paymentPointId": "7347ba06-95c5-4181-82e5-7c7a23609a0e",
+      "reference": "DFX101103518",
+      "mobilePayAppRedirectUri": "mobilepay://merchant_payments?payment_id=186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
+      "state": "initiated",
+      "initiatedOn": "2021-08-20T05:18:07Z",
+      "lastUpdatedOn": "2021-08-21T08:45:32Z",
+      "merchantId": "655ad36f-70b0-4add-a123-b943daca50e8",
+      "isoCurrencyCode": "DKK",
+      "paymentPointName": "Nullam tincidunt"
+    }
+  ]
+}
 ```
 
 ## Capture Payment

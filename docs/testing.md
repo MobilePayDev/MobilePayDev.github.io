@@ -26,8 +26,10 @@ You will receive information about test users during your onboarding. You will h
 
 In order to complete a payment flow in the sandbox environment, a test version of the MobilePay app is available. This version of the MobilePay app is similar to the live version, but only supports payments in the sandbox environment. Test App uses `mobilepay-test://` scheme, which allows you to have both apps on the same phone. Production app uses `mobilepay://`. Only test users provided to you will work.
 
-::: note
+:::note
+
 Do not use the test phone number in the production environment, as it might be a real user there.
+
 :::
 
 ### iOS
