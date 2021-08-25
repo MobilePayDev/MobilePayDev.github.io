@@ -34,9 +34,16 @@ Do not use the test phone number in the production environment, as it might be a
 
 ### iOS
 
-The MobilePay Test app is available in Apple TestFlight. Open [this url](TBD) on your iOS phone.
+iOS MobilePay Test app is available in Apple TestFlight. Open [this url](https://testflight.apple.com/join/xarydQZ4) on your iOS phone.
 
 ### Android
+
+### Log on to test app
+
+To install, you will have to allow installation from “unknown sources”.
+
+- [MobilePay Test App for Denmark](https://dbg.tpa.io/p/KnSXxG8NQ8Mv0yhct5iC)
+- [MobilePay Test App for Finland](https://dbg.tpa.io/p/K3WYrFuT_pHYEWoRYhtH)
 
 ### Log on to test app
 
