@@ -16,7 +16,7 @@ Using In-App Payments for digital sales might not be allowed by some mobile appl
 
 ## Initiate the payment
 
-First, you'll need to initiate the payment. To do this you should call your backend service that is implemented as described [here](https://mobilepaydev.github.io/MobilePay-Payments-API/docs/payments-refunds/take-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
+First, you'll need to initiate the payment. To do this you should call your backend service that is implemented as described [here](https://mobilepaydev.github.io/MobilePay-Payments-API/docs/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
 
 ## Redirect to MobilePay
 
@@ -49,7 +49,7 @@ All these can be grouped into:
 - App switching
 - Redirect
 
-At any point, the user can close the MobilePay app and just return to your app. **This can happen even if payment is already reserved!** Because it is unknown if your app was opened after completed payment, you'll need to check the payment status each time your app returns to the foreground. For this, you should use your backend service that provides the current status of the payment (more details [here](/docs/payments-refunds/take-payments)).
+At any point, the user can close the MobilePay app and just return to your app. **This can happen even if payment is already reserved!** Because it is unknown if your app was opened after completed payment, you'll need to check the payment status each time your app returns to the foreground. For this, you should use your backend service that provides the current status of the payment (more details [here](/docs/payments-refunds/create-payments)).
 
 These are the statuses this service could return:
 
