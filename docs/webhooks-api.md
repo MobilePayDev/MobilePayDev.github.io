@@ -51,7 +51,7 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 
 ### Payments API
 
-| Event            | Description                                                                               |
-| ---------------- | ----------------------------------------------------------------------------------------- |
-| payment.reserved | Published when payment has been approved by MobilePay user and is ready to be captured.   |
-| payment.expired  | Published when initiated payment didn't have any user interactions for 5-10 minutes.      |
+| Event            | Description                                                                             |
+| ---------------- | --------------------------------------------------------------------------------------- |
+| payment.reserved | Published when payment has been approved by MobilePay user and is ready to be captured. |
+| payment.expired  | Published when initiated payment didn't have any user interactions for 5-10 minutes.    |

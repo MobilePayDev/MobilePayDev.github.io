@@ -58,7 +58,7 @@ module.exports = {
     },
     prism: {
       theme: darkCodeTheme,
-      additionalLanguages: ['java', 'kotlin'],
+      additionalLanguages: ['java', 'kotlin', 'swift']
     }
   },
   presets: [

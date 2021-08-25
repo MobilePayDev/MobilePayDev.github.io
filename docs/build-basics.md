@@ -51,3 +51,10 @@ Using MobilePay APIs you can provide your own Correlation ID in request header:
 
 If none is provided then our systems will generate it. You will be made aware of it only during errors.
 **If you need to contact us about a specific request, providing the correlation ID will ensure the fastest-possible resolution.**
+
+## Design Guidelines
+
+Our logo acts as a unique signature - a symbol and identifier for MobilePay. It’s a constant reminder of the joyful exchanges and wonders we are offering.
+
+Consistent use of our logo helps build trust and recognition across markets, and in all situations. Use it with care. And respect.
+You can find resources and guidelines [here](https://developer.mobilepay.dk/design).
