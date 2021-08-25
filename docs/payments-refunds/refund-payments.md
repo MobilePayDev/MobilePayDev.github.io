@@ -31,7 +31,7 @@ curl https://api.mobilepay.dk/v1/refunds \
 When MobilePay receives the request, it begins the refund process. The response and its status code will indicate if a refund was successful. The following is an example response:
 
 ```json
-
+TBD
 ```
 
 ## Retrieve Refund Information
