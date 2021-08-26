@@ -38,8 +38,6 @@ iOS MobilePay Test app is available in Apple TestFlight. Open [this url](https:/
 
 ### Android
 
-### Log on to test app
-
 To install, you will have to allow installation from “unknown sources”.
 
 - [MobilePay Test App for Denmark](https://dbg.tpa.io/p/KnSXxG8NQ8Mv0yhct5iC)

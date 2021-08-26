@@ -22,7 +22,8 @@ This page details how MobilePay in-app payments should be implemented in your An
 <TabItem value="android">
 
 This guide assumes:
-- You already have backend services integrated with [MobilePay APIs](https://mobilepaydev.github.io/MobilePay-Payments-API/docs/guides/in-app-payments/how-it-works).
+
+- You already have backend services integrated with [MobilePay APIs](/docs/guides/in-app-payments/how-it-works).
 - Your app uses [minSdkVersion](https://developer.android.com/training/basics/supporting-devices/platforms.html#sdk-versions) API 23 (Marshmallow, 6.0) or later.
 - You are generally familiar with developing applications on Android.
 
@@ -31,6 +32,7 @@ This guide assumes:
 <TabItem value="ios">
 
 This guide assumes:
+
 - You already have backend services integrated with [MobilePay APIs](https://mobilepaydev.github.io/MobilePay-Payments-API/docs/guides/in-app-payments/how-it-works).
 - Your app handles a custom URL scheme. See [Apple documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app) for more details.
 - You are generally familiar with developing applications on iOS.
@@ -44,7 +46,7 @@ Using in-app payments for digital sales might not be allowed by some mobile appl
 
 ## Create Payment
 
-First, you'll need to create payment. To do this you should call your backend service that is implemented as described [here](https://mobilepaydev.github.io/MobilePay-Payments-API/docs/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
+First, you'll need to create payment. To do this you should call your backend service that is implemented as described [here](/docs/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
 
 ## Redirect to MobilePay
 
