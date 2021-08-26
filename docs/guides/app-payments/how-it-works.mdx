@@ -1,0 +1,55 @@
+---
+sidebar_position: 1
+---
+
+import Tabs from "@theme/Tabs"
+import TabItem from "@theme/TabItem"
+
+# How It Works
+
+This page details how app payments flow works. It allows you to accept MobilePay payments within your application while re-directing to the MobilePay app for user approval. It assumes that you already have credentials to successfully call MobilePay APIs ([Payment]) and have subscribed to notifications using [Webhooks API](/docs/webhooks-api).
+
+## Process Flow
+
+<Tabs
+defaultValue="sunshine"
+values={[
+{label: 'Sunshine Scenario', value: 'sunshine'},
+{label: 'No Webhook Received Scenario', value: 'no-webhook'},
+]}>
+<TabItem value="sunshine">
+
+Sunshine scenario is expected for the majority of the time.
+
+1. When a user wants to pay with MobilePay in your application, request your backend services to [create payment](/docs/payments-refunds/create-payments#create-payment) using [Payments API](/docs/payments-refunds/create-payments).
+2. Re-direct user to MobilePay app using deep link.
+3. User confirms payment in the MobilePay app.
+4. Your backend services receives notification `payment.reserved` and proceeds with [capturing payment](/docs/payments-refunds/create-payments#capture-payment).
+5. Meanwhile user returns to your application (using re-direct or switching apps).
+6. Invoke backend services to check payment status. It is `captured` and you should proceed with the success screen.
+
+![](/img/imageA.jpg)
+
+</TabItem>
+
+<TabItem value="no-webhook">
+
+This scenario details what should happen if a user returned to your application and during that period backend services haven't got any updates on the payment state.
+
+1. When a user wants to pay with MobilePay in your application, request your backend services to [create payment](/docs/payments-refunds/create-payments#create-payment) using [Payments API](/docs/payments-refunds/create-payments).
+2. Re-direct user to MobilePay app using deep link.
+3. User confirms/cancel payment or leaves MobilePay app
+4. User returns to your application (using re-direct or switching apps).
+5. Invoke backend services to check payment status.
+6. Backend services haven't received a notification and should invoke [Get Single Payments Details](/docs/payments-refunds/create-payments#get-single-payment-details) to retrieve the latest payment state and decide what to do next.
+
+:::note
+
+It is technically possible to use polling instead of webhooks to monitor for payment state—but this is markedly less reliable and may pose challenges if used at scale. MobilePay may enforce rate limiting on API requests, so exercise caution if you decide to use polling. If you decide to go that route, then you should start no sooner than 5 seconds after payment creation and poll every 2 seconds.
+
+:::
+
+![](/img/imageB.jpg)
+
+</TabItem>
+</Tabs>

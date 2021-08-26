@@ -2,12 +2,12 @@
 sidebar_position: 4
 ---
 
-import Tabs from '@theme/Tabs'
-import TabItem from '@theme/TabItem'
+import Tabs from "@theme/Tabs"
+import TabItem from "@theme/TabItem"
 
 # Build on Mobile
 
-This page details how MobilePay in-app payments should be implemented in your Android/iOS app.
+This page details how MobilePay app payments should be implemented in your Android/iOS app.
 
 ## Prerequisites and Assumptions
 
@@ -41,7 +41,7 @@ This guide assumes:
 </Tabs>
 
 :::caution Make sure you are compliant with mobile application distribution service rules!
-Using in-app payments for digital sales might not be allowed by some mobile application distribution services (Google Play, App Store, etc.) and might result in your application being removed. Please review the terms of service for the respective mobile application distribution services you use to ensure that you are compliant with their guidelines.
+Using app payments for digital sales might not be allowed by some mobile application distribution services (Google Play, App Store, etc.) and might result in your application being removed. Please review the terms of service for the respective mobile application distribution services you use to ensure that you are compliant with their guidelines.
 :::
 
 ## Create Payment
@@ -127,7 +127,7 @@ All these can be grouped into:
 - App switching.
 - Redirect.
 
-Let's see how each one should be handled.
+The following section addresses how each one should be handled.
 
 ### App Switching
 
@@ -204,16 +204,19 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 </TabItem>
 </Tabs>
 
-:::tip Want to make the flow faster?
+:::tip Experimental Feature for a pilot period.
+We are looking for your feedback during a pilot period if this brings value to your implementation having this experimental functionality.
+
 When redirecting back to your app, MobilePay appends a query parameter `status` to the end of a deep link. It can contain these values:
 
 - successful
 - failed
 - rejected
 
-If you want maximum speed, consider checking this parameter and triggering a capture without checking payment's state in your backend (capture can only succeed if `status` returned value is `successful`).
+Consider checking this parameter and triggering a capture without checking payment's state in your backend (capture can only succeed if `status` returned value is `successful`).
 
-P.S. This feature is **experimental**. Please let us know if it provides any value! 🙂
+P.S. It's not required for a successful app payments integration.
+
 :::
 
 ## All done
@@ -224,4 +227,4 @@ Now everything should be ready for testing! Sandbox testing guide is [here](/doc
 MobilePay supports multiple countries, but cross-country payments are not enabled.
 :::
 
-Having troubles with this guide? Be sure to contact us!
+Having troubles with this guide? Be sure to [contact us](mailto:developer@mobilepay.dk) .

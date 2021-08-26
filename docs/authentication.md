@@ -29,6 +29,6 @@ More information on implementation and best practices can be found [here.](https
 Authentication to API is performed using bearer auth along with client_id which is acquired in developer portal:
 
 ```jsx
--H "Authorization: Bearer D9DC32B860D6964E4569B3fsfsdABECBD457B6B7Ewrwe7EC45B527A5CAEhgd0"
--H "x-ibm-client-id: 22a38d79-2ec2-4d90-8375-460a1erwrwee5b"
+-H "Authorization: Bearer {API_Key}"
+-H "x-ibm-client-id: {client_id}"
 ```

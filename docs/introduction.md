@@ -11,6 +11,6 @@ For information about the product and details on getting started, testing and ce
 
 This document does not include a detailed specification of the endpoints, responses, and response codes. This information can be found in the [APIs](https://developer.mobilepay.dk/product/) section of the Developer Portal.
 
-Documentation found here will cover a new set of MobilePay APIs (Payments API, Payment Points API, Refunds API and Webhooks API) which will replace the current AppSwitch solution. There is a step-by-step guide in _Guides_ section which will help you with implementation.
+Documentation found here will cover a new set of MobilePay APIs ([Payments API, Refunds API](/docs/payments-refunds/overview), [Payment Points API](/docs/payment-points-api), and [Webhooks API](/docs/webhooks-api) which allow developers to implement app payments and will replace the current AppSwitch solution. There is [a step-by-step guide](/docs/guides/app-payments/how-it-works) which will help you with implementation.
 
 If there are problems with documentation or you need assistance - feel free to contact our [developer support](mailto:developer@mobilepay.dk) or [create a GitHub issue](https://github.com/MobilePayDev/MobilePay-Payments-API/issues).
