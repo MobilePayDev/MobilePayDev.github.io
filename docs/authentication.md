@@ -8,6 +8,12 @@ The MobilePay API uses API keys to authenticate requests. They are used to get u
 
 OAuth access tokens are used to get authenticated and scoped access to any MobilePay account. Use them when your application accesses resources on behalf of account owners. I.e. you are an integrator.
 
+## Get an OAuth access token
+
+As a developer, you can use MobilePay APIs to manage resources on behalf of merchants. The OAuth API lets you request specific permissions from MobilePay merchants to manage their resources and get access tokens to call APIs on their behalf. Using the access tokens you receive using OAuth, you can build applications that integrate with MobilePay.
+
+More information on implementation and best practices can be found [here.](https://developer.mobilepay.dk/developersupport/openid/)
+
 ## Get an API key
 
 You can view and manage your API keys in the MobilePay portal. Sandbox keys will need to be generated in the sandbox portal while production in the main portal. Provide your API key as the bearer auth value.
@@ -18,11 +24,7 @@ Your API keys carry many privileges, so be sure to keep them secure! Do not shar
 
 :::
 
-## Get an OAuth access token
-
-As a developer, you can use MobilePay APIs to manage resources on behalf of merchants. The OAuth API lets you request specific permissions from MobilePay merchants to manage their resources and get access tokens to call APIs on their behalf. Using the access tokens you receive using OAuth, you can build applications that integrate with MobilePay.
-
-More information on implementation and best practices can be found [here.](https://developer.mobilepay.dk/developersupport/openid/)
+When creating an API key you can select which APIs will be accessible with it. You can also assign it a name. It is not possible to change the scope or the name of the API key after its creation. Modifications must be carried out by creating a new key. Lastly you are fully responsible for managing the lifecycle of the keys you create.
 
 ## Usage
 
