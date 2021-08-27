@@ -24,7 +24,7 @@ Your API keys carry many privileges, so be sure to keep them secure! Do not shar
 
 :::
 
-When creating an API key you can select which APIs will be accesible with it. You can also asign it a name. It is not possible to change the scope or the name of the API key after its creation. Modifications must be carried out by creating a new key. Lastly you are are fully responsible for managing the lifecycle of the keys you create.
+When creating an API key you can select which APIs will be accessible with it. You can also assign it a name. It is not possible to change the scope or the name of the API key after its creation. Modifications must be carried out by creating a new key. Lastly you are fully responsible for managing the lifecycle of the keys you create.
 
 ## Usage
 
