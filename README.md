@@ -4,6 +4,6 @@ This repository contains source for app payments documentation page. It is hoste
 
 API Specs used in documentation (redoc):
 
-- [PaymentPoints API (1.0.2)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-paymentpoints)
-- [Payments API (1.0.18)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-payments)
-- [Webhooks API (1.0.5)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-webhooks)
+- [PaymentPoints API (0.1.0)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-paymentpoints)
+- [Payments API (0.1.0)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-payments)
+- [Webhooks API (0.1.0)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-webhooks)

@@ -37,7 +37,7 @@ Do not use the test phone number in the production environment, as it might be a
 iOS MobilePay Test app is available in Apple TestFlight.
 
 - [MobilePay Sandbox App for Denmark](https://testflight.apple.com/join/xarydQZ4)
-- [MobilePay Sandbox App for Finland](https://tobeupdated)
+- [MobilePay Sandbox App for Finland](https://testflight.apple.com/join/hP92EaBR)
 
 ### Android
 
