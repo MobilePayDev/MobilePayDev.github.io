@@ -3,11 +3,13 @@ sidebar_position: 2
 ---
 
 # Create And Manage Payments
+
 Payments API lets developers to create and manage payments. It is important to remember, that payment cannot be completed without user interaction, meaning that user has to **swipe and approve payments** inside MobilePay app.
 
-![Setup payment points](/img/mobilepay-swipe.gif)
+![User confirmation](/img/create-payment-app.gif)
 
 ## Create Payment
+
 The first step in your journey of collecting payments would be to initiate a new payment. You can do that using the following request.
 
 ```bash title="Create payment"
@@ -38,6 +40,7 @@ curl https://api.mobilepay.dk/v1/payments \
 :::
 
 ## Get Single Payment Details
+
 Whenever there is a need you can retrieve details of a single payment and e.g. check the current state.
 
 ```bash title="Retrieve payment"
@@ -65,6 +68,7 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID} \
 ```
 
 Property `state` can have these values:
+
 - **initiated** - initial state.
 - **reserved** - MobilePay user approved payment, ready to be captured.
 - **captured** - final state, funds will be transferred during next settlement.
@@ -72,8 +76,8 @@ Property `state` can have these values:
 - **cancelledBySystem** - no user interactions with payment were made in 5-10 minutes after creation, so our automated job cancelled it.
 - **cancelledByUser** - user cancelled payment inside MobilePay app.
 
-
 ## Get All Payments
+
 Theres also a possibility to list all your payments in pages. Multiple searching criteria can be used as query parameters.
 
 ```bash title="List payments"
@@ -107,9 +111,11 @@ curl https://api.mobilepay.dk/v1/payments \
 ```
 
 ## Capture Payment
+
 After you receive a notification that payment was reserved or you retrieve a payment and it has a state `reserved`, you must capture payment in order to end the flow and receive the money with nightly transfer.
 
 At this point you have 2 options:
+
 - You can capture the whole reserved amount.
 - You can do a partial capture and only capture the amount you need. Remaining amount will be returned to the user.
 
@@ -125,6 +131,7 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/capture \
 ```
 
 ## Cancel Payment
+
 If you changed your mind and want to cancel payment , you can do that using the following request.
 
 ```bash title="Cancel payment"
@@ -138,6 +145,7 @@ Keep in mind, that payment can be cancelled in all states except `captured`. If 
 If you cancel a reserved payment, reserved amount will be returned to the user.
 
 ## Cancel Payment By Idempotency Key
+
 You can also cancel payment by sending us the same idempotency key that you've used in the create payment request.
 Use this endpoint when the outcome of create payment request is unknown (e.g. network/server error occured and you didn't get a response).
 After successful cancellation, you can create a new payment again.
