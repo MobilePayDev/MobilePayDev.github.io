@@ -47,7 +47,7 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 
 | Event                 | Description                                                                                           |
 | --------------------- | ----------------------------------------------------------------------------------------------------- |
-| paymentpoint.approved | Published when newly created payment point is approved and ready to be used. Relevant to integrators. |
+| paymentpoint.activated | Published when newly created payment point is approved and ready to be used. Relevant to integrators. |
 
 ### Payments API
 
