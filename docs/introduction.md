@@ -15,9 +15,9 @@ Documentation found here will cover a new set of MobilePay APIs ([Payments API, 
 
 While we are still in the pre-launch our API definitions are not public. However, you can access them below:
 
-- [PaymentPoints API (0.1.0)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-paymentpoints)
-- [Payments API (0.1.0)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-payments)
-- [Webhooks API (0.1.0)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-webhooks)
-- [Refunds API (0.1.2)](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-refunds)
+- [PaymentPoints API](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-paymentpoints)
+- [Payments API](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-payments)
+- [Webhooks API](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-webhooks)
+- [Refunds API](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-refunds)
 
 If there are problems with documentation or you would like to get started - feel free to contact our [developer support](mailto:developer@mobilepay.dk) or [create a GitHub issue](https://github.com/MobilePayDev/MobilePay-Payments-API/issues).

@@ -16,15 +16,17 @@ More information on implementation and best practices can be found [here.](https
 
 ## Get an API key
 
-You can view and manage your API keys in the MobilePay portal. Sandbox keys will need to be generated in the sandbox portal while production in the main portal. Provide your API key as the bearer auth value.
-
 :::note
 
 Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, etc.
 
 :::
 
+You can view and manage your API keys in the MobilePay portal. Sandbox keys will need to be generated in the sandbox portal while production in the main portal.
+
 When creating an API key you can select which APIs will be accessible with it. You can also assign it a name. It is not possible to change the scope or the name of the API key after its creation. Modifications must be carried out by creating a new key. Lastly you are fully responsible for managing the lifecycle of the keys you create.
+
+![](/img/api-key.gif)
 
 ## Usage
 

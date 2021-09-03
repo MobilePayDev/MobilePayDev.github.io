@@ -32,13 +32,13 @@ When MobilePay receives the request, it begins the refund process. The response 
 
 ```json
 {
-  "refundId": "298930103386112",
-  "paymentId": "606413852246016",
-  "amount": 87.78073809,
-  "description": "Cebefmu jolara hulaj somubiog wad sogge zuravu mimwazen sud vallaz puive dirafiw ru.",
-  "reference": "gahuhvif",
-  "createdOn": "2017-08-09T21:59:48.536Z",
-  "remainingAmount": 12.14728397
+  "refundId": "7576910d-9789-4fef-a72e-877d89afec94",
+  "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
+  "amount": 12.5,
+  "description": "Lorem ipsum",
+  "reference": "order-212-32",
+  "createdOn": "2021-07-19T12:42:38Z",
+  "remainingAmount": 2.5
 }
 ```
 
@@ -64,4 +64,21 @@ curl https://api.mobilepay.dk/v1/refunds \
   -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json'
+```
+
+```json
+{
+  "pageSize": 48649663,
+  "nextPageNumber": 31,
+  "refunds": [
+    {
+      "refundId": "7576910d-9789-4fef-a72e-877d89afec94",
+      "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
+      "amount": 12.5,
+      "description": "Lorem ipsum",
+      "reference": "order-212-32",
+      "createdOn": "2021-07-19T12:42:38+00:00"
+    }
+  ]
+}
 ```
