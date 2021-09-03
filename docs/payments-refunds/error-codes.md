@@ -17,6 +17,8 @@ If any client errors occur, our endpoints return an error object describing the 
 
 ### HTTP 409 Conflict
 
+#### Payments API
+
 | code               | message                                                                             |
 | -------------------| --------------------------------------------------------------------------------------- |
 | processing_error  | We were not able to process your request. Please try again or contact our support. |
@@ -29,6 +31,17 @@ If any client errors occur, our endpoints return an error object describing the 
 | invalid_payment_point   | Payment point is not active. |
 | payment_point_not_found  | Payment does not exist. |
 | idempotency_key_used   | Payment with this idempotency key already exists for another payment point. |
+| unauthorized_access   | Authorization error occurred. |
+
+#### Refunds API
+
+| code               | message                                                                             |
+| -------------------| --------------------------------------------------------------------------------------- |
+| processing_error  | We were not able to process your request. Please change idempotency key and try again or contact our support. |
+| amount_too_large  | Cannot refund more than the remaining amount of payment - {_remaining payment amount_}. |
+| payment_not_found  | Payment does not exist. |
+| invalid_payment_state   | Payment has not been captured yet and cannot be refunded. |
+| payment_point_not_found  | Payment does not exist. |
 | unauthorized_access   | Authorization error occurred. |
 
 ### HTTP 400 Bad Request
