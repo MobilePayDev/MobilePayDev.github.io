@@ -56,7 +56,7 @@ To install, you will have to allow installation from “unknown sources”.
 6. Enter activation code: “123456” and press "OK" / "Jatka"
 
 ## Integration tests
-We also have a "Payments Testing" API in sandbox environment, which has only one endpoint for simulating user's swipe in MobilePay app. You can use that to setup integration tests or in any other way where it fits you.
+We also have a Payments Testing API in sandbox environment, which has only one endpoint for simulating user's swipe in MobilePay app. You can use that to setup integration tests or in any other way where it fits you.
 
 ```bash title="Simulate user swiping and confirming the payment in MobilePay app."
 curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/reserve \
@@ -69,4 +69,4 @@ curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/
     "userId": {UUID}
   }'
 ```
-`paymentSourceId` and `userId` are unique for you test users and you will receive these values during onboarding.
+`paymentSourceId` and `userId` are unique for your test users. You will receive these values during onboarding.
