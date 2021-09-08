@@ -24,7 +24,7 @@ You will receive information about test users during your onboarding. You will h
 
 ## Test App
 
-In order to complete a payment flow in the sandbox environment, a test version of the MobilePay app is available. This version of the MobilePay app is similar to the live version, but only supports payments in the sandbox environment. Test App uses `mobilepay-test://` scheme, which allows you to have both apps on the same phone. Production app uses `mobilepay://`. Only test users provided to you will work.
+In order to complete a payment flow in the sandbox environment, a test version of the MobilePay app is available. This version of the MobilePay app is similar to the live version, but only supports payments in the sandbox environment. You can only use the test users that we provide to you.
 
 :::note
 
@@ -54,3 +54,19 @@ To install, you will have to allow installation from “unknown sources”.
 4. Enter a valid Sandbox phone number (you have received during on-boarding)
 5. Enter PIN: “1234”
 6. Enter activation code: “123456” and press "OK" / "Jatka"
+
+## Integration tests
+We also have a "Payments Testing" API in sandbox environment, which has only one endpoint for simulating user's swipe in MobilePay app. You can use that to setup integration tests or in any other way where it fits you.
+
+```bash title="Simulate user swiping and confirming the payment in MobilePay app."
+curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/reserve \
+  -X POST \
+  -H 'x-ibm-client-id: {CLIENT_ID}' \
+  -H 'Authorization: Bearer {API_KEY}' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "paymentSourceId": {UUID},
+    "userId": {UUID}
+  }'
+```
+`paymentSourceId` and `userId` are unique for you test users and you will receive these values during onboarding.
