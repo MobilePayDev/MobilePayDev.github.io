@@ -114,6 +114,13 @@ curl https://api.mobilepay.dk/v1/payments \
 
 After you receive a notification that payment was reserved or you retrieve a payment and it has a state `reserved`, you must capture payment in order to end the flow and receive the money with nightly transfer.
 
+:::note
+
+- Partial capture is not available to all. Ask during onboarding if needed.
+- Reservations are canceled after 7 days.
+
+:::
+
 At this point you have 2 options:
 
 - You can capture the whole reserved amount.
