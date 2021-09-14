@@ -116,7 +116,7 @@ After you receive a notification that payment was reserved or you retrieve a pay
 
 :::note
 
-- Partial capture is not available to all. Ask during onboarding if needed.
+- Partial capture availability is limited. Let us know your use case during onboarding, and we will let you know if it's available.
 - Reservations are canceled after 7 days.
 
 :::
