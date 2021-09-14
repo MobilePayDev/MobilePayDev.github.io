@@ -26,12 +26,20 @@ All MobilePay endpoints expect dates and timestamps as strings in UTC (such as, 
 
 ## Working with Monetary Amounts
 
-The amounts are enquoted with double quotation marks using 0.00 format, decimals separated with a dot.
+The amounts are using 0.00 format, decimals separated with a dot.
 
 There is two lower numerical limits on payment amounts:
 
 - Smallest unit of currency (0.01)
 - Minimum amount for a payment (0.01)
+
+`0.01` equals to 1 cent.
+
+:::info
+
+You can also omit the cents part. E.g. we accept both of these values: `1` and `1.00` both mean 1 EUR/DKK.
+
+:::
 
 These limits are the same for all countries (Denmark, Finland). Upper limits are defined by user's daily/yearly limits.
 
