@@ -19,7 +19,7 @@ curl https://api.mobilepay.dk/v1/payments \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{
-    "amount": 10,
+    "amount": 1250,
     "idempotencyKey": "{UUID}",
     "paymentPointId": "{PAYMENT_POINT_ID}",
     "redirectUri": "{URI_TO_YOUR_APP}"
@@ -53,7 +53,7 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID} \
 ```json title="Respone JSON example"
 {
   "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
-  "amount": 12.5,
+  "amount": 1250,
   "description": "Lorem ipsum",
   "paymentPointId": "7347ba06-95c5-4181-82e5-7c7a23609a0e",
   "reference": "DFX101103518",
@@ -94,7 +94,7 @@ curl https://api.mobilepay.dk/v1/payments \
   "payments": [
     {
       "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
-      "amount": 12.5,
+      "amount": 1250,
       "description": "Lorem ipsum",
       "paymentPointId": "7347ba06-95c5-4181-82e5-7c7a23609a0e",
       "reference": "DFX101103518",
@@ -133,7 +133,7 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/capture \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{
-    "amount": 10
+    "amount": 1250
   }'
 ```
 

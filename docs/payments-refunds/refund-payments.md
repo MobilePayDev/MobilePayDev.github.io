@@ -22,7 +22,7 @@ curl https://api.mobilepay.dk/v1/refunds \
   -d '{
     "idempotencyKey": "{UUID}",
     "paymentId": "{PAYMENT_ID}",
-    "amount": 10,
+    "amount": 500,
     "reference": "{YOUR_UNIQUE_KEY}",
     "description": "Lorem ipsum"
   }'
@@ -34,11 +34,11 @@ When MobilePay receives the request, it begins the refund process. The response 
 {
   "refundId": "7576910d-9789-4fef-a72e-877d89afec94",
   "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
-  "amount": 12.5,
+  "amount": 500,
   "description": "Lorem ipsum",
   "reference": "order-212-32",
   "createdOn": "2021-07-19T12:42:38Z",
-  "remainingAmount": 2.5
+  "remainingAmount": 750
 }
 ```
 
@@ -74,7 +74,7 @@ curl https://api.mobilepay.dk/v1/refunds \
     {
       "refundId": "7576910d-9789-4fef-a72e-877d89afec94",
       "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
-      "amount": 12.5,
+      "amount": 500,
       "description": "Lorem ipsum",
       "reference": "order-212-32",
       "createdOn": "2021-07-19T12:42:38+00:00"
