@@ -4,13 +4,11 @@ sidebar_position: 8
 
 # Webhooks
 
-MobilePay uses webhooks to notify your application when an event happens in your account. They are useful for asynchronous events like when a customer confirms a payment. When an event occurs, MobilePay collects data about the event, creates an event notification, and sends the event notification to the notification URL for all webhook subscriptions that are subscribed to the event.
-
-Not all MobilePay integrations require webhooks.
+MobilePay uses webhooks to notify your application when an event happens in your account. They are useful for asynchronous events, e.g. when a customer confirms a payment. When an event occurs, MobilePay collects data about the event, creates an event notification and sends the event notification to the notification URL for all webhook subscriptions that are subscribed to the event.
 
 ## When to Use Webhooks
 
-Many events that occur within a MobilePay account have synchronous results immediately. E.g., a successful payment initiation will return _Payment_ object. Such requests don't require webhooks, as the key information is already available.
+Many events that occur within a MobilePay merchant account have synchronous results immediately. E.g., a successful payment initiation will return _Payment_ object. Such requests don't require webhooks as the key information is already available.
 
 Other events that occur are asynchronous: happening at a later time and not directly in response to your code's execution. With those APIs, MobilePay needs to notify your integration about changes to the state of an object so your integration can take subsequent steps.
 
@@ -31,7 +29,7 @@ You can change the events by updating your webhooks configuration.
 
 ### Return a 2xx Response
 
-If a 2xx HTTP status code is not received within a reasonable time or a status code other than 2xx is returned, MobilePay assumes that the delivery was unsuccessful. MobilePay retries the delivery of the event notification three times.
+If a 2xx HTTP status code is not received within a 10s time or a status code other than 2xx is returned, MobilePay assumes that the delivery was unsuccessful. MobilePay retries the delivery of the event notification three times.
 
 ### Check the Webhook Signatures
 

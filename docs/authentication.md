@@ -4,33 +4,45 @@ sidebar_position: 2
 
 # Authentication
 
-The MobilePay API uses API keys to authenticate requests. They are used to get unlimited access to resources in your account.
+We are providing two different options for authentification. The first one is [OAuth](#get-an-oauth-access-token) which is used to get authenticated and scoped access to any MobilePay merchant account. Use them when your application will access resources on behalf of multiple MobilePay merchant accounts, i.e. you are an integrator. Second option is [API keys](#get-an-api-key). They are used to get unlimited access to resources in your merchant account. But first, you need to onboard your app in our developer portal.
 
-OAuth access tokens are used to get authenticated and scoped access to any MobilePay account. Use them when your application accesses resources on behalf of account owners. I.e. you are an integrator.
+## Creating an App in developer portal
+
+1. **Log-in to developer portal**. Go to [developer portal](https://developer.mobilepay.dk/) and log in with your credentials.
+
+2. **Create an app in the developer portal**. Go to My Apps > Create new App to register a new application. You need to supply the `x-ibm-client-id` when calling APIs. You should always store the `x-ibm-client-id` in a secure location, and never reveal it publicly.
+
+3. **Subscribe the app to products.** Go to the "APIs" section and subscribe to the following api products:
+    * Payments
+    * Webhooks
 
 ## Get an OAuth access token
 
-As a developer, you can use MobilePay APIs to manage resources on behalf of merchants. The OAuth API lets you request specific permissions from MobilePay merchants to manage their resources and get access tokens to call APIs on their behalf. Using the access tokens you receive using OAuth, you can build applications that integrate with MobilePay.
+As a developer, you can use MobilePay APIs to manage resources on behalf of merchants. The OAuth API lets you request specific permissions from MobilePay merchants to manage their resources and get access tokens to call APIs on their behalf. 
+
+Using the access tokens you receive using OAuth, you can build applications that integrate with MobilePay.
 
 More information on implementation and best practices can be found [here.](https://developer.mobilepay.dk/developersupport/openid/)
 
 ## Get an API key
 
-:::note
+:::important
 
 Your API keys carry many privileges, so be sure to keep them secure! Do not share your secret API keys in publicly accessible areas such as GitHub, client-side code, etc.
 
 :::
 
-You can view and manage your API keys in the MobilePay portal. Sandbox keys will need to be generated in the sandbox portal while production in the main portal.
+You can view and manage your API keys in the [MobilePay portal](https://admin.mobilepay.dk/). Meanwhile, sandbox keys are generated in the [sandbox version of MobilePay portal](https://sandprod-admin.mobilepay.dk/) and will be applicable only on sandbox environment.
 
-When creating an API key you can select which APIs will be accessible with it. You can also assign it a name. It is not possible to change the scope or the name of the API key after its creation. Modifications must be carried out by creating a new key. Lastly you are fully responsible for managing the lifecycle of the keys you create.
+When creating an API key you need to select APIs which will be accessible using this key. You can also assign it a name. Once API key is generated, it is not  possible to change the scope or the name. Modifications must be carried out by creating a new API key. Lastly, you are fully responsible for managing the lifecycle of the keys you have created.
 
 ![](/img/api-key.gif)
 
 ## Usage
 
-Authentication to API is performed using bearer auth along with client_id which is acquired in developer portal:
+To perform successfull authorization provide:
+* **API_Key** - generated as described before (OAuth access token or Api key)
+* **client_id** - acquired in [developer portal](https://developer.mobilepay.dk/application/) by going to My Apps page.
 
 ```jsx
 -H "Authorization: Bearer {API_Key}"

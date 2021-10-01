@@ -20,6 +20,18 @@ Network errors typically present themselves as timeouts or connections that are 
 
 For instance, if a capture call on a payment is successful on the backend, but the connection to the client is closed before the client receives the response, then it is safe for the client to retry the capture call. The second capture call will immediately return with a 200 OK response as the capture was already completed on the first capture call.
 
+### Retry policy
+
+We recommend retrying failed requests due to network and server errors using one of these strategies:
+
+* Retrying requests up to a fixed number of times with a constant delay between each call.
+
+* Retrying requests up to a fixed number of times using an exponential backoff with jitter strategy (i.e. doubling the delay between each retried call and adding some randomness to the delay to avoid overloading the backend).
+
+We suggest retrying a failed request **2** times (which results in 3 requests including the first one).
+
+You may retry **max 5** times (which results in 6 requests).
+
 ## Working with Dates
 
 All MobilePay endpoints expect dates and timestamps as strings in UTC (such as, "2013-01-15T00:00:00Z"). [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601)
@@ -30,9 +42,9 @@ The amounts should be specified as positive integers representing how much to ch
 
 Example:
 
-Input: 'Amount: 2000' equals 20 DKK or 20 EUR.
+* Input: 'Amount: 2000' equals 20 DKK or 20 EUR.
 
-Input: 'Amount: 52050' equals 520,50 DKK or 520,50 EUR.
+* Input: 'Amount: 52050' equals 520,50 DKK or 520,50 EUR.
 
 :::note
 The minimum amount is 1. The maximum amount is defined by user's daily/yearly limits. These rules apply for all countries (Denmark, Finland).
@@ -61,3 +73,15 @@ Our logo acts as a unique signature - a symbol and identifier for MobilePay. It�
 
 Consistent use of our logo helps build trust and recognition across markets, and in all situations. Use it with care. And respect.
 You can find resources and guidelines [here](https://developer.mobilepay.dk/design).
+
+## Valid characters
+
+Valid characters for string type request fields are:
+
+* 0 - 9
+* a-zA-Z
+* æÆøØåÅ
+* äÄöÖšŠžŽâÂàÀáÁãÃéÉêÊëËèÈíÍîÎïÏìÌüÜûÛùÙúÚôÔòÒóÓõÕÿýÝñÑ
+* !#$%&'()*+,-./:;<=>?@[]^_`{|}~¦¯¨´
+* «»ðþçß¤ÇµÐÞ±°ªº©§¶¼½¾¬®¢£¥¡¿¹²³
+* (space)

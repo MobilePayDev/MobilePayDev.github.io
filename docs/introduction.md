@@ -21,4 +21,4 @@ While we are still in the pre-launch our API definitions are not public. However
 - [Refunds API](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-refunds)
 - [Payments Testing API](https://mobilepaydev.github.io/MobilePay-Payments-API/redoc-payments-testing)
 
-If there are problems with documentation or you would like to get started - feel free to contact our [developer support](mailto:developer@mobilepay.dk) or [create a GitHub issue](https://github.com/MobilePayDev/MobilePay-Payments-API/issues).
+If there are problems with documentation or you would like to get started - feel free to contact our [developer support](mailto:developer@mobilepay.dk).
