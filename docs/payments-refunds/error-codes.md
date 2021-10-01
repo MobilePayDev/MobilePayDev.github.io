@@ -30,7 +30,7 @@ If any client errors occur, our endpoints return an error object describing the 
 | invalid_payment_state   | Only reserved payments can be captured. |
 | invalid_payment_point   | Payment point is not active. |
 | payment_point_not_found  | Payment does not exist. |
-| idempotency_key_used   | Payment with this idempotency key already exists for another payment point. |
+| idempotency_key_reused   | Different request parameters already used for the same idempotencyKey - {_idempotencyKey_}. |
 | unauthorized_access   | Authorization error occurred. |
 
 #### Refunds API
@@ -42,6 +42,7 @@ If any client errors occur, our endpoints return an error object describing the 
 | payment_not_found  | Payment does not exist. |
 | invalid_payment_state   | Payment has not been captured yet and cannot be refunded. |
 | payment_point_not_found  | Payment does not exist. |
+| idempotency_key_reused   | Different request parameters already used for the same idempotencyKey - {_idempotencyKey_}. |
 | unauthorized_access   | Authorization error occurred. |
 
 ### HTTP 400 Bad Request
