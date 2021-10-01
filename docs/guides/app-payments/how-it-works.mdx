@@ -25,10 +25,9 @@ Sunshine scenario is expected for the majority of the time.
 2. Re-direct user to MobilePay app using deep link.
 3. User confirms payment in the MobilePay app.
 4. Your backend services receives notification `payment.reserved` and proceeds with [capturing payment](/docs/payments-refunds/create-payments#capture-payment).
-5. Meanwhile user returns to your application (using re-direct or switching apps).
-6. Invoke backend services to check payment status. It is `captured` and you should proceed with the success screen.
+5. Meanwhile user returns to your application (using re-direct or switching apps) and sees the success screen.
 
-![](/img/imageA.jpg)
+![](/img/WithWebhooks.jpeg)
 
 </TabItem>
 
@@ -49,7 +48,7 @@ It is technically possible to use polling instead of webhooks to monitor for pay
 
 :::
 
-![](/img/imageB.jpg)
+![](/img/WithoutWebhooks.jpeg)
 
 </TabItem>
 </Tabs>
