@@ -18,14 +18,6 @@ module.exports = {
       // Optional fields.
       anonymizeIP: true, // Should IPs be anonymized?
     },
-    announcementBar: {
-      id: "wip", // Any value that will identify this message.
-      content:
-        "It is a draft version of docs for Payments API, Paymentpoints API, Refunds API & Webhooks API. It will receive constant updates until October 1st.",
-      backgroundColor: "#5a78ff", // Defaults to `#fff`.
-      textColor: "#fff", // Defaults to `#000`.
-      isCloseable: true, // Defaults to `true`.
-    },
     navbar: {
       title: "Developer",
       logo: {
