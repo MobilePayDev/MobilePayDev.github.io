@@ -52,7 +52,7 @@ The minimum amount is 1. The maximum amount is defined by user's daily/yearly li
 
 ## Idempotency
 
-By definition [idempotence](https://en.wikipedia.org/wiki/Idempotence) is a property of operations whereby they can be applied multiple times without changing the result beyond the initial application. As per HTTP spec all of GET and DELETE endpoints are idempotent in MobilePay. For certain POST requests we also ensure idempotency by using IdempotencyKey. After receiving the same key the endpoint returns the previous response and does not invoke any side effects. We require IdempotencyKey to be a valid [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). It must be regenerated for each request unless the request is being retried.
+By definition [idempotence](https://en.wikipedia.org/wiki/Idempotence) is a property of operations whereby they can be applied multiple times without changing the result beyond the initial application. As per HTTP spec all DELETE and PUT endpoints are idempotent in MobilePay. For certain POST requests we also ensure idempotency by using IdempotencyKey. After receiving the same key the endpoint returns the previous response and does not invoke any side effects. We require IdempotencyKey to be a valid [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). It must be regenerated for each request unless the request is being retried.
 
 ## Correlation IDs
 

@@ -13,7 +13,7 @@ If any client errors occur, our endpoints return an error object describing the 
 
 `code` and `message` are the properties you should be interested to. `correlationId` and `origin` properties should be provided for our support team in case you need their help with any issues. The values of those properties help to find solutions quicker.
 
-## Most Common Errors
+## Errors
 
 ### HTTP 409 Conflict
 
