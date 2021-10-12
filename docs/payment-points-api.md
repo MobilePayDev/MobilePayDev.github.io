@@ -32,8 +32,8 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 
 ## Setting up Custom Payment Reference
 
-**Under development**
+If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom payment reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. You can either enter numbers (0-9) or the following default values: "RRR" - running number (incremented with each transfer), "YY" - year, "MM" - month, "DD" - day. E.g. reference of the first transfer sent on October 1st, 2021 from payment point with custom payment reference set to "0000000001YYMMDDRRR" will be "0000000001211001001".
 
-If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. You can find details on a default MobilePay reference [here](https://developer.mobilepay.dk/transactionreporting-api).
+You can find details on a default MobilePay reference [here](https://developer.mobilepay.dk/transactionreporting-api).
 
-**Include video**
+![Setup reference schema](/img/reference-schema.gif)
