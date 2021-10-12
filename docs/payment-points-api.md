@@ -32,8 +32,23 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 
 ## Setting up Custom Payment Reference
 
-If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom payment reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. You can either enter numbers (0-9) or the following default values: "RRR" - running number (incremented with each transfer), "YY" - year, "MM" - month, "DD" - day. E.g. reference of the first transfer sent on October 1st, 2021 from payment point with custom payment reference set to "0000000001YYMMDDRRR" will be "0000000001211001001".
-
+:::note
 You can find details on a default MobilePay reference [here](https://developer.mobilepay.dk/transactionreporting-api).
+:::
+
+If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom payment reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. Allowed characters are:
+
+| characters               | action                                                                            |
+| -------------------| --------------------------------------------------------------------------------------- |
+| 0-9 | Will not be replaced |
+| <a style={{color:"#5acbff"}}>YY</a> | Will be replaced with the current year |
+| <a style={{color:"#5a78ff"}}>MM</a> | Will be replaced with the current month |
+| <a style={{color:"#8f5aff"}}>DD</a> | Will be replaced with the current day |
+| <a style={{color:"#FF79C6"}}>RRR</a> | Will be replaced with the running number (incremented with each transfer) |
+| <a style={{color:"#00DA46"}}>X</a> (added automatically) | Check digit. Incremented with each transfer |
+
+:::note
+Example: Payment point has custom payment reference set to "<a style={{color:"#FF79C6"}}>RRR</a>5555555555<a style={{color:"#5acbff"}}>YY</a><a style={{color:"#5a78ff"}}>MM</a><a style={{color:"#8f5aff"}}>DD</a>". Reference in bank statement "<a style={{color:"#FF79C6"}}>001</a>5555555555<a style={{color:"#5acbff"}}>21</a><a style={{color:"#5a78ff"}}>10</a><a style={{color:"#8f5aff"}}>01</a><a style={{color:"#00DA46"}}>3</a>" indicates that the transfer was the first transfer for this payment point and it was made on 2021-10-01.
+:::
 
 ![Setup reference schema](/img/reference-schema.gif)
