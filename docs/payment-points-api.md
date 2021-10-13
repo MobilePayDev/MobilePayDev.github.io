@@ -16,7 +16,7 @@ Single business can have multiple payment points. Each payment point is as a loc
 
 Creating, editing payment points is done in _MobilePay Portal_. The payment point name and bank account are mandatory fields. If no logo image is provided the default one will be used.
 
-![Setup payment points](/img/pp-example.gif)
+![Setup payment points](/img/pp-example-v2.gif)
 
 ## Retrieve a list of payment points
 
@@ -32,11 +32,7 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 
 ## Setting up Custom Payment Reference
 
-:::note
-You can find details on a default MobilePay reference [here](https://developer.mobilepay.dk/transactionreporting-api).
-:::
-
-If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom payment reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. Allowed characters are:
+If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose [default MobilePay references](https://developer.mobilepay.dk/transactionreporting-api) or set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom payment reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. Allowed characters are:
 
 | characters               | action                                                                            |
 | -------------------| --------------------------------------------------------------------------------------- |
@@ -50,5 +46,3 @@ If you have any transactions during the day, then you will receive collected mon
 :::note
 Example: Payment point has custom payment reference set to "<a style={{color:"#FF79C6"}}>RRR</a>5555555555<a style={{color:"#5acbff"}}>YY</a><a style={{color:"#5a78ff"}}>MM</a><a style={{color:"#8f5aff"}}>DD</a>". Reference in bank statement "<a style={{color:"#FF79C6"}}>001</a>5555555555<a style={{color:"#5acbff"}}>21</a><a style={{color:"#5a78ff"}}>10</a><a style={{color:"#8f5aff"}}>01</a><a style={{color:"#00DA46"}}>3</a>" indicates that the transfer was the first transfer for this payment point and it was made on 2021-10-01.
 :::
-
-![Setup reference schema](/img/reference-schema.gif)
