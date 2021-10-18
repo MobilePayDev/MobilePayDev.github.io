@@ -39,6 +39,13 @@ iOS MobilePay Test app is available in Apple TestFlight.
 - [MobilePay Sandbox App for Denmark](https://testflight.apple.com/join/xarydQZ4)
 - [MobilePay Sandbox App for Finland](https://testflight.apple.com/join/hP92EaBR)
 
+:::warning
+
+**MobilePay Sandbox** app supports not only it's own schema `mobilepay-test://` but also the production schema `mobilepay://`. This means that some of you may experience issues in iOS when trying to make a real production payment, sandbox app would open.
+To circumvent this you could try closing MobilePay Sandbox app and opening MobilePay so that it's running in the background while doing the production payment. Read more on how to close an app: https://support.apple.com/en-us/HT201330.
+
+:::
+
 ### Android
 
 To install, you will have to allow installation from “unknown sources”.
