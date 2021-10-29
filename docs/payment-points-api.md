@@ -30,9 +30,9 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
   -H 'Content-Type: application/json'
 ```
 
-## Setting up Custom Payment Reference
+## Setting up Custom Transfer Reference
 
-If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose [default MobilePay references](https://developer.mobilepay.dk/transactionreporting-api) or set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom payment reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. Allowed characters are:
+If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose [default MobilePay references](https://developer.mobilepay.dk/transactionreporting-api) or set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom transfer reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. Allowed characters are:
 
 | characters               | action                                                                            |
 | -------------------| --------------------------------------------------------------------------------------- |
@@ -44,5 +44,5 @@ If you have any transactions during the day, then you will receive collected mon
 | <a style={{color:"#00DA46"}}>X</a> (added automatically) | Check digit. Incremented with each transfer |
 
 :::note
-Example: Payment point has custom payment reference set to "<a style={{color:"#FF79C6"}}>RRR</a>5555555555<a style={{color:"#5acbff"}}>YY</a><a style={{color:"#5a78ff"}}>MM</a><a style={{color:"#8f5aff"}}>DD</a>". Reference in bank statement "<a style={{color:"#FF79C6"}}>001</a>5555555555<a style={{color:"#5acbff"}}>21</a><a style={{color:"#5a78ff"}}>10</a><a style={{color:"#8f5aff"}}>01</a><a style={{color:"#00DA46"}}>3</a>" indicates that the transfer was the first transfer for this payment point and it was made on 2021-10-01.
+Example: Payment point has custom transfer reference set to "<a style={{color:"#FF79C6"}}>RRR</a>5555555555<a style={{color:"#5acbff"}}>YY</a><a style={{color:"#5a78ff"}}>MM</a><a style={{color:"#8f5aff"}}>DD</a>". Reference in bank statement "<a style={{color:"#FF79C6"}}>001</a>5555555555<a style={{color:"#5acbff"}}>21</a><a style={{color:"#5a78ff"}}>10</a><a style={{color:"#8f5aff"}}>01</a><a style={{color:"#00DA46"}}>3</a>" indicates that the transfer was the first transfer for this payment point and it was made on 2021-10-01.
 :::
