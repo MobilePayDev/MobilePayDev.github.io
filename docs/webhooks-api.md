@@ -43,9 +43,24 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 
 ### Payment Points API
 
-| Event                 | Description                                                                                           |
-| --------------------- | ----------------------------------------------------------------------------------------------------- |
+| Event                  | Description                                                                                           |
+| ---------------------  | ----------------------------------------------------------------------------------------------------- |
 | paymentpoint.activated | Published when newly created payment point is approved and ready to be used. Relevant to integrators. |
+
+#### Examples 
+
+```json title="paymentpoint.activated request"
+{
+    "notificationId":"946599d2-a6f2-4752-a1d0-b2454057f73e",
+    "eventType":"paymentpoint.activated",
+    "eventDate":"2021-10-13T11:20:53Z",
+    "data":
+    {
+        "id":"403554fa-3147-4995-9668-1469039107c2b7",
+        "type":"paymentpoint"
+    }
+}
+```
 
 ### Payments API
 
@@ -53,3 +68,31 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 | ---------------- | --------------------------------------------------------------------------------------- |
 | payment.reserved | Published when payment has been approved by MobilePay user and is ready to be captured. |
 | payment.expired  | Published when initiated payment didn't have any user interactions for 5-10 minutes.    |
+
+#### Examples
+
+```json title="payment.reserved request"
+{
+    "notificationId":"c85f42aa-0a81-4838-8e87-72236a348d08",
+    "eventType":"payment.reserved",
+    "eventDate":"2021-10-15T15:30:31Z",
+    "data":
+    {
+        "id":"ceb351ac-9d20-4300-b5ad-e05851d5a3b7",
+        "type":"payment"
+    }
+}
+```
+
+```json title="payment.expired request example"
+{
+    "notificationId":"5fdf8922-2429-4403-9e6d-055a53ae2c11",
+    "eventType":"payment.expired",
+    "eventDate":"2021-10-22T15:55:05Z",
+    "data":
+    {
+        "id":"ceb351ac-9d20-4300-b5ad-e05851d5a3b7",
+        "type":"payment"
+    }
+}
+```
