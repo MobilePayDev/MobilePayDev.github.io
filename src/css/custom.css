@@ -53,3 +53,6 @@ html[data-theme='dark'] {
   --ifm-color-primary: var(--mpBlue80);
   --ifm-menu-color-active: var(--mpBlue80);
 }
+table td, table td * {
+  vertical-align: top;
+}
