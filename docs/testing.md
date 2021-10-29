@@ -12,7 +12,6 @@ This page includes information to make sure your integration works as planned. T
 The sandbox environment is dedicated for integration purposes. It is the same as production with some limitations (not a full list):
 
 - No actual payments and reservations are made.
-- Push notifications won't work.
 
 ## Test Merchants
 

@@ -43,13 +43,19 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 
 ### Payment Points API
 
-| Event                  | Description                                                                                           |
-| ---------------------  | ----------------------------------------------------------------------------------------------------- |
-| paymentpoint.activated | Published when newly created payment point is approved and ready to be used. Relevant to integrators. |
+<table class="webhooks-table">
+<thead>
+<th> Event </th> <th> Description </th>
+</thead>
+<tr>
+<td> paymentpoint.activated </td>
+<td> Published when newly created payment point is approved and ready to be used. Relevant to integrators. </td>
+</tr>
+<tr>
+<td colspan="2">
+<b>Example</b>
 
-#### Examples 
-
-```json title="paymentpoint.activated request"
+```json title="paymentpoint.activated request body example"
 {
     "notificationId":"946599d2-a6f2-4752-a1d0-b2454057f73e",
     "eventType":"paymentpoint.activated",
@@ -62,16 +68,25 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 }
 ```
 
+</td>
+</tr>
+</table>
+
 ### Payments API
 
-| Event            | Description                                                                             |
-| ---------------- | --------------------------------------------------------------------------------------- |
-| payment.reserved | Published when payment has been approved by MobilePay user and is ready to be captured. |
-| payment.expired  | Published when initiated payment didn't have any user interactions for 5-10 minutes.    |
+<table class="webhooks-table">
+<thead>
+<th> Event </th> <th> Description </th>
+</thead>
+<tr>
+<td> payment.reserved </td>
+<td> Published when payment has been approved by MobilePay user and is ready to be captured. </td>
+</tr>
+<tr>
+<td colspan="2">
+<b>Example</b>
 
-#### Examples
-
-```json title="payment.reserved request"
+```json
 {
     "notificationId":"c85f42aa-0a81-4838-8e87-72236a348d08",
     "eventType":"payment.reserved",
@@ -84,7 +99,17 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 }
 ```
 
-```json title="payment.expired request"
+</td>
+</tr>
+<tr>
+<td> payment.expired </td>
+<td> Published when initiated payment didn't have any user interactions for 5-10 minutes. </td>
+</tr>
+<tr>
+<td colspan="2">
+<b>Example</b>
+
+```json
 {
     "notificationId":"5fdf8922-2429-4403-9e6d-055a53ae2c11",
     "eventType":"payment.expired",
@@ -96,3 +121,7 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
     }
 }
 ```
+
+</td>
+</tr>
+</table>
