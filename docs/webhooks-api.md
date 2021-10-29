@@ -84,7 +84,7 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 }
 ```
 
-```json title="payment.expired request example"
+```json title="payment.expired request"
 {
     "notificationId":"5fdf8922-2429-4403-9e6d-055a53ae2c11",
     "eventType":"payment.expired",
