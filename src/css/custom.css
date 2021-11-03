@@ -61,9 +61,6 @@ table td, table td * {
 table.webhooks-table{
   text-align: left;
 }
-table.webhooks-table tr {
-  background:var(--ifm-table-cell-color);
-}
 table.webhooks-table td{
   border-left: none;
   border-right: none;
@@ -73,7 +70,11 @@ table.webhooks-table th{
   border-left: none;
   border-right: none;
 }
-table.webhooks-table tr:nth-child(even){
-  border-width: 0.1rem;
-  border-color: var(--webhooksBorderColor);
+table.webhooks-table thead tr{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+table.webhooks-table tr {
+  background:var(--ifm-table-cell-color);
 }
