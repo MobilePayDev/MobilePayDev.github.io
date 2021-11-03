@@ -43,19 +43,22 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 
 ### Payment Points API
 
-<table class="webhooks-table">
-<thead>
-<th> Event </th> <th> Description </th>
-</thead>
-<tr>
-<td> paymentpoint.activated </td>
-<td> Published when newly created payment point is approved and ready to be used. Relevant to integrators. </td>
-</tr>
-<tr>
-<td colspan="2">
-<b>Example</b>
+<table className="webhooks-table">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>paymentpoint.activated</td>
+      <td> Published when newly created payment point is approved and ready to be used. Relevant to integrators. </td>
+    </tr>
+    <tr>
+<td colSpan="2">
 
-```json title="paymentpoint.activated request body example"
+```json title="Request body example"
 {
     "notificationId":"946599d2-a6f2-4752-a1d0-b2454057f73e",
     "eventType":"paymentpoint.activated",
@@ -70,23 +73,27 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 
 </td>
 </tr>
+</tbody>
 </table>
 
 ### Payments API
 
-<table class="webhooks-table">
-<thead>
-<th> Event </th> <th> Description </th>
-</thead>
+<table className="webhooks-table">
+    <thead>
+        <tr>
+            <th>Event</th>
+            <th>Description</th>
+        </tr>
+    </thead>
+<tbody>
 <tr>
 <td> payment.reserved </td>
 <td> Published when payment has been approved by MobilePay user and is ready to be captured. </td>
 </tr>
 <tr>
-<td colspan="2">
-<b>Example</b>
+<td colSpan="2">
 
-```json
+```json title="Request body example"
 {
     "notificationId":"c85f42aa-0a81-4838-8e87-72236a348d08",
     "eventType":"payment.reserved",
@@ -106,10 +113,9 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 <td> Published when initiated payment didn't have any user interactions for 5-10 minutes. </td>
 </tr>
 <tr>
-<td colspan="2">
-<b>Example</b>
+<td colSpan="2">
 
-```json
+```json title="Request body example"
 {
     "notificationId":"5fdf8922-2429-4403-9e6d-055a53ae2c11",
     "eventType":"payment.expired",
@@ -124,4 +130,5 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 
 </td>
 </tr>
+</tbody>
 </table>
