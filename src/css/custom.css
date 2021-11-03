@@ -18,6 +18,7 @@
   --darkBlue160: #151217;
   --beige: #f5f5f2;
   --beige120: #e8e8e5;
+  --webhooksBorderColor: #808080;
   --ifm-color-primary: var(--mpBlue);
   --ifm-color-primary-dark: var(--mpBlue120);
   --ifm-color-primary-darker: var(--mpBlue120);
@@ -46,10 +47,33 @@ html[data-theme='dark'] pre code {
   background-color: var(--darkBlue120);
 }
 html[data-theme='dark'] {
+  --webhooksBorderColor: var(--beige)
   --ifm-background-color: var(--darkBlue140);
   --ifm-font-color-base: var(--beige);
   --ifm-navbar-background-color: var(--darkBlue160);
   --ifm-menu-color: var(--beige);
   --ifm-color-primary: var(--mpBlue80);
   --ifm-menu-color-active: var(--mpBlue80);
+}
+table td, table td * {
+  vertical-align: top;
+}
+table.webhooks-table{
+  text-align: left;
+}
+table.webhooks-table tr {
+  background:var(--ifm-table-cell-color);
+}
+table.webhooks-table td{
+  border-left: none;
+  border-right: none;
+}
+table.webhooks-table th{
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+table.webhooks-table tr:nth-child(even){
+  border-width: 0.1rem;
+  border-color: var(--webhooksBorderColor);
 }
