@@ -60,7 +60,7 @@ If you have any transactions during the day, then you will receive collected mon
 | <a style={{color:"#5a78ff"}}>MM</a> | Will be replaced with the current month |
 | <a style={{color:"#8f5aff"}}>DD</a> | Will be replaced with the current day |
 | <a style={{color:"#FF79C6"}}>RRR</a> | Will be replaced with the running number (incremented with each transfer) |
-| <a style={{color:"#00DA46"}}>X</a> (added automatically) | Check digit. Incremented with each transfer |
+| <a style={{color:"#00DA46"}}>X</a> (added automatically) | Check digit |
 
 :::note
 Example: Payment point has custom transfer reference set to "<a style={{color:"#FF79C6"}}>RRR</a>5555555555<a style={{color:"#5acbff"}}>YY</a><a style={{color:"#5a78ff"}}>MM</a><a style={{color:"#8f5aff"}}>DD</a>". Reference in bank statement "<a style={{color:"#FF79C6"}}>001</a>5555555555<a style={{color:"#5acbff"}}>21</a><a style={{color:"#5a78ff"}}>10</a><a style={{color:"#8f5aff"}}>01</a><a style={{color:"#00DA46"}}>3</a>" indicates that the transfer was the first transfer for this payment point and it was made on 2021-10-01.
