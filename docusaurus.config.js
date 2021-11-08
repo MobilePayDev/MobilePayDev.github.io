@@ -24,14 +24,9 @@ module.exports = {
         alt: "MobilePay",
         src: "img/logo-blue.svg",
         srcDark: "img/logo-white.svg",
+        href: "/MobilePay-Payments-API/docs/introduction",
       },
-      items: [
-        {
-          type: "doc",
-          docId: "introduction",
-          position: "left",
-          label: "Docs",
-        },
+      items: [        
         {
           href: "https://sandbox-developer.mobilepay.dk/",
           label: "Sandbox Developer Portal",

@@ -12,7 +12,6 @@ This page includes information to make sure your integration works as planned. T
 The sandbox environment is dedicated for integration purposes. It is the same as production with some limitations (not a full list):
 
 - No actual payments and reservations are made.
-- Push notifications won't work.
 
 ## Test Merchants
 
@@ -38,6 +37,13 @@ iOS MobilePay Test app is available in Apple TestFlight.
 
 - [MobilePay Sandbox App for Denmark](https://testflight.apple.com/join/xarydQZ4)
 - [MobilePay Sandbox App for Finland](https://testflight.apple.com/join/hP92EaBR)
+
+:::warning
+
+**MobilePay Sandbox** app supports not only it's own schema `mobilepay-test://` but also the production schema `mobilepay://`. This means that some of you may experience issues in iOS when trying to make a real production payment, sandbox app would open.
+To circumvent this you could try closing MobilePay Sandbox app and opening MobilePay so that it's running in the background while doing the production payment. Read more on how to close an app: https://support.apple.com/en-us/HT201330.
+
+:::
 
 ### Android
 
