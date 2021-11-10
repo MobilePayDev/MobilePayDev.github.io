@@ -75,7 +75,7 @@ private val mobilePayContract = registerForActivityResult(ActivityResultContract
   }
 }
 
-// Use the link received from backend to launch MobilePay.
+// Use the link received from your backend to launch MobilePay.
 fun openMobilePay(deepLink: String) {
   try {
       val intent = Intent(Intent.ACTION_VIEW).apply {
