@@ -192,7 +192,7 @@ MobilePay can return these result codes:
   - <b>FAILED_RESULT_CODE</b> (1) - user could not complete the payment due to invalid state of payment or his MobilePay account.
   - <b>UNKNOWN_RESULT_CODE</b> (2) - user attempted to do a payment, but because of network issues we could not determine if it was successful. 
   (E.g. User tries to do a payment, but it does not succeed due to network issues. Then he decides to reject the payment and again he receives a network error. 
-  At this point we cannot leave him blocked in MobilePay app, so we finish with this result code.) 
+  At this point we cannot leave the user blocked in the MobilePay app, so we finish with this result code.)
   You should try to capture or at least check the state of these payments as they can be successful.
 
 </TabItem>
