@@ -65,7 +65,7 @@ Let's open MobilePay with the deep link received from your backend.
 
 <TabItem value="kotlin">
 
-```kotlin title="Kotlin using Activity Result APIs (Requires AndroidX Activity 1.2.0 or Fragment 1.3.0) "
+```kotlin title="Kotlin using Activity Result APIs (requires AndroidX Activity 1.2.0 (or above) or Fragment 1.3.0 (or above))"
 private val mobilePayContract = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
   when (it.resultCode) {
     SUCCESS_RESULT_CODE -> {}
