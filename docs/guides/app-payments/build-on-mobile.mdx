@@ -83,7 +83,9 @@ fun openMobilePay(deepLink: String) {
       }
       mobilePayContract.launch(intent)
   } catch (exception: ActivityNotFoundException) {
-      // Inform the user that MobilePay is not installed.
+      // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+      // DK: market://details?id=dk.danskebank.mobilepay
+      // FI: market://details?id=fi.danskebank.mobilepay
   }
 }
 
@@ -108,7 +110,9 @@ fun openMobilePay(deepLink: String) {
         }
         startActivityForResult(intent, MOBILEPAY_PAYMENT_REQUEST_CODE)
     } catch (exception: ActivityNotFoundException) {
-        // Inform the user that MobilePay is not installed.
+        // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+        // DK: market://details?id=dk.danskebank.mobilepay
+        // FI: market://details?id=fi.danskebank.mobilepay
     }
 }
 
@@ -157,7 +161,9 @@ void openMobilePay(String deepLink) {
         intent.setData(Uri.parse(deepLink));
         startActivityForResult(intent, MOBILEPAY_PAYMENT_REQUEST_CODE);
     } catch (android.content.ActivityNotFoundException exception) {
-        // Inform the user that MobilePay is not installed.
+        // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+        // DK: market://details?id=dk.danskebank.mobilepay
+        // FI: market://details?id=fi.danskebank.mobilepay
     } catch (NullPointerException exception) {
         // Null deepLink was passed in.
     }
@@ -223,7 +229,9 @@ fun openMobilePay(deepLink: String) {
         // At this point we know that MobilePay will be launched.
         // Consider navigating to a new screen here.
     } catch (exception: ActivityNotFoundException) {
-        // Inform the user that MobilePay is not installed.
+        // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+        // DK: market://details?id=dk.danskebank.mobilepay
+        // FI: market://details?id=fi.danskebank.mobilepay
     }
 }
 ```
@@ -241,7 +249,9 @@ void openMobilePay(String deepLink) {
         // At this point we know that MobilePay will be launched.
         // Consider navigating to a new screen here.
     } catch (android.content.ActivityNotFoundException exception) {
-        // Inform the user that MobilePay is not installed.
+        // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+        // DK: market://details?id=dk.danskebank.mobilepay
+        // FI: market://details?id=fi.danskebank.mobilepay
     } catch (NullPointerException exception) {
         // Null deepLink was passed in.
     }
@@ -327,7 +337,9 @@ UIApplication.shared.open(redirectUrl, options: [:], completionHandler: { succes
     if success {
         // Handle success.
     } else {
-        // Handle failure. Most likely MobilePay app is not present on the user's device.
+        // Handle failure. Most likely MobilePay app is not present on the user's device. You can redirect to App Store using these links:
+        // DK: itms-apps://itunes.apple.com/app/id624499138
+        // FI: itms-apps://itunes.apple.com/app/id768172577
     }
 })
 ```
