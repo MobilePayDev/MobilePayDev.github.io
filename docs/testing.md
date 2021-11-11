@@ -57,8 +57,9 @@ To install, you will have to allow installation from “unknown sources”.
 1. Install and open the MobilePay DK/FI MobilePay Test app
 2. Select "Log på (Eksisterende bruger)" / "Kirjaudu sovellukseen" / "Log on (existing user)"
 3. Enter a valid Sandbox phone number (you have received during on-boarding)
-4. Enter PIN: “1234”
-5. Enter activation code: “123456” and press "OK" / "Jatka"
+4. Enter SSN 000000-0000 (Only relevant on fresh install)
+5. Enter PIN: “1234”
+6. Enter activation code: “123456” and press "OK" / "Jatka"
 
 ## Integration tests
 We also have a Payments Testing API in sandbox environment, which has only one endpoint for simulating user's swipe in MobilePay app. You can use that to setup integration tests or in any other way where it fits you.
