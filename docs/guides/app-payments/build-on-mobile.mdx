@@ -154,7 +154,7 @@ private static final int REJECT_RESULT_CODE = Activity.RESULT_CANCELED;
 private static final int FAILED_RESULT_CODE = 1;
 private static final int UNKNOWN_RESULT_CODE = 2;
 
-// Use the link received from backend to launch MobilePay.
+// Use the link received from your backend to launch MobilePay.
 void openMobilePay(String deepLink) {
     try {
         Intent intent = new Intent(Intent.ACTION_VIEW);
