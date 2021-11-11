@@ -9,8 +9,6 @@ import TabItem from "@theme/TabItem"
 
 This page details how MobilePay app payments should be implemented in your Android/iOS app.
 
-## Prerequisites and Assumptions
-
 <Tabs
   groupId="operating-systems"
   defaultValue="android"
@@ -21,24 +19,13 @@ This page details how MobilePay app payments should be implemented in your Andro
 }>
 <TabItem value="android">
 
+## Prerequisites and Assumptions
+
 This guide assumes:
 
 - You already have backend services integrated with [MobilePay APIs](/docs/guides/app-payments/how-it-works).
 - Your app uses [minSdkVersion](https://developer.android.com/training/basics/supporting-devices/platforms.html#sdk-versions) API 23 (Marshmallow, 6.0) or later.
 - You are generally familiar with developing applications on Android.
-
-</TabItem>
-
-<TabItem value="ios">
-
-This guide assumes:
-
-- You already have backend services integrated with [MobilePay APIs](/docs/guides/app-payments/how-it-works).
-- Your app handles a custom URL scheme. See [Apple documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app) for more details.
-- You are generally familiar with developing applications on iOS.
-
-</TabItem>
-</Tabs>
 
 :::caution Make sure you are compliant with mobile application distribution service rules!
 Using app payments for digital sales might not be allowed by some mobile application distribution services (Google Play, App Store, etc.) and might result in your application being removed. Please review the terms of service for the respective mobile application distribution services you use to ensure that you are compliant with their guidelines.
@@ -48,19 +35,189 @@ Using app payments for digital sales might not be allowed by some mobile applica
 
 First, you'll need to create payment. To do this you should call your backend service that is implemented as described [here](/docs/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
 
-## Redirect to MobilePay
+## Starting MobilePay
 
-Now that we have the deep link let's open MobilePay app.
+MobilePay supports navigation via native Activity Result APIs and deep linking.
 
 <Tabs
-  groupId="operating-systems"
-  defaultValue="android"
+  groupId="android-navigation-method"
+  defaultValue="result"
   values={[
-    { label: 'Android', value: 'android', },
-    { label: 'iOS', value: 'ios', },
+    { label: 'Result APIs', value: 'result', },
+    { label: 'Deep Links', value: 'deep_link', },
   ]
 }>
-<TabItem value="android">
+<TabItem value="result">
+
+Activity Result or `startActivityForResult` APIs use standard Android functions and will launch MobilePay in your app process. This is the preferred way when integrating into a native Android app.
+
+Let's open MobilePay with the deep link received from your backend.
+
+<Tabs
+  groupId="android-language"
+  defaultValue="kotlin"
+  values={[
+    { label: 'Kotlin using Activity Result APIs', value: 'kotlin', },
+    { label: 'Kotlin using startActivityForResult', value: 'activity_result_kotlin', },
+    { label: 'Java', value: 'java', },
+  ]
+}>
+
+<TabItem value="kotlin">
+
+```kotlin title="Kotlin using Activity Result APIs (requires AndroidX Activity 1.2.0 (or above) or Fragment 1.3.0 (or above))"
+private val mobilePayContract = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
+  when (it.resultCode) {
+    SUCCESS_RESULT_CODE -> {}
+    REJECT_RESULT_CODE -> {}
+    FAILED_RESULT_CODE -> {}
+    UNKNOWN_RESULT_CODE -> {}
+  }
+}
+
+// Use the link received from your backend to launch MobilePay.
+fun openMobilePay(deepLink: String) {
+  try {
+      val intent = Intent(Intent.ACTION_VIEW).apply {
+          data = Uri.parse(deepLink)
+      }
+      mobilePayContract.launch(intent)
+  } catch (exception: ActivityNotFoundException) {
+      // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+      // DK: market://details?id=dk.danskebank.mobilepay
+      // FI: market://details?id=fi.danskebank.mobilepay
+  }
+}
+
+companion object {
+    private const val SUCCESS_RESULT_CODE = Activity.RESULT_OK
+    private const val REJECT_RESULT_CODE = Activity.RESULT_CANCELED
+    private const val FAILED_RESULT_CODE = 1
+    private const val UNKNOWN_RESULT_CODE = 2
+}
+```
+
+</TabItem>
+
+<TabItem value="activity_result_kotlin">
+
+```kotlin title="Kotlin"
+// Use the link received from your backend to launch MobilePay.
+fun openMobilePay(deepLink: String) {
+    try {
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = Uri.parse(deepLink)
+        }
+        startActivityForResult(intent, MOBILEPAY_PAYMENT_REQUEST_CODE)
+    } catch (exception: ActivityNotFoundException) {
+        // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+        // DK: market://details?id=dk.danskebank.mobilepay
+        // FI: market://details?id=fi.danskebank.mobilepay
+    }
+}
+
+override fun onActivityResult(
+    requestCode: Int,
+    resultCode: Int,
+    data: Intent?
+) {
+  super.onActivityResult(requestCode, resultCode, data)
+  if (requestCode == MOBILEPAY_PAYMENT_REQUEST_CODE) {
+    when (resultCode) {
+      SUCCESS_RESULT_CODE -> {}
+      REJECT_RESULT_CODE -> {}
+      FAILED_RESULT_CODE -> {}
+      UNKNOWN_RESULT_CODE -> {}
+    }
+  }
+}
+
+companion object {
+  const val MOBILEPAY_PAYMENT_REQUEST_CODE = 1337 // Any request code you choose
+
+  private const val SUCCESS_RESULT_CODE = Activity.RESULT_OK
+  private const val REJECT_RESULT_CODE = Activity.RESULT_CANCELED
+  private const val FAILED_RESULT_CODE = 1
+  private const val UNKNOWN_RESULT_CODE = 2
+}
+```
+
+</TabItem>
+
+<TabItem value="java">
+
+```java title="Java"
+private static final int MOBILEPAY_PAYMENT_REQUEST_CODE = 1337; // Any request code you choose
+
+private static final int SUCCESS_RESULT_CODE = Activity.RESULT_OK;
+private static final int REJECT_RESULT_CODE = Activity.RESULT_CANCELED;
+private static final int FAILED_RESULT_CODE = 1;
+private static final int UNKNOWN_RESULT_CODE = 2;
+
+// Use the link received from your backend to launch MobilePay.
+void openMobilePay(String deepLink) {
+    try {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(deepLink));
+        startActivityForResult(intent, MOBILEPAY_PAYMENT_REQUEST_CODE);
+    } catch (android.content.ActivityNotFoundException exception) {
+        // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+        // DK: market://details?id=dk.danskebank.mobilepay
+        // FI: market://details?id=fi.danskebank.mobilepay
+    } catch (NullPointerException exception) {
+        // Null deepLink was passed in.
+    }
+}
+
+@Override
+protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+    super.onActivityResult(requestCode, resultCode, data);
+
+    if (requestCode == MOBILEPAY_PAYMENT_REQUEST_CODE) {
+        if (resultCode == SUCCESS_RESULT_CODE) {
+          
+        } else if (resultCode == REJECT_RESULT_CODE) {
+            
+        } else if (resultCode == FAILED_RESULT_CODE) {
+            
+        } else if (resultCode == UNKNOWN_RESULT_CODE) {
+            
+        }
+    }
+}
+```
+</TabItem>
+
+</Tabs>
+
+## Handling the Result
+
+MobilePay can return these result codes:
+  - <b>SUCCESS_RESULT_CODE</b> (Activity.RESULT_OK) - payment was successful and it is in reserved state.
+  - <b>REJECT_RESULT_CODE</b> (Activity.RESULT_CANCELED) - user rejected the payment.
+  - <b>FAILED_RESULT_CODE</b> (1) - user could not complete the payment due to invalid state of payment or the user's MobilePay account.
+  - <b>UNKNOWN_RESULT_CODE</b> (2) - user attempted to do a payment, but because of network issues we could not determine if it was successful. 
+  (E.g., the user tries to do a payment, but it does not succeed due to network issues. Then the user decides to reject the payment and again receives a network error.
+  At this point we cannot leave the user blocked in the MobilePay app, so we finish with this result code.)
+  You should try to capture or at least check the state of these payments as they can be successful.
+
+</TabItem>
+
+<TabItem value="deep_link">
+
+Deep link approach is used when the MobilePay app is launched with the `startActivity` function. When using this navigation method, the MobilePay app will run in a separate process and invoke your app with a deep link after the payment flow is finished.
+
+Let's open MobilePay with the deep link received from your backend.
+
+<Tabs
+  groupId="android-language"
+  defaultValue="kotlin"
+  values={[
+    { label: 'Kotlin', value: 'kotlin', },
+    { label: 'Java', value: 'java', },
+  ]
+}>
+<TabItem value="kotlin">
 
 ```kotlin title="Kotlin"
 fun openMobilePay(deepLink: String) {
@@ -72,10 +229,16 @@ fun openMobilePay(deepLink: String) {
         // At this point we know that MobilePay will be launched.
         // Consider navigating to a new screen here.
     } catch (exception: ActivityNotFoundException) {
-        // Inform the user that MobilePay is not installed.
+        // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+        // DK: market://details?id=dk.danskebank.mobilepay
+        // FI: market://details?id=fi.danskebank.mobilepay
     }
 }
 ```
+
+</TabItem>
+
+<TabItem value="java">
 
 ```java title="Java"
 void openMobilePay(String deepLink) {
@@ -86,27 +249,14 @@ void openMobilePay(String deepLink) {
         // At this point we know that MobilePay will be launched.
         // Consider navigating to a new screen here.
     } catch (android.content.ActivityNotFoundException exception) {
-        // Inform the user that MobilePay is not installed.
+        // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
+        // DK: market://details?id=dk.danskebank.mobilepay
+        // FI: market://details?id=fi.danskebank.mobilepay
     } catch (NullPointerException exception) {
         // Null deepLink was passed in.
     }
 }
 ```
-
-</TabItem>
-
-<TabItem value="ios">
-
-```swift title="Swift"
-UIApplication.shared.open(redirectUrl, options: [:], completionHandler: { success in
-    if success {
-        // Handle success.
-    } else {
-        // Handle failure. Most likely MobilePay app is not present on the user's device.
-    }
-})
-```
-
 </TabItem>
 </Tabs>
 
@@ -131,21 +281,89 @@ The following section addresses how each one should be handled.
 
 ### App Switching
 
-<Tabs
-  groupId="operating-systems"
-  defaultValue="android"
-  values={[
-    { label: 'Android', value: 'android', },
-    { label: 'iOS', value: 'ios', },
-  ]
-}>
-<TabItem value="android">
+At any point the user can close the MobilePay app and just return to your app. **This can happen even if the payment is already reserved!** Since it is unknown if your app was opened after a completed payment, you'll need to check the payment state each time your app returns to the foreground. For this, you should use your backend service that provides the current state of a payment (more details [here](/docs/payments-refunds/create-payments)).
 
-At any point user can close MobilePay app and just return to your app. **This can happen even if payment is already reserved!** Since it is unknown if your app was opened after completed payment, you'll need to check payment state each time your app returns to the foreground. For this, you should use your backend service that provides current state of payment (more details [here](/docs/payments-refunds/create-payments)).
+### Redirect from MobilePay
+
+The other scenario is that the MobilePay app tries to automatically navigate back to your app. For this to work you'll need:
+
+- Valid deep link to a place that knows how to proceed with the flow ([official deep linking guide](https://developer.android.com/training/app-links/deep-linking)).
+- Provide this deep link during [payment creation](#create-payment).
+
+In the general case, this deep link should open the app screen which handles the "App switching" scenario described above, and just treat it the same way as if the user manually navigated to your app.
+
+:::tip Payment state in your deep link
+
+When redirecting back to your app, MobilePay appends a query parameter `status` to the end of a deep link. It can contain these values:
+
+- successful
+- failed
+- rejected
+
+Consider checking this parameter and triggering a capture without checking the payment's state in your backend (capture can only succeed if `status` returned value is `successful`).
+
+P.S. It's not required for a successful app payments integration.
+
+:::
 
 </TabItem>
-
+</Tabs>
+</TabItem>
 <TabItem value="ios">
+
+## Prerequisites and Assumptions
+
+This guide assumes:
+
+- You already have backend services integrated with [MobilePay APIs](/docs/guides/app-payments/how-it-works).
+- Your app handles a custom URL scheme. See [Apple documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app) for more details.
+- You are generally familiar with developing applications on iOS.
+
+:::caution Make sure you are compliant with mobile application distribution service rules!
+Using app payments for digital sales might not be allowed by some mobile application distribution services (Google Play, App Store, etc.) and might result in your application being removed. Please review the terms of service for the respective mobile application distribution services you use to ensure that you are compliant with their guidelines.
+:::
+
+## Create Payment
+
+First, you'll need to create payment. To do this you should call your backend service that is implemented as described [here](/docs/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
+
+## Redirect to MobilePay
+
+Now that we have the deep link let's open MobilePay app.
+
+
+```swift title="Swift"
+UIApplication.shared.open(redirectUrl, options: [:], completionHandler: { success in
+    if success {
+        // Handle success.
+    } else {
+        // Handle failure. Most likely MobilePay app is not present on the user's device. You can redirect to App Store using these links:
+        // DK: itms-apps://itunes.apple.com/app/id624499138
+        // FI: itms-apps://itunes.apple.com/app/id768172577
+    }
+})
+```
+
+After this, the MobilePay app will be launched and the user will be able to proceed with the payment flow.
+
+## Returning to Your App
+
+There are multiple ways a user can return to your app:
+
+- User approves the payment and is redirected back to your app.
+- User cancels the payment and is redirected back to your app.
+- User fails to complete the payment due to some kind of error and is redirected back to your app.
+- User closes the app before/after reservation using the native app switcher.
+- User presses back in the MobilePay Login screen.
+
+All these can be grouped into:
+
+- App switching.
+- Redirect.
+
+The following section addresses how each one should be handled.
+
+### App Switching
 
 At any point user can close MobilePay app and just return to your app. **This can happen even if payment is already reserved!** Since it is unknown if your app was opened after completed payment, you'll need to check payment state each time your app returns to the foreground. For this, you should use your backend service that provides current state of payment (more details [here](/docs/payments-refunds/create-payments)).
 
@@ -163,31 +381,7 @@ Don't forget to unregister from notification when it's not needed:
 NotificationCenter.default.removeObserver(observer)
 ```
 
-</TabItem>
-</Tabs>
-
 ### Redirect from MobilePay
-
-<Tabs
-  groupId="operating-systems"
-  defaultValue="android"
-  values={[
-    { label: 'Android', value: 'android', },
-    { label: 'iOS', value: 'ios', },
-  ]
-}>
-<TabItem value="android">
-
-The other scenario is that the MobilePay app tries to automatically navigate back to your app. For this to work you'll need:
-
-- Valid deep link to a place that knows how to proceed with the flow ([official deep linking guide](https://developer.android.com/training/app-links/deep-linking)).
-- Provide this deep link during [payment creation](#create-payment).
-
-In the general case, this deep link should open the app screen which handles the "App switching" scenario described above, and just treat it the same way as if the user manually navigated to your app.
-
-</TabItem>
-
-<TabItem value="ios">
 
 Example how to handle automatic redirect from the MobilePay app:
 
@@ -201,10 +395,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 }
 ```
 
-</TabItem>
-</Tabs>
-
-:::tip Payment state in your deeplink
+:::tip Payment state in your deep link
 
 When redirecting back to your app, MobilePay appends a query parameter `status` to the end of a deep link. It can contain these values:
 
@@ -217,6 +408,8 @@ Consider checking this parameter and triggering a capture without checking payme
 P.S. It's not required for a successful app payments integration.
 
 :::
+</TabItem>
+</Tabs>
 
 ## All done
 
