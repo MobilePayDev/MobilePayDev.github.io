@@ -30,7 +30,7 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
   -H 'Content-Type: application/json'
 ```
 
-```json title="Respone JSON example"
+```json title="Response JSON example"
 {
   "pageSize": 100,
   "nextPageNumber": null,

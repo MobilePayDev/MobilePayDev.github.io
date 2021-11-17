@@ -28,7 +28,7 @@ curl https://api.mobilepay.dk/v1/payments \
   }'
 ```
 
-```json title="Respone JSON example"
+```json title="Response JSON example"
 {
   "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
   "mobilePayAppRedirectUri": "mobilepay://merchant_payments?payment_id=186d2b31-ff25-4414-9fd1-bfe9807fa8b7"
@@ -50,7 +50,7 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID} \
   -H 'Authorization: Bearer {API_KEY}'
 ```
 
-```json title="Respone JSON example"
+```json title="Response JSON example"
 {
   "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
   "amount": 1250,
@@ -87,7 +87,7 @@ curl https://api.mobilepay.dk/v1/payments \
   -H 'Authorization: Bearer {API_KEY}'
 ```
 
-```json title="Respone JSON example"
+```json title="Response JSON example"
 {
   "pageSize": 1,
   "nextPageNumber": 2,
