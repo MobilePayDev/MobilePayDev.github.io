@@ -2,7 +2,7 @@
 
 If any client errors occur, our endpoints return an error object describing the issues encountered. Each error object has the same contract. Here's an example:
 
-```json title="Respone JSON example"
+```json title="Response JSON example"
 {
   "code": "invalid_payment_state",
   "correlationId": "8d4243bc-aa83-43c3-a55d-5da221facd9b",
