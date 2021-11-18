@@ -116,7 +116,7 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 </tr>
 <tr>
 <td> payment.expired </td>
-<td> Published when initiated payment didn't have any user interactions for 5-10 minutes. </td>
+<td> Published when either initiated payment didn't have any user interactions for 5-10 minutes or payment was reserved, but 7 days have passed and the reservation has expired. </td>
 </tr>
 <tr>
 <td colSpan="2">
