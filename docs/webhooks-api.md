@@ -115,6 +115,27 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 </td>
 </tr>
 <tr>
+<td> payment.cancelled_by_user </td>
+<td> Published when user cancels payment inside Mobilepay app. </td>
+</tr>
+<tr>
+<td colSpan="2">
+
+```json title="Request body example"
+{
+  "notificationId": "b0dc5f2f-a7f7-4f89-8dc4-1dde6c6cab17",
+  "eventType": "payment.cancelled_by_user",
+  "eventDate": "2021-10-22T15:32:14Z",
+  "data": {
+    "id": "1c6f866d-9633-444b-b00d-33a5a5391869",
+    "type": "payment"
+  }
+}
+```
+
+</td>
+</tr>
+<tr>
 <td> payment.expired </td>
 <td> Published when either initiated payment didn't have any user interactions for 5-10 minutes or payment was reserved, but 7 days have passed and the reservation has expired. </td>
 </tr>
@@ -127,7 +148,7 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
   "eventType": "payment.expired",
   "eventDate": "2021-10-22T15:55:05Z",
   "data": {
-    "id": "ceb351ac-9d20-4300-b5ad-e05851d5a3b7",
+    "id": "37cc0040-c78a-4136-8174-3f4079b0ec9c",
     "type": "payment"
   }
 }
