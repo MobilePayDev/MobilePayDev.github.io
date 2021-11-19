@@ -116,7 +116,7 @@ Use a dedicated _Publish Test Notification_ endpoint to receive test notificatio
 </tr>
 <tr>
 <td> payment.cancelled_by_user </td>
-<td> Published when user cancels payment inside Mobilepay app. </td>
+<td> Published when payment has been cancelled by user insinde Mobilepay app. </td>
 </tr>
 <tr>
 <td colSpan="2">
