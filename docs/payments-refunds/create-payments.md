@@ -24,7 +24,7 @@ curl https://api.mobilepay.dk/v1/payments \
     "paymentPointId": "{PAYMENT_POINT_ID}",
     "redirectUri": "{URI_TO_YOUR_APP}"
     "reference": "{YOUR_UNIQUE_KEY}",
-    "description": "Lorem ipsum"
+    "description": "Details on the product/service that the customer is buying"
   }'
 ```
 
@@ -37,6 +37,10 @@ curl https://api.mobilepay.dk/v1/payments \
 
 :::tip
 `mobilePayAppRedirectUri` should be used to redirect user to MobilePay app.
+:::
+
+:::tip
+Use `description` to inform your customers to a greater extent. Description will be shown on the payment confirmation screen in MobilePay so the customer has more information about the product. The description will also be shown when the MobilePay user opens their payment receipt in the activity list.
 :::
 
 ## Get Single Payment Details
