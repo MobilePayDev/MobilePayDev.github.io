@@ -58,8 +58,8 @@ To install, you will have to allow installation from “unknown sources”.
 2. Select "Log på (Eksisterende bruger)" / "Kirjaudu sovellukseen" / "Log on (existing user)"
 3. Enter a valid Sandbox phone number (you have received during on-boarding)
 4. Enter SSN (Only relevant on fresh install)
-  a. Denmark CPR no.: 000000-0000 
-  b. Finland henkilötunnus: 00000000000
+a. Denmark CPR no.: 000000-0000
+b. Finland henkilötunnus: 00000000000
 5. Enter PIN: “1234”
 6. Enter activation code: “123456” and press "OK" / "Jatka"
 
