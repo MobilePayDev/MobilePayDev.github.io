@@ -59,7 +59,7 @@ If you have any transactions during the day, then you will receive collected mon
 | <a style={{color:"#5acbff"}}>YY</a> | Will be replaced with the current year |
 | <a style={{color:"#5a78ff"}}>MM</a> | Will be replaced with the current month |
 | <a style={{color:"#8f5aff"}}>DD</a> | Will be replaced with the current day |
-| <a style={{color:"#FF79C6"}}>RRR</a> | Will be replaced with the running number (incremented with each transfer) |
+| <a style={{color:"#FF79C6"}}>RRR</a> | Will be replaced with the running number (incremented with each transfer and reset each day) <br/> Running number is unique for every payment point |
 | <a style={{color:"#00DA46"}}>X</a> (added automatically) | Check digit |
 
 :::note
