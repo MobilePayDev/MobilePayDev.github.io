@@ -49,8 +49,8 @@ To circumvent this you could try closing MobilePay Sandbox app and opening Mobil
 
 To install, you will have to allow installation from “unknown sources”.
 
-- [MobilePay Sandbox App for Denmark](https://dbg.tpa.io/p/KnSXxG8NQ8Mv0yhct5iC)
-- [MobilePay Sandbox App for Finland](https://dbg.tpa.io/p/K3WYrFuT_pHYEWoRYhtH)
+- [MobilePay Sandbox App for Denmark](https://install.appcenter.ms/orgs/mobilepay-apps/apps/mobilepay-dk-android-sandbox/distribution_groups/external)
+- [MobilePay Sandbox App for Finland](https://install.appcenter.ms/orgs/mobilepay-apps/apps/mobilepay-fi-android-sandbox/distribution_groups/external)
 
 ### Log on to test app
 
