@@ -13,11 +13,6 @@ module.exports = {
   projectName: "MobilePay-Payments-API",
   trailingSlash: false,
   themeConfig: {
-    googleAnalytics: {
-      trackingID: "UA-206187508-1",
-      // Optional fields.
-      anonymizeIP: true, // Should IPs be anonymized?
-    },
     navbar: {
       title: "Developer",
       logo: {
@@ -57,6 +52,11 @@ module.exports = {
     [
       "@docusaurus/preset-classic",
       {
+        googleAnalytics: {
+          trackingID: "UA-206187508-1",
+          // Optional fields.
+          anonymizeIP: true, // Should IPs be anonymized?
+        },
         docs: {
           sidebarPath: require.resolve("./sidebars.js")
         },
