@@ -44,7 +44,7 @@ Use `description` to inform your customers to a greater extent. Description will
 :::
 
 :::tip
-We suggest setting unique OrderId/TransactionId from your own system in the `reference` field. The `reference` field will be contained throughout the back-end flow of the payment. Also in settlement reports in the MobilePay Portal or from our Transaction Reporting API. End-users/customers will see the Reference in the receipt of the payment, found in MobilePay app activity tab.
+We suggest setting unique order or transaction id from your own system in the `reference` field. The `reference` field will be contained throughout the back-end flow of the payment. Also in settlement reports in the MobilePay portal or from our Transaction Reporting API. End-users/customers will see the `reference` field value in the receipt of the payment, found in MobilePay app activity tab.
 :::
 
 ## Get Single Payment Details
