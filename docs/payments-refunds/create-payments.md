@@ -43,6 +43,10 @@ curl https://api.mobilepay.dk/v1/payments \
 Use `description` to inform your customers to a greater extent. Description will be shown on the payment confirmation screen in MobilePay so the customer has more information about the product. The description will also be shown when the MobilePay user opens their payment receipt in the activity list.
 :::
 
+:::tip
+We suggest setting unique order or transaction id from your own system in the `reference` field. The `reference` field will be contained throughout the backend flow of the payment. Also in settlement reports in the MobilePay portal or from our Transaction Reporting API. End-users/customers will see the `reference` field value in the receipt of the payment, found in MobilePay app's activity tab.
+:::
+
 ## Get Single Payment Details
 
 Whenever there is a need you can retrieve details of a single payment and e.g. check the current state.
