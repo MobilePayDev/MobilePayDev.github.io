@@ -162,7 +162,7 @@ If you cancel a reserved payment, reserved amount will be returned to the user.
 ## Cancel Payment By Idempotency Key
 
 You can also cancel payment by sending us the same idempotency key that you've used in the create payment request.
-Use this endpoint when the outcome of create payment request is unknown (e.g. network/server error occured and you didn't get a response).
+Use this endpoint when the outcome of create payment request is unknown (e.g. network/server error occured and you didn't get a response). It allows to cancel only those payments that are in `initiated` state. For all other scenarios, please use the [endpoint above](#cancel-payment).
 After successful cancellation, you can create a new payment again.
 
 ```bash title="Capture payment"
