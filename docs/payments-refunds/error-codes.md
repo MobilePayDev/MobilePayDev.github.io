@@ -36,14 +36,15 @@ If any client errors occur, our endpoints return an error object describing the 
 
 #### Refunds API
 
-| code               | message                                                                             |
-| -------------------| --------------------------------------------------------------------------------------- |
+| code               | message                                                                            |
+| -------------------| -------------------------------------------------------------------------------------- |
 | processing_error  | We were not able to process your request. Please change idempotency key and try again or contact our support. |
 | amount_too_large  | Cannot refund more than the remaining amount of payment - {_remaining payment amount_}. |
 | payment_not_found  | Payment does not exist. |
 | invalid_payment_state   | Payment has not been captured yet and cannot be refunded. |
 | idempotency_key_reused   | Different request parameters already used for the same idempotencyKey - {_idempotencyKey_}. |
 | unauthorized_access   | Authorization error occurred. |
+| availability_duration_expired   | It is no longer possible to refund this payment.|
 
 ### HTTP 400 Bad Request
 
