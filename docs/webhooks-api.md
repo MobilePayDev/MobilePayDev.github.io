@@ -47,6 +47,10 @@ var signature = new HMACSHA1(signatureKey)
 
 Use a dedicated _Publish Test Notification_ endpoint to receive test notification. You must have configured a webhook subscription to initiate it.
 
+### Webhooks for specific payment points
+
+It is possible to provide `paymentPointId` when creating or updating webhooks. This results in a webhook that receives notifications **only** from that payment point. Webhooks without this parameter receive notifications from all payment points.
+
 ## Available Webhook Events
 
 ### Payment Points API
