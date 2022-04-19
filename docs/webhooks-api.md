@@ -27,9 +27,30 @@ You should subscribe to the types of events required by your integration. Listen
 
 You can change the events by updating your webhooks configuration.
 
-### Return a 2xx Response
+### Requirements and limitations
 
-If a 2xx HTTP status code is not received within a 10s time or a status code other than 2xx is returned, MobilePay assumes that the delivery was unsuccessful. MobilePay retries the delivery of the event notification three times.
+* Your notification URL must return 2xx HTTP status code **within** 10s. Otherwise the notification will be retried with exponential backoff.
+* Notification attempt schedule:
+
+| Attempt number | Time since last attempt | Time since initial notification* |
+| - | - | - |
+| 1 | - | - |
+| 2 | 30 seconds | 30 seconds |
+| 3 | 1 minute | 1.5 minutes |
+| 4 | 2 minutes | 3.5 minutes |
+| 5 | 4 minutes | 7.5 minutes |
+| 6 | 8 minutes | 15.5 minutes |
+| 7 | 16 minutes | 31.5 minutes |
+| 8 | 32 minutes | 63.5 minutes |
+| 9 | 64 minutes | 2 hours |
+| 10 - 32 | 120 minutes | 4 - 48 hours |
+
+\* Approximate values since retries are scheduled after delivery attempt which might take up to 10 seconds.
+
+:::warning
+* After all retries have been exhausted the notification is never sent again.
+* There is no guarantee of the delivery order.
+:::
 
 ### Check the Webhook Signatures
 
