@@ -4,6 +4,9 @@ sidebar_position: 9
 
 # Release notes
 
+### 2022-04-28
+New [Refunds API](/docs/payments-refunds/error-codes#refunds-api) error code introduced. Code "amount_exceeds_available_funds" is returned when payment point does not have enough available funds to refund the payment.
+
 ### 2022-04-19
 Failed webhook notifications are now retried with an exponential backoff. After all retries are exchausted the notification is never sent again. This applies to both new and previously created webhooks. More information can be found here [Webhooks API](/docs/webhooks-api#requirements-and-limitations).
 
