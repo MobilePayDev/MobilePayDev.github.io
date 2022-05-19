@@ -4,7 +4,7 @@ sidebar_position: 3
 
 # Refund Payments
 
-Refunds API lets developers refund payments. Refunds use your available MobilePay balance. If your available balance doesn't cover the amount of the refund, it will fail. You can only refund payments with the state `captured` and within 30 days of the original payment date.
+Refunds API lets developers refund payments. Refunds use your available MobilePay balance. If your available balance doesn't cover the amount of the refund, it will fail. You can only refund payments with the state `captured` and within 90 days of the original payment date.
 
 Common refund scenarios include:
 
