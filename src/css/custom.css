@@ -31,9 +31,6 @@
   --ifm-font-color-base: var(--darkBlue);
   --ifm-menu-color: var(--darkBlue80);
 }
-pre code {
-  background-color: var(--darkBlue120);
-}
 .footer {
   background-color: var(--darkBlue160);
 }
