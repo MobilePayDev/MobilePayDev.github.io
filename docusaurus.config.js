@@ -22,7 +22,34 @@ module.exports = {
         srcDark: "img/logo-white.svg",
         href: "/MobilePay-Payments-API/docs/introduction",
       },
-      items: [        
+      items: [   
+        {
+          label: 'Docs',
+          position: 'left',
+          to: '/docs/introduction',
+        },
+        {
+          label: 'API references',
+          position: 'left',
+          items: [
+            {
+              label: 'Payments',
+              to: '/api/payments',
+            },
+            {
+              label: 'Payment Points',
+              to: '/api/payment-points',
+            },
+            {
+              label: 'Refunds',
+              to: '/api/refunds',
+            },
+            {
+              label: 'Webhooks',
+              to: '/api/wehooks',
+            },
+          ],
+        },
         {
           href: "https://sandbox-developer.mobilepay.dk/",
           label: "Sandbox Developer Portal",
@@ -64,6 +91,44 @@ module.exports = {
         },
         theme: {
           customCss: require.resolve("./src/css/custom.css"),
+        },
+      },
+    ],
+    [
+      "redocusaurus",
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            id: 'payments-api-yaml',
+            spec: "openapi/payments_api.yaml",
+            route: "/api/payments",
+          },
+          {
+            id: 'payment-points-api-yaml',
+            spec: "openapi/payment_points.yaml",
+            route: "/api/payment-points",
+          },
+          {
+            id: 'refunds-api-yaml',
+            spec: "openapi/refunds.yaml",
+            route: "/api/refunds",
+          },
+          {
+            id: 'webhooks-api-yaml',
+            spec: "openapi/webhooks.yaml",
+            route: "/api/wehooks",
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: "#7b93ff",
+          options: {
+            disableSearch: true,
+            hideDownloadButton: true,
+            requiredPropsFirst: true
+          },
         },
       },
     ],

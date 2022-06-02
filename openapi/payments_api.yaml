@@ -1,0 +1,547 @@
+openapi: 3.0.3
+info:
+  title: Payments API
+  description: >
+    <br/> MobilePay Payments API makes it easy for you to collect money from your
+    customers using MobilePay.
+
+    #### General notes
+
+    All dates use the (`ISO 8601-1:2019`) format.<br>
+    Date-time format - `YYYY-MM-DDTHH:mm:ssZ` or `YYYY-MM-DDTHH:mm:ss+00:00`.
+  contact:
+    email: developer@mobilepay.dk
+servers:
+  - url: https://api.mobilepay.dk
+    description: Production server (uses **live** data)
+  - url: https://api.sandbox.mobilepay.dk
+    description: Production server (uses **test** data)
+paths:
+  /v1/payments:
+    parameters:
+    - $ref: '#/components/parameters/correlationIdParam'
+    post:
+      summary: initiate new payment
+      operationId: initiate-payment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitiatePaymentRequest'
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitiatePaymentResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    get:
+      summary: fetch a list of payments
+      operationId: get-payments-list
+      description: >
+        Returns a list of all merchant's payments if no filters are provided in query parameters.
+        Can also return only payments of a specific payment point if `paymentPointId` is provided.
+      parameters:
+        - name: paymentPointId
+          in: query
+          description: Filter payments of a specific payment point
+          schema:
+            type: string
+            format: uuid
+        - name: pageNumber
+          in: query
+          schema:
+            type: integer
+            format: int32
+            minimum: 1
+            default: 1
+        - name: pageSize
+          in: query
+          description: Number of payments to be returned.
+          schema:
+            type: integer
+            format: int32
+            default: 100
+            minimum: 1
+            maximum: 1000
+        - name: stateFilter
+          in: query
+          description: Filter payments by state.
+          schema:
+            type: array
+            items:
+              enum:
+                - initiated
+                - reserved
+                - captured
+                - cancelledByMerchant
+                - cancelledByUser
+                - cancelledBySystem
+              type: string
+        - name: startDate
+          in: query
+          description: Filter payments by `InitiatedOn` property.
+          schema:
+            type: string
+            format: date-time
+        - name: endDate
+          in: query
+          description: Filter payments by `InitiatedOn` property.
+          schema:
+            type: string
+            format: date-time
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetPaymentsResponse'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '409':
+          description: Conflict
+  /api/v1/payments/{paymentid}:
+    parameters:
+      - $ref: '#/components/parameters/correlationIdParam'
+    get:
+      summary: fetch single payment
+      operationId: get-single-payment
+      parameters:
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetSinglePaymentResponse'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+        '409':
+          description: Conflict
+  /v1/payments/{paymentid}/capture:
+    parameters:
+      - $ref: '#/components/parameters/correlationIdParam'
+    post:
+      summary: capture payment
+      operationId: capture-payment
+      parameters:
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CapturePaymentRequest'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/payments/{paymentid}/cancel:
+    parameters:
+      - $ref: '#/components/parameters/correlationIdParam'
+    post:
+      summary: cancel payment
+      operationId: cancel-payment
+      parameters:
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/payments/cancel:
+    parameters:
+      - $ref: '#/components/parameters/correlationIdParam'
+    post:
+      summary: cancel payment using idempotency key
+      operationId: cancel-payment-idempotency
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelPaymentRequest'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /v1/integration-test/payments/{paymentid}/reserve:
+    parameters:
+      - $ref: '#/components/parameters/correlationIdParam'
+    post:
+      summary: simulates payment confirmation
+      operationId: simulate-confirmation
+      description: Simulate user swiping and confirming the payment (**available only in sandbox environment**).
+      servers:
+        - url: https://api.sandbox.mobilepay.dk
+          description: This endpoint is available only in sandbox environment
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ReserveFundsRequest'
+      responses:
+        '204':
+          description: No Content
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Unauthorized
+        '403':
+          description: Forbidden
+        '409':
+          description: Conflict
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  parameters:
+    correlationIdParam:
+      name: CorrelationId
+      in: header
+      required: false
+      description: Correlation id used for logging (if you don't pass any value, we'll generate it)
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    CancelPaymentRequest:
+      required:
+        - idempotencyKey
+      type: object
+      properties:
+        idempotencyKey:
+          type: string
+          description: >-
+            The idempotency key identifying the payment to be canceled. Only
+            payments in the `initiated` state can be canceled using the
+            idempotency key.
+          format: uuid
+    CapturePaymentRequest:
+      required:
+        - amount
+      type: object
+      properties:
+        amount:
+          type: integer
+          description: "The amount to be captured. A positive integer representing how much to capture in the smallest currency unit (e.g.,\r\n100 cents to capture €1.00). The minimum amount is 1."
+          format: int32
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+          example: '1234'
+        message:
+          type: string
+          nullable: true
+          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        correlationId:
+          type: string
+          example: 91f2b05f-2171-4cea-9d5a-1cdbed6ae2cd
+        origin:
+          type: string
+          example: MPY
+    GetPaymentsResponse:
+      required:
+        - pageSize
+        - payments
+      type: object
+      properties:
+        pageSize:
+          type: integer
+          description: The number of payments per page. The range is 1 to 1000.
+          format: int32
+          example: 1
+        nextPageNumber:
+          type: integer
+          description: >-
+            A number of the next page. The null value indicates that the
+            response has the last page.
+          format: int32
+          nullable: true
+          example: 2
+        payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/GetSinglePaymentResponse'
+          description: The requested list of payments.
+          example:
+            - PaymentId: 186d2b31-ff25-4414-9fd1-bfe9807fa8b7
+              Amount: 1250
+              Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              PaymentPointId: 7347ba06-95c5-4181-82e5-7c7a23609a0e
+              Reference: My-Payment-1
+              RedirectUri: myapp://redirect
+              State: initiated
+              InitiatedOn: '2022-05-26T13:13:49.700746+03:00'
+              LastUpdatedOn: '2022-05-26T13:13:49.700747+03:00'
+              MerchantId: 655ad36f-70b0-4add-a123-b943daca50e8
+              IsoCurrencyCode: DKK
+              PaymentPointName: MyPaymentPoint
+    GetSinglePaymentResponse:
+      required:
+        - amount
+        - initiatedOn
+        - isoCurrencyCode
+        - lastUpdatedOn
+        - merchantId
+        - paymentId
+        - paymentPointId
+        - paymentPointName
+        - redirectUri
+        - state
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: The ID of the payment.
+          format: uuid
+          example: 186d2b31-ff25-4414-9fd1-bfe9807fa8b7
+        amount:
+          type: integer
+          description: |
+            The amount of money to be collected by this payment.
+            
+            A positive integer representing how much to charge in the smallest currency unit (e.g., 100 cents to charge €1.00). The minimum amount is 1. The maximum amount is defined by user's daily/yearly limits.
+          format: int32
+          minimum: 1
+          example: 1250
+        description:
+          type: string
+          description: "Optional payment information to be displayed in MobilePay app to the customer. This can be, for example, an invoice\r\nnumber, ticket number, or short description that uniquely identifies the purchase."
+          nullable: true
+          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        paymentPointId:
+          type: string
+          description: The payment point on which payment was initiated.
+          format: uuid
+          example: 7347ba06-95c5-4181-82e5-7c7a23609a0e
+        reference:
+          type: string
+          description: Payment's reference provided by you.
+          nullable: true
+          example: My-Payment-1
+        redirectUri:
+          type: string
+          description: >-
+            Deeplink is used to redirect MobilePay users back to the merchant's
+            app.
+          example: myapp://redirect
+        state:
+          enum:
+            - initiated
+            - reserved
+            - captured
+            - cancelledByMerchant
+            - cancelledByUser
+            - cancelledBySystem
+          type: string
+          description: Indicates payment's current state.
+          example: initiated
+        initiatedOn:
+          type: string
+          description: "The timestamp of when the payment was created, in ISO 8601-1:2019 format.<br />\r\nExamples for July 19th, 2021 12:42:38am Pacific Standard Time:<br />\r\nUTC: 2021-07-19T12:42:38Z"
+          format: date-time
+          example: '2022-05-26T13:13:49.700315+03:00'
+        lastUpdatedOn:
+          type: string
+          description: >-
+            The timestamp of when the payment was created, in ISO 8601-1:2019
+            format.
+          format: date-time
+          example: '2022-05-26T13:13:49.700318+03:00'
+        merchantId:
+          type: string
+          description: Merchant ID associated with the payment.
+          format: uuid
+          example: 655ad36f-70b0-4add-a123-b943daca50e8
+        isoCurrencyCode:
+          type: string
+          description: "Three-letter <a href=\"https://www.iso.org/iso-4217-currency-codes.html\">ISO currency code</a>, in uppercase.<br />\r\nPossible values:<br />\r\n\"DKK\",<br />\r\n\"EUR\""
+          example: DKK
+        paymentPointName:
+          type: string
+          description: Payment point name displayed to the user in MobilePay app.
+          example: MyPaymentPoint
+    InitiatePaymentRequest:
+      required:
+        - amount
+        - idempotencyKey
+        - paymentPointId
+        - redirectUri
+        - reference
+      type: object
+      properties:
+        amount:
+          type: integer
+          description: "The amount of money to be collected by this payment.\r\nA positive integer representing how much to charge in the smallest currency unit (e.g., 100 cents to charge\r\n€1.00). The minimum amount is 1. The maximum amount is defined by user's daily/yearly limits."
+          format: int32
+          example: 1250
+        description:
+          maxLength: 200
+          minLength: 0
+          type: string
+          description: "Optional payment information to be displayed in MobilePay app to the customer. Max length: 200 characters.<br />\r\nThis can be, for example, an invoice number, ticket number, or short description that uniquely identifies the\r\npurchase."
+          nullable: true
+          example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        paymentPointId:
+          type: string
+          description: The Payment Point ID to associate with a payment.
+          format: uuid
+          example: 7347ba06-95c5-4181-82e5-7c7a23609a0e
+        reference:
+          maxLength: 64
+          minLength: 0
+          type: string
+          description: "An ID to associate with the payment. Max length: 64 characters.<br />\r\nYou can use this field to associate the payment to an entity in an external system (for example, you might specify\r\nan order ID that is generated by your system). It is recommended to use a unique value for each payment."
+          example: My-Payment-1
+        idempotencyKey:
+          type: string
+          description: "A unique value that identifies this InitiatePayment request. Must be a valid GUID, and is used to protect against\r\naccidental duplicate calls. Multiple requests with the same idempotency key have the same result."
+          format: uuid
+          example: fae7680f-9875-4ba9-8910-2f2e1791f390
+        redirectUri:
+          maxLength: 2000
+          minLength: 0
+          type: string
+          description: "MobilePay will use the redirectUri URL to redirect the MobilePay user to the merchant's confirmation page once user\r\naction is completed in MobilePay app. Must be a valid URI."
+          example: myapp://redirect
+    InitiatePaymentResponse:
+      required:
+        - mobilePayAppRedirectUri
+        - paymentId
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: A unique ID for the payment.
+          format: uuid
+          example: 186d2b31-ff25-4414-9fd1-bfe9807fa8b7
+        mobilePayAppRedirectUri:
+          type: string
+          description: Deeplink to MobilePay app.
+          example: >-
+            mobilepay://merchant_payments?payment_id=186d2b31-ff25-4414-9fd1-bfe9807fa8b7
+    ReserveFundsRequest:
+      required:
+        - paymentSourceId
+        - userId
+      type: object
+      properties:
+        paymentSourceId:
+          type: string
+          format: uuid
+          description: The id of payment source which should be used to obtain funds.
+          example: 8b1def75-8f77-4a48-8924-bf2ab22251e6
+        userId:
+          type: string
+          format: uuid
+          description: The id of the user on whose behalf funds will be reserved.
+          example: be1e6d64-b73d-481a-9947-55e57ccbe4cf
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
+      bearerFormat: API key
+      description: >-
+        Authorization header using the Bearer scheme, e.g., `Authorization: Bearer {api key}`
+    openId:
+      type: openIdConnect
+      openIdConnectUrl: https://api.mobilepay.dk/merchant-authentication-openidconnect/.well-known/openid-configuration
+      description: >-
+        Obtain a consent from your client (with scope `merchantpayments`), retrieve an acess token and send it in `Authorization` header using the Bearer scheme, 
+        e.g., `Authorization: Bearer {access token}`
+security:
+  - apiKey: []
+  - openId:
+      - merchantpayments
