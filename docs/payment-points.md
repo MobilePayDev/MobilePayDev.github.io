@@ -10,11 +10,11 @@ This topic explains what payment points are and how to manage them.
 
 After signing up to use [Payments API](/docs/payments-refunds/create-payments), merchant needs to create a payment point.
 
-Single business can have multiple payment points. Each payment point is as a location and it has a MobilePay-assigned `PaymentPointId`. Establishing multiple payment points is optional but useful for reporting and tracking sales over time. Most customer-related transactions must be to a specific payment point in the API call.
+Single business can have multiple payment points. Each payment point is a location and it has a MobilePay-assigned `PaymentPointId`. Establishing multiple payment points is optional but useful for reporting and tracking sales over time. Most customer-related transactions must be to a specific payment point in the API call.
 
 ## Management of payment points
 
-Creating, editing payment points is done in _MobilePay Portal_. The payment point name and bank account are mandatory fields. If no logo image is provided the default one will be used.
+Creating and editing payment points is done in _MobilePay Portal_. The payment point name and bank account are mandatory fields. If no logo image is provided the default one will be used.
 
 ![Setup payment points](/img/pp-example-v2.gif)
 
@@ -49,7 +49,7 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 }
 ```
 
-## Setting up Custom Transfer Reference
+## Setting up custom transfer reference
 
 If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose [default MobilePay references](https://developer.mobilepay.dk/node/2551) or set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom transfer reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. Allowed characters are:
 

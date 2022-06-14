@@ -1,0 +1,431 @@
+openapi: 3.0.3
+info:
+  title: Reporting API
+  description: >
+    <br/> Reporting API allows you to query all transactions taking place at any of your MobilePay payment locations (payment points).</br>
+
+    #### General notes
+
+    All dates use the (`ISO 8601-1:2019`) format.<br/>
+    Date-time format - `YYYY-MM-DDTHH:mm:ssZ` or `YYYY-MM-DDTHH:mm:ss+00:00`.
+  contact:
+    email: developer@mobilepay.dk
+  version: v3
+servers:
+  - url: https://api.mobilepay.dk
+    description: Production server (uses **live** data)
+  - url: https://api.sandbox.mobilepay.dk
+    description: Production server (uses **test** data)
+paths:
+  /v3/reporting/paymentpoints:
+    get:
+      summary: fetch a list of payment points
+      operationId: get-payment-points
+      parameters:
+        - name: pagesize
+          in: query
+          description: Number of payment points to be returned.
+          schema:
+            type: integer
+            minimum: 1
+            default: 100
+        - name: pagenumber
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaymentPoints'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+  /v3/reporting/transactions:
+    get:
+      summary: fetch a list of transactions
+      operationId: get-transactions
+      parameters:
+        - name: transferid
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: paymentpointid
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: startdate
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: enddate
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: pagesize
+          in: query
+          description: Number of transactions to be returned.
+          schema:
+            type: integer
+            minimum: 1
+            default: 100
+        - name: pagenumber
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transactions'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+  /v3/reporting/transfers:
+    get:
+      summary: fetch a list of transfers
+      operationId: get-transfers
+      parameters:
+        - name: paymentpointid
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: startdate
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: enddate
+          in: query
+          schema:
+            type: string
+            format: date-time
+        - name: reference
+          in: query
+          description: Bank reference number used for aggregated transfer to receiver account.
+          schema:
+            type: string
+        - name: pagesize
+          in: query
+          description: Number of transfers to be returned.
+          schema:
+            type: integer
+            minimum: 1
+            default: 100
+        - name: pagenumber
+          in: query
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfers'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+  /v3/reporting/transfers/{transferid}:
+    get:
+      summary: fetch single transfer
+      operationId: get-single-transfer
+      parameters:
+        - name: transferid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Transfer'
+        '400':
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '401':
+          description: Unauthorized
+        '404':
+          description: Not Found
+components:
+  parameters:
+    correlationIdParam:
+      name: CorrelationId
+      in: header
+      required: false
+      description: Correlation id used for logging (if you don't pass any value, we'll generate it).
+      schema:
+        type: string
+        format: uuid
+  schemas:
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+        message:
+          type: string
+          nullable: true
+        correlationId:
+          type: string
+        origin:
+          type: string
+          nullable: true
+    PaymentPoint:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Payment point id.
+          format: uuid
+        name:
+          type: string
+          description: Payment point name.
+          nullable: true
+        productType:
+          type: string
+          description: Product to which payment point belongs.
+          enum:
+            - PointOfSale
+            - MyShop
+            - Subscription
+            - Invoice
+            - App payments
+        alias:
+          type: string
+          description: >
+            MyShop number (`null` for all other products).
+          nullable: true
+    PaymentPoints:
+      type: object
+      properties:
+        paymentPoints:
+          type: array
+          items:
+            $ref: '#/components/schemas/PaymentPoint'
+          description: A collection of payment points.
+    Transaction:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          description: >
+            Payment id that you receive from us when you create payment via any of our product APIs.
+            At the moment it will be null for all payments except those that were create using [Payments API](payments).
+          nullable: true
+        type:
+          type: string
+          description: >
+            Transaction type.
+
+            * `Payment` - incoming transaction from a private customer.
+
+            * `Refund` - refund of payment or partial payment.
+
+            * `TransactionFee` - fee based on a transaction (doesn't appear in this API if fees are invoiced).
+
+            * `ServiceFee` - fee based on other services provided by MobilePay (onboarding fee, recurring charges etc.).
+
+            * `Transfer` - transfer of money from merchant's wallet to merchant's account.
+
+            * `ReturnedTransaction` - failed (sent back) transfers, refunds and payouts.
+
+            * `Adjustment` - manual corrections affecting wallet balance.
+          enum:
+            - Payment
+            - Refund
+            - TransactionFee
+            - ServiceFee
+            - Transfer
+            - ReturnedTransaction
+            - Adjustment
+          nullable: true
+        amount:
+          type: number
+          format: decimal
+          description: Transaction amount. Positive for debit transactions, negative for credit transactions.
+          example: 276.45
+        currencyCode:
+          type: string
+          description: Transaction currency.
+          enum:
+            - DKK
+            - EUR
+          nullable: true
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp when transaction has been completed. Corresponds to url parameters `startdate` and `enddate`.
+        message:
+          type: string
+          nullable: true
+          description: Free-form text message provided by payment sender.
+        merchantReference:
+          type: string
+          description: >
+            Some reference of the transaaction provided to MobilePay by merchant.
+            This property is used only for payments of these 3 products: **Subscriptions**, **App payments**, **POS**.
+            
+
+            For POS payments it maps to `orderId`.
+
+
+            For subscription payments it maps to `external_id`.
+
+
+            For app payments it maps to `reference`.
+          nullable: true
+        merchantPaymentLabel:
+          type: string
+          description: POS merchant payment label (has value only for "POS" product payments).
+          nullable: true
+        transferReference:
+          type: string
+          description: Bank reference number used for aggregated transfer to receiver account.
+          nullable: true
+        transferDate:
+          type: string
+          nullable: true
+          description: Date of transfer which includes this transaction.
+        userPhoneNumber:
+          type: string
+          nullable: true
+          description: Payer's (user's) phone number, semi masked (has value only for "MyShop" product payments).
+        userName:
+          type: string
+          nullable: true
+          description: Payer's username in MobilePay (has value only for "MyShop" product payments).
+        loyaltyId:
+          type: string
+          nullable: true
+          description: Value entered into the MobilePay app for the specific merchant under “memberships”.
+        myShopNumber:
+          type: string
+          nullable: true
+          description: MyShop number of payment location (has value only for "MyShop" product payments).
+        brandName:
+          type: string
+          nullable: true
+          description: POS brand name (has value only for "POS" product payments).
+        brandId:
+          type: string
+          nullable: true
+          description: POS legacy merchant id (has value only for "POS" product payments).
+        locationId:
+          type: string
+          nullable: true
+          description: POS merchant location id (has value only for "POS" product payments).
+        posName:
+          type: string
+          nullable: true
+          description: POS name (has value only for "POS" product payments).
+        beaconId:
+          type: string
+          nullable: true
+          description: POS beacon id (has value only for "POS" product payments).
+        agreementExternalId:
+          type: string
+          nullable: true
+          description: Subscriptions agreement id provided by merchant (has value only for "Subscriptions" product payments).
+        agreementId:
+          type: string
+          nullable: true
+          description: Subscriptions agreement id generated by MobilePay (has value only for "Subscriptions" product payments).
+    Transactions:
+      type: object
+      properties:
+        transactions:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transaction'
+    Transfer:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Transfer id.
+          format: uuid
+        reference:
+          type: string
+          description: Bank reference number used for aggregated transfer to receiver account.
+          nullable: true
+        date:
+          type: string
+          format: date-time
+          description: Transfer date.
+        totalTransferredAmount:
+          type: number
+          description: Total transferred amount.
+          format: decimal
+          example: 268.94
+        currencyCode:
+          type: string
+          description: Transfer currency.
+          enum:
+            - DKK
+            - EUR
+        paymentPointId:
+          type: string
+          description: Payment point id.
+          format: uuid
+    Transfers:
+      type: object
+      properties:
+        transfers:
+          type: array
+          items:
+            $ref: '#/components/schemas/Transfer'
+          description: A collection of transfers.
+  securitySchemes:
+    apiKey:
+      type: http
+      scheme: bearer
+      bearerFormat: API key
+      description: >-
+        Authorization header using the Bearer scheme, e.g., `Authorization: Bearer {api key}`.
+    openId:
+      type: openIdConnect
+      openIdConnectUrl: https://api.mobilepay.dk/merchant-authentication-openidconnect/.well-known/openid-configuration
+      description: >-
+        Obtain a consent from your client (with scope `transactionreporting`), retrieve an acess token and send it in `Authorization` header using the Bearer scheme, 
+        e.g., `Authorization: Bearer {access token}`.
+security:
+  - apiKey: []
+  - openId:
+      - transactionreporting

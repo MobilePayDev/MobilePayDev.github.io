@@ -7,21 +7,21 @@ id: testing
 
 This page includes information to make sure your integration works as planned. Testing activities will be done in a sandbox environment and it won't create any real payments.
 
-## MobilePay Sandbox Environment
+## MobilePay sandbox environment
 
 The sandbox environment is dedicated for integration purposes. It is the same as production with some limitations (not a full list):
 
 - No actual payments and reservations are made.
 
-## Test Merchants
+## Test merchants
 
 You will receive details for a test merchant to use in a sandbox environment during your onboarding. It will allow you to login to [Sandbox MobilePay portal](https://sandprod-admin.mobilepay.dk/) to [generate API keys](/docs/authentication), and/or to [set up Payment Points](/docs/payment-points-api) for your testing purposes. It is a valuable experience since you will need to do the same activities when moving to production.
 
-## Test Users
+## Test users
 
 You will receive information about test users during your onboarding. You will have a dedicated test user which you will be able to use to login into [MobilePay Test App](#test-app)
 
-## Test App
+## Test app
 
 In order to complete a payment flow in the sandbox environment, a test version of the MobilePay app is available. This version of the MobilePay app is similar to the live version, but only supports payments in the sandbox environment. You can only use the test users that we provide to you.
 
@@ -57,11 +57,11 @@ To install, you will have to allow installation from “unknown sources”.
 1. Install and open the MobilePay DK/FI MobilePay Test app
 2. Select "Log på (Eksisterende bruger)" / "Kirjaudu sovellukseen" / "Log on (existing user)"
 3. Enter a valid Sandbox phone number (you have received during on-boarding)
-4. Enter SSN (Only relevant on fresh install)
+4. Enter SSN (Only relevant on a fresh install)
 
-      Denmark CPR no.: 000000-0000
-      
-      Finland henkilötunnus: 00000000000
+   Denmark CPR no.: 000000-0000
+
+   Finland henkilötunnus: 00000000000
 5. Enter PIN: “1234”
 6. Enter activation code: “123456” and press "OK" / "Jatka"
 

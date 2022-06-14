@@ -11,7 +11,7 @@ Common refund scenarios include:
 - Refund all or a portion of payment.
 - Multiple partial refunds of payment.
 
-## Refund Payment
+## Refund payment
 
 ```bash title="Refund payment"
 curl https://api.mobilepay.dk/v1/refunds \
@@ -44,7 +44,7 @@ When MobilePay receives the request, it begins the refund process. The response 
 
 `remainingAmount` will be included in successful refund response once, for reasons when you might need to do multiple refunds.
 
-## Retrieve Refund Information
+## Retrieve refund information
 
 After you refund a payment there might be a need to get refund information.
 

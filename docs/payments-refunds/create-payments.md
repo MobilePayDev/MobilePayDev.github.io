@@ -4,11 +4,11 @@ sidebar_position: 2
 
 # Create And Manage Payments
 
-Payments API lets developers to create and manage payments. It is important to remember, that payment cannot be completed without user interaction, meaning that user has to **swipe and approve payments** inside MobilePay app.
+Payments API lets developers create and manage payments. It is important to remember, that payment cannot be completed without user interaction, meaning that the user has to **swipe and approve payments** inside MobilePay app.
 
 ![User confirmation](/img/create-payment-app.gif)
 
-## Create Payment
+## Create payment
 
 The first step in your journey of collecting payments would be to initiate a new payment. You can do that using the following request.
 
@@ -36,7 +36,7 @@ curl https://api.mobilepay.dk/v1/payments \
 ```
 
 :::tip
-`mobilePayAppRedirectUri` should be used to redirect user to MobilePay app.
+`mobilePayAppRedirectUri` should be used to redirect user to the MobilePay app.
 :::
 
 :::tip
@@ -44,10 +44,10 @@ Use `description` to inform your customers to a greater extent. Description will
 :::
 
 :::tip
-We suggest setting unique order or transaction id from your own system in the `reference` field. The `reference` field will be contained throughout the backend flow of the payment. Also in settlement reports in the MobilePay portal or from our Transaction Reporting API. End-users/customers will see the `reference` field value in the receipt of the payment, found in MobilePay app's activity tab.
+We suggest setting unique order or transaction id from your own system in the `reference` field. The `reference` field will be contained throughout the backend flow of the payment. Also in settlement reports in the MobilePay portal or from our Transaction Reporting API. End-users/customers will see the `reference` field value in the receipt of the payment, found in the MobilePay app's activity tab.
 :::
 
-## Get Single Payment Details
+## Get single payment details
 
 Whenever there is a need you can retrieve details of a single payment and e.g. check the current state.
 
@@ -84,9 +84,9 @@ Property `state` can have these values:
 - **cancelledBySystem** - no user interactions with payment were made in 5-10 minutes after creation, so our automated job cancelled it.
 - **cancelledByUser** - user cancelled payment inside MobilePay app.
 
-## Get All Payments
+## Get all payments
 
-Theres also a possibility to list all your payments in pages. Multiple searching criteria can be used as query parameters.
+There's also a possibility to list all your payments in pages. Multiple searching criteria can be used as query parameters.
 
 ```bash title="List payments"
 curl https://api.mobilepay.dk/v1/payments \
@@ -118,9 +118,9 @@ curl https://api.mobilepay.dk/v1/payments \
 }
 ```
 
-## Capture Payment
+## Capture payment
 
-After you receive a notification that payment was reserved or you retrieve a payment and it has a state `reserved`, you must capture payment in order to end the flow and receive the money with nightly transfer.
+After you receive a notification that payment was reserved or you retrieve payment and it has a state `reserved`, you must capture payment in order to end the flow and receive the money with a nightly transfer.
 
 :::note
 
@@ -145,7 +145,7 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/capture \
   }'
 ```
 
-## Cancel Payment
+## Cancel payment
 
 If you changed your mind and want to cancel payment , you can do that using the following request.
 
@@ -159,10 +159,10 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/cancel \
 Keep in mind, that payment can be cancelled in all states except `captured`. If you've already captured payment, refunding is your only option.
 If you cancel a reserved payment, reserved amount will be returned to the user.
 
-## Cancel Payment By Idempotency Key
+## Cancel payment by idempotency key
 
-You can also cancel payment by sending us the same idempotency key that you've used in the create payment request.
-Use this endpoint when the outcome of create payment request is unknown (e.g. network/server error occured and you didn't get a response). It allows to cancel only those payments that are in `initiated` state. For all other scenarios, please use the [endpoint above](#cancel-payment).
+You can also cancel a payment by sending us the same idempotency key that you've used in the create payment request.
+Use this endpoint when the outcome of the payment creation request is unknown (e.g. network/server error occurred and you didn't get a response). It allows cancelling only those payments that are in `initiated` state. For all other scenarios, please use the [endpoint above](#cancel-payment).
 After successful cancellation, you can create a new payment again.
 
 ```bash title="Capture payment"

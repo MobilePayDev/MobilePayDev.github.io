@@ -29,6 +29,11 @@ module.exports = {
           to: '/docs/introduction',
         },
         {
+          label: 'Reporting',
+          position: 'left',
+          to: '/docs/reporting/overview',
+        },
+        {
           label: 'API references',
           position: 'left',
           items: [
@@ -47,6 +52,10 @@ module.exports = {
             {
               label: 'Webhooks',
               to: '/api/wehooks',
+            },
+            {
+              label: 'Reporting (v3)',
+              to: '/api/reporting',
             },
           ],
         },
@@ -118,6 +127,11 @@ module.exports = {
             id: 'webhooks-api-yaml',
             spec: "openapi/webhooks.yaml",
             route: "/api/wehooks",
+          },
+          {
+            id: 'reporting-api-yaml',
+            spec: "openapi/reporting.yaml",
+            route: "/api/reporting",
           },
         ],
         // Theme Options for modifying how redoc renders them
