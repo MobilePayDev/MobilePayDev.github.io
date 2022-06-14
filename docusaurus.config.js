@@ -24,7 +24,7 @@ module.exports = {
       },
       items: [   
         {
-          label: 'Docs',
+          label: 'App payments',
           position: 'left',
           to: '/docs/introduction',
         },
