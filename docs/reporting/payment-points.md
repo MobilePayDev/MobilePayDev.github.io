@@ -13,6 +13,8 @@ $ curl -X 'GET' \
 
 ```json title="Response JSON example"
 {
+  "pageSize": 1,
+  "nextPageNumber": 2,
   "paymentpoints": [
     {
       "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",

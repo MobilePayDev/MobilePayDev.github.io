@@ -17,6 +17,8 @@ $ curl -X 'GET' \
 
 ```json title="Response JSON example"
 {
+  "pageSize": 1,
+  "nextPageNumber": 2,
   "transactions": [
     {
       "paymentId": "string",
@@ -40,6 +42,7 @@ $ curl -X 'GET' \
       "beaconId": "string",
       "agreementExternalId": "string",
       "agreementId": "string"
+      "refundId": "string"
     }
   ]
 }
