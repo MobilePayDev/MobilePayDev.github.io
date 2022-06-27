@@ -105,5 +105,57 @@ module.exports = {
       id: 'reporting/migrate-from-v1v2',
       label: 'Migrate from v1 and v2'
     },
+  ],
+  onlineSidebar: [
+    {
+      type: 'doc',
+      id: 'online/overview',
+      label: 'Overview'
+    },  
+    {
+      type: 'category',
+      label: 'Development Guide',
+      collapsed: true,
+      items: [
+        'online/development-guide/getting-started',
+        'online/development-guide/test',
+        'online/development-guide/verification',
+        'online/development-guide/production'
+      ]
+    },
+    {
+      type: 'category',
+      label: 'Basics',
+      collapsed: true,
+      items: [
+        'online/basics/merchants',
+        'online/basics/payments',
+        'online/basics/flow',
+        'online/basics/retry-policy',
+        'online/basics/callbacks',
+        'online/basics/request-fishing'
+      ]
+    },
+    {
+      type: 'doc',
+      id: 'online/sca',
+      label: 'Strong customer authentication'
+    },
+    {
+      type: 'category',
+      label: 'Features',
+      collapsed: true,
+      items: [
+        'online/features/invalidation',
+        'online/features/phone-number',
+        'online/features/checkout',
+        'online/features/checkout-best-practice'
+      ]
+    },
+    {
+      type: 'doc',
+      id: 'online/appendix',
+      label: 'Appendix'
+    }
   ]
 }

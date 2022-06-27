@@ -29,6 +29,11 @@ module.exports = {
           to: '/docs/introduction',
         },
         {
+          label: 'Online',
+          position: 'left',
+          to: '/docs/online/overview',
+        },
+        {
           label: 'Reporting',
           position: 'left',
           to: '/docs/reporting/overview',
