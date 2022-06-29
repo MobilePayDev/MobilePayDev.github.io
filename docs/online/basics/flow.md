@@ -11,7 +11,21 @@ If the redirect happens on a mobile device the MobilePay app will be launched. T
 
 ## Dual device flow
 
- If the redirect happens on a desktop device, our landing page will open in the browser. The user can then insert the phone number or it can be pre-filled for more convenience (insert link). We will then send a push notification to the user's mobile device and the user can then accept or reject the payment in the MobilePay app. Afterwards the landing page in the desktop browser will redirect to redirectFromMobilePayUrl.
+ If the redirect happens on a desktop device, our landing page will open in the browser. The user can then insert the phone number or it can be [pre-filled](/docs/online/features/phone-number#prefilled-phone-number) for more convenience. We will then send a push notification to the user's mobile device and the user can then accept or reject the payment in the MobilePay app. Afterwards the landing page in the desktop browser will redirect to redirectFromMobilePayUrl.
+
+### Landing page
+
+The link to MobilePay landing page is received in response to payment initiation as: redirectToMobilePayUrl. On the landing page the user must insert their phone number and click continue. A timer will then be shown to indicate how long time the user have to accept the payment in the MobilePay app.
+
+The language of the page is initialy defined by the countryCode of the merchant the payment is initiated on behalf of. Merchant countryCode is defined when creating a merchant with `POST /api/v1/merchants`. This setting can be overulled by setting the customerLanguageCode on payment initiation. Code can be either DK or FI. If DK the laungage on landing page will be Danish. If FI the language on landing page will be Finnish.
+
+The first time a user visits the landing page a functional cookie will be saved. This cookie defines the language of the page. Next time the user visits our landing page the language will be determined by cookie. Regardless of customerLanguageCode or countryCode.
+
+Hierarchy:
+
+1. Functional cookie in browser
+2. customerLanguageCode on payment
+3. countryCode on merchant
 
 ## Redirect to redirectFromMobilePayurl
 
