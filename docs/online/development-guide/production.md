@@ -1,5 +1,7 @@
 # Production
 
+Once you have completed the slim certification you are able to offer your solution to your merchants. Please carefully read below topics in order to prepare your setup before going live.
+
 ## Mandatory implementations
 
 Please note that the following is mandatory implementation and you will not be able to go live without these. If we determine that you do not utulize the mandatory implementation in production we will reach out to you in order to resolve the situation and ensure the mandatory implementations. The reason for the mandatory implementation is to ensure the best user and merchant experience and satisfactory conversion rate.

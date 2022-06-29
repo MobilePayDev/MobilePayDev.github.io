@@ -1,5 +1,7 @@
 # Payments
 
+When you have created a merchant you can start initiating payments.
+
 1. In order to create a payment you need to invoke the "create payment" endpoint (POST to /payments/).
 To use this you need to provide information about the merchant, the payment, the public key used for encrypting the data, callback-, and redirection urls.
 This will return an url the end-user should be redirected to.

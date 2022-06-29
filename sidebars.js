@@ -116,17 +116,24 @@ module.exports = {
       type: 'category',
       label: 'Development Guide',
       collapsed: true,
+      link: {
+        type: 'generated-index',
+        description: 'Learn how to integrate MobilePay Online',
+      },
       items: [
         'online/development-guide/getting-started',
         'online/development-guide/test',
         'online/development-guide/verification',
         'online/development-guide/production'
-      ]
+      ],
     },
     {
       type: 'category',
       label: 'Basics',
       collapsed: true,
+      link: {
+        type: 'generated-index',
+      },
       items: [
         'online/basics/merchants',
         'online/basics/payments',
@@ -145,6 +152,9 @@ module.exports = {
       type: 'category',
       label: 'Features',
       collapsed: true,
+      link: {
+        type: 'generated-index',
+      },
       items: [
         'online/features/invalidation',
         'online/features/phone-number',
