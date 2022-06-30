@@ -7,11 +7,11 @@ MobilePay Online supports both dual device and single device flows. It depends o
 If the redirect happens on a mobile device the MobilePay app will be launched. The user can then accept or reject the payment and we will redirect the user to redirectFromMobilePayUrl afterwards. This url will always open in the default browser (determined by the operating system) of the mobile device.
 
 * If the MobilePay app is not installed and therefore cannot be opened our landing page will open in the browser instead and the flow will continue as a dual device flow.
-* It is also possible to pop the app directly instead of using the universal link. To do this, you will need to use the redirectToMobilePayAppUrl given in the response from initiating a payment. This can be useful when using frames. See [Manually engaging the App](/docs/online/appendix#manually-engaging-the-app-from-the-parent-page) for a guide on this.
+* It is also possible to pop the app directly instead of using the universal link. To do this you will need to use the redirectToMobilePayAppUrl given in the response from initiating a payment. This can be useful when using frames. See [Manually engaging the App](/docs/online/appendix#manually-engaging-the-app-from-the-parent-page) for a guide on this.
 
 ## Dual device flow
 
- If the redirect happens on a desktop device, our landing page will open in the browser. The user can then insert the phone number or it can be [pre-filled](/docs/online/features/phone-number#prefilled-phone-number) for more convenience. We will then send a push notification to the user's mobile device and the user can then accept or reject the payment in the MobilePay app. Afterwards the landing page in the desktop browser will redirect to redirectFromMobilePayUrl.
+ If the redirect happens on a desktop device our landing page will open in the browser. The user can then insert the phone number or it can be [pre-filled](/docs/online/features/phone-number#prefilled-phone-number) for more convenience. We will then send a push notification to the user's mobile device and the user can then accept or reject the payment in the MobilePay app. Afterwards the landing page in the desktop browser will redirect to redirectFromMobilePayUrl.
 
 ### Landing page
 
