@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Release notes
 
-### 2022-07-13
+### 2022-07-18
 New webhook event "transfer.succeeded" introduced. Notifications for this event are sent when payment point balance is successfully transferred to merchant account. More information can be found here [Webhooks API](/docs/webhooks#transfers).
 
 ### 2022-04-28
