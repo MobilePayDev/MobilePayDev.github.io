@@ -14,9 +14,9 @@ Single business can have multiple payment points. Each payment point is a locati
 
 ## Management of payment points
 
-Creating and editing payment points is done in _MobilePay Portal_. The payment point name and bank account are mandatory fields. If no logo image is provided the default one will be used.
+Creating and editing payment points is done in [MobilePay portal](https://portal.mobilepay.dk/payments/paymentpoints). The payment point name and bank account are mandatory fields. If no logo image is provided the default one will be used.
 
-![Setup payment points](/img/pp-example-v2.gif)
+![Setup payment points](/img/portal-create-pp.gif)
 
 ## Retrieve a list of payment points
 
