@@ -39,43 +39,7 @@ Exactly as for encrypted card data callbacks, make sure you respond to the callb
 
 ### Delegated Authentication for Visa card
 
-A Visa Token Service (VTS) response like this:
-
-```json title="VTS token callback example"
-{
-"paymentId": "string",
-"authorizationAttemptId": "string",
-"cardType": "string",
-"cardIssuedInCountryCode": "string",
-"maskedCardNumber":"string",
-"tokenMethod": "string",
-"tokenData": {
-  "vPaymentDataID": "string",
-    "cryptogramInfo": {
-     "cryptogram": "string",
-     "eci": "string"
-    },
-    "paymentInstrument": {
-     "last4": "string",
-     "paymentType": {
-      "cardBrand": "string"
-     },
-     "paymentAccountReference": "string"
-    },
-    "tokenInfo": {
-     "token": "string",
-     "last4": "string",
-     "expirationDate": {
-      "month": "string",
-      "year": "string"
-     }
-    },
-   },
-   "isDelegatedAuthentication": bool
-}
-```
-
-Example:
+Example of Visa Token Service (VTS) response:
 
 ```json title="VTS token callback example"
 {
@@ -113,7 +77,7 @@ Example:
 
 ### Delegated Authentication for Mastercard
 
-A Mastercard S4C (MS4C) response like this:
+Example of Mastercard S4C (MS4C) response:
 
 ```json title="MS4C token callback example"
 {
