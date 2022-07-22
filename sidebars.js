@@ -130,7 +130,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Basics',
-      collapsed: true,
+      collapsed: false,
       link: {
         type: 'generated-index',
       },
@@ -140,7 +140,10 @@ module.exports = {
         'online/basics/flow',
         'online/basics/retry-policy',
         'online/basics/callbacks',
-        'online/basics/request-fishing'
+        'online/basics/request-fishing',
+        'online/basics/error-codes',
+        'online/basics/allowed-currencies',
+        'online/basics/allowed-card-types'
       ]
     },
     {
@@ -159,13 +162,8 @@ module.exports = {
         'online/features/invalidation',
         'online/features/phone-number',
         'online/features/checkout',
-        'online/features/checkout-best-practice'
+        'online/features/embedded-flow'
       ]
-    },
-    {
-      type: 'doc',
-      id: 'online/appendix',
-      label: 'Appendix'
     }
   ]
 }

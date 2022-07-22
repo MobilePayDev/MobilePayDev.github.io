@@ -1,59 +1,4 @@
-# Appendix
-
-## Error codes
-
-The following will describe the error codes thrown and in which cases they can occur.
-
-The error format for status code 409 will be the following:
-
-```json
-{
-    "code": "2020",
-    "message": "Some description",
-    "correlationId": "8d72ece4-1b0b-464b-98d9-6bbb02199dc8"
-}
-```
-
-| Code | Endpoint(s) | Description
-|:---|:---|:---|
-| 2000 | POST /payments | Merchant doesn't exist
-| 2010 | POST /payments | The merchant isn't created by you
-| 2020 | POST /payments | The merchant is deleted
-| 2030 | POST /payments | Allowed card types are not set
-| 2040 | POST /payments | One or more of the allowed card types are invalid
-| 2050 | POST /payments | Currency code is invalid
-| 2100 | PUT payments/{paymentId:guid}/invalidate | Can't invalidate payment with completed authorization attempt
-| 2101 | PUT payments/{paymentId:guid}/invalidate | Can't invalidate payment - the authorization attempt has not yet been patched with success or failure. Try again later.
-
-## Allowed currencies
-
-Currencies must be specified according to the ISO-4217 standard. Either using the alphabetic or numeric version.
-Allowed currencies are:
-
-| Name | Alphabetic code | Numeric code
-|:---|:---|:---|
-| Danish kroner | DKK | 208
-| Euro | EUR | 978
-| Norwegian kroner | NOK | 578
-| Swedish kroner | SEK | 752
-| United States dollar | USD | 840
-| Pound sterling | GBP | 826
-
-## Allowed card types
-
-The following card types are allowed:
-
-| Card name | Code
-|:---|:---|
-| Visa electron | ELEC-DEBIT |
-| Mastercard credit | MC-CREDIT |
-| Mastercard debit | MC-DEBIT |
-| Maestro | MTRO-DEBIT |
-| Visa credit | VISA-CREDIT |
-| Visa debit | VISA-DEBIT |
-| Dankort | DANKORT |
-
-## Embedded Flow
+# Embedded Flow (IFrame)
 
 Web shops and Payment Service Providers (PSPs) may embed the MobilePay landing
 page inside their own website by nesting the page in an IFrame and then
@@ -70,7 +15,7 @@ Build your logic on the parent page, listen for the events published by the
 IFrame and redirect the user to the right page based on the returned data,
 e.g. depending on whether the user cancelled or completed the payment.
 
-### Embed the website in an IFrame
+## Embed the website in an IFrame
 
 Add an "IFrame" to the html source and set the IFrame "src" property to the URL
 returned from the payment link creation endpoint.
@@ -94,7 +39,7 @@ Example
 </IFrame>
 ```
 
-### Add an Event Listener to the parent page of the IFrame
+## Add an Event Listener to the parent page of the IFrame
 
 The parent page can listen for events by adding an event listener to the IFrame.
 
@@ -135,7 +80,7 @@ mobilepay:rc=0&message=completed
 | 3 | expired   |
 | 4 | cancelled |
 
-### Manually engaging the App from the parent page
+## Manually engaging the App from the parent page
 
 On mobile devices the app is not guaranteed to engage when the website is nested
 inside an IFrame.
