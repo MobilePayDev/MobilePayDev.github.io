@@ -43,11 +43,11 @@ Store your API keys private and secure and do not share with someone you don't t
 * Restrict your API key only to APIs you are going to use.
 
 ### Get an API key
-You can view and manage your API keys in the [MobilePay portal](https://beta-admin.mobilepay.dk/settings/apikeys). Meanwhile, sandbox keys are generated in the [sandbox version of MobilePay portal](https://sandprod-beta-admin.mobilepay.dk/settings/apikeys) and will be applicable only on sandbox environment.
+You can view and manage your API keys in the [MobilePay portal](https://portal.mobilepay.dk/settings/apikeys). Meanwhile, sandbox keys are generated in the [sandbox version of MobilePay portal](https://sandprod-portal.mobilepay.dk/settings/apikeys) and will be applicable only on sandbox environment.
 
 When creating an API key you need to select APIs which will be accessible using this key. You can also assign it a name. Once API key is generated, it is not  possible to change the scope or the name. Modifications must be carried out by creating a new API key. Lastly, you are fully responsible for managing the lifecycle of the keys you have created.
 
-![](/img/api-key.gif)
+![](/img/portal-api-keys.gif)
 
 ## Usage
 

@@ -183,3 +183,37 @@ It is possible to provide `paymentPointId` when creating or updating webhooks. T
 </tr>
 </tbody>
 </table>
+
+### Transfers
+
+<table className="webhooks-table">
+  <thead>
+    <tr>
+      <th>Event</th>
+      <th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>transfer.succeeded</td>
+      <td> Published when payment point balance has been successfully transferred to merchant account. </td>
+    </tr>
+    <tr>
+<td colSpan="2">
+
+```json title="Request body example"
+{
+  "notificationId": "f0690087-c51a-412f-a79c-e7977409ad84",
+  "eventType": "transfer.succeeded",
+  "eventDate": "2022-07-13T03:14:15Z",
+  "data": {
+    "id": "cae32025-b2ab-4973-8603-d51f8470005e",
+    "type": "transfer"
+  }
+}
+```
+
+</td>
+</tr>
+</tbody>
+</table>

@@ -4,6 +4,9 @@ sidebar_position: 10
 
 # Release notes
 
+### 2022-07-18
+New webhook event "transfer.succeeded" introduced. Notifications for this event are sent when payment point balance is successfully transferred to merchant account. More information can be found here [Webhooks API](/docs/webhooks#transfers).
+
 ### 2022-04-28
 New [Refunds API](/docs/payments-refunds/error-codes#refunds) error code introduced. Code "amount_exceeds_available_funds" is returned when payment point does not have enough available funds to refund the payment.
 
