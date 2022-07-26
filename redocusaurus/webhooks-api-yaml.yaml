@@ -184,6 +184,7 @@ components:
               - payment.expired
               - paymentpoint.activated
               - payment.cancelled_by_user
+              - transfer.succeeded
           description: |
             List of subscribed events.
         paymentPointId:
@@ -251,6 +252,7 @@ components:
               - payment.expired
               - paymentpoint.activated
               - payment.cancelled_by_user
+              - transfer.succeeded
           description: List of subscribed events.
           example:
             - payment.reserved
@@ -286,6 +288,7 @@ components:
               - payment.expired
               - paymentpoint.activated
               - payment.cancelled_by_user
+              - transfer.succeeded
           description: |
             List of subscribed events.
         paymentPointId:
