@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmobile_pay_merchant_payments_documentation=self.webpackChunkmobile_pay_merchant_payments_documentation||[]).push([[3749],{64047:function(e){e.exports=JSON.parse('{"name":"docusaurus-plugin-redoc","id":"webhooks-api-yaml"}')}}]);

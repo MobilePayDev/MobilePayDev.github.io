@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkmobile_pay_merchant_payments_documentation=self.webpackChunkmobile_pay_merchant_payments_documentation||[]).push([[995],{93049:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-redoc","id":"refunds-api-yaml"}')}}]);
