@@ -35,7 +35,7 @@ When you recieve the token callback, you´ll find a cardIssuedInCountryCode (pos
 
 Exactly as for encrypted card data callbacks, make sure you respond to the callback immediately. DO NOT leave the transaction "hanging" while you call out to the Acquirer. If we do not get a response to the callback in proper time we will allow the user to accept the payment again.
 
-[![Token](/img/token.svg)](/img/token.svg)
+[![Token](/img/online-token.svg)](/img/online-token.svg)
 
 ### Delegated Authentication for Visa card
 
@@ -107,7 +107,7 @@ Example of Mastercard S4C (MS4C) response:
 
 If Delegated Authentication fails, the 3DSecure fallback solution applies.
 
-[![3DS fallback](/img/3dsfallback.svg)](/img/3dsfallback.svg)
+[![3DS fallback](/img/online-3dsfallback.svg)](/img/online-3dsfallback.svg)
 
 When the user has completed the challenge, please immediately redirect to <https://products.mobilepay.dk/remote-website/apppages/done3ds.html>
 For Sandbox use: <https://sandprod-products.mobilepay.dk/remote-website/apppages/done3ds.html>

@@ -24,7 +24,7 @@ Four parameters are required when initiating a Checkout payment:
 * deliveryAddressDisallowedReasonCode: if deliveryAddressAllowed is set to false a reason must be given:
 1: Reason not given, 2: Goods don't require physical delivery, 3: 'Pick up at store' already selected in the Webshop, 4:'Parcel Shop' already selected in the Webshop, 5: Shop will select a parcelshop close to your home"
 
-[![checkout sequence diagram](/img/checkout-sequence-diagram.svg)](/img/checkout-sequence-diagram.svg)
+[![checkout sequence diagram](/img/online-checkout-sequence-diagram.svg)](/img/online-checkout-sequence-diagram.svg)
 
 ## Checkout callback
 

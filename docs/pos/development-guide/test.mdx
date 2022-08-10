@@ -1,0 +1,108 @@
+import Tabs from "@theme/Tabs"
+import TabItem from "@theme/TabItem"
+import TestApp from '/docs/shared-blocks/_test-app.mdx';
+
+# Test
+
+In this section, you can find information on testing, and our test ressources. To ensure a good user experience, we recommend you to test your solution thoroughly before certification and launch.
+
+## MobilePay PoS Sandbox Environment
+
+We have provisioned a sandbox environment for integration purposes The environment is the same bits and bytes as the production environment, with a few exceptions:
+
+* No actual payments and reservations are made. The payment backend have been mocked, and the transactions are kept in sandbox storage. This means that transactions won’t be visible in the test app activity list, and no app notifications are sent.
+* Loyalty card system is also mocked, and static loyalty card information is returned when applicable
+
+**Audience**: The test environment is meant for PoS integrators to be able to test integrations against the MobilePay PoS platform. It is an isolated environment that behaves as in live production, thus enabling PoS integrators to fully test the PoS API and business logic.
+
+**Background**: The environment is strictly meant for carrying out tests and development tasks towards certification.
+
+**The API**: The Merchant API in the sandprod environment is identical to the live production API.
+
+To complete a payment flow in the sandprod environment you will need to make user actions. To do so you have to options:
+
+* User simulation API: The API mimick the actions of a user and allows you to check in on a beaconId, accept and cancel a payment.
+* Test app: This version of the MobilePay app is similar to the live version, but only supports payments in the sandprod environment.
+
+## Test app
+
+<TestApp />
+
+### Log on to test app
+
+1. Install and open the MobilePay DK/FI Vendor app
+2. Select "Log på (Eksisterende bruger)" / "Kirjaudu sovellukseen / "Log on (existing user)"
+3. Enter a valid Sandbox phone number (see below section about test users)
+4. Enter SSN (Only relevant on fresh install)
+    * Denmark CPR no.: 000000-0000
+    * Finland henkilötunnus: 00000000000
+5. Enter PIN: “1234”
+6. Enter activation code: “123456” and press "OK" / "Jatka"
+
+## User simulation API
+
+To complete a payment flow in the sandprod environment you will need to make user actions. We have made an API that can mimick the actions of a user. You find it in the [API overview](https://sandbox-developer.mobilepay.dk/product): Choose 'PoS User Simulation for Integrators'
+
+With the API you can do the following:
+
+* Perform a check in on a beaconId
+* Accept a payment
+* Cancel a payment
+
+You must subscribe to the User simulation API, before you can use it. When calling the API, you must supply:
+
+|Input| Source|
+|--|--|
+| **Header: x-ibm- client-id**| From the developer portal|
+|**Header: x-ibm-client-secret**|From the developer portal|
+|**BeaconId**|Created through the PoS API|
+|**Phonenumber**|See below list of test users|
+
+### How to use the User simulation API
+
+1. Perform a check in on a beaconId: POST /app/usersimulation/checkin
+2. Initiate a payment through the PoS API: POST /api/v10/payments
+   * Accept the payment: POST /app/usersimulation/acceptpayment
+   *Cancel payment: POST /app/usersimulation/cancelpaymentbyuser
+
+To perform a check in and payment accept, you must supply a phone number for a test user. Below you find a list of test users with different features.
+
+## Test user
+
+When using the test app or user simulation API, you must use a test user. Below you can find a list of user ids for Denmark and Finland. If there is an issue with a test user please contact us. These test users are only to be used for for MobilePay PoS test. If you need a test user for a different product please visit the relevant product pages for more information or contact us at developer@mobilepay.dk
+
+:::caution
+Below users are shared amongst all PoS integrators and receipts for all test transactions are visible in the activity list. Please note that the PoS name (defined in CreatePosRequest) is visible on the receipt. Therefore do not include any sensitive or confidential data in the PoS name.
+:::
+
+<Tabs
+defaultValue="dk"
+values={[
+{label: 'DK test user', value: 'dk'},
+{label: 'FI test users', value: 'fi'},
+]}>
+
+<TabItem value="dk">
+
+|Phone number|PaymentSource|Feature|
+|--|--|--|
+|+45 20031801|Credit|Credit card|
+|+45 20031802|Debit|Debit card|
+|+45 20031803|Credit|Storebox|
+|+45 20031804|Credit|Loyalty|
+|+45 20031805|Credit|Partial capture|
+
+</TabItem>
+
+<TabItem value="fi">
+
+|Phone number| PaymentSource|Feature|
+|--|--|--|
+|+358 200318001|Credit|Credit card|
+|+358 200318002|Debit|Debit card|
+|+358 200318003|Credit|Storebox|
+|+358 200318004|Credit|Loyalty|
+|+358 200318005|Credit|Partial capture|
+
+</TabItem>
+</Tabs>

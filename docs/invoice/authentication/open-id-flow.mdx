@@ -1,0 +1,52 @@
+import Authorize from '/docs/shared-blocks/authentication/open-id/_authorize.mdx';
+import Code from '/docs/shared-blocks/authentication/open-id/_code.mdx';
+import Tokens from '/docs/shared-blocks/authentication/open-id/_tokens.mdx';
+import RefreshTokens from '/docs/shared-blocks/authentication/open-id/_refresh-token.mdx';
+
+# OpenId flow
+
+## Step 1: Initiate consent
+The 1st step is forming an authorization request with the appropriate URI parameters at the authorization endpoint
+
+You can find detailed information about this request in the OpenID Connect specification here Specification of parameters are found [here](http://openid.net/specs/openid-connect-core-1_0.html#HybridAuthRequest)
+
+<details className="plain-details">
+  <summary>Authorize</summary>
+  <div>
+    <Authorize />
+  </div>
+</details>
+
+## Step 2: Get Code
+
+You need to wait for the response by listening on the `redirect_uri` and get the `code`. MobilePay will re-direct you back to your system also using the `redirect_uri`. You only need to give consent once, unless you lose the `code` it expires, or you loose the `access_token` gained in the next step. The `code` has a lifetime of 5 minutes and can only be used once. Successive token requests with the same `code` will result in error.
+
+<details className="plain-details">
+  <summary>Code</summary>
+  <div>
+    <Code />
+  </div>
+</details>
+
+## Step 3: Get tokens
+
+You can find detailed information about token requests in the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html#TokenRequest). If the resource owner grants the access request, the authorization server issues an authorization code and delivers it to the client. Once you got the Authorization Code, you can use it to get access and refresh tokens from the token endpoint. 
+
+<details className="plain-details">
+  <summary>Tokens</summary>
+  <div>
+    <Tokens />
+  </div>
+</details>
+
+## Step 4: Refresh token
+
+To get a refresh token, you must include the offline_access scope when you initiate an authentication request through the authorize endpoint. To refresh your access token, using the Refresh Token you already got during authorization, make a POST request to the token endpoint. Read more [here](https://auth0.com/docs/tokens/refresh-token/current#use-a-refresh-token).
+
+
+<details className="plain-details">
+  <summary>Refresh Tokens</summary>
+  <div>
+    <RefreshTokens />
+  </div>
+</details>

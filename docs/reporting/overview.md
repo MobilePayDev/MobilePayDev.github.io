@@ -14,14 +14,13 @@ Reporting API lets you fetch transactions from these products offered by MobileP
 
 :::
 
-
 ## Migration from transaction reporting API
 
 Reporting API is a newer version of Transaction Reporting API, more about the old API you can find [here](https://mobilepaydev.github.io/MobilePay-TransactionReporting-API/).
 
 Also, you can use this guide on [how to migrate](../reporting/migrate-from-v1v2) from the old API.
 
-## How does it work?
+## How does it work
 
 A settlement payout includes all your sales transactions from the previous day, net refunds and fees.
 By using the API, you get a full list of all sales transactions and corresponding fees, totalling the settlement on your bank account.

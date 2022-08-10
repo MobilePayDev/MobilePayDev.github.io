@@ -83,7 +83,42 @@ module.exports = {
     {
       type: 'doc',
       id: 'reporting/overview',
-      label: 'Overview'
+      label: 'MobilePay Reporting'
+    },
+    {
+      type: 'doc',
+      id: 'reporting/getting-started',
+      label: 'Getting started'
+    },  
+    {
+      type: 'category',
+      label: 'Authentication',
+      collapsed: true,
+      link: {
+        type: 'generated-index',
+        description: 'Learn about authentication for Reporting API',
+      },
+      items: [
+        'reporting/authentication/authentication',
+        'reporting/authentication/api-key',
+        {
+          type: 'category',
+          label: 'OAuth',
+          collapsed: true,
+          link: {
+            type: 'generated-index',
+            description: 'Learn about OAuth authentication for Reporting API',
+          },
+          items: [
+            'reporting/authentication/open-id/open-id',
+            'reporting/authentication/open-id/authorize',
+            'reporting/authentication/open-id/code',
+            'reporting/authentication/open-id/tokens',
+            'reporting/authentication/open-id/refresh-tokens',
+            
+          ],
+        },
+      ],
     },
     {
       type: 'doc',
@@ -110,7 +145,7 @@ module.exports = {
     {
       type: 'doc',
       id: 'online/overview',
-      label: 'Overview'
+      label: 'MobilePay Online'
     },  
     {
       type: 'category',
@@ -164,6 +199,138 @@ module.exports = {
         'online/features/checkout',
         'online/features/embedded-flow'
       ]
+    },
+    {
+      type: 'doc',
+      id: 'online/resources',
+      label: 'Resources'
     }
+  ],
+  subscriptionsSidebar: [
+    {
+      type: 'doc',
+      id: 'subscriptions/overview',
+      label: 'MobilePay Subscriptions'
+    },  
+    {
+      type: 'category',
+      label: 'Development Guide',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        description: 'Learn how to integrate MobilePay Subscriptions',
+      },
+      items: [
+        'subscriptions/development-guide/getting-started',
+        'subscriptions/development-guide/test',
+        'subscriptions/development-guide/verification',
+        'subscriptions/development-guide/production'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Authentication',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        description: 'Learn about authentication for MobilePay Subscriptions',
+      },
+      items: [
+        'subscriptions/authentication/authentication',
+        'subscriptions/authentication/open-id/authorize',
+        'subscriptions/authentication/open-id/code',
+        'subscriptions/authentication/open-id/tokens',
+        'subscriptions/authentication/open-id/refresh-tokens',
+            
+          ],
+    },
+    {
+      type: 'doc',
+      id: 'subscriptions/resources',
+      label: 'Resources'
+    }
+  ],
+  posSidebar: [
+    {
+      type: 'doc',
+      id: 'pos/overview',
+      label: 'MobilePay PoS',
+    },  
+    {
+      type: 'category',
+      label: 'Development Guide',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        description: 'Learn how to integrate MobilePay Point of Sale',
+      },
+      items: [
+        'pos/development-guide/getting-started',
+        'pos/development-guide/test',
+        'pos/development-guide/verification',
+        'pos/development-guide/production'
+      ],
+    },
+    {
+      type: 'doc',
+      id: 'pos/resources',
+      label: 'Resources'
+    }
+  ],
+  invoiceSidebar: [
+    {
+      type: 'doc',
+      id: 'invoice/overview',
+      label: 'MobilePay Invoice'
+    },  
+    {
+      type: 'category',
+      label: 'Development Guide',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        description: 'Learn how to integrate MobilePay Invoice',
+      },
+      items: [
+        'invoice/development-guide/getting-started',
+        'invoice/development-guide/test',
+        'invoice/development-guide/verification',
+        'invoice/development-guide/production'
+      ],
+    },
+    {
+      type: 'category',
+      label: 'Authentication',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        description: 'Learn about authentication for MobilePay Invoice',
+      },
+      items: [
+        'invoice/authentication/authentication',
+        'invoice/authentication/open-id/authorize',
+        'invoice/authentication/open-id/code',
+        'invoice/authentication/open-id/tokens',
+        'invoice/authentication/open-id/refresh-tokens',
+            
+          ],
+      },
+    {
+      type: 'doc',
+      id: 'invoice/resources',
+      label: 'Resources'
+    }
+  ],
+  supportSidebar: [
+    {
+      type: 'doc',
+      id: 'support/support',
+      label: 'Support'
+    },  
+    {
+      type: 'doc',
+      id: 'support/faq',
+      label: 'FAQ'
+    }, 
   ]
 }

@@ -38,17 +38,17 @@ All merchants should have their own logo to give the best user experience. Only 
 
 ### Payment - Happy day
 
-[![payment sequence diagram](/img/payment-sequence-diagram.svg)](/img/payment-sequence-diagram.svg)
+[![payment sequence diagram](/img/online-payment-sequence-diagram.svg)](/img/online-payment-sequence-diagram.svg)
 
 ### Native app switching, Payment - Happy day
 
-[![payment with native app switching diagram](/img/payment-with-native-app-switching-sequence-diagrams.svg)](/img/payment-with-native-app-switching-sequence-diagrams.svg)
-[![after authorization sequence diagram](/img/after-authorization-sequence-diagram.svg)](/img/after-authorization-sequence-diagram.svg)
+[![payment with native app switching diagram](/img/online-payment-with-native-app-switching-sequence-diagrams.svg)](/img/online-payment-with-native-app-switching-sequence-diagrams.svg)
+[![after authorization sequence diagram](/img/online-after-authorization-sequence-diagram.svg)](/img/online-after-authorization-sequence-diagram.svg)
 
 ### When acquirer or issurer rejects a payment
 
-[![acquirer or issuer reject payment sequence diagram](/img/acquirer-or-issuer-reject-payment-sequence-diagram.svg)](/img/acquirer-or-issuer-reject-payment-sequence-diagram.svg)
+[![acquirer or issuer reject payment sequence diagram](/img/online-acquirer-or-issuer-reject-payment-sequence-diagram.svg)](/img/online-acquirer-or-issuer-reject-payment-sequence-diagram.svg)
 
 ### When the user rejects a payment
 
-[![user rejects payment sequence diagram](/img/user-rejects-payment-sequence-diagram.svg)](/img/user-rejects-payment-sequence-diagram.svg)
+[![user rejects payment sequence diagram](/img/online-user-rejects-payment-sequence-diagram.svg)](/img/online-user-rejects-payment-sequence-diagram.svg)

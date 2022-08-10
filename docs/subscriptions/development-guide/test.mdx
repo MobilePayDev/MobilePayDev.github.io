@@ -1,0 +1,204 @@
+import Tabs from "@theme/Tabs"
+import TabItem from "@theme/TabItem"
+
+# Test
+
+In this section, you can find information on testing in sandbox, as well as how to get test data. The Sandbox is a special environment designed just for testing, and an application that targets the Sandbox can perform all the operations it can in the Production environment. However, all users, items, and payment involved in Sandbox transactions are fictitious. To ensure a good user experience, we recommend you to test your solution thoroughly before launching.
+
+## Testing API
+
+We supply a testing API, that simulates user actions in the app. With the API you can do the following:
+
+* Accept and reject agreement
+* Cancel agreement
+* Reject subscriptions payment
+* Accept and reject OneOff payment
+
+You must subscribe to the testing API, before you can use it. When calling the testing API, you must always supply an authenticated user id. You can find a list of user ids below in the section about test data. The Subscriptions User Simulation API is available from the Sandbox APIs.
+
+## Sandbox testing
+
+Sandbox testing
+You are able to test all the Subscriptions features, just as they are in the production environment, and you will receive callbacks. However it is not possible to interact with the MobilePay app. Instead you have access to a testing API: Subscriptions User Simulation which makes it possible to imitate user actions. In the [technical documentation](https://mobilepaydev.github.io/MobilePay-Subscriptions/) you can find flow diagrams, where you can see the app flow.
+
+**Access Token**
+When you are calling the API, and when you've been through the OpenID Connect flow, then you should remember to add the access token. All calls to Subscriptions endpoints require access tokens. The content of the header should look like the following:
+
+ ```json title="Header examples"
+ accept: application/json
+ content-type: application/json
+ authorization::  REPLACE_THIS_VALUE
+ x-ibm-client-id: REPLACE_THIS_KEY
+ x-ibm-client-secret: REPLACE_THIS_KEY
+ ```
+
+When you make a payment request, then we validate the request itself, but not the individual payments. So it only validates if you have the required parameters with the correct types. So the response you get for the payment request, does not say if the payment is pending, but if the payment creation is pending. Then the payments are processed in our system, and they will either be requested (valid) or declined (invalid). Moreover, you will receive a callback to inform whether payments are requested or declined. This will be sent to your payment status callback.
+
+![Recurring payment states](/img/subs-payment_states.jpg)
+
+### Difference between sandbox and production
+
+| | Sandbox | "Hidden" production | **Production**|
+|--|--|--|--|
+|**Purpose**|To test all functionality in a shielded environment|To verify the UX experience and usage patterns. To test checkout flow. To see how transactions appear on the bank account| To offer MobilePay Subscriptions as a payment method for customers|
+|**Receive callbacks**|You receive callbacks in sandbox|You receive callbacks in "hidden production"|You receive callbacks in production|
+|**User**|MobilePay provides you with a test user below under 'Test data'. The testsuer can be used in sandbox|A real MobilePay user, that has downloaded the MobilePay app on their smartphone. In "hidden production" it is usually the employees that are conducting the testing that are testers|A real MobilePay user, that has downloaded the MobilePay app on their smartphone|
+|**Payment limit**|Same as in production. Read [here](https://www.mobilepay.dk/hjaelp/mobilepay-til-private/fakta/hvor-meget-kan-jeg-overfoere-med-mobilepay)|Read  [here](https://www.mobilepay.dk/hjaelp/mobilepay-til-private/fakta/hvor-meget-kan-jeg-overfoere-med-mobilepay%20%20)|Read [here](https://www.mobilepay.dk/hjaelp/mobilepay-til-private/fakta/hvor-meget-kan-jeg-overfoere-med-mobilepay)|
+|**User simulation**|There isn't a sandbox app for MobilePay. Instead, use the following API's to simulate user interaction: Subscriptions User Simulation|A real MobilePay user, that has downloaded the MobilePay app on their smartphone. The flow can be experienced from a customer point of view.|A real MobilePay user, that has downloaded the MobilePay app on their smartphone|
+|**Functionality**|Same functionality but fake transactions|Same functionality but real transactions.|Same functionality but real transactions|
+|**Transaction fee**|Free in sandbox|Transactions in production are not free|Transactions in production are not free|
+|**Endpoint**|[https://api.sandbox.mobilepay.dk](https://api.sandbox.mobilepay.dk/)|[https://api.mobilepay.dk](https://api.mobilepay.dk/)|[https://api.mobilepay.dk](https://api.mobilepay.dk/)|
+|**Subscriptions/Payment Validation**|1 day|1 day|1 day|
+|**Subscriptions API/Visible in the app**|No|No|Yes|
+|**Reconciliation**|You cannot test reconciliation in sandbox, as you will have a fake testuser and fake account. You will not see how the money apears on the bank account.|Yes. The Transaction Reporting Api is available in production|Yes. The Transaction Reporting API is available in production|
+
+:::tip
+
+As far as possible, automate your tests
+
+:::
+
+## Test data
+
+When using the Subscriptions User Simulation API, you must always supply an authenticated user id. Below you can find a list of user ids for Denmark and Finland. If there is an issue with a test user, please try a different user, or contact us at developer@mobilepay.dk
+
+:::note
+When testing Subscription payments and one-offs in Sandbox remember to use the same authenticated user id for both creating and approving the payments.
+These are only valid on our test platform, and will not result in a real transaction or transfer of funds.
+You can test how your integration handles responses from the MobilePay platform by forcing specific result codes.
+:::
+
+<Tabs
+defaultValue="dk"
+values={[
+{label: 'DK test users', value: 'dk'},
+{label: 'FI test users', value: 'fi'},
+]}>
+
+
+<TabItem value="dk">
+
+|Authenticated user id | Phone number | Consumer name |
+|--|--|--|
+| f1a75bb4-c8a6-41f8-8603-4cf9278cd5ba | +4557373259 | Test name|
+| 4f474aa2-6161-4094-97fd-62616ff3d21e | +4599592431 | Test name*|
+| d5e4e229-b482-4304-80f1-237d2a3abc48 | +4522509895 | Test name|
+| 40b881f7-ac3d-43bb-81e6-2ac9ef279d89 | +4554048573 | Test name|
+| 147a8bbd-6a87-40e7-9980-937d1b8d0de4 | +4585155935 | Test name|
+**Card is expired. Use this testuser to test error handling for failed card scenarios*
+
+</TabItem>
+
+<TabItem value="fi">
+
+|Authenticated user id | Phone number | Consumer name |
+|--|--|--|
+| 404f38dd-25dd-4683-831c-a85f1d25b64d | +358806041406 | FI Test name|
+| d5ae8716-4f28-49cc-926b-9667cdeed27a | +358806041436 | FI Test name|
+| 6b6c72bc-4a90-4cf7-ada1-c0318cc5404d | +358806041507 | FI Test name|
+| 04e1f1d4-47e1-4db9-8f0e-35b29e380890 | +358806041536 | FI Test name|
+
+</TabItem>
+</Tabs>
+
+Also, familiarize yourself to the steps described in the testing section to find out in which order you should perform these calls. For Subscriptions, we recommend you create an agreement, so you can request a subscriptions payment on the agreement.
+
+## Making the first calls
+
+Once you have completed the OpenID Connect flow, you are ready to make the first call to our API.  
+
+1. Call `GET /api/merchants/me` which will return you a list of subscription providers for that merchant, with their IDs and basic information which you will need in th other api calls.
+
+:::note
+Note: If you are an integrator  managing the solution for a Merchant, this will be your first task when onboarding them to your platform. The Merchant does not know their SubscriptionsProviderId.
+:::
+
+```json title="Request body example"
+{
+  "Id": "5911127561076736",
+  "SubscriptionProviders": [
+    {
+      "SubscriptionProviderId": "00000000-0000-0000-0000-000000000000",
+      "Name": "Netflix",
+      "HomepageUrl": "http://netflix.com",
+      "CustomerServiceEmail": "customerservice@netflix.com",
+      "SelfServicePortalUrl": "http://netflix.com/mylogin",
+      "FaqUrl": "http://netflix.com/faq",
+      "Status": "active",
+      "Address": "Rådhuspladsen 1",
+      "ZipCode": "1550",
+      "City": "Copenhagen"
+    }
+  ]
+}
+```
+
+2. You can then continue by creating your first MobilePay Subscriptions agreement. To create an agreement use `POST /api/providers/{providerId}/agreements`.
+
+Make a `POST` to the endpoint
+`https://api.sandbox.mobilepay.dk/subscriptions/api/providers/{providerId}/agreements` (remember to insert your own URLs)
+
+```json title="Request example"
+ accept: application/json
+ content-type: application/json
+ authorization::  REPLACE_THIS_VALUE
+ x-ibm-client-id: REPLACE_THIS_KEY
+ x-ibm-client-secret: REPLACE_THIS_KEY
+
+{
+ "external_id":"OrderNumber1",
+ "amount":10,
+ "currency":"DKK",
+ "description":"Home and Car Insurance",
+ "next_payment_date":"2021-12-16",
+ "frequency":12,
+ "links":[
+   {"rel":"user-redirect","href":"https://example.com/"},
+   {"rel":"success-callback","href":"https://example.com/"},
+   {"rel":"cancel-callback","href":"https://example.com/"}],
+ "country_code":"DK",
+ "plan":"Insurance",
+ "expiration_timeout_minutes":5,
+ "mobile_phone_number": "4511100118",
+ "retention_period_hours": 0,
+ "disable_notification_management": false,
+}
+```
+
+If successfull, you will recieve a http `201 created` response including an agreement id for the pending agreement, and a link to redirect the user to the pending agreement.
+In the sandbox, the link will not be working, instead you need to use the Subscriptions User Simulation API and the test data we have provided you with, to accept the agreement. Use `PATCH /api/agreements/v1/{id}` to accept the agreement.
+Congratulation, you have created your first agreement!
+
+## Testing example - Accept Agreement - 3rd party
+
+When you have created an agreement in sandbox, you can use the testing API to simulate that a user accepts the agreement.
+To accept an agreement you must use `PATCH /api/agreements/v1/{id}` and replace `{id}` with an agreement id.
+
+**Example**
+Make a `PATCH` to endpoint
+`https://api.sandbox.mobilepay.dk/recurringpayments-restapi/api/agreements/v1/REPLACE_ID` with following headers:
+
+ ```json title="Request example"
+ accept: application/json
+ content-type: application/json
+ x-ibm-client-id: REPLACE_THIS_KEY
+ x-ibm-client-secret: REPLACE_THIS_KEY
+ authenticateduser: REPLACE_THIS_KEY
+
+{"status":"Accepted"}
+```
+
+If successfull, you will recieve a http `204 No Content` response. We will then send a callback to the success-callback you have set, when the agreement was created, to inform that the agreement has been accepted:
+
+ ```json title="Header example"
+{
+    "agreement_id" : "AGREEMENT_ID",
+    "status" : "Accepted",
+    "status_text" : "The agreement has been accepted.",
+    "status_code" : "0",
+    "external_id" : "EXTERNAL_ID",
+    "timestamp" : "2016-08-24T11:42:27+00:00"
+}
+```
+
+And then you are ready to start requesting payments for the new agreement.

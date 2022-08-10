@@ -1,0 +1,90 @@
+## Step 3: Get tokens
+
+You can find detailed information about token requests in the [OpenID Connect specification](http://openid.net/specs/openid-connect-core-1_0.html#TokenRequest). If the resource owner grants the access request, the authorization server issues an authorization code and delivers it to the client. Once you got the Authorization Code, you can use it to get access and refresh tokens from the token endpoint. 
+
+### Exchange Authorization Code to tokens 
+The next step is forming an HTTPS  POST request with the appropriate URI parameters to token endpoint.
+
+|  | Sandbox | Production |
+|--|---------|------------|
+| DK | `https://api.sandbox.mobilepay.dk/merchant-authentication-openidconnect/connect/token` | `https://api.mobilepay.dk/merchant-authentication-openidconnect/connect/token` |
+| FI | `https://api.sandbox.mobilepay.dk/merchant-authentication-openidconnect/connect/token` | `https://api.mobilepay.dk/merchant-authentication-openidconnect/connect/token` |
+
+```
+Content-Type: application/x-www-form-urlencoded
+host: api.sandbox.mobilepay.dk
+{
+&grant_type=authorization_code
+&code=e9c66660066fb5a7a54a9db8be02dacc477c9eacc5cced20c47d8a6d7fb659da
+&redirect_uri=https://myredirect_uri.com
+&code_verifier=0396f08effbfdc95e803fd2d855bf8743f9f03097b6aaf6864eaa4081ed3e172
+&client_id=some.test.clientfromzipfile
+&client_secret=mysecretfromzipfile
+}
+```
+
+You need to use following parameters: 
+
+| Parameters | Description | Value | Required |
+|------------|-------------|-------|----------|
+| `grant_type` | Must be set to  (authorization should be typed with z, not s) | "authorization_code" | Yes |
+| `code` | The "authorization code" that you received in the previous step | | Yes|
+| `code_verifier` | The code_verifier used to create code_challenge used to call /authorization | A cryptographically random string, that is used to correlate the authorization request to the token request. CodeVerifierMinLength = 43, CodeVerifierMaxLength = 128 | Yes |
+| `client_id` | the `client_id` that you received by zip file. | The `client_id` given in the zip file | Yes |
+| `client_secret` | the `client_secret` that you received by zip file | The client_secret given in the zip file | Yes |
+| `redirect_uri` | The HTTPS endpoint on your server, that will receive the response from MobilePay. MUST match exactly with the one provided to /connect/authorize. | `redirect_uri` as registered and whitelisted by developer@mobilepay.dk | Yes |
+
+With a successful response, you will get the following tokens:
+
+* Access token - The client uses an access token to make authenticated requests on behalf of the end user, by putting the token in the request authorization header. When an access token expires, it will no longer be valid, and you will get an error if you try to use it.
+* Refresh token - Used to refresh the access token. A refresh token is valid for 13 months - which is a "sliding lifetime" so every time a refresh tokens is used the lifetime is reset.  Refresh token are a substitute for long-lived tokens. 
+
+Example:
+```
+Content-Type: application/json
+{ "id_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2ODk1MzJCMDIxN0QyMkE0NzEwNDE3QkMxMzI2QjkwQjRGQ0E0N0YiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJKb2xUS3dJWDBpcEhFRUY3d1RKcmtMVDhwSDgifQ.eyJuYmYiOjE1MjgzNzU3MDAsImV4cCI6MTUyODM3NjAwMCwiaXNzIjoiaHR0cHM6Ly9hcGkubW9iaWxlcGF5LmRrL21lcmNoYW50IiwiYXVkIjoiaW52b2ljZS50ZXN0Y2xpZW50Iiwibm9uY2UiOiIyOGIzMjU0NWJlZTY0MTAwYTZlOTJlZGRiYzEzZjU2MiIsImlhdCI6MTUyODM3NTcwMCwiYXRfaGFzaCI6IllGSGZaZDBRLWVKTF92czhvM2Z2MWciLCJzdWIiOiJiYTlkMWU0MS1lZWE1LTQ3ODUtYjJjOC00ZWViOTg0YTIxY2EiLCJhdXRoX3RpbWUiOjE1MjgzNzU2OTksImlkcCI6ImxvY2FsIiwiYW1yIjpbIlVzZXJFbnRlcmVkQ29kZSIsIlNlcnZlclByb3ZpZGVkS2V5Il19.AhUURQWWaD8ASmyWsyZnqzJ8dy5SrvA1v4wGiJB9Kt7GiqZZqWwUXzPRwqtKGvGgwPsDBju5OJQ791IWdKxTUIbxf8dUYRh90ncuHAvjY9jf3ma8orktDf_cSFpoZZLJM8c0ml0FgRwJTc7O0jbRVAMniklgZy1uvtro5b-6gXOfcYHX2XxSw_aDhb3dxC4_TKNF7uzGyuhbmmW7ElCwgw64zKUuAWQw7NKuf5dO2Pakv9PDJ3Isz2dYpXJd2q13cjL_NxfiOldA5PsPBAwfv8cBRjUup5j6pC6phjJ36z3mR4626boDLQgwN1Gl7Mj4gO0WV6eHq5E8tJ8l-6oCKA",
+
+"access_token":"eyJhbGciOiJSUzI1NiIsImtpZCI6IjI2ODk1MzJCMDIxN0QyMkE0NzEwNDE3QkMxMzI2QjkwQjRGQ0E0N0YiLCJ0eXAiOiJKV1QiLCJ4NXQiOiJKb2xUS3dJWDBpcEhFRUY3d1RKcmtMVDhwSDgifQ.eyJuYmYiOjE1MjgzNzU3MDAsImV4cCI6MTUyODM3NjAwMCwiaXNzIjoiaHR0cHM6Ly9hcGkubW9iaWxlcGF5LmRrL21lcmNoYW50IiwiYXVkIjoiaHR0cHM6Ly9hcGkubW9iaWxlcGF5LmRrL21lcmNoYW50L3Jlc291cmNlcyIsImNsaWVudF9pZCI6Imludm9pY2UudGVzdGNsaWVudCIsInN1YiI6ImJhOWQxZTQxLWVlYTUtNDc4NS1iMmM4LTRlZWI5ODRhMjFjYSIsImF1dGhfdGltZSI6MTUyODM3NTY5OSwiaWRwIjoibG9jYWwiLCJzY29wZSI6WyJvcGVuaWQiLCJpbnZvaWNlIl0sImFtciI6WyJVc2VyRW50ZXJlZENvZGUiLCJTZXJ2ZXJQcm92aWRlZEtleSJdfQ.Mekt_sq6TiBUopacQafQImdo2EanvEKHwDblgrralgEij4AVj_xMVy71rp9c4Iv2WvNAI6iIStnyF7HQ25Kpu9hJp-4192AQMkk8hly7Cm4lRfRJfx0W3soOOCIGkTAvwvUXIdscNT1GOoaibMmiFiZHTlmDMSKhXFcRqg8JdWxjr4khMOByzVebvVS5qrFYpFgO0nAUaI7GB_gVyzNeQCmatTtvZR323-5sJILtIk3jbxHJpq4aTHWdCc44JQuXyUAYWZQPiMgom_tGSwCSuvF5la1hFRFNfDeh6qmiRH_RDF2Ado8-S5sCT-4R3_ns5gaTcC6UQvcSsQFxXqGY_w",
+
+"expires_in":300,
+
+"token_type":"Bearer",
+
+"refresh_token":"69a9393515b4a24d232cf0357463590817fd8f57049a7fe78ce02177880fe592" }
+```
+
+You can use the JWT debugger at https://jwt.io/ to inspect the tokens - it makes it much easier to read.
+
+Access token and refresh tokens are issued to a merchant, and are only usable for the specific merchant. Therefore, if a single merchant (e.g. a publisher) has multiple subscription providers (different newspapers or magazines), you can use the same token for all of them, but for a different merchant (another publisher) you would need another token. You need to use the access token when calling the different endpoints in the APIs. And when the access token is expired, you use the refresh token to get a new set of tokens.
+
+The Access Token is used to make authenticated calls to a secured API, while the ID Token contains user profile attributes represented in the form of claims. Both JWTs have an expiration date indicated by the exp claim. 
+
+### Token Request Validation 
+
+The Authorization Server validates the Token Request as follows:
+
+* Authenticate the Client if it was issued Client Credentials or if it uses another Client Authentication method
+* Ensure the `authorization_code` was issued to the authenticated Client.
+* Verify that the `authorization_code` is valid.
+* If possible, verify that the `authorization_code` has not been previously used.
+* Ensure that the  `redirect_uri` parameter value is identical to the `redirect_uri` parameter value that was included in the initial Authorization Request. If the `redirect_uri` parameter value is not present when there is only one registered `redirect_uri`  value, the Authorization Server returns an error (since the Client should have included the parameter) 
+* Verify that the Authorization Code used was issued in response to an OpenID Connect Authentication Request (so that an ID Token will be returned from the Token Endpoint).
+
+Access token and refresh tokens are issued by a merchant, and so is per merchant. Therefore, if a single merchant (a publisher let us say) has multiple subscription providers (different newspapers), you can use the same token for all of them, but for a different merchant (another publisher) you would need another token. You need to use the access token when calling the API. And when the access token is expired, you use the refresh token to get a new set of tokens. 
+
+### Best Practice
+
+* **Do not** hard-code any tokens into your code, instead use a database to store tokens.
+* **Delete** the token immediately from production and back-ups, if you no longer have the need for the merchant token
+* Validate TLS certificate chains: the client must validate the TLS certificate chain when making requests to protected resources. Failing to do so may enable DNS hijacking attacks to steal the token and gain unintended access
+* Always use TLS (https): Clients must use TLS (https) or equivalent transport security when making requests with bearer tokens. 
+* Don't store bearer tokens in cookies: implementations that do store bearer tokens in cookies MUST take precautions against cross-site request forgery. 
+* Use a OpenID Connect library that has built-in token management 
+* Ensure that there is no way of exposing the merchant token (or the functionality of that token) to another user by accident. 
+* Be aware of the fact that access can be revoked at any time. Once consent is revoked, the integrator will not be able to use the access token or the refresh token. You will need to get consent again.  
+* Protect all types of tokens and secrets. Keep them secret. Keep them safe. It is your responsibility to keep them secret 
+* Adhere to the [principle of least privilege](https://en.wikipedia.org/wiki/Principle_of_least_privilege). Applications should never request more than the minimum permissions needed to function properly. 
+* We recommend that after you complete local development, remove localhost and related domains from your configuration list.
+* **Do not send us your tokens.** 
+* The tokens should never be exposed. 
+* We recommend that you use middleware or one of the existing open source third-party libraries to parse and validate JWTs. At JWT.io, you can find libraries for various platforms and languages, such as .NET, Python, Java, Ruby, Objective-C, Swift, and PHP.
