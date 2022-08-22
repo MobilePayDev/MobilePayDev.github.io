@@ -79,6 +79,7 @@ Property `state` can have these values:
 
 - **initiated** - initial state.
 - **reserved** - MobilePay user approved payment, ready to be captured.
+- **capturedStarted** - special state where capture was started but is left in an unknown state. Capture has to be retried if this state is encountered.
 - **captured** - final state, funds will be transferred during next settlement.
 - **cancelledByMerchant** - payment was cancelled by you.
 - **cancelledBySystem** - no user interactions with payment were made in 5-10 minutes after creation, so our automated job cancelled it.
@@ -144,6 +145,10 @@ curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/capture \
     "amount": 1250
   }'
 ```
+
+:::danger
+If you receive 5xx response while capturing the reservation then that most likely means the payment ended up in **captureStarted** state. You have to retry the capture in such case until you get either 2xx or 4xx. The capture call is idempotent.
+:::
 
 ## Cancel payment
 
