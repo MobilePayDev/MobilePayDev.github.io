@@ -43,16 +43,8 @@ module.exports = {
           position: 'left',
           items: [
             {
-              label: 'Payments',
-              to: '/api/payments',
-            },
-            {
-              label: 'Payment Points',
-              to: '/api/payment-points',
-            },
-            {
-              label: 'Refunds',
-              to: '/api/refunds',
+              label: 'App payments',
+              to: '/api/app-payments',
             },
             {
               label: 'Webhooks',
@@ -115,18 +107,8 @@ module.exports = {
         specs: [
           {
             id: 'payments-api-yaml',
-            spec: "openapi/payments_api.yaml",
-            route: "/api/payments",
-          },
-          {
-            id: 'payment-points-api-yaml',
-            spec: "openapi/payment_points.yaml",
-            route: "/api/payment-points",
-          },
-          {
-            id: 'refunds-api-yaml',
-            spec: "openapi/refunds.yaml",
-            route: "/api/refunds",
+            spec: "openapi/app_payments_api.yaml",
+            route: "/api/app-payments",
           },
           {
             id: 'webhooks-api-yaml',
