@@ -89,7 +89,7 @@ paths:
               enum:
                 - initiated
                 - reserved
-                - capturedStarted
+                - captureStarted
                 - captured
                 - cancelledByMerchant
                 - cancelledByUser
@@ -422,7 +422,7 @@ components:
           enum:
             - initiated
             - reserved
-            - capturedStarted
+            - captureStarted
             - captured
             - cancelledByMerchant
             - cancelledByUser
