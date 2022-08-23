@@ -4,17 +4,7 @@ sidebar_position: 2
 
 # Authentication
 
-We are providing two different options for authentification. The first one is [OAuth](#get-an-oauth-access-token) which is used to get authenticated and scoped access to any MobilePay merchant account. Use them when your application will access resources on behalf of multiple MobilePay merchant accounts, i.e. you are an integrator. Second option is [API keys](#api-keys). They are used to get unlimited access to resources in your merchant account. But first, you need to onboard your app in our developer portal.
-
-## Creating an App in developer portal
-
-1. **Log-in to developer portal**. Go to [developer portal](https://developer.mobilepay.dk/) and log in with your credentials.
-
-2. **Create an app in the developer portal**. Go to My Apps > Create new App to register a new application. You need to supply the `x-ibm-client-id` when calling APIs. You should always store the `x-ibm-client-id` in a secure location, and never reveal it publicly.
-
-3. **Subscribe the app to products.** Go to the "APIs" section and subscribe to the following api products:
-    * Payments
-    * Webhooks
+We are providing two different options for authentification. The first one is [OAuth](#get-an-oauth-access-token) which is used to get authenticated and scoped access to any MobilePay merchant account. Use them when your application will access resources on behalf of multiple MobilePay merchant accounts, i.e. you are an integrator. Second option is [API keys](#api-keys). They are used to get unlimited access to resources in your merchant account.
 
 ## Get an OAuth access token
 
@@ -52,10 +42,8 @@ When creating an API key you need to select APIs which will be accessible using 
 ## Usage
 
 To perform successfull authorization provide:
-* **API_Key** - generated as described before (OAuth access token or Api key)
-* **client_id** - acquired in [developer portal](https://developer.mobilepay.dk/application/) by going to My Apps page.
+* **API key** - generated as described before (OAuth access token (JWT) or API key)
 
 ```jsx
--H "Authorization: Bearer {API_Key}"
--H "x-ibm-client-id: {client_id}"
+-H "Authorization: Bearer {API key}"
 ```

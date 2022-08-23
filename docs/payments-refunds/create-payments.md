@@ -15,7 +15,6 @@ The first step in your journey of collecting payments would be to initiate a new
 ```bash title="Create payment"
 curl https://api.mobilepay.dk/v1/payments \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -54,7 +53,6 @@ Whenever there is a need you can retrieve details of a single payment and e.g. c
 ```bash title="Retrieve payment"
 curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID} \
   -X GET \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}'
 ```
 
@@ -92,7 +90,6 @@ There's also a possibility to list all your payments in pages. Multiple searchin
 ```bash title="List payments"
 curl https://api.mobilepay.dk/v1/payments \
   -X GET \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}'
 ```
 
@@ -138,7 +135,6 @@ At this point you have 2 options:
 ```bash title="Capture payment"
 curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/capture \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -157,7 +153,6 @@ If you changed your mind and want to cancel payment , you can do that using the 
 ```bash title="Cancel payment"
 curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/cancel \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
 ```
 
@@ -173,7 +168,6 @@ After successful cancellation, you can create a new payment again.
 ```bash title="Capture payment"
 curl https://api.mobilepay.dk/v1/payments/cancel \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{

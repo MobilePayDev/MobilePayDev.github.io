@@ -71,7 +71,6 @@ We also have a Payments Testing API in sandbox environment, which has only one e
 ```bash title="Simulate user swiping and confirming the payment in MobilePay app."
 curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/reserve \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{
