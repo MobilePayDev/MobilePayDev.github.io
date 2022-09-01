@@ -7,8 +7,9 @@ info:
 
     #### General notes
 
-    All dates use the (`ISO 8601-1:2019`) format.<br/> Date-time format -
-    `YYYY-MM-DDTHH:mm:ssZ` or `YYYY-MM-DDTHH:mm:ss+00:00`.
+    All dates use the (`ISO 8601-1:2019`) format.<br/> Date format -
+    `YYYY-MM-DD`.<br/> Date-time format - `YYYY-MM-DDTHH:mm:ssZ` or
+    `YYYY-MM-DDTHH:mm:ss+00:00`.<br/>
   contact:
     email: developer@mobilepay.dk
   version: v3
@@ -118,12 +119,14 @@ paths:
           in: query
           schema:
             type: string
-            format: date-time
+            format: date
+            example: '2021-11-30'
         - name: enddate
           in: query
           schema:
             type: string
-            format: date-time
+            format: date
+            example: '2021-11-30'
         - name: reference
           in: query
           description: >-
