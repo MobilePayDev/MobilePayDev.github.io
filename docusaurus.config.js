@@ -13,6 +13,16 @@ module.exports = {
   organizationName: "MobilePayDev",
   projectName: "MobilePay-Payments-API",
   trailingSlash: false,
+  themes: [
+    [
+      require.resolve("@easyops-cn/docusaurus-search-local"),
+      {
+        hashed: true,
+        explicitSearchResultPath: true,
+        highlightSearchTermsOnTargetPage: true,
+      },
+    ],
+  ],
   themeConfig: {
     navbar: {
       title: "Developer",
