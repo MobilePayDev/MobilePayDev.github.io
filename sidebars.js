@@ -259,7 +259,7 @@ module.exports = {
     {
       type: 'category',
       label: 'Development Guide',
-      collapsed: false,
+      collapsed: true,
       link: {
         type: 'generated-index',
         description: 'Learn how to integrate MobilePay Point of Sale',
@@ -270,6 +270,84 @@ module.exports = {
         'pos/development-guide/verification',
         'pos/development-guide/production'
       ],
+    },
+	{
+      type: 'doc',
+      id: 'pos/authentication',
+      label: 'Authentication'
+    },
+	{
+      type: 'doc',
+      id: 'pos/detecting-mobilepay',
+      label: 'Detecting MobilePay'
+    },
+    {
+      type: 'category',
+      label: 'Payment Flows',
+      collapsed: false,
+      link: {
+        type: 'generated-index',
+        description: 'Learn about payment flows',
+      },
+      items: [
+        'pos/payment-flows/flows',
+        'pos/payment-flows/payment-flow',
+        'pos/payment-flows/prepared-payment-flow',
+        'pos/payment-flows/payment-flow-error-handling',
+        'pos/payment-flows/refunds',
+        'pos/payment-flows/cancel-flows',
+        'pos/payment-flows/partial-capture'
+      ],
+    },
+	{
+      type: 'doc',
+      id: 'pos/pos-management',
+      label: 'PoS Management'
+    },
+	{
+      type: 'doc',
+      id: 'pos/notification-service',
+      label: 'Notification Service'
+    },
+	{
+      type: 'doc',
+      id: 'pos/best-practices',
+      label: 'Best Practices'
+    },
+	{
+      type: 'doc',
+      id: 'pos/api-principles',
+      label: 'API Principles'
+    },
+	{
+      type: 'doc',
+      id: 'pos/self-certification',
+      label: 'Self Certification'
+    },
+	{
+      type: 'doc',
+      id: 'pos/api-errors',
+      label: 'API Errors'
+    },
+	{
+      type: 'doc',
+      id: 'pos/input-and-output-formats',
+      label: 'Input and Output Formats'
+    },
+	{
+      type: 'doc',
+      id: 'pos/create-qr-codes',
+      label: 'Create QR Codes'
+    },
+	{
+      type: 'doc',
+      id: 'pos/release-notes',
+      label: 'Release Notes'
+    },
+	{
+      type: 'doc',
+      id: 'pos/glossary',
+      label: 'Glossary'
     },
     {
       type: 'doc',

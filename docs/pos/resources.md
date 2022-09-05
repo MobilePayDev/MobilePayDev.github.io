@@ -9,3 +9,10 @@
 MobilePay site [DK](https://www.mobilepay.dk/erhverv/fysiske-butikker/mobilepay-point-of-sale) | [FI](https://mobilepay.fi/yrityksille/myyntipisteet/mobilepay-point-of-sale): Product information and support for merchants
 
 [Design Guidelines](https://developer.mobilepay.dk/design): Find MobilePay buttons, logos, banners etc.
+
+Order PoS stickers and signs in the [web shop](https://mp.bordingcentral.dk/user/Login.aspx)
+
+Templates for creating PoS signs can be found here:
+
+* DK: [Materialebank](https://mobilepay.dk/materialebank/marketingmateriale/skilte/skiltning)
+* FI: Please contact business.support@mobilepay.fi
