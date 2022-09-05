@@ -15,7 +15,6 @@ The first step in your journey of collecting payments would be to initiate a new
 ```bash title="Create payment"
 curl https://api.mobilepay.dk/v1/payments \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -54,7 +53,6 @@ Whenever there is a need you can retrieve details of a single payment and e.g. c
 ```bash title="Retrieve payment"
 curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID} \
   -X GET \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}'
 ```
 
@@ -79,6 +77,7 @@ Property `state` can have these values:
 
 - **initiated** - initial state.
 - **reserved** - MobilePay user approved payment, ready to be captured.
+- **captureStarted** - special state where capture was started but is left in an unknown state. Capture has to be retried if this state is encountered.
 - **captured** - final state, funds will be transferred during next settlement.
 - **cancelledByMerchant** - payment was cancelled by you.
 - **cancelledBySystem** - no user interactions with payment were made in 5-10 minutes after creation, so our automated job cancelled it.
@@ -91,7 +90,6 @@ There's also a possibility to list all your payments in pages. Multiple searchin
 ```bash title="List payments"
 curl https://api.mobilepay.dk/v1/payments \
   -X GET \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}'
 ```
 
@@ -137,13 +135,16 @@ At this point you have 2 options:
 ```bash title="Capture payment"
 curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/capture \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{
     "amount": 1250
   }'
 ```
+
+:::danger
+If you receive 5xx response while capturing the reservation then that most likely means the payment ended up in **captureStarted** state. You have to retry the capture in such case until you get either 2xx or 4xx. The capture call is idempotent.
+:::
 
 ## Cancel payment
 
@@ -152,7 +153,6 @@ If you changed your mind and want to cancel payment , you can do that using the 
 ```bash title="Cancel payment"
 curl https://api.mobilepay.dk/v1/payments/{PAYMENT_ID}/cancel \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
 ```
 
@@ -168,7 +168,6 @@ After successful cancellation, you can create a new payment again.
 ```bash title="Capture payment"
 curl https://api.mobilepay.dk/v1/payments/cancel \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{

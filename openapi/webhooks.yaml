@@ -3,6 +3,10 @@ info:
   title: Webhooks API
   description: |-
     <br/> MobilePay Webhooks API makes it easy for you to register to webhooks.
+
+    Currently supported events about payments (those that start with `payment.*`) are only **about payments from "App payments"** product.
+    
+    Event `transfer.succeeded` is generic and supports all products.
   contact:
     email: developer@mobilepay.dk
 servers:

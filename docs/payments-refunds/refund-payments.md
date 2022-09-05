@@ -16,7 +16,6 @@ Common refund scenarios include:
 ```bash title="Refund payment"
 curl https://api.mobilepay.dk/v1/refunds \
   -X POST \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json' \
   -d '{
@@ -51,7 +50,6 @@ After you refund a payment there might be a need to get refund information.
 ```bash title="Retrieve refund"
 curl https://api.mobilepay.dk/v1/refunds/{refundid} \
   -X GET \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json'
 ```
@@ -61,7 +59,6 @@ Or to see all refunds.
 ```bash title="List refunds"
 curl https://api.mobilepay.dk/v1/refunds \
   -X GET \
-  -H 'x-ibm-client-id: {CLIENT_ID}' \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json'
 ```

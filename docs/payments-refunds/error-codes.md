@@ -28,6 +28,7 @@ If any client errors occur, our endpoints return an error object describing the 
 | invalid_payment_state   | Cannot cancel payment that is already captured. |
 | invalid_payment_state   | Only initiated payments can be cancelled by idempotency key. |
 | invalid_payment_state   | Only reserved payments can be captured. |
+| invalid_payment_state   | Capture attempted and failed. Please try capturing again. |
 | invalid_payment_point   | Payment point is not active. |
 | payment_point_not_found  | Payment point does not exist. |
 | idempotency_key_reused   | Different request parameters already used for the same idempotencyKey - {_idempotencyKey_}. |
