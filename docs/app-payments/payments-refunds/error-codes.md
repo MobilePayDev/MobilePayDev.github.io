@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Error Codes
 
 If any client errors occur, our endpoints return an error object describing the issues encountered. Each error object has the same contract. Here's an example:

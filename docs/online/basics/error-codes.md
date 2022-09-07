@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # Error codes
 
 The following will describe the error codes thrown and in which cases they can occur.

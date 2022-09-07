@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Merchants
 
 As a PSP, you need to create the merchants in MobilePay in order to create payments on their behalf.

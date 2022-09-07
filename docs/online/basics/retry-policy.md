@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Retry policy
 
 Even though we have above 99% uptime and handle millions of transactions each week, external factors, such as network related issues, can contribute to momentary disturbances in our response times.

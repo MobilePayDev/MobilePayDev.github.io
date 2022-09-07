@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Phone number on landing page
 
 When user is redirect to redirectToMobilePayUrl on a desktop they will see the MobilePay landing page where they must input their phone number. You have the option to prefill the phone number or disabled the remember me function on the page. 

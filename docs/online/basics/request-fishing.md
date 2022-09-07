@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Request Fishing Scenario
 
 This scenario is a thought out "attack" where a fraudster tricks someone else to pay for the goods, by sending the request to multiple users from our "dual device" website, until someone accepts the payment.

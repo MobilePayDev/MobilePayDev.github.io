@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Retrieve payment points
 
 ## Retrieve a list of payment points

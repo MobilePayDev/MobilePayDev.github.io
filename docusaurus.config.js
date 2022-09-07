@@ -30,13 +30,13 @@ module.exports = {
         alt: "MobilePay",
         src: "img/logo-blue.svg",
         srcDark: "img/logo-white.svg",
-        href: "/MobilePay-Payments-API/docs/introduction",
+        href: "/MobilePay-Payments-API/docs/app-payments/introduction",
       },
       items: [   
         {
-          label: 'App payments',
+          label: 'App Payments',
           position: 'left',
-          to: '/docs/introduction',
+          to: '/docs/app-payments/introduction',
         },
         {
           label: 'Online',
@@ -87,6 +87,11 @@ module.exports = {
       style: "dark",
       copyright: `Copyright © ${new Date().getFullYear()} MobilePay. Built with Docusaurus.`,
     },
+    docs: {
+      sidebar: {
+        autoCollapseCategories: true,
+      },
+    },
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
@@ -103,6 +108,8 @@ module.exports = {
           anonymizeIP: true, // Should IPs be anonymized?
         },
         docs: {
+          routeBasePath: 'docs',
+          path: 'docs',
           sidebarPath: require.resolve("./sidebars.js")
         },
         theme: {
@@ -142,6 +149,16 @@ module.exports = {
           },
         },
       },
+    ],
+  ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'docs-extra',
+        path: 'docs-extra',
+        routeBasePath: 'docs-extra',
+      }, 
     ],
   ],
 }

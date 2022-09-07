@@ -8,6 +8,6 @@ The Payments API lets developers process payments. Applications can call Payment
 
 The following topics gives more information:
 
-- [Create and Manage Payments](/docs/payments-refunds/create-payments)
-- [Refund Payments](/docs/payments-refunds/refund-payments)
-- [Error Codes](/docs/payments-refunds/error-codes)
+- [Create and Manage Payments](/docs/app-payments/payments-refunds/create-payments)
+- [Refund Payments](/docs/app-payments/payments-refunds/refund-payments)
+- [Error Codes](/docs/app-payments/payments-refunds/error-codes)

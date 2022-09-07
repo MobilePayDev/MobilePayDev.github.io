@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Production
 
 Once you have completed the slim certification you are able to offer your solution to your merchants. Please carefully read below topics in order to prepare your setup before going live.
