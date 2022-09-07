@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkmobile_pay_merchant_payments_documentation=self.webpackChunkmobile_pay_merchant_payments_documentation||[]).push([[5247],{3550:e=>{e.exports=JSON.parse('{"name":"docusaurus-plugin-content-docs","id":"docs-extra"}')}}]);
