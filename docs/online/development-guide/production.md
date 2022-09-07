@@ -32,7 +32,7 @@ There are two test options you can use:
 ## Design guidelines
 
 We want to make it easy for you to ensure that the right MobilePay buttons and logo's are used by the merchants. Proper use of our logo and buttons will ensure better user experience and conversion rate.
-Please visit our [Design page](https://developer.mobilepay.dk/design) for more information and ressources.
+Please visit our [Design page](https://mobilepaygroup.com/design) for more information and ressources.
 
 ## Integrator and merchant support
 
