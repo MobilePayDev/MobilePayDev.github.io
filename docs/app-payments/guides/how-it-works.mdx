@@ -7,7 +7,7 @@ import TabItem from "@theme/TabItem"
 
 # How It Works
 
-This page details how app payments flow works. It allows you to accept MobilePay payments within your application while re-directing to the MobilePay app for user approval. It assumes that you already have credentials to successfully call MobilePay APIs and have subscribed to notifications using [Webhooks API](/docs/webhooks).
+This page details how app payments flow works. It allows you to accept MobilePay payments within your application while re-directing to the MobilePay app for user approval. It assumes that you already have credentials to successfully call MobilePay APIs and have subscribed to notifications using [Webhooks API](/docs/app-payments/webhooks).
 
 ## Process Flow
 
@@ -21,10 +21,10 @@ values={[
 
 Sunshine scenario is expected for the majority of the time.
 
-1. When a user wants to pay with MobilePay in your application, request your backend services to [create payment](/docs/payments-refunds/create-payments#create-payment) using Payments API.
+1. When a user wants to pay with MobilePay in your application, request your backend services to [create payment](/docs/app-payments/payments-refunds/create-payments#create-payment) using Payments API.
 2. Re-direct user to MobilePay app using deep link.
 3. User confirms payment in the MobilePay app.
-4. Your backend services receives notification `payment.reserved` and proceeds with [capturing payment](/docs/payments-refunds/create-payments#capture-payment).
+4. Your backend services receives notification `payment.reserved` and proceeds with [capturing payment](/docs/app-payments/payments-refunds/create-payments#capture-payment).
 5. Meanwhile user returns to your application (using re-direct or switching apps) and sees the success screen.
 
 ![](/img/WithWebhooks.jpeg)
@@ -35,12 +35,12 @@ Sunshine scenario is expected for the majority of the time.
 
 This scenario details what should happen if a user returned to your application and during that period backend services haven't got any updates on the payment state.
 
-1. When a user wants to pay with MobilePay in your application, request your backend services to [create payment](/docs/payments-refunds/create-payments#create-payment) using [Payments API](/docs/payments-refunds/create-payments).
+1. When a user wants to pay with MobilePay in your application, request your backend services to [create payment](/docs/app-payments/payments-refunds/create-payments#create-payment) using [Payments API](/docs/app-payments/payments-refunds/create-payments).
 2. Re-direct user to MobilePay app using deep link.
 3. User confirms/cancel payment or leaves MobilePay app
 4. User returns to your application (using re-direct or switching apps).
 5. Invoke backend services to check payment status.
-6. Backend services haven't received a notification and should invoke [Get Single Payments Details](/docs/payments-refunds/create-payments#get-single-payment-details) to retrieve the latest payment state and decide what to do next.
+6. Backend services haven't received a notification and should invoke [Get Single Payments Details](/docs/app-payments/payments-refunds/create-payments#get-single-payment-details) to retrieve the latest payment state and decide what to do next.
 
 :::note
 

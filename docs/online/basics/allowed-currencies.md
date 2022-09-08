@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Allowed currencies
 
 Currencies must be specified according to the ISO-4217 standard. Either using the alphabetic or numeric version.

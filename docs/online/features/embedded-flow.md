@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Embedded Flow (IFrame)
 
 Web shops and Payment Service Providers (PSPs) may embed the MobilePay landing

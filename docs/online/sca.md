@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Strong Customer Authentication
 
 We aim to ensure Delegated Authentication (DA). This means that responsibility for authenticating the customer/payer no longer lies with the Issuer, but is delegated to MobilePay.  When/if we fail, and the Issuer is responding to an authorisation attempt with a Soft Decline/"step-up", a 3-D Secure fallback solution must be in place.

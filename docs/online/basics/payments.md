@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Payments
 
 When you have created a merchant you can start initiating payments.

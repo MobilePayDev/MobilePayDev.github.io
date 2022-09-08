@@ -1,3 +1,7 @@
+---
+sidebar_position: 9
+---
+
 # Allowed card types
 
 The following card types are allowed:

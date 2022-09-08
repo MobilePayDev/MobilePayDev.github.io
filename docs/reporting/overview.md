@@ -1,4 +1,8 @@
-# MobilePay Reporting
+---
+sidebar_position: 1
+---
+
+# Overview
 
 Reporting API allows you to query all transactions taking place at any of your MobilePay payment locations (payment points).
 

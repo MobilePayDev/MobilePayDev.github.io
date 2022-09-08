@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Callbacks
 
 As a rule of thumb, MobilePay Online is idempotent in all operations. Likewise, we expect PSPs to be able to handle the same callback more than once in the event of transient errors on network, ours, or your side.

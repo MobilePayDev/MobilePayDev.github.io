@@ -8,7 +8,7 @@ This topic explains what payment points are and how to manage them.
 
 ## Overview
 
-After signing up to use [Payments API](/docs/payments-refunds/create-payments), merchant needs to create a payment point.
+After signing up to use [Payments API](/docs/app-payments/payments-refunds/create-payments), merchant needs to create a payment point.
 
 Single business can have multiple payment points. Each payment point is a location and it has a MobilePay-assigned `PaymentPointId`. Establishing multiple payment points is optional but useful for reporting and tracking sales over time. Most customer-related transactions must be to a specific payment point in the API call.
 

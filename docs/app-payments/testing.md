@@ -1,6 +1,5 @@
 ---
 sidebar_position: 4
-id: testing
 ---
 
 # Testing
@@ -15,7 +14,7 @@ The sandbox environment is dedicated for integration purposes. It is the same as
 
 ## Test merchants
 
-You will receive details for a test merchant to use in a sandbox environment during your onboarding. It will allow you to login to [Sandbox MobilePay portal](https://sandprod-portal.mobilepay.dk/) to [generate API keys](/docs/authentication), and/or to [set up Payment Points](/docs/payment-points) for your testing purposes. It is a valuable experience since you will need to do the same activities when moving to production.
+You will receive details for a test merchant to use in a sandbox environment during your onboarding. It will allow you to login to [Sandbox MobilePay portal](https://sandprod-portal.mobilepay.dk/) to [generate API keys](authentication.md), and/or to [set up Payment Points](payment-points.md) for your testing purposes. It is a valuable experience since you will need to do the same activities when moving to production.
 
 ## Test users
 

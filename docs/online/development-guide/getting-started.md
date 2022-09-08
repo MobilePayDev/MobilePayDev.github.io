@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Getting started
 
 In order to implement MobilePay Online you must first obtain an agreement by contacting partnership_online@mobilepay.dk. Once the agreement is signed you will get access to our sandbox environment and can test the API.

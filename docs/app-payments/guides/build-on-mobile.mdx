@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 import Tabs from "@theme/Tabs"
@@ -23,7 +23,7 @@ This page details how MobilePay app payments should be implemented in your Andro
 
 This guide assumes:
 
-- You already have backend services integrated with [MobilePay APIs](/docs/guides/app-payments/how-it-works).
+- You already have backend services integrated with [MobilePay APIs](/docs/app-payments/guides/how-it-works).
 - Your app uses [minSdkVersion](https://developer.android.com/training/basics/supporting-devices/platforms.html#sdk-versions) API 23 (Marshmallow, 6.0) or later.
 - You are generally familiar with developing applications on Android.
 
@@ -33,7 +33,7 @@ Using app payments for digital sales might not be allowed by some mobile applica
 
 ## Create Payment
 
-First, you'll need to create payment. To do this you should call your backend service that is implemented as described [here](/docs/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
+First, you'll need to create payment. To do this you should call your backend service that is implemented as described [here](/docs/app-payments/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
 
 ## Starting MobilePay
 
@@ -281,7 +281,7 @@ The following section addresses how each one should be handled.
 
 ### App Switching
 
-At any point the user can close the MobilePay app and just return to your app. **This can happen even if the payment is already reserved!** Since it is unknown if your app was opened after a completed payment, you'll need to check the payment state each time your app returns to the foreground. For this, you should use your backend service that provides the current state of a payment (more details [here](/docs/payments-refunds/create-payments)).
+At any point the user can close the MobilePay app and just return to your app. **This can happen even if the payment is already reserved!** Since it is unknown if your app was opened after a completed payment, you'll need to check the payment state each time your app returns to the foreground. For this, you should use your backend service that provides the current state of a payment (more details [here](/docs/app-payments/payments-refunds/create-payments)).
 
 ### Redirect from MobilePay
 
@@ -315,7 +315,7 @@ P.S. It's not required for a successful app payments integration.
 
 This guide assumes:
 
-- You already have backend services integrated with [MobilePay APIs](/docs/guides/app-payments/how-it-works).
+- You already have backend services integrated with [MobilePay APIs](/docs/app-payments/guides/how-it-works).
 - Your app handles a custom URL scheme. See [Apple documentation](https://developer.apple.com/documentation/xcode/defining-a-custom-url-scheme-for-your-app) for more details.
 - You are generally familiar with developing applications on iOS.
 
@@ -325,7 +325,7 @@ Using app payments for digital sales might not be allowed by some mobile applica
 
 ## Create Payment
 
-First, you'll need to create payment. To do this you should call your backend service that is implemented as described [here](/docs/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
+First, you'll need to create payment. To do this you should call your backend service that is implemented as described [here](/docs/app-payments/payments-refunds/create-payments). This service call should return a response that contains a deep link needed to launch the MobilePay app.
 
 ## Redirect to MobilePay
 
@@ -365,7 +365,7 @@ The following section addresses how each one should be handled.
 
 ### App Switching
 
-At any point user can close MobilePay app and just return to your app. **This can happen even if payment is already reserved!** Since it is unknown if your app was opened after completed payment, you'll need to check payment state each time your app returns to the foreground. For this, you should use your backend service that provides current state of payment (more details [here](/docs/payments-refunds/create-payments)).
+At any point user can close MobilePay app and just return to your app. **This can happen even if payment is already reserved!** Since it is unknown if your app was opened after completed payment, you'll need to check payment state each time your app returns to the foreground. For this, you should use your backend service that provides current state of payment (more details [here](/docs/app-payments/payments-refunds/create-payments)).
 
 Example how to handle case when user manually switches to your app:
 
@@ -413,7 +413,7 @@ P.S. It's not required for a successful app payments integration.
 
 ## All done
 
-Now everything should be ready for testing! Sandbox testing guide is [here](/docs/testing).
+Now everything should be ready for testing! Sandbox testing guide is [here](/docs/app-payments/testing).
 
 :::caution Make sure you are using the correct MobilePay app!
 MobilePay supports multiple countries, but cross-country payments are not enabled.

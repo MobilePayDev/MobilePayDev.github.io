@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Verification
 
 To ensure that your system is ready for production you need to have performed the basic API calls as described below. Once we have verified that the steps has been completed successfully, you are ready to start testing in hidden production.
