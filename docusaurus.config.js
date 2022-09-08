@@ -151,14 +151,4 @@ module.exports = {
       },
     ],
   ],
-  plugins: [
-    [
-      '@docusaurus/plugin-content-docs',
-      {
-        id: 'docs-extra',
-        path: 'docs-extra',
-        routeBasePath: 'docs-extra',
-      }, 
-    ],
-  ],
 }
