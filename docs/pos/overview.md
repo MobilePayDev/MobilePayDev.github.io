@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # MobilePay Point of Sale
 
 MobilePay PoS is a solution for customers to pay through their mobile via a QR code or the white MobilePay box.

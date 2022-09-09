@@ -1,3 +1,7 @@
+---
+sidebar_position: 5
+---
+
 # Refunds
 
 Once a payment is captured, the payment amount is immediately charged from the customer. Therefore, the payment can no longer be cancelled. Instead, the payment amount can be transferred back to the customer, by performing *refunds*. Each captured payment can be refunded multiple times with the restriction that the sum of the refunds cannot exceed the captured payment amount. A payment can be refunded up to 90 days after the payment was captured. After 90 days a refund is no longer possible with MobilePay.

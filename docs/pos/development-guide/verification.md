@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Self-certification
 
 After your test is complete you must complete a self-certification in order to get access to the production API and go live with your integration. You can read about the self-certifiation tool [here](https://mobilepaydev.github.io/MobilePay-PoS-v10/self_certification).

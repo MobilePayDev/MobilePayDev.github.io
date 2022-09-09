@@ -1,3 +1,7 @@
+---
+sidebar_position: 8
+---
+
 # Best Practices
 
 This section is an overview over best practices when integrating to MobilePay PoS. The purpose of these best practices is to optimize the customer and merchant experience, to reduce errors and to keep the integration as simple as possible without reducing customer and merchant experience.

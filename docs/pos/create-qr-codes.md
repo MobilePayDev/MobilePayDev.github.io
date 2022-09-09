@@ -1,3 +1,7 @@
+---
+sidebar_position: 13
+---
+
 # Create QR codes
 
 The correct format for creating a QR code for Point of Sale is: mobilepaypos://pos?id=``beaconId``&source=qr

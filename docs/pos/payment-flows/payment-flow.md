@@ -1,3 +1,7 @@
+---
+sidebar_position: 2
+---
+
 # Payment Flow
 
 The payment flow makes the payment ready for customer approval immediately upon creation. The sequence diagram below illustrates a sunshine scenario for a payment flow.

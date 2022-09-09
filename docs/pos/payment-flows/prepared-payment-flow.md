@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Prepared Payment Flow
 
 The prepared payment flow makes the payment accessible to the customer on creation, pending an amount. Only when the payment is readied will the customer be able to make the approval.

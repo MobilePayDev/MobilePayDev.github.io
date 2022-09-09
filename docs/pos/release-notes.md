@@ -1,3 +1,7 @@
+---
+sidebar_position: 14
+---
+
 # PoS API Release Notes
 
 The Point of Sale API V10 is now in production.

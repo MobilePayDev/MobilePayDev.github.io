@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Production
 
 After certification you will be able to use the production API and start onboarding your merchants to PoS. In this section you will find guidance and recommendations for production.

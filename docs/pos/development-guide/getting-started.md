@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Getting started
 
 You will be starting off in the Sandbox. Its purpose is to give developers a shielded environment for testing and integration purposes. Sandboxes are isolated from your production organization and give you the possibility to explore the API Platform.

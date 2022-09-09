@@ -1,3 +1,7 @@
+---
+sidebar_position: 6
+---
+
 # Cancel Flows
 
 The V10 API supports cancelling of payments and refunds.

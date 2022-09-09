@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Detecting MobilePay
 
 There are two ways in MobilePay PoS for a terminal/client to become aware that MobilePay has been chosen by the customer as the payment option: User activation and Notification service.

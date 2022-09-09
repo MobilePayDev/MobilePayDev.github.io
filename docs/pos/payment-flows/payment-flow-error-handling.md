@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Payment Flow Error Handling
 
 Of all the ways a payment flow can fail, there are some error scenarios related to initiating payment flows that the client needs to focus on. The following sections describes how to handle payment-in-progress errors and how to handle payments hanging in the *Reserved* state.

@@ -1,3 +1,7 @@
+---
+sidebar_position: 7
+---
+
 # Notification Service
 
 Clients that are unable to detect whether a customer has checked in by [user activation](/docs/pos/detecting-mobilepay#user-activation) can use the notification service. To be able to use the notification service, the integrator needs to implement an endpoint that MobilePay will call, when a client should query the active check-in on a PoS.
