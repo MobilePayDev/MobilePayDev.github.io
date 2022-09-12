@@ -30,7 +30,7 @@ module.exports = {
         alt: "MobilePay",
         src: "img/logo-blue.svg",
         srcDark: "img/logo-white.svg",
-        href: "/MobilePay-Payments-API/docs/app-payments/introduction",
+        href: "/MobilePay-Payments-API/",
       },
       items: [   
         {
@@ -84,16 +84,6 @@ module.exports = {
         {
           label: "Support",
           to: '/docs/support',
-          position: "right",
-        },
-        {
-          href: "https://sandbox-developer.mobilepay.dk/",
-          label: "Sandbox Developer Portal",
-          position: "right",
-        },
-        {
-          href: "https://developer.mobilepay.dk/",
-          label: "Developer Portal",
           position: "right",
         },
         {

@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Getting started
 
 This guide is designed to help you get started with MobilePay Subscriptions. You'll be starting off in the Sandbox environment. Its purpose is to give developers a shielded environment for testing and integration purposes.

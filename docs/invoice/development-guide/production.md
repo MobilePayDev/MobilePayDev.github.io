@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Production
 
 Now you've learned how to customize and send invoices. Understanding what happens in Invoice PaymentFlow helps provide the smoothest experience for both you and your users. Invoices can be a one-time bill that you charge your customer.

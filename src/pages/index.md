@@ -2,8 +2,6 @@
 hide_table_of_contents: true
 ---
 
-# 
-
 <img
   src={require('/img/main_hero.png').default}
   alt="Banner"
@@ -14,7 +12,7 @@ Welcome to MobilePay Developer Portal. This is where all the fun begins.
 Welcome to MobilePay Developer Site. On this site you are able to find information about our products and available APIs. Start building your integration in minutes. Explore all the products below.
 
 <div>
-<a href="/docs/introduction">
+<a href="/docs/app-payments/introduction">
 <img
   src={require('/img/main_app_small.png').default}
   alt="App Payments"

@@ -1,3 +1,7 @@
+---
+sidebar_position: 3
+---
+
 # Verification
 
 Once you have finished testing in sandbox, you have to go through a small verification process, to ensure that your system is ready for production. We expect that you have tested all the features listed below, before you start the verification process. Then it can be completed in a day.

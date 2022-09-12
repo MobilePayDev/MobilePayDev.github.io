@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Resources
 
 [Github](https://mobilepaydev.github.io/MobilePay-Invoice/index): Technical documentation for MobilePay Invoice

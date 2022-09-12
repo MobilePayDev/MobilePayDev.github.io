@@ -1,3 +1,7 @@
+---
+sidebar_position: 4
+---
+
 # Production payments
 
 Understanding what happens in the natural course of a subscription helps provide the smoothest experience for both you and your users. Seen as you're using our platform, we are happy to provide you with tips & tricks to handle the payments.

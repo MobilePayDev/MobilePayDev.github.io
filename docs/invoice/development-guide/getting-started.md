@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 # Getting started
 
 This guide is designed to help get you started with MobilePay Invoice.
