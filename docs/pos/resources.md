@@ -1,3 +1,8 @@
+---
+sidebar_position: 15
+pagination_next: null
+---
+
 # Resources
 
 [Github](https://mobilepaydev.github.io/MobilePay-PoS-v10/index): Technical documentation for MobilePay PoS

@@ -1,5 +1,6 @@
 ---
-sidebar_position: 4
+sidebar_position: 9
+pagination_next: null
 ---
 
 # Resources

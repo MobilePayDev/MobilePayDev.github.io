@@ -1,3 +1,8 @@
+---
+sidebar_position: 5
+pagination_next: null
+---
+
 # Resources
 
 [API documentation](https://developer.mobilepay.dk/product): Choose Online
