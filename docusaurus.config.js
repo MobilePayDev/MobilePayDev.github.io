@@ -36,17 +36,17 @@ module.exports = {
         {
           label: 'App Payments',
           position: 'left',
-          to: '/docs/app-payments/introduction',
+          to: '/docs/app-payments/',
         },
         {
           label: 'Online',
           position: 'left',
-          to: '/docs/online/overview',
+          to: '/docs/online/',
         },
         {
           label: 'Reporting',
           position: 'left',
-          to: '/docs/reporting/overview',
+          to: '/docs/reporting/',
         },
         {
           label: 'API references',

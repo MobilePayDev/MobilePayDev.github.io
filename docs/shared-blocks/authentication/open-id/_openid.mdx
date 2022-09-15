@@ -1,0 +1,55 @@
+## Overview
+The diagram below illustrates the process of how to get consent from the merchant, so you can use the tokens. 
+If you follow it, you will quickly have gone through OpenID Connect, so you can start calling the API.
+![OpenId diagram](/img/oidc-diagram.png)
+
+## OpenID Connect Libraries
+There are many OpenID Connect certified libraries for different development platforms. You just have to choose the one that suits you best. 
+In our experience, it takes longer time to write the code yourself compared to using a pre-written library. 
+
+Find the libraries [here](http://openid.net/developers/certified/).  
+
+:::tip
+Given the security implications of getting the implementation correct, we encourage you to take advantage of a pre-written library. 
+:::
+
+Our other integrators have good experience with IdentityModel.OidcClient, especially if you code in .NET. 
+You do not need to think about code_challenge and code_verifier and etc. It might make your development a lot quicker to use a library. 
+It is your own choice and responsibility to choose the solution that fits you the best.  See library [here](https://github.com/IdentityModel/IdentityModel.OidcClient2/).
+
+## Endpoints 
+Explanation of endpoints 
+
+| Parameters                           | Description                                                                            |
+| ------------------------------------ | -------------------------------------------------------------------------------------- |
+| `/authorize`                         | Interact with the resouce owner and obtain an authorization grant                      |
+| `/token`                             | Obtain an access and/or ID token by presenting an authorization grant or refresh token |
+| `/.well-known/openid-configuration	` | Returns OpenID Connect metadata related to the specific authorization server           |
+
+## Limitations
+
+We return unauthorized in several circumstances, including when an access token is revoked. The error message is purposefully vague 
+to avoid leaking information to potential hackers. Therefore, you should assume that, if you receive this error message as a response, 
+your request is invalid, and you might want to refresh your access token using your refresh token. 
+
+## Developer Tutorial 
+We've created a [video tutorial](https://youtu.be/GUht9gG5uLs) as well as [code examples](/img/oidc-sample.zip), so you can get an overview how easy it is, while also utilizing the provided code examples.
+
+## Standard Hybrid Flow 
+
+You are going to integrate using a standard hybrid flow in OpenID Connect (OIDC).
+![OpenId flow](/img/oidc-flow.png)
+
+**The Hybrid Flow follows the following steps:**
+
+1. Client prepares an Authentication Request containing the desired request parameters
+2. Client sends the request to the Authorization Server.
+3. Authorization Server Authenticates the End-User.
+4. Authorization Server obtains End-User Consent/Authorization.
+5. Authorization Server sends the End-User back to the Client with an Authorization Code 
+6. Client requests a response using the Authorization Code at the Token Endpoint
+7. Client receives a response that contains an ID Token and Access Token in the response body.
+8. Client validates the ID Token and retrieves the End-User's Subject Identifier.
+
+### Token process
+![Token process](/img/oidc-token-process.png)
