@@ -1,4 +1,8 @@
-# MobilePay Developer Support
+---
+displayed_sidebar: supportSidebar
+---
+
+# Developer Support
 
 MobilePay Developer Support provide **techincal support in regards to integration and maintanance** for the following products:
 

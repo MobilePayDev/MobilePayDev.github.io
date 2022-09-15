@@ -41,22 +41,22 @@ module.exports = {
         {
           label: 'Invoice',
           position: 'left',
-          to: '/docs/invoice/overview',
+          to: '/docs/invoice',
         },
         {
           label: 'Online',
           position: 'left',
-          to: '/docs/online/overview',
+          to: '/docs/online',
         },
         {
           label: 'Point of Sale',
           position: 'left',
-          to: '/docs/pos/overview',
+          to: '/docs/pos',
         },
         {
           label: 'Subscriptions',
           position: 'left',
-          to: '/docs/subscriptions/overview',
+          to: '/docs/subscriptions',
         },
         {
           label: 'Reporting',

@@ -1,7 +1,3 @@
----
-sidebar_position: 1
----
-
 # Introduction
 
 MobilePay provides APIs that work together to enable you to collect and manage payments.
