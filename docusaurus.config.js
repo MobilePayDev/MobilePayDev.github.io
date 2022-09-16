@@ -64,6 +64,14 @@ module.exports = {
               label: 'Reporting (v3)',
               to: '/api/reporting',
             },
+            {
+              label: 'Subscriptions',
+              to: '/api/subscriptions',
+            },
+            {
+              label: 'Invoice',
+              to: '/api/invoice',
+            },
           ],
         },
         {
@@ -136,6 +144,16 @@ module.exports = {
             id: 'reporting-api-yaml',
             spec: "openapi/reporting.yaml",
             route: "/api/reporting",
+          },
+          {
+            id: 'subscriptions-api-yaml',
+            spec: "openapi/subscriptions.yaml",
+            route: "/api/subscriptions",
+          },
+          {
+            id: 'invoice-api-yaml',
+            spec: "openapi/invoice.yaml",
+            route: "/api/invoice",
           },
         ],
         // Theme Options for modifying how redoc renders them

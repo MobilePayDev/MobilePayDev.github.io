@@ -1,0 +1,3147 @@
+openapi: 3.0.1
+info:
+  title: Subscriptions API
+  description: The MobilePay Subscriptions API uses OAuth 2.0 protocol for authentication and authorization and contains endpoints needed to implement MobilePay Subscriptions in your system. This API is for the technical integrator acting on behalf of merchant, or merchant creating their own integrations. MobilePay Subscriptions allow you to offer recurring billing for your customers, including One-off payments and Refunds.<br/> <a href="https://mobilepaydev.github.io/MobilePay-Subscriptions">Documentation</a>
+  contact:
+    email: developer@mobilepay.dk
+servers:
+  - url: https://api.mobilepay.dk/subscriptions
+    description: Production server (uses **live** data)
+  - url: https://api.sandbox.mobilepay.dk/subscriptions
+    description: Production server (uses **test** data)
+tags:
+  - name: Subscriptions Merchant
+  - name: Subscriptions
+    description: The MobilePay Subscriptions API contains endpoints for the merchants, needed to implement MobilePay Subscriptions in your system. MobilePay Subscriptions allow you to offer recurring billing for your customers, including one-off payments.
+  - name: Subscriptions Refund
+    description:
+      The MobilePay Subscriptions Refund API contains endpoints for the merchants, needed to implement MobilePay Subscriptions refunds in your system.
+paths:
+  /api/merchants/me:
+    get:
+      tags:
+        - Subscriptions Merchant
+      summary: Get merchant's information and a list of subscription providers.
+      parameters:
+        - name: Authorization
+          in: header
+          description: Id for user performing action (Must be a valid GUID)
+          required: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Merchant information and a list of subscription providers
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.V3.GetMerchantResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.V3.GetMerchantResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.V3.GetMerchantResponse'
+        '404':
+          description: Not Found
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}:
+    get:
+      tags:
+        - Subscriptions
+      summary: Get configuration details.
+      description: 'Gets own configuration details: **payment_status_callback_url, scheme, key, password, scope**.'
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Subscription provider details.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.SubscriptionProvider.SubscriptionProviderResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.SubscriptionProvider.SubscriptionProviderResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.SubscriptionProvider.SubscriptionProviderResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: Subscription provider details where not found.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    patch:
+      tags:
+        - Subscriptions
+      summary: Update subscription provider's details.
+      description: "Updates subscription provider's details. It's request must match the rules\r\nof [RFC 6902 JSON Patch standards](https://tools.ietf.org/html/rfc6902)\r\n\r\n**Available operations:**\r\n* replace\r\n\r\n**Available properties:**\r\n* payment_status_callback_url\r\n\r\n*payment_status_callback_url* - url where callbacks should be sent for payments."
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+      responses:
+        '204':
+          description: Subscription provider's details updated successfully.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/auth/oauth2:
+    put:
+      tags:
+        - Subscriptions
+      summary: Change REST callback authentication scheme to OAuth2.
+      description: "The OAuth2 authentication scheme follows __RFC 6749__ flow defined in [section\r\n4.4.](https://tools.ietf.org/html/rfc6749#section-4.4)\r\n\r\nFirst a call will be made to `token_url` using basic authentication with provided `client_id` and `client_secret`\r\nin order to obtain bearer token.\r\n            \r\nAll subsequent REST requests will contain the bearer token in `Authorization` header, as defined in __RFC 6749__\r\nsection 4.4."
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetOAuth2AuthenticationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetOAuth2AuthenticationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetOAuth2AuthenticationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetOAuth2AuthenticationRequest'
+      responses:
+        '204':
+          description: REST Callback authentication was set to OAuth2 scheme.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/auth/apikey:
+    put:
+      tags:
+        - Subscriptions
+      summary: Change REST callback authentication scheme to Api Key.
+      description: The provided API key will be added to `Authorization` HTTP header for all REST callback requests.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetApiKeyAuthenticationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetApiKeyAuthenticationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetApiKeyAuthenticationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetApiKeyAuthenticationRequest'
+      responses:
+        '204':
+          description: REST Callback authentication was set to API Key scheme.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/auth/basic:
+    put:
+      tags:
+        - Subscriptions
+      summary: Change REST callback authentication scheme to Basic.
+      description: "All the REST callbacks will contain basic credentials in `Authorization` HTTP header: `Authorization: Basic [Base64\r\nencoded username:password]`."
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetBasicAuthenticationRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetBasicAuthenticationRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetBasicAuthenticationRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.SetBasicAuthenticationRequest'
+      responses:
+        '204':
+          description: REST Callback authentication was set to Basic scheme.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/agreements:
+    post:
+      tags:
+        - Subscriptions
+      summary: Create a new Subscriptions agreement.
+      description: "Creates a new Subscriptions agreement with status \"Pending\"\r\nwhich will be prompted for user to confirm in the MobilePay app.\r\n\r\nThe response will contain a single hypermedia link with \"rel\" parameter set to \"mobile-pay\".\r\nThe user must be redirected to this address in order to prompt agreement\r\ndetails for confirmation in the app. As soon as the agreement is confirmed\r\nor the sign-up flow canceled, we will notify you by doing a POST request\r\nat one of the callback URLs that are provided in the \"links\" collection:\r\n* If agreement was created successfully, we will POST you at the `link rel=\"\r\nsuccess-callback\";`.\r\n* If user has canceled the flow, we will do a POST to\r\n`link rel=\"cancel-callback\"`.\r\n\r\nWhen the agreement creation flow is complete,\r\nthe agreement status will be changed to \"Accepted\". Regardless of whether\r\nagreement was accepted or rejected user will be navigated to `link rel=\"\r\nuser-redirect\"`."
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateAgreementRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateAgreementRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateAgreementRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateAgreementRequest'
+      responses:
+        '201':
+          description: Agreement created successfully.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateAgreementResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateAgreementResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateAgreementResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    get:
+      tags:
+        - Subscriptions
+      summary: Get the list of Subscriptions agreements.
+      parameters:
+        - name: providerid
+          in: path
+          description: Subscription provider id.
+          required: true
+          schema:
+            type: string
+            description: Subscription provider id.
+            format: uuid
+        - name: status
+          in: query
+          description: The agreement status.
+          schema:
+            type: string
+            description: The agreement status.
+            nullable: true
+        - name: pageSize
+          in: query
+          description: Quantity of agreements that response should contain.
+          schema:
+            type: integer
+            description: Quantity of agreements that response should contain.
+            format: int32
+            nullable: true
+        - name: pageNumber
+          in: query
+          description: Page number if you're using MS SQL.
+          schema:
+            type: integer
+            description: Page number if you're using MS SQL.
+            format: int32
+            nullable: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of agreements
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.V2.GetAgreementResponse'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.V2.GetAgreementResponse'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.V2.GetAgreementResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/agreements/{agreementid}:
+    get:
+      tags:
+        - Subscriptions
+      summary: Get the details of subscription agreement.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Details of a particular agreement.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetAgreementResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetAgreementResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetAgreementResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: Agreement not found.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    patch:
+      tags:
+        - Subscriptions
+      summary: Update subscription agreement details.
+      description: "Updates agreement by id. It's request must match the rules\r\nof [RFC 6902 JSON Patch standards](https://tools.ietf.org/html/rfc6902)\r\n\r\n**Available operations:**\r\n* replace\r\n\r\n**Available properties:**\r\n* amount\r\n* plan\r\n* description\r\n* next_payment_date\r\n* frequency\r\n* external_id\r\n* success-callback\r\n* cancel-callback."
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+      responses:
+        '204':
+          description: Agreement updated successfully.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '405':
+          description: Agreement id not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    delete:
+      tags:
+        - Subscriptions
+      summary: Cancel subscription agreement.
+      description: Cancels an 'active or 'pending' agreement.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Agreement canceled successfully.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '405':
+          description: Agreement id not provided.
+        '409':
+          description: Domain error response
+        '412':
+          description: Request didn't meet all business requirements.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/paymentrequests:
+    post:
+      tags:
+        - Subscriptions
+      summary: Request a payment batch for later execution.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.RequestPaymentRequest'
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.RequestPaymentRequest'
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.RequestPaymentRequest'
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.RequestPaymentRequest'
+              nullable: true
+      responses:
+        '202':
+          description: Payments were accepted for execution.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.RequestPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.RequestPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.RequestPaymentResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '409':
+          description: Domain error response
+        '412':
+          description: Request didn't meet all business requirements.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/agreements/{agreementid}/paymentrequests:
+    get:
+      tags:
+        - Subscriptions
+      summary: Get a list of agreement's payments.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of payments.
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantPaymentResponse'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantPaymentResponse'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantPaymentResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: Agreement not found.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/agreements/{agreementid}/paymentrequests/{paymentid}:
+    get:
+      tags:
+        - Subscriptions
+      summary: Get single payment details.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Details of a particular payment.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantPaymentResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: Payment not found.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    patch:
+      tags:
+        - Subscriptions
+      summary: Update a pending payment request.
+      description: "Updates a pending payment request by id. It's request must match\r\nthe rules of [RFC 6902 JSON Patch standards](https://tools.ietf.org/html/rfc6902)\r\n\r\n**Available operations:**\r\n* replace\r\n            \r\n**Available properties:**\r\n* amount\r\n\r\n*It can be updated with an amount which is less than the pending amount*."
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+      responses:
+        '204':
+          description: Payment updated successfully.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '405':
+          description: Payment id not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    delete:
+      tags:
+        - Subscriptions
+      summary: Decline a 'pending' subscriptions payment.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Payment declined successfully.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: Payment not found.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/agreements/{agreementid}/oneoffpayments:
+    post:
+      tags:
+        - Subscriptions
+      summary: Request one-off payment on an existing agreement.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.RequestOneOffPaymentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.RequestOneOffPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.RequestOneOffPaymentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Merchant.RequestOneOffPaymentRequest'
+      responses:
+        '202':
+          description: One off payment request accepted.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateOneOffPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateOneOffPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.CreateOneOffPaymentResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: Agreement not found.
+        '409':
+          description: Request didn't meet all business requirements.
+        '412':
+          description: Request didn't meet all business requirements.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    get:
+      tags:
+        - Subscriptions
+      summary: Get a list of one-off payments by agreement id.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of one-off payments.
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantOneOffPaymentResponse'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantOneOffPaymentResponse'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantOneOffPaymentResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: One-off payments not found.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/agreements/{agreementid}/oneoffpayments/{paymentid}:
+    get:
+      tags:
+        - Subscriptions
+      summary: Get single one-off payment details.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Details of a particular one-off payment.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantOneOffPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantOneOffPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Merchant.GetMerchantOneOffPaymentResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: One-off payment not found.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    delete:
+      tags:
+        - Subscriptions
+      summary: Cancel a requested/reserved one-off payment.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '204':
+          description: One-off payment canceled successfully.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: One-off payment not found.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '405':
+          description: Payment id not provided.
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/agreements/{agreementid}/oneoffpayments/{paymentid}/capture:
+    post:
+      tags:
+        - Subscriptions
+      summary: Capture reserved one-off payment.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '204':
+          description: One-off payment captured successfully.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '404':
+          description: One-off payment not found.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/payments/{paymentid}/attachment:
+    get:
+      tags:
+        - Subscriptions
+      summary: Get payment attachment details.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.GetPaymentAttachmentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.GetPaymentAttachmentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Payments.GetPaymentAttachmentResponse'
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '403':
+          description: Payment doesn't belong to provider
+        '404':
+          description: Payment or attachment doesn't exists
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    put:
+      tags:
+        - Subscriptions
+      summary: Update payment attachment.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Payments.UpdatePaymentAttachmentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Payments.UpdatePaymentAttachmentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Payments.UpdatePaymentAttachmentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Payments.UpdatePaymentAttachmentRequest'
+      responses:
+        '200':
+          description: Attachment created
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '403':
+          description: Payment doesn't belong to provider
+        '404':
+          description: Payment or attachment doesn't exists
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+    delete:
+      tags:
+        - Subscriptions
+      summary: Delete payment attachment.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Payment attachment was delete
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '403':
+          description: Payment doesn't belong to provider
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/payments/{paymentid}/attachment/pdf:
+    get:
+      tags:
+        - Subscriptions
+      summary: Get payment attachment file.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '403':
+          description: Payment doesn't belong to provider
+        '404':
+          description: Payment or attachment doesn't exists
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.ActionFilters.Models.Error'
+      security:
+        - Bearer:
+            - subscriptions
+  /api/providers/{providerid}/agreements/{agreementid}/payments/{paymentid}/refunds:
+    get:
+      tags:
+        - Subscriptions Refund
+      summary: Get refunds.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: Authorization
+          in: header
+          description: Authentication token (must contain valid merchant id)
+          required: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of payment's refunds
+          content:
+            text/plain:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.GetRefundsResponse'
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.GetRefundsResponse'
+            text/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/RestAPI.Models.GetRefundsResponse'
+        '401':
+          description: Unauthorized
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.Error'
+    post:
+      tags:
+        - Subscriptions Refund
+      summary: Request a new refund.
+      parameters:
+        - name: providerid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: Authorization
+          in: header
+          description: Authentication token (must contain valid merchant id)
+          required: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.RefundPaymentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.RefundPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.RefundPaymentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.RefundPaymentRequest'
+      responses:
+        '202':
+          description: Refund accepted for execution
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.RefundPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.RefundPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.RefundPaymentResponse'
+        '400':
+          description: Something's wrong with request body.
+        '401':
+          description: Unauthorized
+        '409':
+          description: Domain error response
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Configuration.Models.Error'
+components:
+  schemas:
+    RestAPI.Models.Merchant.V3.GetSubscriptionProviderResponse:
+      type: object
+      properties:
+        SubscriptionProviderId:
+          type: string
+          format: uuid
+        Name:
+          type: string
+          nullable: true
+        HomepageUrl:
+          type: string
+          nullable: true
+        CustomerServiceEmail:
+          type: string
+          nullable: true
+        SelfServicePortalUrl:
+          type: string
+          nullable: true
+        FaqUrl:
+          type: string
+          nullable: true
+        Status:
+          type: string
+          nullable: true
+        Address:
+          type: string
+          nullable: true
+        ZipCode:
+          type: string
+          nullable: true
+        City:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.V3.GetMerchantResponse:
+      type: object
+      properties:
+        Id:
+          type: string
+          format: uuid
+        SubscriptionProviders:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Merchant.V3.GetSubscriptionProviderResponse'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.ErrorDetails:
+      type: object
+      properties:
+        message:
+          type: string
+          nullable: true
+        error_type:
+          type: string
+          nullable: true
+          readOnly: true
+        correlation_id:
+          type: object
+          additionalProperties: false
+          nullable: true
+          readOnly: true
+        error_code:
+          type: string
+          nullable: true
+          readOnly: true
+        localized_message:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    RestAPI.ActionFilters.Models.Error:
+      type: object
+      properties:
+        error:
+          type: string
+          nullable: true
+        error_description:
+          $ref: '#/components/schemas/RestAPI.Models.ErrorDetails'
+      additionalProperties: false
+    RestAPI.Models.SubscriptionProvider.SubscriptionProviderResponse+CredentialsInfo:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+        password:
+          type: string
+          nullable: true
+        scheme:
+          type: string
+          nullable: true
+        scope:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Contracts.Enums.SubscriptionProviderStatus:
+      enum:
+        - 0
+        - 2
+        - 3
+        - 4
+      type: integer
+      format: int32
+    RestAPI.Models.SubscriptionProvider.SubscriptionProviderResponse:
+      type: object
+      properties:
+        credentials:
+          $ref: '#/components/schemas/RestAPI.Models.SubscriptionProvider.SubscriptionProviderResponse+CredentialsInfo'
+        payment_status_callback_url:
+          type: string
+          nullable: true
+        name:
+          type: string
+          nullable: true
+        payment_source_account_id:
+          type: string
+          format: uuid
+          nullable: true
+        customer_service:
+          type: string
+          nullable: true
+        faq:
+          type: string
+          nullable: true
+        homepage:
+          type: string
+          nullable: true
+        portal:
+          type: string
+          nullable: true
+        external_account_number:
+          type: string
+          nullable: true
+        status:
+          $ref: '#/components/schemas/Contracts.Enums.SubscriptionProviderStatus'
+        address:
+          type: string
+          nullable: true
+        zip_code:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+      additionalProperties: false
+    Microsoft.AspNetCore.JsonPatch.Operations.Operation:
+      type: object
+      properties:
+        value:
+          type: object
+          additionalProperties: false
+          nullable: true
+        path:
+          type: string
+          nullable: true
+        op:
+          type: string
+          nullable: true
+        from:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.SetOAuth2AuthenticationRequest:
+      required:
+        - client_id
+        - client_secret
+        - token_url
+      type: object
+      properties:
+        client_id:
+          type: string
+        client_secret:
+          type: string
+        token_url:
+          type: string
+        scope:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.SetApiKeyAuthenticationRequest:
+      required:
+        - api_key
+      type: object
+      properties:
+        api_key:
+          type: string
+      additionalProperties: false
+    RestAPI.Models.Merchant.SetBasicAuthenticationRequest:
+      required:
+        - password
+        - user_name
+      type: object
+      properties:
+        user_name:
+          type: string
+        password:
+          type: string
+      additionalProperties: false
+    Shared.Models.ResourceLink:
+      type: object
+      properties:
+        rel:
+          type: string
+          nullable: true
+        href:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.InvoiceArticle:
+      required:
+        - article_description
+        - article_number
+        - price_per_unit
+        - quantity
+        - total_price_including_vat
+        - total_vat_amount
+        - unit
+        - vat_rate
+      type: object
+      properties:
+        article_number:
+          type: string
+        article_description:
+          type: string
+        vat_rate:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+        total_vat_amount:
+          type: number
+          format: double
+        total_price_including_vat:
+          type: number
+          format: double
+        unit:
+          type: string
+        quantity:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+        price_per_unit:
+          type: number
+          format: double
+        price_reduction:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+          nullable: true
+        price_discount:
+          type: number
+          format: double
+          nullable: true
+        bonus:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice:
+      required:
+        - due_date
+        - invoice_number
+        - issue_date
+        - order_date
+        - total_amount
+        - total_vat_amount
+      type: object
+      properties:
+        consumer_name:
+          type: string
+          nullable: true
+        consumer_phone_number:
+          type: string
+          nullable: true
+        total_amount:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+        total_vat_amount:
+          type: number
+          format: double
+        issue_date:
+          type: string
+          format: date-time
+        invoice_number:
+          type: string
+        order_date:
+          type: string
+          format: date-time
+        due_date:
+          type: string
+          format: date-time
+        consumer_address_lines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        invoice_articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.InvoiceArticle'
+          nullable: true
+        merchant_contact_name:
+          type: string
+          nullable: true
+        delivery_address_lines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        payment_reference:
+          type: string
+          nullable: true
+        delivery_date:
+          type: string
+          format: date-time
+          nullable: true
+        merchant_order_number:
+          type: string
+          nullable: true
+        buyer_order_number:
+          type: string
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.OneOffPaymentDetails:
+      required:
+        - amount
+        - external_id
+      type: object
+      properties:
+        amount:
+          maximum: 2147483647
+          minimum: 0.01
+          type: number
+          format: double
+        external_id:
+          maxLength: 64
+          minLength: 0
+          type: string
+        description:
+          type: string
+          nullable: true
+        invoice:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice'
+        expiration_timeout_minutes:
+          maximum: 181440
+          minimum: 1
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.CreateAgreementRequest:
+      required:
+        - country_code
+        - currency
+        - expiration_timeout_minutes
+        - links
+        - plan
+      type: object
+      properties:
+        external_id:
+          maxLength: 64
+          minLength: 0
+          type: string
+          nullable: true
+        amount:
+          type: number
+          format: double
+          nullable: true
+        currency:
+          type: string
+        description:
+          maxLength: 60
+          minLength: 0
+          type: string
+          nullable: true
+        next_payment_date:
+          type: string
+          format: date-time
+          nullable: true
+        frequency:
+          type: integer
+          format: int32
+          nullable: true
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shared.Models.ResourceLink'
+        country_code:
+          type: string
+        plan:
+          maxLength: 30
+          minLength: 0
+          type: string
+        expiration_timeout_minutes:
+          maximum: 181440
+          minimum: 1
+          type: integer
+          format: int32
+        mobile_phone_number:
+          type: string
+          nullable: true
+        one_off_payment:
+          $ref: '#/components/schemas/RestAPI.Models.Merchant.OneOffPaymentDetails'
+        disable_notification_management:
+          type: boolean
+          nullable: true
+        notifications_on:
+          type: boolean
+          nullable: true
+        retention_period_hours:
+          maximum: 24
+          minimum: 0
+          type: integer
+          format: int32
+      additionalProperties: false
+    RestAPI.Models.Merchant.CreateAgreementResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        one_off_payment_id:
+          type: string
+          format: uuid
+          nullable: true
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shared.Models.ResourceLink'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.GetAgreementResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        date_created:
+          type: string
+          nullable: true
+        date_accepted:
+          type: string
+          nullable: true
+        date_canceled:
+          type: string
+          nullable: true
+        external_id:
+          type: string
+          nullable: true
+        amount:
+          type: number
+          format: double
+          nullable: true
+        currency:
+          type: string
+          nullable: true
+        next_payment_date:
+          type: string
+          nullable: true
+        frequency:
+          type: integer
+          format: int32
+        plan:
+          type: string
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        country_code:
+          type: string
+          nullable: true
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shared.Models.ResourceLink'
+          nullable: true
+        expiration_timeout_minutes:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RestAPI.Models.Merchant.V2.GetAgreementResponse:
+      type: object
+      properties:
+        page_size:
+          type: integer
+          format: int32
+          nullable: true
+        agreements:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Merchant.GetAgreementResponse'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Payments.RequestPaymentRequest:
+      required:
+        - agreement_id
+        - amount
+        - description
+        - due_date
+        - external_id
+      type: object
+      properties:
+        agreement_id:
+          type: string
+          format: uuid
+        amount:
+          maximum: 2147483647
+          minimum: 0.01
+          type: number
+          format: double
+        due_date:
+          type: string
+        next_payment_date:
+          type: string
+          format: date-time
+          nullable: true
+        external_id:
+          maxLength: 64
+          minLength: 0
+          type: string
+        description:
+          maxLength: 60
+          minLength: 0
+          type: string
+        grace_period_days:
+          maximum: 3
+          minimum: 1
+          type: integer
+          format: int32
+          nullable: true
+        invoice:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice'
+      additionalProperties: false
+    RestAPI.Models.Payments.PendingPayment:
+      type: object
+      properties:
+        payment_id:
+          type: string
+          format: uuid
+        external_id:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Payments.RejectedPayment:
+      type: object
+      properties:
+        external_id:
+          type: string
+          nullable: true
+        error_description:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Payments.RequestPaymentResponse:
+      type: object
+      properties:
+        pending_payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Payments.PendingPayment'
+          nullable: true
+        rejected_payments:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Payments.RejectedPayment'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.GetMerchantPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        agreement_id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+          nullable: true
+        due_date:
+          type: string
+          format: date-time
+        status:
+          type: string
+          nullable: true
+        external_id:
+          type: string
+          nullable: true
+        external_agreement_id:
+          type: string
+          nullable: true
+        next_payment_date:
+          type: string
+          format: date-time
+          nullable: true
+        description:
+          type: string
+          nullable: true
+        payment_transaction_id:
+          type: string
+          nullable: true
+        grace_period_days:
+          type: integer
+          format: int32
+      additionalProperties: false
+    RestAPI.Models.Merchant.RequestOneOffPaymentRequest:
+      required:
+        - amount
+        - description
+        - external_id
+      type: object
+      properties:
+        amount:
+          maximum: 2147483647
+          minimum: 0.01
+          type: number
+          format: double
+        external_id:
+          maxLength: 64
+          minLength: 0
+          type: string
+        description:
+          type: string
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shared.Models.ResourceLink'
+          nullable: true
+        invoice:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice'
+        auto_reserve:
+          type: boolean
+        expiration_timeout_minutes:
+          maximum: 181440
+          minimum: 1
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.CreateOneOffPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shared.Models.ResourceLink'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Merchant.GetMerchantOneOffPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        agreement_id:
+          type: string
+          format: uuid
+        currency:
+          type: string
+          nullable: true
+        amount:
+          type: number
+          format: double
+        description:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        external_id:
+          type: string
+          nullable: true
+        payment_transaction_id:
+          type: string
+          nullable: true
+        expiration_timeout_minutes:
+          type: integer
+          format: int32
+      additionalProperties: false
+    Shared.ApiClients.Models.PaymentAttachments.ArticleModel:
+      type: object
+      properties:
+        article_number:
+          type: string
+          nullable: true
+        article_description:
+          type: string
+          nullable: true
+        quantity:
+          type: number
+          format: double
+          nullable: true
+        unit:
+          type: string
+          nullable: true
+        price_per_unit:
+          type: number
+          format: double
+          nullable: true
+        vat_rate:
+          type: number
+          format: double
+          nullable: true
+        total_vat_amount:
+          type: number
+          format: double
+          nullable: true
+        total_article_amount:
+          type: number
+          format: double
+      additionalProperties: false
+    Contracts.Enums.CountryCode:
+      enum:
+        - 0
+        - 1
+        - 2
+      type: integer
+      format: int32
+    RestAPI.Models.Payments.PaymentAttachmentDetailsResponse:
+      type: object
+      properties:
+        document_title:
+          type: string
+          nullable: true
+        hide_payment_point_address:
+          type: boolean
+        consumer_name:
+          type: string
+          nullable: true
+        consumer_address_lines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        alias:
+          type: string
+          nullable: true
+        payment_point_name:
+          type: string
+          nullable: true
+        payment_point_address_lines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        merchant_cvr:
+          type: string
+          nullable: true
+        merchant_contact_name:
+          type: string
+          nullable: true
+        delivery_address_lines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        delivery_date:
+          type: string
+          format: date-time
+          nullable: true
+        invoice_number:
+          type: string
+          nullable: true
+        merchant_order_id:
+          type: string
+          nullable: true
+        buyer_id:
+          type: string
+          nullable: true
+        issue_date:
+          type: string
+          format: date-time
+          nullable: true
+        due_date:
+          type: string
+          format: date-time
+          nullable: true
+        order_date:
+          type: string
+          format: date-time
+          nullable: true
+        payment_reference:
+          type: string
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+        price_deduction:
+          type: number
+          format: double
+          nullable: true
+        discount:
+          type: number
+          format: double
+          nullable: true
+        bonus:
+          type: number
+          format: double
+          nullable: true
+        total_ex_vat:
+          type: number
+          format: double
+          nullable: true
+        total_vat_amount:
+          type: number
+          format: double
+          nullable: true
+        total_amount:
+          type: number
+          format: double
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Shared.ApiClients.Models.PaymentAttachments.ArticleModel'
+          nullable: true
+        country_code:
+          $ref: '#/components/schemas/Contracts.Enums.CountryCode'
+      additionalProperties: false
+    RestAPI.Models.Payments.GetPaymentAttachmentResponse:
+      type: object
+      properties:
+        external_attachment_url:
+          type: string
+          nullable: true
+        generate_pdf:
+          type: boolean
+        attachment_details:
+          $ref: '#/components/schemas/RestAPI.Models.Payments.PaymentAttachmentDetailsResponse'
+      additionalProperties: false
+    RestAPI.Models.Payments.ArticleRequest:
+      required:
+        - article_description
+        - total_price_including_vat
+      type: object
+      properties:
+        article_number:
+          type: string
+          nullable: true
+        article_description:
+          type: string
+        quantity:
+          type: number
+          format: double
+          nullable: true
+        unit:
+          type: string
+          nullable: true
+        price_per_unit:
+          type: number
+          format: double
+          nullable: true
+        vat_rate:
+          type: number
+          format: double
+          nullable: true
+        total_vat_amount:
+          type: number
+          format: double
+          nullable: true
+        total_price_including_vat:
+          type: number
+          format: double
+      additionalProperties: false
+    RestAPI.Models.Payments.UpdatePaymentAttachmentDetailsRequest:
+      required:
+        - total_amount
+      type: object
+      properties:
+        document_title:
+          maxLength: 60
+          minLength: 0
+          type: string
+          nullable: true
+        hide_payment_point_address:
+          type: boolean
+        consumer_name:
+          type: string
+          nullable: true
+        consumer_address_lines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        consumer_phone_number:
+          type: string
+          nullable: true
+        merchant_contact_name:
+          type: string
+          nullable: true
+        delivery_address_lines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        delivery_date:
+          type: string
+          format: date-time
+          nullable: true
+        invoice_number:
+          type: string
+          nullable: true
+        merchant_order_number:
+          type: string
+          nullable: true
+        buyer_order_number:
+          type: string
+          nullable: true
+        issue_date:
+          type: string
+          format: date-time
+          nullable: true
+        due_date:
+          type: string
+          format: date-time
+          nullable: true
+        order_date:
+          type: string
+          format: date-time
+          nullable: true
+        payment_reference:
+          maxLength: 60
+          minLength: 0
+          type: string
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+        price_reduction:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+          nullable: true
+        price_discount:
+          type: number
+          format: double
+          nullable: true
+        bonus:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+          nullable: true
+        total_amount_ex_vat:
+          type: number
+          format: double
+          nullable: true
+        total_vat_amount:
+          type: number
+          format: double
+          nullable: true
+        total_amount:
+          maximum: 2147483647
+          minimum: 0
+          type: number
+          format: double
+        articles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Payments.ArticleRequest'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Payments.UpdatePaymentAttachmentRequest:
+      type: object
+      properties:
+        external_attachment_url:
+          type: string
+          nullable: true
+        generate_pdf:
+          type: boolean
+        attachment_details:
+          $ref: '#/components/schemas/RestAPI.Models.Payments.UpdatePaymentAttachmentDetailsRequest'
+      additionalProperties: false
+    RestAPI.Models.GetRefundsResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+        currency:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        externalId:
+          type: string
+          nullable: true
+        paymentTransactionId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Configuration.Models.ErrorDetails:
+      type: object
+      properties:
+        message:
+          type: string
+          nullable: true
+          readOnly: true
+        errorType:
+          type: string
+          nullable: true
+          readOnly: true
+        correlationId:
+          type: object
+          additionalProperties: false
+          nullable: true
+          readOnly: true
+        errorCode:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    RestAPI.Configuration.Models.Error:
+      type: object
+      properties:
+        errorText:
+          type: string
+          nullable: true
+        errorDetails:
+          $ref: '#/components/schemas/RestAPI.Configuration.Models.ErrorDetails'
+      additionalProperties: false
+    RestAPI.Models.RefundPaymentRequest:
+      type: object
+      properties:
+        amount:
+          maximum: 2147483647
+          minimum: 0.01
+          type: number
+          format: double
+          nullable: true
+        statusCallbackUrl:
+          type: string
+          nullable: true
+        externalId:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Configuration.Models.RefundPaymentResponse:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        amount:
+          type: number
+          format: double
+          nullable: true
+        statusCallbackUrl:
+          type: string
+          nullable: true
+        externalId:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header

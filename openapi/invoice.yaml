@@ -1,0 +1,1809 @@
+openapi: 3.0.1
+info:
+  title: Invoice
+  description: MobilePay Invoice allow you to send Invoices directly to your customers using our APIs. The MobilePay Invoice API use OAuth 2.0 protocol for authentication and authorization and contains endpoints needed to implement MobilePay Invoice in your system. This API is for the technical integrator acting on behalf of merchant, or merchant creating their own integrations.<br/> <a href="https://mobilepaydev.github.io/MobilePay-Invoice">Documentation</a>
+  contact:
+    email: developer@mobilepay.dk
+servers:
+  - url: https://api.mobilepay.dk/invoice-restapi
+    description: Production server (uses **live** data)
+  - url: https://api.sandbox.mobilepay.dk/invoice-restapi
+    description: Production server (uses **test** data)
+paths:
+  /api/v1/merchants/{merchantid}/invoices/batch:
+    post:
+      tags:
+        - Merchants
+      summary: Create multiple invoices.
+      description: "ConsumerAlias.AliasType should be set to \"Phone\".\r\n            \r\nCountryCode allowed values:\r\n* DK\r\n* FI\r\n            \r\nCurrencyCode allowed values:\r\n* DKK\r\n* EUR\r\n            \r\nMore information can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/api_reference#create_multiple_invoicedirect\">here</a>."
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceInputModel'
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceInputModel'
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceInputModel'
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceInputModel'
+              nullable: true
+      responses:
+        '202':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultModel'
+              example:
+                Accepted:
+                  - InvoiceNumber: '58652'
+                    InvoiceId: 72c28be5-dfbe-48b2-bce5-ac7769c157d9
+                Rejected:
+                  - InvoiceNumber: '58694'
+                    Errors:
+                      - ErrorText: Invoice already exists
+                        ErrorCode: 10104
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultModel'
+              example:
+                Accepted:
+                  - InvoiceNumber: '58652'
+                    InvoiceId: 72c28be5-dfbe-48b2-bce5-ac7769c157d9
+                Rejected:
+                  - InvoiceNumber: '58694'
+                    Errors:
+                      - ErrorText: Invoice already exists
+                        ErrorCode: 10104
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultModel'
+              example:
+                Accepted:
+                  - InvoiceNumber: '58652'
+                    InvoiceId: 72c28be5-dfbe-48b2-bce5-ac7769c157d9
+                Rejected:
+                  - InvoiceNumber: '58694'
+                    Errors:
+                      - ErrorText: Invoice already exists
+                        ErrorCode: 10104
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/invoices:
+    post:
+      tags:
+        - Merchants
+      summary: Create an invoice.
+      description: "ConsumerAlias.AliasType should be set to \"Phone\".\r\n\r\nCountryCode allowed values:\r\n* DK\r\n* FI\r\n\r\nCurrencyCode allowed values:\r\n* DKK\r\n* EUR\r\n            \r\nMore information can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/api_reference#direct\">here</a>."
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceInputModel'
+            example:
+              InvoiceIssuer: efd08c19-24cf-4833-a4a4-bfa7bd58fbb2
+              ConsumerAlias:
+                Alias: '+4544667788'
+                AliasType: Phone
+              ConsumerName: Eric Cartman
+              TotalAmount: 360
+              TotalVATAmount: 72
+              ConsumerAddressLines:
+                - Paradisæblevej 13
+                - CC-1234 Andeby
+                - Wonderland
+              DeliveryAddressLines:
+                - Østerbrogade 120
+                - CC-1234 Andeby
+                - Wonderland
+              InvoiceNumber: '58652'
+              IssueDate: '2022-09-14T14:51:11.783969+03:00'
+              DueDate: '2022-09-22T14:51:11.783972+03:00'
+              OrderDate: '2022-09-14T14:51:11.783973+03:00'
+              DeliveryDate: '2022-09-17T14:51:11.783973+03:00'
+              Comment: Lorem ipsum dolor sit amet, eros faucibus aliqua erat aliquam odio vitae.
+              MerchantContactName: Some Company
+              MerchantOrderNumber: '859'
+              BuyerOrderNumber: '456'
+              PaymentReference: '186'
+              InvoiceArticles:
+                - ArticleNumber: '456'
+                  ArticleDescription: Lorem ipsum dolor sit amet
+                  VATRate: 25
+                  TotalVATAmount: 72
+                  TotalPriceIncludingVat: 360
+                  Unit: Lorem ipsum
+                  Quantity: 6
+                  PricePerUnit: 60
+                  PriceReduction: 1.2
+                  PriceDiscount: 2
+                  Bonus: 5
+              InvoiceUrl: https://www.somecompany.com/callback
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceInputModel'
+            example:
+              InvoiceIssuer: efd08c19-24cf-4833-a4a4-bfa7bd58fbb2
+              ConsumerAlias:
+                Alias: '+4544667788'
+                AliasType: Phone
+              ConsumerName: Eric Cartman
+              TotalAmount: 360
+              TotalVATAmount: 72
+              ConsumerAddressLines:
+                - Paradisæblevej 13
+                - CC-1234 Andeby
+                - Wonderland
+              DeliveryAddressLines:
+                - Østerbrogade 120
+                - CC-1234 Andeby
+                - Wonderland
+              InvoiceNumber: '58652'
+              IssueDate: '2022-09-14T14:51:11.783969+03:00'
+              DueDate: '2022-09-22T14:51:11.783972+03:00'
+              OrderDate: '2022-09-14T14:51:11.783973+03:00'
+              DeliveryDate: '2022-09-17T14:51:11.783973+03:00'
+              Comment: Lorem ipsum dolor sit amet, eros faucibus aliqua erat aliquam odio vitae.
+              MerchantContactName: Some Company
+              MerchantOrderNumber: '859'
+              BuyerOrderNumber: '456'
+              PaymentReference: '186'
+              InvoiceArticles:
+                - ArticleNumber: '456'
+                  ArticleDescription: Lorem ipsum dolor sit amet
+                  VATRate: 25
+                  TotalVATAmount: 72
+                  TotalPriceIncludingVat: 360
+                  Unit: Lorem ipsum
+                  Quantity: 6
+                  PricePerUnit: 60
+                  PriceReduction: 1.2
+                  PriceDiscount: 2
+                  Bonus: 5
+              InvoiceUrl: https://www.somecompany.com/callback
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceInputModel'
+            example:
+              InvoiceIssuer: efd08c19-24cf-4833-a4a4-bfa7bd58fbb2
+              ConsumerAlias:
+                Alias: '+4544667788'
+                AliasType: Phone
+              ConsumerName: Eric Cartman
+              TotalAmount: 360
+              TotalVATAmount: 72
+              ConsumerAddressLines:
+                - Paradisæblevej 13
+                - CC-1234 Andeby
+                - Wonderland
+              DeliveryAddressLines:
+                - Østerbrogade 120
+                - CC-1234 Andeby
+                - Wonderland
+              InvoiceNumber: '58652'
+              IssueDate: '2022-09-14T14:51:11.783969+03:00'
+              DueDate: '2022-09-22T14:51:11.783972+03:00'
+              OrderDate: '2022-09-14T14:51:11.783973+03:00'
+              DeliveryDate: '2022-09-17T14:51:11.783973+03:00'
+              Comment: Lorem ipsum dolor sit amet, eros faucibus aliqua erat aliquam odio vitae.
+              MerchantContactName: Some Company
+              MerchantOrderNumber: '859'
+              BuyerOrderNumber: '456'
+              PaymentReference: '186'
+              InvoiceArticles:
+                - ArticleNumber: '456'
+                  ArticleDescription: Lorem ipsum dolor sit amet
+                  VATRate: 25
+                  TotalVATAmount: 72
+                  TotalPriceIncludingVat: 360
+                  Unit: Lorem ipsum
+                  Quantity: 6
+                  PricePerUnit: 60
+                  PriceReduction: 1.2
+                  PriceDiscount: 2
+                  Bonus: 5
+              InvoiceUrl: https://www.somecompany.com/callback
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceInputModel'
+            example:
+              InvoiceIssuer: efd08c19-24cf-4833-a4a4-bfa7bd58fbb2
+              ConsumerAlias:
+                Alias: '+4544667788'
+                AliasType: Phone
+              ConsumerName: Eric Cartman
+              TotalAmount: 360
+              TotalVATAmount: 72
+              ConsumerAddressLines:
+                - Paradisæblevej 13
+                - CC-1234 Andeby
+                - Wonderland
+              DeliveryAddressLines:
+                - Østerbrogade 120
+                - CC-1234 Andeby
+                - Wonderland
+              InvoiceNumber: '58652'
+              IssueDate: '2022-09-14T14:51:11.783969+03:00'
+              DueDate: '2022-09-22T14:51:11.783972+03:00'
+              OrderDate: '2022-09-14T14:51:11.783973+03:00'
+              DeliveryDate: '2022-09-17T14:51:11.783973+03:00'
+              Comment: Lorem ipsum dolor sit amet, eros faucibus aliqua erat aliquam odio vitae.
+              MerchantContactName: Some Company
+              MerchantOrderNumber: '859'
+              BuyerOrderNumber: '456'
+              PaymentReference: '186'
+              InvoiceArticles:
+                - ArticleNumber: '456'
+                  ArticleDescription: Lorem ipsum dolor sit amet
+                  VATRate: 25
+                  TotalVATAmount: 72
+                  TotalPriceIncludingVat: 360
+                  Unit: Lorem ipsum
+                  Quantity: 6
+                  PricePerUnit: 60
+                  PriceReduction: 1.2
+                  PriceDiscount: 2
+                  Bonus: 5
+              InvoiceUrl: https://www.somecompany.com/callback
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 3cd7c5bd-ab90-4ed4-8d1f-2f72e29c7d13
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 3cd7c5bd-ab90-4ed4-8d1f-2f72e29c7d13
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 3cd7c5bd-ab90-4ed4-8d1f-2f72e29c7d13
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/invoices/link/batch:
+    post:
+      tags:
+        - Merchants
+      summary: Create multiple invoice links.
+      description: "ConsumerAlias.AliasType should be set to \"Phone\" (not required for InvoiceLink).\r\n\r\nCountryCode allowed values:\r\n* DK\r\n* FI\r\n\r\nCurrencyCode allowed values:\r\n* DKK\r\n* EUR\r\n\r\nMore information can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/api_reference#create_multiple_invoice_links\">here</a>."
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkInputModel'
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkInputModel'
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkInputModel'
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkInputModel'
+              nullable: true
+      responses:
+        '202':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultModel'
+              example:
+                Accepted:
+                  - InvoiceNumber: '58652'
+                    InvoiceId: 72c28be5-dfbe-48b2-bce5-ac7769c157d9
+                Rejected:
+                  - InvoiceNumber: '58694'
+                    Errors:
+                      - ErrorText: Invoice already exists
+                        ErrorCode: 10104
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultModel'
+              example:
+                Accepted:
+                  - InvoiceNumber: '58652'
+                    InvoiceId: 72c28be5-dfbe-48b2-bce5-ac7769c157d9
+                Rejected:
+                  - InvoiceNumber: '58694'
+                    Errors:
+                      - ErrorText: Invoice already exists
+                        ErrorCode: 10104
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultModel'
+              example:
+                Accepted:
+                  - InvoiceNumber: '58652'
+                    InvoiceId: 72c28be5-dfbe-48b2-bce5-ac7769c157d9
+                Rejected:
+                  - InvoiceNumber: '58694'
+                    Errors:
+                      - ErrorText: Invoice already exists
+                        ErrorCode: 10104
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/invoices/link:
+    post:
+      tags:
+        - Merchants
+      summary: Create an invoice link.
+      description: "ConsumerAlias.AliasType should be set to \"Phone\".\r\n\r\nCountryCode allowed values:\r\n* DK\r\n* FI\r\n\r\nCurrencyCode allowed values:\r\n* DKK\r\n* EUR\r\n            \r\nMore information can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/#invoice-link\">here</a>."
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkInputModel'
+            example:
+              InvoiceIssuer: efd08c19-24cf-4833-a4a4-bfa7bd58fbb2
+              ConsumerAlias:
+                Alias: '+4544667788'
+                AliasType: Phone
+              ConsumerName: Eric Cartman
+              TotalAmount: 360
+              TotalVATAmount: 72
+              ConsumerAddressLines:
+                - Paradisæblevej 13
+                - CC-1234 Andeby
+                - Wonderland
+              DeliveryAddressLines:
+                - Østerbrogade 120
+                - CC-1234 Andeby
+                - Wonderland
+              InvoiceNumber: '58652'
+              IssueDate: '2022-09-14T14:51:11.790137+03:00'
+              DueDate: '2022-09-22T14:51:11.79014+03:00'
+              OrderDate: '2022-09-14T14:51:11.790141+03:00'
+              DeliveryDate: '2022-09-17T14:51:11.790141+03:00'
+              Comment: Lorem ipsum dolor sit amet, eros faucibus aliqua erat aliquam odio vitae.
+              MerchantContactName: Some Company
+              MerchantOrderNumber: '859'
+              BuyerOrderNumber: '456'
+              PaymentReference: '186'
+              InvoiceArticles:
+                - ArticleNumber: '456'
+                  ArticleDescription: Lorem ipsum dolor sit amet
+                  VATRate: 25
+                  TotalVATAmount: 72
+                  TotalPriceIncludingVat: 360
+                  Unit: Lorem ipsum
+                  Quantity: 6
+                  PricePerUnit: 60
+                  PriceReduction: 1.2
+                  PriceDiscount: 2
+                  Bonus: 5
+              InvoiceUrl: https://www.somecompany.com/callback
+              RedirectUrl: https://www.somecompany.com/redirect
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkInputModel'
+            example:
+              InvoiceIssuer: efd08c19-24cf-4833-a4a4-bfa7bd58fbb2
+              ConsumerAlias:
+                Alias: '+4544667788'
+                AliasType: Phone
+              ConsumerName: Eric Cartman
+              TotalAmount: 360
+              TotalVATAmount: 72
+              ConsumerAddressLines:
+                - Paradisæblevej 13
+                - CC-1234 Andeby
+                - Wonderland
+              DeliveryAddressLines:
+                - Østerbrogade 120
+                - CC-1234 Andeby
+                - Wonderland
+              InvoiceNumber: '58652'
+              IssueDate: '2022-09-14T14:51:11.790137+03:00'
+              DueDate: '2022-09-22T14:51:11.79014+03:00'
+              OrderDate: '2022-09-14T14:51:11.790141+03:00'
+              DeliveryDate: '2022-09-17T14:51:11.790141+03:00'
+              Comment: Lorem ipsum dolor sit amet, eros faucibus aliqua erat aliquam odio vitae.
+              MerchantContactName: Some Company
+              MerchantOrderNumber: '859'
+              BuyerOrderNumber: '456'
+              PaymentReference: '186'
+              InvoiceArticles:
+                - ArticleNumber: '456'
+                  ArticleDescription: Lorem ipsum dolor sit amet
+                  VATRate: 25
+                  TotalVATAmount: 72
+                  TotalPriceIncludingVat: 360
+                  Unit: Lorem ipsum
+                  Quantity: 6
+                  PricePerUnit: 60
+                  PriceReduction: 1.2
+                  PriceDiscount: 2
+                  Bonus: 5
+              InvoiceUrl: https://www.somecompany.com/callback
+              RedirectUrl: https://www.somecompany.com/redirect
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkInputModel'
+            example:
+              InvoiceIssuer: efd08c19-24cf-4833-a4a4-bfa7bd58fbb2
+              ConsumerAlias:
+                Alias: '+4544667788'
+                AliasType: Phone
+              ConsumerName: Eric Cartman
+              TotalAmount: 360
+              TotalVATAmount: 72
+              ConsumerAddressLines:
+                - Paradisæblevej 13
+                - CC-1234 Andeby
+                - Wonderland
+              DeliveryAddressLines:
+                - Østerbrogade 120
+                - CC-1234 Andeby
+                - Wonderland
+              InvoiceNumber: '58652'
+              IssueDate: '2022-09-14T14:51:11.790137+03:00'
+              DueDate: '2022-09-22T14:51:11.79014+03:00'
+              OrderDate: '2022-09-14T14:51:11.790141+03:00'
+              DeliveryDate: '2022-09-17T14:51:11.790141+03:00'
+              Comment: Lorem ipsum dolor sit amet, eros faucibus aliqua erat aliquam odio vitae.
+              MerchantContactName: Some Company
+              MerchantOrderNumber: '859'
+              BuyerOrderNumber: '456'
+              PaymentReference: '186'
+              InvoiceArticles:
+                - ArticleNumber: '456'
+                  ArticleDescription: Lorem ipsum dolor sit amet
+                  VATRate: 25
+                  TotalVATAmount: 72
+                  TotalPriceIncludingVat: 360
+                  Unit: Lorem ipsum
+                  Quantity: 6
+                  PricePerUnit: 60
+                  PriceReduction: 1.2
+                  PriceDiscount: 2
+                  Bonus: 5
+              InvoiceUrl: https://www.somecompany.com/callback
+              RedirectUrl: https://www.somecompany.com/redirect
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkInputModel'
+            example:
+              InvoiceIssuer: efd08c19-24cf-4833-a4a4-bfa7bd58fbb2
+              ConsumerAlias:
+                Alias: '+4544667788'
+                AliasType: Phone
+              ConsumerName: Eric Cartman
+              TotalAmount: 360
+              TotalVATAmount: 72
+              ConsumerAddressLines:
+                - Paradisæblevej 13
+                - CC-1234 Andeby
+                - Wonderland
+              DeliveryAddressLines:
+                - Østerbrogade 120
+                - CC-1234 Andeby
+                - Wonderland
+              InvoiceNumber: '58652'
+              IssueDate: '2022-09-14T14:51:11.790137+03:00'
+              DueDate: '2022-09-22T14:51:11.79014+03:00'
+              OrderDate: '2022-09-14T14:51:11.790141+03:00'
+              DeliveryDate: '2022-09-17T14:51:11.790141+03:00'
+              Comment: Lorem ipsum dolor sit amet, eros faucibus aliqua erat aliquam odio vitae.
+              MerchantContactName: Some Company
+              MerchantOrderNumber: '859'
+              BuyerOrderNumber: '456'
+              PaymentReference: '186'
+              InvoiceArticles:
+                - ArticleNumber: '456'
+                  ArticleDescription: Lorem ipsum dolor sit amet
+                  VATRate: 25
+                  TotalVATAmount: 72
+                  TotalPriceIncludingVat: 360
+                  Unit: Lorem ipsum
+                  Quantity: 6
+                  PricePerUnit: 60
+                  PriceReduction: 1.2
+                  PriceDiscount: 2
+                  Bonus: 5
+              InvoiceUrl: https://www.somecompany.com/callback
+              RedirectUrl: https://www.somecompany.com/redirect
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+                Links:
+                  - Rel: user-redirect
+                    Href: https://sandprod-open.mobilepay.dk/usersettings-landing-website/?token=eb406472-fdfa-4612-9df2-ec4dd83b7812&countryCode=DK&product=Invoice
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+                Links:
+                  - Rel: user-redirect
+                    Href: https://sandprod-open.mobilepay.dk/usersettings-landing-website/?token=eb406472-fdfa-4612-9df2-ec4dd83b7812&countryCode=DK&product=Invoice
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceLinkResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+                Links:
+                  - Rel: user-redirect
+                    Href: https://sandprod-open.mobilepay.dk/usersettings-landing-website/?token=eb406472-fdfa-4612-9df2-ec4dd83b7812&countryCode=DK&product=Invoice
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: a18b038b-c4a9-44b5-a45e-0404a743c41d
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: a18b038b-c4a9-44b5-a45e-0404a743c41d
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: a18b038b-c4a9-44b5-a45e-0404a743c41d
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+        '409':
+          description: Conflict
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 85aa1abe-21a2-4e20-947f-b9299725cb0d
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 85aa1abe-21a2-4e20-947f-b9299725cb0d
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 85aa1abe-21a2-4e20-947f-b9299725cb0d
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/invoices/{invoiceid}/cancel:
+    put:
+      tags:
+        - Merchants
+      summary: Cancel invoice.
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: invoiceid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Success
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/invoices/{invoiceid}:
+    get:
+      tags:
+        - Merchants
+      summary: Get all the details of an invoice.
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: invoiceid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceContext.InvoiceDetailsModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceContext.InvoiceDetailsModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceContext.InvoiceDetailsModel'
+        '404':
+          description: Not Found
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/invoices/{invoiceid}/status:
+    get:
+      tags:
+        - Merchants
+      summary: Get the current status of an invoice.
+      description: "Possible statuses:\r\n* Created\r\n* Invalid\r\n* Accepted\r\n* Paid\r\n* Rejected\r\n* Expired\r\n\r\nExplanations for these statuses can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/api_reference#get-status\">here</a>."
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: invoiceid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceStatusResultModel'
+              example:
+                InvoiceId: 32b73932-836a-4491-bd3c-7969be3dc921
+                Status: Accepted
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceStatusResultModel'
+              example:
+                InvoiceId: 32b73932-836a-4491-bd3c-7969be3dc921
+                Status: Accepted
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceStatusResultModel'
+              example:
+                InvoiceId: 32b73932-836a-4491-bd3c-7969be3dc921
+                Status: Accepted
+        '404':
+          description: Not Found
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/invoiceissuers:
+    get:
+      tags:
+        - Merchants
+      summary: Get all your invoice issuers.
+      description: More information can be found <a href="https://mobilepaydev.github.io/MobilePay-Invoice/invoice_issuers">here</a>.
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceIssuersResultModel'
+              example:
+                InvoiceIssuers:
+                  - Id: 12b9e080-1bb7-43fb-bc98-b49d12e6d806
+                    Name: YourInvoiceIssuer
+                    AccountType: Account
+                    Status: null
+                    Address: null
+                    City: null
+                    ZipCode: null
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceIssuersResultModel'
+              example:
+                InvoiceIssuers:
+                  - Id: 12b9e080-1bb7-43fb-bc98-b49d12e6d806
+                    Name: YourInvoiceIssuer
+                    AccountType: Account
+                    Status: null
+                    Address: null
+                    City: null
+                    ZipCode: null
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceIssuersResultModel'
+              example:
+                InvoiceIssuers:
+                  - Id: 12b9e080-1bb7-43fb-bc98-b49d12e6d806
+                    Name: YourInvoiceIssuer
+                    AccountType: Account
+                    Status: null
+                    Address: null
+                    City: null
+                    ZipCode: null
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/me:
+    get:
+      tags:
+        - Merchants
+      summary: Get your merchant id.
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.MerchantUserMerchant'
+              example:
+                MerchantId: 12b9e080-1bb7-43fb-bc98-b49d12e6d806
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.MerchantUserMerchant'
+              example:
+                MerchantId: 12b9e080-1bb7-43fb-bc98-b49d12e6d806
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.MerchantUserMerchant'
+              example:
+                MerchantId: 12b9e080-1bb7-43fb-bc98-b49d12e6d806
+        '404':
+          description: Not Found
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/auth/basic:
+    put:
+      tags:
+        - Merchants
+      summary: Change REST callback authentication scheme to API Key.
+      description: "All the REST callbacks will be sent to `CallbackUrl` and provided API key will be added to `Authorization` HTTP\r\nheader.\r\n\r\nMore information about callbacks can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/callbacks\">here</a>."
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Onboarding.BasicAuthenticationConfiguration'
+            example:
+              Username: invoiceclient
+              Password: DGjPdm5n
+              CallbackUrl: http://developer.mobilepay.dk
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Onboarding.BasicAuthenticationConfiguration'
+            example:
+              Username: invoiceclient
+              Password: DGjPdm5n
+              CallbackUrl: http://developer.mobilepay.dk
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Onboarding.BasicAuthenticationConfiguration'
+            example:
+              Username: invoiceclient
+              Password: DGjPdm5n
+              CallbackUrl: http://developer.mobilepay.dk
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Onboarding.BasicAuthenticationConfiguration'
+            example:
+              Username: invoiceclient
+              Password: DGjPdm5n
+              CallbackUrl: http://developer.mobilepay.dk
+      responses:
+        '204':
+          description: REST Callback authentication was set to Basic scheme.
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/merchants/{merchantid}/auth/apikey:
+    put:
+      tags:
+        - Merchants
+      summary: Change REST callback authentication scheme to basic.
+      description: "All the REST callbacks will be sent to `CallbackUrl` and contain basic credentials in `Authorization` HTTP header:\r\n`Authorization: Basic [Base64 encoded username:password]`\r\n\r\nMore information about callbacks can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/callbacks\">here</a>."
+      parameters:
+        - name: merchantid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Onboarding.ApiKeyConfiguration'
+            example:
+              ApiKey: M8z4KWNc2v4rKMKT
+              CallbackUrl: http://developer.mobilepay.dk
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Onboarding.ApiKeyConfiguration'
+            example:
+              ApiKey: M8z4KWNc2v4rKMKT
+              CallbackUrl: http://developer.mobilepay.dk
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Onboarding.ApiKeyConfiguration'
+            example:
+              ApiKey: M8z4KWNc2v4rKMKT
+              CallbackUrl: http://developer.mobilepay.dk
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Onboarding.ApiKeyConfiguration'
+            example:
+              ApiKey: M8z4KWNc2v4rKMKT
+              CallbackUrl: http://developer.mobilepay.dk
+      responses:
+        '204':
+          description: REST Callback authentication was set to API Key scheme.
+        '400':
+          description: Provided apiKey is not valid and cannot be an Authorization header.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 19589bc4-a3de-4bb3-8e1b-f06f32f8f99e
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 19589bc4-a3de-4bb3-8e1b-f06f32f8f99e
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Middleware.Models.ErrorDetails'
+              example:
+                correlation_id: 19589bc4-a3de-4bb3-8e1b-f06f32f8f99e
+                error: DomainError
+                error_code: '10104'
+                error_description: Invoice already exists
+                error_context: Invoices
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/directinvoiceconsents:
+    post:
+      tags:
+        - Direct Invoice Consents
+      summary: Attach a request of consent to send direct invoices to a particular invoice.
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.ConsentRequestModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.ConsentRequestModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.ConsentRequestModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.ConsentRequestModel'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.ConsentResponseModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.ConsentResponseModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.ConsentResponseModel'
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+    get:
+      tags:
+        - Direct Invoice Consents
+      summary: Get the list of consents that are granted to particular invoice issuer.
+      parameters:
+        - name: invoiceIssuerId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: state
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: pagingState
+          in: query
+          schema:
+            type: string
+            nullable: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.DirectInvoiceConsent.GrantedDirectInvoiceConsentsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.DirectInvoiceConsent.GrantedDirectInvoiceConsentsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.DirectInvoiceConsent.GrantedDirectInvoiceConsentsResponse'
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+  /api/v1/directinvoiceconsents/{consentid}:
+    get:
+      tags:
+        - Direct Invoice Consents
+      summary: Get a single consent.
+      parameters:
+        - name: consentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.ConsentResponseModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.ConsentResponseModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.ConsentResponseModel'
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+    delete:
+      tags:
+        - Direct Invoice Consents
+      summary: Delete direct invoice consent.
+      parameters:
+        - name: consentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Direct invoice consent deleted
+        '409':
+          description: Domain error response
+      security:
+        - Bearer:
+            - invoice
+components:
+  schemas:
+    RestAPI.Models.Invoice.ConsumerAliasModel:
+      required:
+        - alias
+        - aliasType
+      type: object
+      properties:
+        alias:
+          type: string
+        aliasType:
+          type: string
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceArticleModel:
+      required:
+        - articleDescription
+      type: object
+      properties:
+        articleNumber:
+          type: string
+          nullable: true
+        articleDescription:
+          type: string
+        vatRate:
+          type: number
+          format: double
+          nullable: true
+        totalVATAmount:
+          type: number
+          format: double
+          nullable: true
+        totalPriceIncludingVat:
+          type: number
+          format: double
+          nullable: true
+        unit:
+          type: string
+          nullable: true
+        quantity:
+          type: number
+          format: double
+          nullable: true
+        pricePerUnit:
+          type: number
+          format: double
+          nullable: true
+        priceReduction:
+          type: number
+          format: double
+          nullable: true
+        priceDiscount:
+          type: number
+          format: double
+          nullable: true
+        bonus:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceInputModel:
+      required:
+        - consumerAlias
+        - dueDate
+        - invoiceIssuer
+        - totalAmount
+      type: object
+      properties:
+        invoiceIssuer:
+          type: string
+          format: uuid
+        consumerAlias:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice.ConsumerAliasModel'
+        consumerName:
+          type: string
+          nullable: true
+        totalAmount:
+          type: number
+          format: double
+        totalVATAmount:
+          type: number
+          format: double
+          nullable: true
+        consumerAddressLines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        deliveryAddressLines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        invoiceNumber:
+          type: string
+          nullable: true
+        issueDate:
+          type: string
+          format: date-time
+          nullable: true
+        dueDate:
+          type: string
+          format: date-time
+        orderDate:
+          type: string
+          format: date-time
+          nullable: true
+        deliveryDate:
+          type: string
+          format: date-time
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+        merchantContactName:
+          type: string
+          nullable: true
+        merchantOrderNumber:
+          type: string
+          nullable: true
+        buyerOrderNumber:
+          type: string
+          nullable: true
+        paymentReference:
+          type: string
+          nullable: true
+        invoiceArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceArticleModel'
+          nullable: true
+        invoiceUrl:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceBatchResultModelItem:
+      type: object
+      properties:
+        invoiceNumber:
+          type: string
+          nullable: true
+        invoiceId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceBatchResultError:
+      type: object
+      properties:
+        errorText:
+          type: string
+          nullable: true
+        errorCode:
+          type: integer
+          format: int32
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceBatchResultModelRejectedItem:
+      type: object
+      properties:
+        invoiceNumber:
+          type: string
+          nullable: true
+        errors:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultError'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceBatchResultModel:
+      type: object
+      properties:
+        accepted:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultModelItem'
+          nullable: true
+        rejected:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceBatchResultModelRejectedItem'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceResultModel:
+      required:
+        - invoiceId
+      type: object
+      properties:
+        invoiceId:
+          type: string
+          description: Invoice id
+          format: uuid
+      additionalProperties: false
+    RestAPI.Middleware.Models.ErrorDetails:
+      required:
+        - error
+        - errorContext
+      type: object
+      properties:
+        correlationId:
+          type: object
+          additionalProperties: false
+          description: Error correlation id used to track down the problem
+          nullable: true
+          readOnly: true
+        error:
+          type: string
+          description: Error type. For example - 'InputError', 'ServerError', 'DomainError'
+          readOnly: true
+        errorCode:
+          type: string
+          description: Error code used to identify specific error
+          nullable: true
+          readOnly: true
+        errorDescription:
+          type: string
+          description: Error description
+          nullable: true
+          readOnly: true
+        errorContext:
+          type: string
+          description: Original error context - 'Invoices''
+          readOnly: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceLinkInputModel:
+      required:
+        - dueDate
+        - invoiceIssuer
+        - totalAmount
+      type: object
+      properties:
+        invoiceIssuer:
+          type: string
+          format: uuid
+        consumerAlias:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice.ConsumerAliasModel'
+        consumerName:
+          type: string
+          nullable: true
+        totalAmount:
+          type: number
+          format: double
+        totalVATAmount:
+          type: number
+          format: double
+          nullable: true
+        consumerAddressLines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        deliveryAddressLines:
+          type: array
+          items:
+            type: string
+          nullable: true
+        invoiceNumber:
+          type: string
+          nullable: true
+        issueDate:
+          type: string
+          format: date-time
+          nullable: true
+        dueDate:
+          type: string
+          format: date-time
+        orderDate:
+          type: string
+          format: date-time
+          nullable: true
+        deliveryDate:
+          type: string
+          format: date-time
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+        merchantContactName:
+          type: string
+          nullable: true
+        merchantOrderNumber:
+          type: string
+          nullable: true
+        buyerOrderNumber:
+          type: string
+          nullable: true
+        paymentReference:
+          type: string
+          nullable: true
+        invoiceArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceArticleModel'
+          nullable: true
+        invoiceUrl:
+          type: string
+          nullable: true
+        redirectUrl:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.ResourceLink:
+      type: object
+      properties:
+        rel:
+          type: string
+          nullable: true
+        href:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceLinkResultModel:
+      type: object
+      properties:
+        invoiceId:
+          type: string
+          format: uuid
+        links:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.ResourceLink'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceContext.InvoiceArticleDetailModel:
+      type: object
+      properties:
+        articleNumber:
+          type: string
+          description: Article Number, e.g. 123456ABC
+          nullable: true
+        articleDescription:
+          type: string
+          description: Article Description
+          nullable: true
+        totalPriceIncludingVat:
+          type: number
+          description: Total decimal price of article including VAT
+          format: double
+          nullable: true
+        quantity:
+          type: number
+          description: Decimal quantity of article
+          format: double
+          nullable: true
+        pricePerUnit:
+          type: number
+          description: Decimal price per unit
+          format: double
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceContext.InvoiceVatRateTotalModel:
+      type: object
+      properties:
+        vatRate:
+          type: number
+          description: Decimal VAT rate
+          format: double
+          nullable: true
+        totalVatAmount:
+          type: number
+          description: Decimal vat total VAT amount
+          format: double
+          nullable: true
+      additionalProperties: false
+    Contracts.Enums.InvoiceUrlType:
+      enum:
+        - 0
+        - 1
+      type: integer
+      format: int32
+    RestAPI.Models.Invoice.InvoiceContext.InvoiceDetailsModel:
+      type: object
+      properties:
+        invoiceId:
+          type: string
+          format: uuid
+        invoiceNumber:
+          type: string
+          nullable: true
+        issueDate:
+          type: string
+          format: date-time
+          nullable: true
+        dueDate:
+          type: string
+          format: date-time
+        paymentDate:
+          type: string
+          format: date-time
+          nullable: true
+        comment:
+          type: string
+          nullable: true
+        invoiceArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceContext.InvoiceArticleDetailModel'
+          nullable: true
+        currencyCode:
+          type: string
+          nullable: true
+        totalAmount:
+          type: number
+          format: double
+        invoiceVatTotals:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceContext.InvoiceVatRateTotalModel'
+          nullable: true
+        totalVatAmount:
+          type: number
+          format: double
+          nullable: true
+        totalAmountExcludingVat:
+          type: number
+          format: double
+          nullable: true
+        merchantId:
+          type: string
+          format: uuid
+        invoiceIssuerId:
+          type: string
+          format: uuid
+        invoiceIssuerName:
+          type: string
+          nullable: true
+        invoiceIssuerAddress:
+          type: string
+          nullable: true
+        invoiceIssuerZipcode:
+          type: string
+          nullable: true
+        invoiceIssuerCity:
+          type: string
+          nullable: true
+        merchantIsoCountryCode:
+          type: string
+          nullable: true
+        logoUrl:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        invoiceUrl:
+          type: string
+          nullable: true
+        urlType:
+          $ref: '#/components/schemas/Contracts.Enums.InvoiceUrlType'
+        paymentTransactionId:
+          type: string
+          nullable: true
+        paymentReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceStatusResultModel:
+      type: object
+      properties:
+        invoiceId:
+          type: string
+          format: uuid
+        status:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceIssuerModel:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+          nullable: true
+        accountType:
+          type: string
+          nullable: true
+        status:
+          type: string
+          nullable: true
+        address:
+          type: string
+          nullable: true
+        city:
+          type: string
+          nullable: true
+        zipCode:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceIssuersResultModel:
+      type: object
+      properties:
+        invoiceIssuers:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceIssuerModel'
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.MerchantUserMerchant:
+      type: object
+      properties:
+        merchantId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    RestAPI.Models.Onboarding.BasicAuthenticationConfiguration:
+      required:
+        - callbackUrl
+        - password
+        - username
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+        callbackUrl:
+          type: string
+          format: uri
+      additionalProperties: false
+    RestAPI.Models.Onboarding.ApiKeyConfiguration:
+      required:
+        - apiKey
+        - callbackUrl
+      type: object
+      properties:
+        apiKey:
+          type: string
+        callbackUrl:
+          type: string
+          format: uri
+      additionalProperties: false
+    RestAPI.Models.ConsentRequestModel:
+      required:
+        - invoiceId
+      type: object
+      properties:
+        invoiceId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    Contracts.Enums.DirectInvoiceConsentState:
+      enum:
+        - 1
+        - 2
+        - 3
+        - 4
+      type: integer
+      format: int32
+    RestAPI.Models.ConsentResponseModel:
+      type: object
+      properties:
+        consentId:
+          type: string
+          format: uuid
+        invoiceId:
+          type: string
+          format: uuid
+        phoneNumber:
+          type: string
+          nullable: true
+        state:
+          $ref: '#/components/schemas/Contracts.Enums.DirectInvoiceConsentState'
+        grantedOn:
+          type: string
+          format: date-time
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.DirectInvoiceConsent.GrantedDirectInvoiceConsentsResponse:
+      type: object
+      properties:
+        grantedConsents:
+          type: array
+          items:
+            $ref: '#/components/schemas/RestAPI.Models.ConsentResponseModel'
+          nullable: true
+        pagingState:
+          type: string
+          nullable: true
+      additionalProperties: false
+  securitySchemes:
+    Bearer:
+      type: apiKey
+      description: 'JWT authorization header using the Bearer scheme. Example: "Authorization: Bearer {token}"'
+      name: Authorization
+      in: header
