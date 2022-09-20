@@ -89,6 +89,14 @@ paths:
             type: integer
             minimum: 1
             default: 1
+        - name: sortdirection
+          in: query
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: desc
       responses:
         '200':
           description: OK
@@ -144,6 +152,14 @@ paths:
             type: integer
             minimum: 1
             default: 1
+        - name: sortdirection
+          in: query
+          schema:
+            type: string
+            enum:
+              - asc
+              - desc
+            default: desc
       responses:
         '200':
           description: OK
