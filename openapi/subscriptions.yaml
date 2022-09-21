@@ -16,6 +16,9 @@ tags:
   - name: Subscriptions Refund
     description:
       The MobilePay Subscriptions Refund API contains endpoints for the merchants, needed to implement MobilePay Subscriptions refunds in your system.
+  - name: Subscriptions User Simulation
+    description:
+      This API is used to simulate app functionality for testing your implementation of MobilePay Subscriptions.
 paths:
   /api/merchants/me:
     get:
@@ -2063,6 +2066,221 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/RestAPI.Configuration.Models.Error'
+  /api/agreements/v1/{id}:
+    patch:
+      tags:
+        - Subscriptions User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/recurringpayments-restapi
+          description: This endpoint is only available in sandbox environment.
+      summary: Accept/Reject agreement.
+      description: 'Possible status values: "Accepted", "Rejected".'
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.User.UpdateAgreement4MerchantRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.User.UpdateAgreement4MerchantRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.User.UpdateAgreement4MerchantRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.User.UpdateAgreement4MerchantRequest'
+      responses:
+        '204':
+          description: Agreement updated successfully.
+        '400':
+          description: Something's wrong with request body.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+        '401':
+          description: Api key is wrong or not provided.
+        '403':
+          description: Forbidden in current environment
+        '404':
+          description: Agreement not found
+        '409':
+          description: Request didn't meet all business requirements.
+        '412':
+          description: Request didn't meet all business requirements.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+        '500':
+          description: General server or application error.
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Error'
+  /api/users/v1/me/agreements/{agreementid}/oneoffpayments/{paymentid}:
+    patch:
+      tags:
+        - Subscriptions User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/recurringpayments-restapi
+          description: This endpoint is only available in sandbox environment.
+      summary: Accept/Reject one off payment.
+      description: 'Possible status values: "Accepted", "Rejected".'
+      parameters:
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          text/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+          application/*+json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Microsoft.AspNetCore.JsonPatch.Operations.Operation'
+              nullable: true
+      responses:
+        '200':
+          description: Status of one off payment was successfully changed.
+        '403':
+          description: Forbidden in current environment
+        '404':
+          description: Not Found
+        '409':
+          description: Request didn't meet all business requirements.
+  /api/users/v1/me/agreements/{agreementid}:
+    patch:
+      tags:
+        - Subscriptions User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/recurringpayments-restapi
+          description: This endpoint is only available in sandbox environment.
+      summary: Cancel agreement.
+      description: 'Possible status values: "Canceled".'
+      parameters:
+        - name: agreementid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.User.UpdateAgreement4MerchantCancelRequest'
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.User.UpdateAgreement4MerchantCancelRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.User.UpdateAgreement4MerchantCancelRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.User.UpdateAgreement4MerchantCancelRequest'
+      responses:
+        '204':
+          description: Agreement notification_on or status setting changed successfully.
+        '403':
+          description: Forbidden in current environment
+        '404':
+          description: Not Found
+        '409':
+          description: Domain error response
+  /api/users/me/payments/{paymentid}:
+    delete:
+      tags:
+        - Subscriptions User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/recurringpayments-restapi
+          description: This endpoint is only available in sandbox environment.
+      summary: Reject payment.
+      parameters:
+        - name: paymentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Payment rejected successfully
+        '403':
+          description: Forbidden in current environment
+        '409':
+          description: Domain error response
 components:
   schemas:
     RestAPI.Models.Merchant.V3.GetSubscriptionProviderResponse:
@@ -3139,6 +3357,41 @@ components:
           type: string
           nullable: true
       additionalProperties: false
+    RestAPI.Models.User.UpdateAgreement4MerchantRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          nullable: true
+        notifications_on:
+          type: boolean
+      additionalProperties: false
+      description: Update recurring payments agreement
+    RestAPI.Models.Error:
+      required:
+        - correlationId
+        - message
+      type: object
+      properties:
+        code:
+          type: string
+          description: Error code
+          nullable: true
+        message:
+          type: string
+          description: Error message
+        correlationId:
+          type: string
+          description: Correlation Id used to trace back the problem
+      additionalProperties: false
+    RestAPI.Models.User.UpdateAgreement4MerchantCancelRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          nullable: true
+      additionalProperties: false
+      description: Update recurring payments agreement
   securitySchemes:
     Bearer:
       type: apiKey

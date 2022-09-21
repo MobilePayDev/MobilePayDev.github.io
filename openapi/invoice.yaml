@@ -9,6 +9,11 @@ servers:
     description: Production server (uses **live** data)
   - url: https://api.sandbox.mobilepay.dk/invoice-restapi
     description: Production server (uses **test** data)
+tags:
+  - name: Merchants
+  - name: Direct Invoice Consents
+  - name: Invoice User Simulation
+    description: This API is used to simulate app functionality for testing your implementation of MobilePay Invoice.
 paths:
   /api/v1/merchants/{merchantid}/invoices/batch:
     post:
@@ -1199,7 +1204,10 @@ paths:
             - invoice
     delete:
       tags:
-        - Direct Invoice Consents
+        - Invoice User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/invoice-restapi
+          description: This endpoint is only available in sandbox environment.
       summary: Delete direct invoice consent.
       parameters:
         - name: consentid
@@ -1221,6 +1229,182 @@ paths:
       security:
         - Bearer:
             - invoice
+  /api/v1/consumers/me/invoices/{id}/pdf:
+    get:
+      tags:
+        - Invoice User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/invoice-restapi
+          description: This endpoint is only available in sandbox environment.
+      summary: Get Invoice pdf.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The pdf is returned as stream content
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/System.Net.Http.StreamContent'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/System.Net.Http.StreamContent'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/System.Net.Http.StreamContent'
+        '409':
+          description: Domain error response
+  /api/v1/consumers/me/invoices/{id}/reject:
+    put:
+      tags:
+        - Invoice User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/invoice-restapi
+          description: This endpoint is only available in sandbox environment.
+      summary: Reject invoice.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceResultModel'
+              example:
+                InvoiceId: 89a140f4-8433-4196-b25f-690871be5b3d
+        '409':
+          description: Domain error response
+  /api/v1/consumers/me/invoices/{id}/accept:
+    put:
+      tags:
+        - Invoice User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/invoice-restapi
+          description: This endpoint is only available in sandbox environment.
+      summary: Accept invoice.
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceInputModel'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceInputModel'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceInputModel'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceInputModel'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceResultModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceResultModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceResultModel'
+        '400':
+          description: Bad Request
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceFailureModel'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceFailureModel'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RestAPI.Models.Invoice.AcceptInvoiceFailureModel'
+        '409':
+          description: Domain error response
+  /api/v1/consumers/me/invoices/directinvoiceconsent/{consentid}:
+    put:
+      tags:
+        - Invoice User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk/invoice-restapi
+          description: This endpoint is only available in sandbox environment.
+      summary: Update direct invoice consent.
+      parameters:
+        - name: consentid
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Consumer.UpdateDirectInvoiceConsentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Consumer.UpdateDirectInvoiceConsentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Consumer.UpdateDirectInvoiceConsentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RestAPI.Models.Consumer.UpdateDirectInvoiceConsentRequest'
+      responses:
+        '204':
+          description: Updated direct invoice consent
+        '409':
+          description: Domain error response
 components:
   schemas:
     RestAPI.Models.Invoice.ConsumerAliasModel:
@@ -1800,6 +1984,277 @@ components:
         pagingState:
           type: string
           nullable: true
+      additionalProperties: false
+    System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]:
+      type: object
+      properties:
+        key:
+          type: string
+          nullable: true
+          readOnly: true
+        value:
+          type: array
+          items:
+            type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    System.Net.Http.StreamContent:
+      type: object
+      properties:
+        headers:
+          type: array
+          items:
+            $ref: '#/components/schemas/System.Collections.Generic.KeyValuePair`2[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.Collections.Generic.IEnumerable`1[[System.String, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]], System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.AcceptInvoiceInputModel:
+      type: object
+      properties:
+        paymentDate:
+          type: string
+          format: date-time
+        payerCard:
+          type: string
+          format: uuid
+      additionalProperties: false
+    RestAPI.Models.Invoice.TransactionDetailsModel:
+      required:
+        - transactionId
+        - transactionType
+      type: object
+      properties:
+        transactionId:
+          type: string
+          description: Transaction id
+        transactionType:
+          type: string
+          description: Transaction type
+      additionalProperties: false
+    Contracts.Enums.PaymentSourceType:
+      enum:
+        - 0
+        - 1
+      type: integer
+      format: int32
+    RestAPI.Models.Invoice.CardDetailsModel:
+      required:
+        - cardType
+        - maskedCardNumber
+      type: object
+      properties:
+        maskedCardNumber:
+          type: string
+          description: Masked card number
+        cardType:
+          type: string
+          description: Card type
+      additionalProperties: false
+    RestAPI.Models.Invoice.AccountDetailsModel:
+      required:
+        - bankIdentifier
+        - name
+        - number
+      type: object
+      properties:
+        name:
+          type: string
+          description: Account name
+        number:
+          type: string
+          description: Account number
+        bankIdentifier:
+          type: string
+          description: Bank identifier
+      additionalProperties: false
+    Contracts.Repositories.Invoice.InvoiceArticleDetails:
+      type: object
+      properties:
+        articleNumber:
+          type: string
+          nullable: true
+        articleDescription:
+          type: string
+          nullable: true
+        totalPriceIncludingVat:
+          type: number
+          format: double
+          nullable: true
+        quantity:
+          type: number
+          format: double
+          nullable: true
+        pricePerUnit:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    Contracts.Repositories.Invoice.InvoiceVatRateTotals:
+      type: object
+      properties:
+        vatRate:
+          type: number
+          format: double
+          nullable: true
+        totalVatAmount:
+          type: number
+          format: double
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.InvoiceReceiptResultModel:
+      required:
+        - invoiceIssuerName
+        - logo
+        - paymentDate
+        - paymentSourceType
+        - status
+        - totalAmount
+      type: object
+      properties:
+        logo:
+          type: string
+          description: Invoice issuer logo
+        invoiceIssuerName:
+          type: string
+          description: Invoice issuer name
+        paymentDate:
+          type: string
+          description: Payment date (Iso8601)
+        totalAmount:
+          type: number
+          description: Total Amount
+          format: double
+        status:
+          type: string
+          description: Invoice status
+        transactionDetails:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice.TransactionDetailsModel'
+        paymentSourceType:
+          $ref: '#/components/schemas/Contracts.Enums.PaymentSourceType'
+        cardDetails:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice.CardDetailsModel'
+        accountDetails:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice.AccountDetailsModel'
+        invoiceUrl:
+          type: string
+          description: Invoice URL
+          nullable: true
+        urlType:
+          $ref: '#/components/schemas/Contracts.Enums.InvoiceUrlType'
+        invoiceNumber:
+          type: string
+          description: Invoice number.
+          nullable: true
+        issueDate:
+          type: string
+          description: Invoice issue date.
+          format: date-time
+          nullable: true
+        dueDate:
+          type: string
+          description: Invoice due date.
+          format: date-time
+        comment:
+          type: string
+          description: Invoice comment.
+          nullable: true
+        invoiceArticles:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contracts.Repositories.Invoice.InvoiceArticleDetails'
+          description: Invoice articles.
+          nullable: true
+        invoiceVatTotals:
+          type: array
+          items:
+            $ref: '#/components/schemas/Contracts.Repositories.Invoice.InvoiceVatRateTotals'
+          description: A collection of Invoice VAT totals.
+          nullable: true
+        currencyCode:
+          type: string
+          description: Invoice currency code. For example - 'DKK', 'EUR'.
+          nullable: true
+        totalAmountExcludingVat:
+          type: number
+          description: Total Invoice amount excluding VAT.
+          format: double
+          nullable: true
+        totalVatAmount:
+          type: number
+          description: Total Invoice decimal amount.
+          format: double
+          nullable: true
+        merchantId:
+          type: string
+          description: Merchant id.
+          format: uuid
+        invoiceIssuerId:
+          type: string
+          description: Invoice issuer Id.
+          format: uuid
+        invoiceIssuerAddress:
+          type: string
+          description: Invoice issuer address line.
+          nullable: true
+        invoiceIssuerZipcode:
+          type: string
+          description: Invoice issuer ZIP code.
+          nullable: true
+        invoiceIssuerCity:
+          type: string
+          description: Invoice issuer city.
+          nullable: true
+        merchantIsoCountryCode:
+          type: string
+          description: Merchant ISO country code.
+          nullable: true
+        merchantVatNumber:
+          type: string
+          description: Merchant VAT number.
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.AcceptInvoiceResultModel:
+      required:
+        - invoiceId
+        - invoicePaymentStatus
+      type: object
+      properties:
+        invoiceId:
+          type: string
+          description: Invoice id
+          format: uuid
+        invoicePaymentStatus:
+          type: string
+          description: Invoice payment status
+        receipt:
+          $ref: '#/components/schemas/RestAPI.Models.Invoice.InvoiceReceiptResultModel'
+        redirectUrl:
+          type: string
+          description: Invoice link redirect url
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Invoice.AcceptInvoiceFailureModel:
+      type: object
+      properties:
+        invoiceId:
+          type: string
+          format: uuid
+        invoicePaymentStatus:
+          type: string
+          nullable: true
+        errorText:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Models.Consumer.UpdateDirectInvoiceConsentRequest:
+      required:
+        - isConsentGranted
+      type: object
+      properties:
+        isConsentGranted:
+          type: boolean
+          description: A flag representing if user granted direct invoice consent
       additionalProperties: false
   securitySchemes:
     Bearer:
