@@ -41,7 +41,7 @@ module.exports = {
         {
           label: 'Online',
           position: 'left',
-          to: '/docs/online/overview',
+          to: '/docs/online/',
         },
         {
           label: 'Reporting',

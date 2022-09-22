@@ -18,12 +18,11 @@ Reporting API lets you fetch transactions from these products offered by MobileP
 
 :::
 
-
 ## Migration from transaction reporting API
 
 Reporting API is a newer version of Transaction Reporting API, more about the old API you can find [here](https://mobilepaydev.github.io/MobilePay-TransactionReporting-API/).
 
-Also, you can use this guide on [how to migrate](../reporting/migrate-from-v1v2) from the old API.
+Also, you can use this guide on [how to migrate](/docs/reporting/migrate-from-v1v2) from the old API.
 
 ## How does it work?
 
@@ -41,7 +40,7 @@ If you chose to have fees invoiced, then fees will not be deducted directly by M
 :::important
 
 This document does not represent all of the technical information about Reporting API.
-This information can be found [here](../../api/reporting).
+This information can be found [here](/api/reporting).
 
 :::
 
