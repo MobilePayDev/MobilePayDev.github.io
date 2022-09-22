@@ -12,6 +12,8 @@ Once the user is given to choose the payment method on the merchant's signup flo
 
 When the user has accepted the agreement in the MobilePay app, then the Merchant can charge Subscription payments `POST /api/providers/{providerId}/paymentrequests` and One-Off payments `POST /api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`.  
 
+## Create agreement request
+
 ```json title="Create agreement request"
 {
   "external_id": "AGGR00068",
@@ -49,7 +51,7 @@ When the user has accepted the agreement in the MobilePay app, then the Merchant
 
 `mobile_phone_number` is not required. Neither for agreement creation, or one-off creation. If you choose to add it, the phone number will be prefilled on our landing page. So that the user will not have to type the phone number on the landing page, which makes it more convenient for the user, if you add `mobile_phone_number`. We cannot enclose any phone number updates (if any) to the Merchant. We do not notify the merchant if the prefilled number was used / not used.
 
-## Cancel-redirect
+### Cancel-redirect
 
 `cancel-redirect`makes it possible for customers to cancel the agreement in merchants own environment, and the merchant gets more flexibility on terms of retention strategies for their possible leaving customers.
 
@@ -64,7 +66,7 @@ For existing agreements: use endpoint `PATCH /api/providers/{providerId}/agreeme
 
 The *Pending* **Agreement**, if not activated, will expire within the value, provided in the `expiration_timeout_minutes`.
 
-## Request parameters for Create agreement request
+### Request parameters for Create agreement request
 
 Please note: You should consider which parameter in the table below should be used. Not all parameters are required, but the user will see **amount**, **plan** and **description** in the Agreement screen, if you choose to use those parameters. For example: if you have a campaign where the subscription is cheaper in the beginning, users will be confused by how it appears in the MobilePay app, as it might look like the full price period starts immediately, if you enter the full price in **amount**  
 
@@ -86,7 +88,7 @@ Please note: You should consider which parameter in the table below should be us
 |**links[].rel** |string  |required  |Link relation type|user-redirect, success-callback, cancel-callback, cancel-redirect|
 |**links[].href** |string  | required |Link relation hyperlink reference.|merchant's url|
 
-## Agreements response
+### Agreements response
 
 The response of `POST /api/providers/{providerId}/agreements` contains two values: a unique *id* of the newly created *Pending* **Agreement** and a link *rel* = *mobile-pay*.
 
@@ -134,23 +136,31 @@ On the 1st of March 2021, the customer decides to upgrade to Streaming Premium+ 
 
 Setting **disable_notification_management** to **true** will disable notification management and turn off notifications for the agreement.
 
-## New agreement creation in landing page
+## Agreement signing in dual device flow
 
-[![New agreement web flow](/img/subs_New_Agreement_WEB_Flow.png)](/img/subs_New_Agreement_WEB_Flow.png)
+[![Dual device flow](/img/subs_agreement_dual_device_flow.jpeg)](/img/subs_agreement_dual_device_flow.jpeg)
 
-### The landing page
+## Agreement signing in single device flow
 
-The MobilePay landing page is mandatory. It provides a consistent and recognizable user experience, that helps guide the user through the MobilePay payment flow. Our data shows, that it gives a higher success rate and lower drop-off, because the users get a recognisable user experience seen as they know the MobilePay payment flow.  
+[![Single device flow](/img/subs_single_device_flow.jpeg)](/img/subs_single_device_flow.jpeg)
 
-#### New agreement creation in APP
+## Agreement screen with and without amount parameter
 
-[![New agreement](/img/subs_new_agreements_4.png)](/img/subs_new_agreements_4.png)
+[![Agreement screen](/img/subs-Agreement_screen_variations.jpeg)](/img/subs-Agreement_screen_variations.jpeg)
 
-#### Existing Deleted agreement
+### Translations of text in confirmation checkbox
+
+|Language| Translation|
+|----------|-------------------------------|
+|EN|**Yes, I have read the terms of the payment agreement with the merchant** <br />The payment agreement allows the merchant to charge you with MobilePay if you use their service. For further info, see the terms of the merchant. |
+|FI|**Kyllä, olen lukenut kauppiaan kanssa tehdyn maksusopimuksen ehdot**<br />Maksusopimus antaa kauppiaalle mahdollisuuden veloittaa sinua MobilePayn kautta, jos käytät heidän palveluaan. Katso lisätietoja kauppiaan ehdoista.|
+|DK|**Ja, jeg har læst betingelserne for betalingsaftalen hos virksomheden**<br />Betalingsaftalen giver virksomheden mulighed for at opkræve dig med MobilePay, når du bruger deres service. For yderligere info, se virksomhedens betingelser.|
+
+## Existing Deleted agreement
 
 [![Existing deleted agreement](/img/subs-Existing_Deleted_agreements_v3.png)](/img/subs-Existing_Deleted_agreements_v3.png)
 
-### Agreement screen required and optional parameters
+## Agreement screen required and optional parameters
 
 The purple parameters below are visible in the MobilePay app on the **Agreement screen** if they are used by the merchant. They are optional, and should only be used, if the merchant finds that they provide informative value to the customer.
 
@@ -161,10 +171,6 @@ The purple parameters below are visible in the MobilePay app on the **Agreement 
 | amount| MobilePay recommends you include the amount, if the customer pays a fixed amount every month. However, omit this parameter if the customer pays a varied amount. **Example**: Netflix  charges the same amount, for example 99kr every month. Netflix could include the amount. Whereas an electricity provider charges a varied amount, dependent on the customers usage of electricity. It would not make sense for the Electricity Provider to include the amount. |
 | description         | Additional information provided by the merchant to the user. It is up to the merchant what the information should contain, as long as it is within 60 characters  |
 | disable_notification_management| Merchant can set if their customer should be able to manage push notifications for an agreement or not. If the merchant choses so (true), then the push notification is not displayed when signing new agreement and when browsing agreement information. If merchant leaves parameter as false, then push parameter will be visible in signed agreements and push will be turned on by default. Parameter controls just push message which is sent 1 day in advance before recurring payment execution.   |
-
-### Agreement screen with and without amount parameter
-
-[![App screen](/img/subs-Appscreen.png)](/img/subs-Appscreen.png)
 
 ## Callbacks
 

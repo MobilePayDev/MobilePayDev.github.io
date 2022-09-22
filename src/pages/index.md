@@ -14,7 +14,7 @@ Welcome to MobilePay Developer Site. On this site you are able to find informati
 <div>
 <a href="/docs/app-payments/introduction">
 <img
-  src={require('/img/main_app_small.png').default}
+  src={require('/img/main_app.png').default}
   alt="App Payments"
   style={{float : 'left', paddingBottom : 20}}
 />
@@ -22,15 +22,15 @@ Welcome to MobilePay Developer Site. On this site you are able to find informati
 
 <a href="/docs/invoice/overview">
 <img
-  src={require('/img/main_invoice_small.png').default}
+  src={require('/img/main_invoice.png').default}
   alt="Invoice"
-  style={{float : 'right', paddingBottom : 20}}
+  style={{float : 'right', paddingBottom : 20, paddingRight : 5}}
 />
 </a>
 
 <a href="/docs/online/overview">
 <img
-  src={require('/img/main_online_small.png').default}
+  src={require('/img/main_online.png').default}
   alt="App Payments"
   style={{float : 'left', paddingBottom : 20}}
 />
@@ -38,15 +38,15 @@ Welcome to MobilePay Developer Site. On this site you are able to find informati
 
 <a href="/docs/pos/overview">
 <img
-  src={require('/img/main_pos_small.png').default}
+  src={require('/img/main_pos.png').default}
   alt="Invoice"
-  style={{float : 'right', paddingBottom : 20}}
+  style={{float : 'right', paddingBottom : 20, paddingRight : 5}}
 />
 </a>
 
 <a href="/docs/subscriptions/overview">
 <img
-  src={require('/img/main_subscriptions_small.png').default}
+  src={require('/img/main_subscriptions.png').default}
   alt="App Payments"
   style={{float : 'left', paddingBottom : 20}}
 />
@@ -54,9 +54,9 @@ Welcome to MobilePay Developer Site. On this site you are able to find informati
 
 <a href="/docs/reporting/overview">
 <img
-  src={require('/img/main_reporting_small.png').default}
+  src={require('/img/main_reporting.png').default}
   alt="Invoice"
-  style={{float : 'right', paddingBottom : 20}}
+  style={{float : 'right', paddingBottom : 20, paddingRight : 5}}
 />
 </a>
 
@@ -68,5 +68,3 @@ Welcome to MobilePay Developer Site. On this site you are able to find informati
 </a>
 
 </div>
-
-
