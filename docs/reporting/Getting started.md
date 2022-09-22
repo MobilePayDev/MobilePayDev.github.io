@@ -1,0 +1,20 @@
+---
+sidebar_position: 2
+---
+
+# Getting started
+
+Before you start it is important to check the API documentation to ensure that the data supplied through the API is relevant for your need. You'll find it [here](/api/reporting)
+
+If you are an integrator working on behalf of merchants you must sign up as an integrator. Please fill out this [registration form](https://mobilepay.dk/erhverv/integrator-signup) to start the technical onboarding. This is not relevant for merchants integrating on their own behalf.
+
+## Authenticate to the API
+
+Next step is to determine which security solution you want to use. We are providing two different options for authentication. 
+
+- [API keys](#api-keys): This is a simple solution aimed at merchants integrating on their own behalf. They are used to get unlimited access to resources in your merchant account. These are retrieved through the MobilePay Portal. If you choose this option you simply need to [retrieve the API key](/docs/reporting/authentication/api-key#get-an-api-key) from the MobilePay portal to get started. 
+- [OAuth](#oauth-access-token): This is aimed at larger merchants or integrators integrating on behalf of one or more merchants. It is used to get authenticated and scoped access to any MobilePay merchant account. Use them when your application will access resources on behalf of multiple MobilePay merchant accounts, i.e. you are an integrator. If you choose this option please contact developer@mobilepay.dk to get started. 
+
+## Production
+
+The reporting API consists of only GET endpoints where you can retrieve transaction and transfer details. Therefore we do not require any sandbox test or verification in order to use this product in production.

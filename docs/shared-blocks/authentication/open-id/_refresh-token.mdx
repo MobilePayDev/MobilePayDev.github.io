@@ -4,7 +4,7 @@ To get a refresh token, you must include the offline_access scope when you initi
 
 ### Keep the session alive by using the refresh token
 
-Whenever an `access_toke`n is required to access a protected resource, a client may use a `refresh_token` to get a new Access Token issued by the Authentication Server. Although `access_token` can be renewed at any time using `refresh_token`s, they should be renewed when old ones have expired, or when getting access to a new resource for the first time. When the `access_token` expires, the `refresh_token` can be used to obtain a fresh `access_token` with the same permissions, without further involvement from a user. When the `access_token` expires, you can use the `refresh_token` to get a new `access_token` by using the token endpoint as shown below:
+Whenever an `access_token` is required to access a protected resource, a client may use a `refresh_token` to get a new Access Token issued by the Authentication Server. Although `access_token` can be renewed at any time using `refresh_token`s, they should be renewed when old ones have expired, or when getting access to a new resource for the first time. When the `access_token` expires, the `refresh_token` can be used to obtain a fresh `access_token` with the same permissions, without further involvement from a user. When the `access_token` expires, you can use the `refresh_token` to get a new `access_token` by using the token endpoint as shown below:
 
 Sample request:
 ```

@@ -73,12 +73,12 @@ GET https://sandprod-admin.mobilepay.dk/account/connect/authorize
 | `merchant_vat` | A string value equal to the VAT number for the merchant. This is used to identify which merchant that should be given consent to if a user has multiple merchants assigned. We support FI and DK VAT numbers. The VAT number consists of country prefix (either FI or DK) and 8 digits. Note: merchant_vat is required when granting consent to a specific merchant | Country prefix + VAT number of merchant | Yes|
 
 :::note
-By using the value, that you used when creating the `code_challenge`, we have a way for MobilePay to verify the call. You execute the Authorization call once, and you also make the `code_challenge` once with one `code_verifier`. But you need to save your `code_verifier` so you can use it, every time you utilize your `refresh_token`. This means that you’ll not need to go through the Authorize call again, but that you simply need to utilize the `code_verifier` from the the original authorization call. 
+By using the value that you used when creating the `code_challenge`, we have a way for MobilePay to verify the call. You execute the Authorization call once, and you also make the `code_challenge` once with one `code_verifier`. But you need to save your `code_verifier` so you can use it every time you utilize your `refresh_token`. This means that you’ll not need to go through the Authorize call again, but that you simply need to utilize the `code_verifier` from the the original authorization call. 
 :::
 
 ### Consent screen
 
-When the Merchant is logged in, the MobilePay Portal presents the Merchant with a consent screen, that describes the information that the Merchant is granting to. For example, when the user wants to have MobilePay Subscriptions, the consent screen asks to give access to Subscriptions. The request access to this information using the scope parameter, which you include in the authorize request. You can also use scopes to request access to other MobilePay API's. When the Merchant clicks yes (gives consent), the Merchant is redirected back to the integrators website/environment).
+When the Merchant is logged in, the MobilePay Portal presents the Merchant with a consent screen that describes the information that the Merchant is granting to. For example, when the user wants to have MobilePay Subscriptions, the consent screen asks to give access to Subscriptions. The request access to this information using the scope parameter which you include in the authorize request. You can also use scopes to request access to other MobilePay API's. When the Merchant clicks yes (gives consent), the Merchant is redirected back to the integrators website/environment).
 
 Integrator has been provided with a test merchant to our [MobilePay Portal - Sandbox](https://sandprod-admin.mobilepay.dk/). Integrator should use the e-mail and password provided in the invitational e-mail to log-on to it.
 
