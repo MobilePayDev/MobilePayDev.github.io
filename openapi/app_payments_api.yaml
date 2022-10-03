@@ -134,7 +134,7 @@ paths:
           description: Unauthorized
         '409':
           description: Conflict
-  /api/v1/payments/{paymentid}:
+  /v1/payments/{paymentid}:
     parameters:
       - $ref: '#/components/parameters/correlationIdParam'
     get:
@@ -201,7 +201,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
-  /api/v1/payments/{paymentid}/cancel:
+  /v1/payments/{paymentid}/cancel:
     parameters:
       - $ref: '#/components/parameters/correlationIdParam'
     post:
