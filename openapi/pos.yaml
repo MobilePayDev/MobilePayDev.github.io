@@ -1,0 +1,3279 @@
+openapi: 3.0.1
+info:
+  title: PoS Integrator API
+  description: >
+    ## MobilePay PoS Integrator API v10
+
+    The API is split into 3 categories:
+    
+    * **PointOfSales**: Management of Point of Sales including creating, deleting and querying. Note that a Point of Sale is immutable and not editable.
+
+    * **Stores**: Look up store information.
+
+    * **Payments**: Everything needed in order to initiate and complete a payment. 
+
+
+    For more information on working with the API, [see the documentation](https://mobilepaydev.github.io/MobilePay-PoS-v10/).
+
+
+
+    #### Payment flows
+
+    Payments can be started in two ways:
+
+    - as an **initiated** payment that is immediately ready for user approval,
+    or
+
+    - as a **prepared** payment that is not yet ready for user approval, and
+    must be explicitly marked as ready later.
+
+
+    Once a payment is ready for user approval, it is issued to the user. Once
+    the user accepts the payment request, and the payment amount has been
+    reserved, the payment must be **captured** to complete the payment.
+
+
+    The API thus supports the following two payment flows:
+
+
+    - Initiate payment (`POST /v10/payments`)
+
+    - Poll until reserved (`GET /v10/payments/{paymentid}`)
+
+    - Capture (`POST /v10/payments/{paymentid}/capture`)
+
+
+    or
+
+
+    - Prepare payment (`POST /v10/payments/prepare`)
+
+    - Mark as ready (`POST /v10/payments/{paymentid}/ready`)
+
+    - Poll until reserved (`GET /v10/payments/{paymentid}`)
+
+    - Capture (`POST /v10/payments/{paymentid}/capture`)
+
+
+    For more information on payment flows, [see the
+    documentation](https://mobilepaydev.github.io/MobilePay-PoS-v10/payment_flows).
+  contact:
+    name: MobilePay Developer Support
+    url: https://mobilepaydev.github.io/MobilePay-PoS-v10/index
+    email: developer@mobilepay.dk
+  version: 10.2.6
+servers:
+  - url: https://api.mobilepay.dk
+    description: Production environment (uses **live** data)
+  - url: https://api.sandbox.mobilepay.dk
+    description: Sandbox environment (uses **test** data)
+tags:
+  - name: Payments
+    description:
+      Payments API makes it easy to initiate and complete a payment
+  - name: Point Of Sales
+    description:
+      POS description
+  - name: Stores
+    description:
+      Stores API makes it easy for you query stores and get detailed information.
+      
+      Stores are created by merchants when onboarding as a MobilePay merchant.
+  - name: Refunds
+    description:
+      Refunds API makes it easy for you to refund payments to your customers.
+      You can refund only those payments that were created via payments API above. 
+  - name: User Simulation
+    description: 
+      This API is used to simulate app functionality for when integrators are testing their implementation of MobilePay PoS. 
+      
+      
+      With this API you can simulate
+
+      - checkin of user to a pos
+
+      - accept of payment
+
+      - cancel of payment
+      
+      
+      **Please note that this API is only supported in the Sandbox environment**
+
+paths:
+  /v10/payments/{paymentid}:
+    get:
+      tags:
+        - Payments
+      summary: Gets a single payment by its ID.
+      description: >-
+        When polling this endpoint waiting for the payment state to change,
+        please respect the `pollDelayInMs` response property as per the
+        docs.\r\n\r\n
+      operationId: QueryPayment
+      parameters:
+        - name: paymentid
+          in: path
+          description: The payment ID to query
+          required: true
+          schema:
+            type: string
+            description: The payment ID to query
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The payment
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.QueryPaymentResponse
+              example:
+                paymentId: 9e3c7722-bb2c-4903-a716-096784842db3
+                posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+                orderId: ORDER-12345
+                amount: 12.5
+                currencyCode: DKK
+                restrictions:
+                  debitCardDisallowed: false
+                  creditCardDisallowed: false
+                merchantPaymentLabel: PaymentLabel
+                plannedCaptureDelay: None
+                status: Reserved
+                customerToken: 7610e74997e22464be2d5eff6a09398bf9a4ed20
+                customerReceiptToken: feb43336ba244d15b330fb465e81862a
+                loyaltyIds:
+                  - '123456'
+                paymentExpiresAt: '2022-10-03T06:51:53.238028+00:00'
+                partialCapturePossible: false
+                pollDelayInMs: 1000
+        '400':
+          description: Request is invalid. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot query payments created by a different integrator
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '404':
+          description: Payment not found
+        '500':
+          description: >-
+            An internal error occurred. Please attach the provided error code
+            when communicating with MobilePay for quicker support.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/payments:
+    get:
+      tags:
+        - Payments
+      summary: Gets a list of active and reserved payments
+      description: "Returns a list of active and reserved payments (ie. neither captured, rejected, cancelled, or reversed) if no paymentState is provided.\r\nCan also return only captured payments if the Captured paymentState is explicitly provided."
+      operationId: QueryPaymentIds
+      parameters:
+        - name: posId
+          in: query
+          description: Filter payments to those carried out on this point of sale.
+          schema:
+            type: string
+            description: Filter payments to those carried out on this point of sale.
+            format: uuid
+            nullable: true
+        - name: orderId
+          in: query
+          description: Filter payments to those with this order ID.
+          schema:
+            type: string
+            description: Filter payments to those with this order ID.
+            nullable: true
+        - name: state
+          in: query
+          description: Filter payments to those with this state.
+          schema:
+            enum:
+              - Captured
+            type: string
+            description: Filter payments to those with this state.
+            nullable: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: IDs of the payments matching the given filter(s).
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.QueryPaymentIdsResponse
+              example:
+                paymentIds:
+                  - 9e3c7722-bb2c-4903-a716-096784842db3
+        '400':
+          description: Request is invalid. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '500':
+          description: >-
+            An internal error occurred. Please attach the provided error code
+            when communicating with MobilePay for quicker support.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+    post:
+      tags:
+        - Payments
+      summary: Initiates a new payment.
+      operationId: InitiatePayment
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Idempotency-Key
+          in: header
+          description: >-
+            Used to ensure retried calls are handled correctly. See [Idempotency
+            Keys](https://mobilepaydev.github.io/MobilePay-PoS-v10/api_principles#idempotency-keys).
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Information needed to initiate the payment
+        content:
+          application/json-patch+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.InitiatePaymentRequest
+              description: Information needed to initiate the payment
+            example:
+              posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+              orderId: ORDER-12345
+              amount: 12.5
+              currencyCode: DKK
+              restrictions:
+                debitCardDisallowed: false
+                creditCardDisallowed: false
+              merchantPaymentLabel: PaymentLabel
+              plannedCaptureDelay: None
+          application/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.InitiatePaymentRequest
+              description: Information needed to initiate the payment
+            example:
+              posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+              orderId: ORDER-12345
+              amount: 12.5
+              currencyCode: DKK
+              restrictions:
+                debitCardDisallowed: false
+                creditCardDisallowed: false
+              merchantPaymentLabel: PaymentLabel
+              plannedCaptureDelay: None
+          text/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.InitiatePaymentRequest
+              description: Information needed to initiate the payment
+            example:
+              posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+              orderId: ORDER-12345
+              amount: 12.5
+              currencyCode: DKK
+              restrictions:
+                debitCardDisallowed: false
+                creditCardDisallowed: false
+              merchantPaymentLabel: PaymentLabel
+              plannedCaptureDelay: None
+          application/*+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.InitiatePaymentRequest
+              description: Information needed to initiate the payment
+            example:
+              posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+              orderId: ORDER-12345
+              amount: 12.5
+              currencyCode: DKK
+              restrictions:
+                debitCardDisallowed: false
+                creditCardDisallowed: false
+              merchantPaymentLabel: PaymentLabel
+              plannedCaptureDelay: None
+        required: true
+      responses:
+        '200':
+          description: A payment was created and initiated.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.PaymentInitiatedResponse
+              example:
+                paymentId: 9e3c7722-bb2c-4903-a716-096784842db3
+        '400':
+          description: Request is invalid. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: >-
+            Cannot initiate payments on a point of sale created by a different
+            integrator or merchant.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '409':
+          description: Payment could not be initiated. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '500':
+          description: >-
+            An internal error occurred. Please attach the provided error code
+            when communicating with MobilePay for quicker support.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/payments/prepare:
+    post:
+      tags:
+        - Payments
+      summary: Prepares a new payment that is not yet ready for user approval.
+      description: "The payment will need to be marked as ready with a `POST /payments/{paymentId}/ready`.\r\nInformation like the payment amount, currency code, potential restrictions, etc, needs to be provided later, when the ready request is sent."
+      operationId: PreparePayment
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Idempotency-Key
+          in: header
+          description: >-
+            Used to ensure retried calls are handled correctly. See [Idempotency
+            Keys](https://mobilepaydev.github.io/MobilePay-PoS-v10/api_principles#idempotency-keys).
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Information needed to prepare the payment
+        content:
+          application/json-patch+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PreparePaymentRequest
+              description: Information needed to prepare the payment
+            example:
+              posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+              orderId: ORDER-12345
+          application/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PreparePaymentRequest
+              description: Information needed to prepare the payment
+            example:
+              posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+              orderId: ORDER-12345
+          text/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PreparePaymentRequest
+              description: Information needed to prepare the payment
+            example:
+              posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+              orderId: ORDER-12345
+          application/*+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PreparePaymentRequest
+              description: Information needed to prepare the payment
+            example:
+              posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+              orderId: ORDER-12345
+        required: true
+      responses:
+        '200':
+          description: A payment was created and prepared.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.PaymentInitiatedResponse
+              example:
+                paymentId: 9e3c7722-bb2c-4903-a716-096784842db3
+        '400':
+          description: Request is invalid. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: >-
+            Cannot prepare payments on a point of sale created by a different
+            integrator or merchant.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '409':
+          description: Payment could not be prepared. See the error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '500':
+          description: >-
+            An internal error occurred. Please attach the provided error code
+            when communicating with MobilePay for quicker support.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/payments/{paymentid}/ready:
+    post:
+      tags:
+        - Payments
+      summary: Marks a prepared payment as ready for approval by the user.
+      operationId: PaymentReady
+      parameters:
+        - name: paymentid
+          in: path
+          description: The payment to mark as ready
+          required: true
+          schema:
+            type: string
+            description: The payment to mark as ready
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Information needed to ready the payment
+        content:
+          application/json-patch+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PaymentReadyRequest
+              description: Information needed to ready the payment
+            example:
+              currencyCode: DKK
+              amount: 12.5
+              restrictions:
+                debitCardDisallowed: false
+                creditCardDisallowed: false
+              merchantPaymentLabel: PaymentLabel
+              plannedCaptureDelay: None
+          application/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PaymentReadyRequest
+              description: Information needed to ready the payment
+            example:
+              currencyCode: DKK
+              amount: 12.5
+              restrictions:
+                debitCardDisallowed: false
+                creditCardDisallowed: false
+              merchantPaymentLabel: PaymentLabel
+              plannedCaptureDelay: None
+          text/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PaymentReadyRequest
+              description: Information needed to ready the payment
+            example:
+              currencyCode: DKK
+              amount: 12.5
+              restrictions:
+                debitCardDisallowed: false
+                creditCardDisallowed: false
+              merchantPaymentLabel: PaymentLabel
+              plannedCaptureDelay: None
+          application/*+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PaymentReadyRequest
+              description: Information needed to ready the payment
+            example:
+              currencyCode: DKK
+              amount: 12.5
+              restrictions:
+                debitCardDisallowed: false
+                creditCardDisallowed: false
+              merchantPaymentLabel: PaymentLabel
+              plannedCaptureDelay: None
+        required: true
+      responses:
+        '200':
+          description: Payment marked ready for user approval.
+        '400':
+          description: Request is invalid. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot ready payments prepared by a different integrator.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '404':
+          description: Payment not found.
+        '409':
+          description: Payment could not be marked ready. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '500':
+          description: >-
+            An internal error occurred. Please attach the provided error code
+            when communicating with MobilePay for quicker support.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/payments/{paymentid}/capture:
+    post:
+      tags:
+        - Payments
+      summary: Captures a payment. Only reserved payments can be captured.
+      operationId: CapturePayment
+      parameters:
+        - name: paymentid
+          in: path
+          description: The payment to capture
+          required: true
+          schema:
+            type: string
+            description: The payment to capture
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Information needed to capture the payment
+        content:
+          application/json-patch+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PaymentCaptureRequest
+              description: Information needed to capture the payment
+            example:
+              amount: 12.5
+          application/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PaymentCaptureRequest
+              description: Information needed to capture the payment
+            example:
+              amount: 12.5
+          text/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PaymentCaptureRequest
+              description: Information needed to capture the payment
+            example:
+              amount: 12.5
+          application/*+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.PaymentCaptureRequest
+              description: Information needed to capture the payment
+            example:
+              amount: 12.5
+        required: true
+      responses:
+        '200':
+          description: Payment has been captured.
+        '400':
+          description: Request is invalid. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot capture payments created by a different integrator.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '404':
+          description: Payment not found.
+        '409':
+          description: Payment could not be captured. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '500':
+          description: >-
+            An internal error occurred. Please attach the provided error code
+            when communicating with MobilePay for quicker support.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/payments/{paymentid}/cancel:
+    post:
+      tags:
+        - Payments
+      summary: >-
+        Cancels a payment. A payment cannot be cancelled once it has been
+        captured.
+      operationId: CancelPayment
+      parameters:
+        - name: paymentid
+          in: path
+          description: The payment to cancel
+          required: true
+          schema:
+            type: string
+            description: The payment to cancel
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Payment has been cancelled.
+        '400':
+          description: Request is invalid. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot cancel payments created by a different integrator.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '404':
+          description: Payment not found.
+        '409':
+          description: Payment could not be cancelled. See error response for details.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '500':
+          description: >-
+            An internal error occurred. Please attach the provided error code
+            when communicating with MobilePay for quicker support.
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/pointofsales/{posid}:
+    get:
+      tags:
+        - Point Of Sales
+      summary: Gets a single point of sale by its ID.
+      operationId: GetPos
+      parameters:
+        - name: posid
+          in: path
+          description: The ID of the point of sale
+          required: true
+          schema:
+            type: string
+            description: The ID of the point of sale
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The point of sale
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.PosResponse
+              example:
+                posId: c2c70604-ace2-4b54-b1f0-8cea283d31b7
+                merchantPosId: My-Pos-1
+                storeId: 4e0b0228-71f3-44d2-a94e-684094510a3d
+                name: 'Cafeteria register #2'
+                beaconId: fcfe652b-8ea1-45a4-aea8-0702e8ed6229
+                callbackAlias: Example Alias
+                supportedBeaconTypes:
+                  - QR
+                  - Bluetooth
+                requirePaymentBeforeCheckin: false
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot query point of sales created by a different integrator
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '404':
+          description: Point of sale not found
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+    delete:
+      tags:
+        - Point Of Sales
+      summary: Deletes a point of sale.
+      operationId: DeletePos
+      parameters:
+        - name: posid
+          in: path
+          description: The point of sale to delete
+          required: true
+          schema:
+            type: string
+            description: The point of sale to delete
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Point of sale deleted
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot delete point of sales created by a different integrator
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '404':
+          description: Point of sale not found
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/pointofsales:
+    get:
+      tags:
+        - Point Of Sales
+      summary: Gets a list of point of sale IDs corresponding to the given filters.
+      description: "Multiple filters can be passed, and the returned PoSs will match all filters.\r\n            \r\nWhen passing a beacon ID or a merchant PoS ID, at most one result will be returned."
+      operationId: GetPosWithFilter
+      parameters:
+        - name: storeId
+          in: query
+          description: Restricts query to PoSs belonging to this store ID
+          schema:
+            type: string
+            description: Restricts query to PoSs belonging to this store ID
+            format: uuid
+            nullable: true
+        - name: beaconId
+          in: query
+          description: Restricts query to PoSs with this beacon ID
+          schema:
+            type: string
+            description: Restricts query to PoSs with this beacon ID
+            nullable: true
+        - name: merchantPosId
+          in: query
+          description: Restricts query to PoSs with this merchant PoS ID
+          schema:
+            type: string
+            description: Restricts query to PoSs with this merchant PoS ID
+            nullable: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: IDs of the payments matching the given filter(s).
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.PosIdsResponse
+              example:
+                posIds:
+                  - 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+    post:
+      tags:
+        - Point Of Sales
+      summary: Creates a point of sale.
+      operationId: CreatePos
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Idempotency-Key
+          in: header
+          description: >-
+            Used to ensure retried calls are handled correctly. See [Idempotency
+            Keys](https://mobilepaydev.github.io/MobilePay-PoS-v10/api_principles#idempotency-keys).
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Parameters for creating the PoS
+        content:
+          application/json-patch+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.CreatePosRequest
+              description: Parameters for creating the PoS
+            example:
+              merchantPosId: My-Pos-1
+              storeId: 4e0b0228-71f3-44d2-a94e-684094510a3d
+              name: 'Cafeteria register #2'
+              beaconId: fcfe652b-8ea1-45a4-aea8-0702e8ed6229
+              callbackAlias: Example Alias
+              supportedBeaconTypes:
+                - QR
+                - Bluetooth
+              requirePaymentBeforeCheckin: false
+          application/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.CreatePosRequest
+              description: Parameters for creating the PoS
+            example:
+              merchantPosId: My-Pos-1
+              storeId: 4e0b0228-71f3-44d2-a94e-684094510a3d
+              name: 'Cafeteria register #2'
+              beaconId: fcfe652b-8ea1-45a4-aea8-0702e8ed6229
+              callbackAlias: Example Alias
+              supportedBeaconTypes:
+                - QR
+                - Bluetooth
+              requirePaymentBeforeCheckin: false
+          text/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.CreatePosRequest
+              description: Parameters for creating the PoS
+            example:
+              merchantPosId: My-Pos-1
+              storeId: 4e0b0228-71f3-44d2-a94e-684094510a3d
+              name: 'Cafeteria register #2'
+              beaconId: fcfe652b-8ea1-45a4-aea8-0702e8ed6229
+              callbackAlias: Example Alias
+              supportedBeaconTypes:
+                - QR
+                - Bluetooth
+              requirePaymentBeforeCheckin: false
+          application/*+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Requests.CreatePosRequest
+              description: Parameters for creating the PoS
+            example:
+              merchantPosId: My-Pos-1
+              storeId: 4e0b0228-71f3-44d2-a94e-684094510a3d
+              name: 'Cafeteria register #2'
+              beaconId: fcfe652b-8ea1-45a4-aea8-0702e8ed6229
+              callbackAlias: Example Alias
+              supportedBeaconTypes:
+                - QR
+                - Bluetooth
+              requirePaymentBeforeCheckin: false
+        required: true
+      responses:
+        '200':
+          description: Point of sale created
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.CreatePosResponse
+              example:
+                posId: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: >-
+            Cannot create point of sale in store that does not belong to the
+            merchant
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '409':
+          description: Point of sale could not be created. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/pointofsales/{posid}/checkin:
+    get:
+      tags:
+        - Point Of Sales
+      summary: >-
+        Looks up information about the user currently checked in at a point of
+        sale.
+      description: "This will return 200 OK whether or not a user is checked in; check the `isUserCheckedIn` response property.\r\n            \r\nWhen polling this endpoint waiting for a check-in, please respect the `pollDelayInMs` response property as per the docs."
+      operationId: GetCheckIn
+      parameters:
+        - name: posid
+          in: path
+          description: The point of sale
+          required: true
+          schema:
+            type: string
+            description: The point of sale
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Info about current check-in, if any
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.GetCheckInResponse
+              example:
+                isUserCheckedIn: true
+                loyaltyIds:
+                  - '123456'
+                pollDelayInMs: 1000
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '403':
+          description: >-
+            Cannot query checkin on a point of sale created by a different
+            integrator
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '404':
+          description: Point of sale not found
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/stores/{storeid}:
+    get:
+      tags:
+        - Stores
+      summary: Gets a store by its ID.
+      operationId: GetStore
+      parameters:
+        - name: storeid
+          in: path
+          description: The store ID
+          required: true
+          schema:
+            type: string
+            description: The store ID
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The store
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.StoreResponse
+              example:
+                storeName: MobilePay Finland HQ
+                storeId: 4e0b0228-71f3-44d2-a94e-684094510a3d
+                storeStreet: Keskuskatu 4
+                storeZipCode: '00100'
+                storeCity: Helsinki
+                brandName: MobilePay Offices
+                merchantBrandId: POSDK12345
+                merchantLocationId: '10001'
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '404':
+          description: Store not found
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/stores:
+    get:
+      tags:
+        - Stores
+      summary: Gets a list of store IDs corresponding to the given filters.
+      operationId: GetStores
+      parameters:
+        - name: merchantBrandId
+          in: query
+          description: Restricts query to stores with this merchant brand ID
+          schema:
+            type: string
+            description: Restricts query to stores with this merchant brand ID
+            nullable: true
+        - name: merchantLocationId
+          in: query
+          description: Restricts query to stores with this merchant location ID
+          schema:
+            type: string
+            description: Restricts query to stores with this merchant location ID
+            nullable: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: IDs of the stores matching the given filter(s).
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/RestAPI.Controllers.V10.Models.Responses.StoreIdsResponse
+              example:
+                storeIds:
+                  - 4e0b0228-71f3-44d2-a94e-684094510a3d
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/stores/detailed:
+    get:
+      tags:
+        - Stores
+      summary: Gets a list of stores corresponding to the given filters.
+      operationId: GetDetailedStores
+      parameters:
+        - name: merchantBrandId
+          in: query
+          description: Restricts query to stores with this merchant brand ID
+          schema:
+            type: string
+            description: Restricts query to stores with this merchant brand ID
+            nullable: true
+        - name: merchantLocationId
+          in: query
+          description: Restricts query to stores with this merchant location ID
+          schema:
+            type: string
+            description: Restricts query to stores with this merchant location ID
+            nullable: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Merchant-VAT-Number
+          in: header
+          description: Merchant's VAT number (including country code prefix)
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client ID
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Stores matching the given filter(s).
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: >-
+                    #/components/schemas/RestAPI.Controllers.V10.Models.Responses.StoreResponse
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+        '401':
+          description: Unauthorized
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponse
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+  /v10/refunds/{refundid}:
+    get:
+      tags:
+        - Refunds
+      summary: Lookup a refund
+      operationId: GetRefund
+      parameters:
+        - name: refundid
+          in: path
+          description: Refund identifier
+          required: true
+          schema:
+            type: string
+            description: Refund identifier
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: The refund
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.GetRefundResponse
+              example:
+                refundId: 0f3b3966-c6f5-40c8-a951-ba30eb94bb66
+                paymentId: 8eef3e2f-b6c1-4fb1-bec8-c1b5a3c82c10
+                refundOrderId: REFUND-12345
+                amount: 12.5
+                currencyCode: DKK
+                status: Reserved
+                pollDelayInMs: 100
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot query refunds created by a different integrator
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '404':
+          description: Refund not found
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+  /v10/refunds:
+    get:
+      tags:
+        - Refunds
+      summary: Lookup refunds for a given filter
+      operationId: QueryRefundIds
+      parameters:
+        - name: paymentId
+          in: query
+          description: Restricts refunds returned to those that belongs to this paymentId
+          schema:
+            type: string
+            description: Restricts refunds returned to those that belongs to this paymentId
+            format: uuid
+            nullable: true
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of refunds
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.QueryRefundIdsResponse
+              example:
+                refundIds:
+                  - 0f3b3966-c6f5-40c8-a951-ba30eb94bb66
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '401':
+          description: Unauthorized
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+    post:
+      tags:
+        - Refunds
+      summary: >-
+        Create a refund (a payment can be refunded multiple times, the sum of
+        the refunds cannot exceed the full amount of the payment)
+      operationId: CreateRefund
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+        - name: X-MobilePay-Idempotency-Key
+          in: header
+          description: Used to ensure retried calls are handled correctly
+          required: true
+          schema:
+            type: string
+      requestBody:
+        description: Create refund request
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: >-
+                #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.CreateRefundRequest
+            example:
+              paymentId: 8eef3e2f-b6c1-4fb1-bec8-c1b5a3c82c10
+              refundOrderId: REFUND-12345
+              amount: 12.5
+              currencyCode: DKK
+          application/json:
+            schema:
+              $ref: >-
+                #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.CreateRefundRequest
+            example:
+              paymentId: 8eef3e2f-b6c1-4fb1-bec8-c1b5a3c82c10
+              refundOrderId: REFUND-12345
+              amount: 12.5
+              currencyCode: DKK
+          text/json:
+            schema:
+              $ref: >-
+                #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.CreateRefundRequest
+            example:
+              paymentId: 8eef3e2f-b6c1-4fb1-bec8-c1b5a3c82c10
+              refundOrderId: REFUND-12345
+              amount: 12.5
+              currencyCode: DKK
+          application/*+json:
+            schema:
+              $ref: >-
+                #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.CreateRefundRequest
+            example:
+              paymentId: 8eef3e2f-b6c1-4fb1-bec8-c1b5a3c82c10
+              refundOrderId: REFUND-12345
+              amount: 12.5
+              currencyCode: DKK
+        required: true
+      responses:
+        '200':
+          description: Refund has been created
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.CreateRefundResponse
+              example:
+                refundId: 0f3b3966-c6f5-40c8-a951-ba30eb94bb66
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot refund payments created by a different integrator
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '409':
+          description: Refund could not be created. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+  /v10/refunds/{refundid}/capture:
+    post:
+      tags:
+        - Refunds
+      summary: Capture a refund
+      operationId: CaptureRefund
+      parameters:
+        - name: refundid
+          in: path
+          description: Refund identifier
+          required: true
+          schema:
+            type: string
+            description: Refund identifier
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Refund captured
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot capture refunds created by a different integrator
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '404':
+          description: Refund not found
+        '409':
+          description: Refund could not be captured. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+  /v10/refunds/{refundid}/cancel:
+    post:
+      tags:
+        - Refunds
+      summary: Cancel a refund
+      operationId: CancelRefund
+      parameters:
+        - name: refundid
+          in: path
+          description: Refund identifier
+          required: true
+          schema:
+            type: string
+            description: Refund identifier
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: Authorization
+          in: header
+          description: Integrator's bearer token
+          required: true
+          schema:
+            type: string
+        - name: X-IBM-Client-Id
+          in: header
+          description: Integrator's MobilePay client id
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: X-MobilePay-Client-System-Version
+          in: header
+          description: Integrator's certified system version
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Refund cancelled
+        '400':
+          description: Bad Request. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '401':
+          description: Unauthorized
+        '403':
+          description: Cannot cancel refunds created by a different integrator
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '404':
+          description: Refund not found
+        '409':
+          description: Refund could not be cancelled. See error response for details
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+        '500':
+          description: >-
+            Internal server error - Please attach error code when communicating
+            with MobilePay for quicker support
+          content:
+            application/json:
+              schema:
+                $ref: >-
+                  #/components/schemas/ErrorResponseV2
+              example:
+                code: '1234'
+                message: >-
+                  Error message explaining the error that happened while
+                  processing the request
+                correlationId: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+                origin: PoS
+  /app/usersimulation/checkin:
+    post:
+      tags:
+        - User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk
+          description: This endpoint is only available in sandbox environment.
+      summary: Checks in user at PoS.
+      operationId: UserSimulationCheckin
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        description: The information needed to check in a user to a pos.
+        content:
+          application/json-patch+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.UserCheckInRequest
+              description: The information needed to check in a user to a pos.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+              phoneNumber: '+4520031801'
+          application/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.UserCheckInRequest
+              description: The information needed to check in a user to a pos.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+              phoneNumber: '+4520031801'
+          text/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.UserCheckInRequest
+              description: The information needed to check in a user to a pos.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+              phoneNumber: '+4520031801'
+          application/*+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.UserCheckInRequest
+              description: The information needed to check in a user to a pos.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+              phoneNumber: '+4520031801'
+        required: true
+      responses:
+        '200':
+          description: The user check in request has succeeded
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+  /app/usersimulation/acceptpayment:
+    post:
+      tags:
+        - User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk
+          description: This endpoint is only available in sandbox environment.
+      summary: Accepts payment on behalf of a user.
+      operationId: UserSimulationAcceptPayment
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        description: The information needed to accept a payment on a users behalf.
+        content:
+          application/json-patch+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.AcceptPaymentRequest
+              description: The information needed to accept a payment on a users behalf.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+              phoneNumber: '+4520031801'
+          application/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.AcceptPaymentRequest
+              description: The information needed to accept a payment on a users behalf.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+              phoneNumber: '+4520031801'
+          text/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.AcceptPaymentRequest
+              description: The information needed to accept a payment on a users behalf.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+              phoneNumber: '+4520031801'
+          application/*+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.AcceptPaymentRequest
+              description: The information needed to accept a payment on a users behalf.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+              phoneNumber: '+4520031801'
+        required: true
+      responses:
+        '200':
+          description: The accept payment request has succeeded.
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+  /app/usersimulation/cancelpaymentbyuser:
+    post:
+      tags:
+        - User Simulation
+      servers:
+        - url: https://api.sandbox.mobilepay.dk
+          description: This endpoint is only available in sandbox environment.
+      summary: Cancels active payment on behalf of a user.
+      operationId: UserSimulationCancelPayment
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        description: The information needed to cancel a payment on a users behalf.
+        content:
+          application/json-patch+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.CancelPaymentByUserRequest
+              description: The information needed to cancel a payment on a users behalf.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+          application/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.CancelPaymentByUserRequest
+              description: The information needed to cancel a payment on a users behalf.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+          text/json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.CancelPaymentByUserRequest
+              description: The information needed to cancel a payment on a users behalf.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+          application/*+json:
+            schema:
+              allOf:
+                - $ref: >-
+                    #/components/schemas/RestAPI.Controllers.Models.CancelPaymentByUserRequest
+              description: The information needed to cancel a payment on a users behalf.
+            example:
+              beaconId: 1311c525-dbf9-493f-a896-4bfb8db73664
+        required: true
+      responses:
+        '200':
+          description: The cancel payment request has succeeded.
+        '401':
+          description: Unauthorized
+        '500':
+          description: Internal server error
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+          readOnly: true
+          example: '1234'
+        message:
+          type: string
+          nullable: true
+          readOnly: true
+          example: >-
+            Error message explaining the error that happened while processing
+            the request
+        correlationId:
+          type: string
+          nullable: true
+          readOnly: true
+          example: d01b1df8-ba93-4bea-81ca-f206a4cb1d01
+      additionalProperties: false
+    MobilePay.PoS.Titanium.Contracts.Model.EXTs.PaymentRestrictionsExt:
+      type: object
+      properties:
+        debitCardDisallowed:
+          type: boolean
+          nullable: true
+          example: false
+        creditCardDisallowed:
+          type: boolean
+          nullable: true
+          example: true
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.QueryPaymentResponse:
+      required:
+        - orderId
+        - paymentId
+        - pollDelayInMs
+        - posId
+        - status
+      type: object
+      properties:
+        paymentId:
+          type: string
+          format: uuid
+          example: 9e3c7722-bb2c-4903-a716-096784842db3
+        posId:
+          type: string
+          format: uuid
+          example: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+        orderId:
+          type: string
+          example: ORDER-12345
+        amount:
+          type: number
+          format: double
+          nullable: true
+          example: 12.5
+        currencyCode:
+          enum:
+            - DKK
+            - EUR
+          type: string
+          nullable: true
+          example: DKK
+        restrictions:
+          allOf:
+            - $ref: >-
+                #/components/schemas/MobilePay.PoS.Titanium.Contracts.Model.EXTs.PaymentRestrictionsExt
+          nullable: true
+        merchantPaymentLabel:
+          type: string
+          nullable: true
+          example: PaymentLabel
+        plannedCaptureDelay:
+          enum:
+            - None
+            - LessThan24Hours
+            - LessThan14Days
+          type: string
+          nullable: true
+          example: None
+        status:
+          enum:
+            - Prepared
+            - Initiated
+            - Paired
+            - IssuedToUser
+            - Reserved
+            - CancelledByUser
+            - CancelledByClient
+            - CancelledByMobilePay
+            - ExpiredAndCancelled
+            - Captured
+          type: string
+          example: Reserved
+        customerToken:
+          type: string
+          nullable: true
+          example: 7610e74997e22464be2d5eff6a09398bf9a4ed20
+        customerReceiptToken:
+          type: string
+          nullable: true
+          example: feb43336ba244d15b330fb465e81862a
+        loyaltyIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+        paymentExpiresAt:
+          type: string
+          format: date-time
+          example: 03/10/2022 06.51.53 +00:00
+        partialCapturePossible:
+          type: boolean
+          nullable: true
+          example: false
+        pollDelayInMs:
+          type: integer
+          format: int32
+          example: 1000
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.QueryPaymentIdsResponse:
+      required:
+        - paymentIds
+      type: object
+      properties:
+        paymentIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Requests.InitiatePaymentRequest:
+      required:
+        - amount
+        - currencyCode
+        - orderId
+        - plannedCaptureDelay
+        - posId
+      type: object
+      properties:
+        posId:
+          type: string
+          description: The point of sale to initiate the payment on.
+          format: uuid
+          example: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+        orderId:
+          type: string
+          description: "A merchant-provided order ID to associate with this payment.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          example: ORDER-12345
+        amount:
+          type: number
+          description: >-
+            The monetary value of the payment, in the currency defined by
+            `CurrencyCode`.
+          format: decimal
+          example: 12.5
+        currencyCode:
+          enum:
+            - DKK
+            - EUR
+          type: string
+          description: The currency of the payments.
+          example: DKK
+        restrictions:
+          allOf:
+            - $ref: >-
+                #/components/schemas/MobilePay.PoS.Titanium.Contracts.Model.EXTs.PaymentRestrictionsExt
+          description: >-
+            Restrictions to apply to the payment (eg. debit/credit card), or
+            `null` if no restrictions should be applied.
+          nullable: true
+        merchantPaymentLabel:
+          type: string
+          description: "Merchant-provided label tag for the payment. This is visible in the transaction reporting section on the MobilePay Portal.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          nullable: true
+          example: PaymentLabel
+        plannedCaptureDelay:
+          enum:
+            - None
+            - LessThan24Hours
+            - LessThan14Days
+          type: string
+          description: >-
+            When the payment is expected to be captured, see [Specify planned
+            capture
+            delay](https://mobilepaydev.github.io/MobilePay-PoS-v10/best_practices#specify-planned-capture-delay).
+          example: None
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.PaymentInitiatedResponse:
+      required:
+        - paymentId
+      type: object
+      properties:
+        paymentId:
+          type: string
+          format: uuid
+          example: 9e3c7722-bb2c-4903-a716-096784842db3
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Requests.PreparePaymentRequest:
+      required:
+        - orderId
+        - posId
+      type: object
+      properties:
+        posId:
+          type: string
+          description: The point of sale to initiate the payment on.
+          format: uuid
+          example: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+        orderId:
+          type: string
+          description: "A merchant-provided order ID to associate with this payment.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          example: ORDER-12345
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Requests.PaymentReadyRequest:
+      required:
+        - amount
+        - currencyCode
+        - plannedCaptureDelay
+      type: object
+      properties:
+        currencyCode:
+          enum:
+            - DKK
+            - EUR
+          type: string
+          description: The currency of the payments.
+          example: DKK
+        amount:
+          type: number
+          description: >-
+            The monetary value of the payment, in the currency defined by
+            `CurrencyCode`.
+          format: double
+          example: 12.5
+        restrictions:
+          allOf:
+            - $ref: >-
+                #/components/schemas/MobilePay.PoS.Titanium.Contracts.Model.EXTs.PaymentRestrictionsExt
+          description: >-
+            Restrictions to apply to the payment (eg. debit/credit card), or
+            `null` if no restrictions should be applied.
+          nullable: true
+        merchantPaymentLabel:
+          type: string
+          description: "Merchant-provided label tag for the payment. This is visible in the transaction reporting section on the MobilePay Portal.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          nullable: true
+          example: PaymentLabel
+        plannedCaptureDelay:
+          enum:
+            - None
+            - LessThan24Hours
+            - LessThan14Days
+          type: string
+          description: >-
+            When the payment is expected to be captured, see [Specify planned
+            capture
+            delay](https://mobilepaydev.github.io/MobilePay-PoS-v10/best_practices#specify-planned-capture-delay).
+          example: None
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Requests.PaymentCaptureRequest:
+      required:
+        - amount
+      type: object
+      properties:
+        amount:
+          type: number
+          description: "The monetary amount to capture, in the currency previously defined on the payment.\r\n            \r\nIf partial capture is supported, this may be lower than the amount specified in the payment. In that case, only this amount will be captured.\r\nOtherwise, the amount should be the same as specified earlier in the payment flow.\r\nSee [Partial Capture](https://mobilepaydev.github.io/MobilePay-PoS-v10/payment_flows#partial_capture)."
+          format: decimal
+          example: 12.5
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.PosResponse:
+      required:
+        - beaconId
+        - merchantPosId
+        - name
+        - posId
+        - requirePaymentBeforeCheckin
+        - storeId
+        - supportedBeaconTypes
+      type: object
+      properties:
+        posId:
+          type: string
+          format: uuid
+          example: c2c70604-ace2-4b54-b1f0-8cea283d31b7
+        merchantPosId:
+          type: string
+          example: My-Pos-1
+        storeId:
+          type: string
+          format: uuid
+          example: 4e0b0228-71f3-44d2-a94e-684094510a3d
+        name:
+          type: string
+          example: 'Cafeteria register #2'
+        beaconId:
+          type: string
+          example: fcfe652b-8ea1-45a4-aea8-0702e8ed6229
+        callbackAlias:
+          type: string
+          nullable: true
+          example: Example Alias
+        supportedBeaconTypes:
+          uniqueItems: true
+          type: array
+          items:
+            enum:
+              - QR
+              - NFC
+              - Bluetooth
+            type: string
+        requirePaymentBeforeCheckin:
+          type: boolean
+          example: false
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.PosIdsResponse:
+      required:
+        - posIds
+      type: object
+      properties:
+        posIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Requests.CreatePosRequest:
+      required:
+        - merchantPosId
+        - name
+        - storeId
+        - supportedBeaconTypes
+      type: object
+      properties:
+        merchantPosId:
+          type: string
+          description: "Merchant-defined unique ID to associate with this point of sale; can be used for lookup.\r\nMerchantPosIds are unique for a given integrator and merchant.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          example: My-Pos-1
+        storeId:
+          type: string
+          description: The store to create this point of sale for.
+          format: uuid
+          example: 4e0b0228-71f3-44d2-a94e-684094510a3d
+        name:
+          type: string
+          description: "Merchant-defined PoS name. This is shown to the user after check-in.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          example: 'Cafeteria register #2'
+        beaconId:
+          type: string
+          description: "Beacon ID associated with this point of sale.\r\n            \r\nThis may either be a 15-digit number (eg. white-box QR codes) or a GUID.\r\nIf `null`, a beacon ID will be generated for you.\r\n\r\nSee [Beacons](https://mobilepaydev.github.io/MobilePay-PoS-v10/pos_management#beacons)."
+          nullable: true
+          example: fcfe652b-8ea1-45a4-aea8-0702e8ed6229
+        callbackAlias:
+          type: string
+          description: >-
+            Callback alias, only for use with the [Notification
+            Service](https://mobilepaydev.github.io/MobilePay-PoS-v10/notification_service).
+          nullable: true
+          example: Example Alias
+        supportedBeaconTypes:
+          uniqueItems: true
+          type: array
+          items:
+            enum:
+              - QR
+              - NFC
+              - Bluetooth
+            type: string
+          description: Beacon types this PoS supports for check-in (eg. QR, Bluetooth).
+        requirePaymentBeforeCheckin:
+          type: boolean
+          description: >-
+            When set to `true`, a user will not be allowed to check-in before a
+            payment is created on this PoS.
+          example: false
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.CreatePosResponse:
+      required:
+        - posId
+      type: object
+      properties:
+        posId:
+          type: string
+          format: uuid
+          example: 79a80a24-0825-4c53-a8ea-4a7c0931d65e
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.GetCheckInResponse:
+      required:
+        - isUserCheckedIn
+        - pollDelayInMs
+      type: object
+      properties:
+        isUserCheckedIn:
+          type: boolean
+          example: true
+        loyaltyIds:
+          type: array
+          items:
+            type: string
+          nullable: true
+        pollDelayInMs:
+          type: integer
+          format: int32
+          example: 1000
+        customerToken:
+          type: string
+          nullable: true
+        customerReceiptToken:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.StoreResponse:
+      required:
+        - brandName
+        - merchantBrandId
+        - merchantLocationId
+        - storeCity
+        - storeId
+        - storeName
+        - storeStreet
+        - storeZipCode
+      type: object
+      properties:
+        storeName:
+          type: string
+          example: MobilePay Finland HQ
+        storeId:
+          type: string
+          format: uuid
+          example: 4e0b0228-71f3-44d2-a94e-684094510a3d
+        storeStreet:
+          type: string
+          example: Keskuskatu 4
+        storeZipCode:
+          type: string
+          example: '00100'
+        storeCity:
+          type: string
+          example: Helsinki
+        brandName:
+          type: string
+          example: MobilePay Offices
+        merchantBrandId:
+          type: string
+          example: POSDK12345
+        merchantLocationId:
+          type: string
+          example: '10001'
+      additionalProperties: false
+    RestAPI.Controllers.V10.Models.Responses.StoreIdsResponse:
+      required:
+        - storeIds
+      type: object
+      properties:
+        storeIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    ErrorResponseV2:
+      type: object
+      properties:
+        code:
+          type: string
+          nullable: true
+          readOnly: true
+          example: '1234'
+        message:
+          type: string
+          nullable: true
+          readOnly: true
+          example: >-
+            Error message explaining the error that happened while processing
+            the request
+        correlationId:
+          type: string
+          nullable: true
+          readOnly: true
+          example: 2df4a929-c79f-42ab-9d10-765e2074b6aa
+        origin:
+          type: string
+          nullable: true
+          readOnly: true
+          example: PoS
+      additionalProperties: false
+    MobilePay.Shared.PoS.Refund.Client.Models.Refund.CurrencyCode:
+      enum:
+        - DKK
+        - EUR
+      type: string
+    MobilePay.Shared.PoS.Refund.Client.Models.Refund.RefundState:
+      enum:
+        - Initiated
+        - Reserved
+        - Captured
+        - CancelledByClient
+        - CancelledByMobilePay
+        - ExpiredAndCaptured
+      type: string
+    MobilePay.Shared.PoS.Refund.Client.Models.Refund.GetRefundResponse:
+      required:
+        - amount
+        - currencyCode
+        - paymentId
+        - pollDelayInMs
+        - refundId
+        - refundOrderId
+        - status
+      type: object
+      properties:
+        refundId:
+          type: string
+          format: uuid
+          example: 0f3b3966-c6f5-40c8-a951-ba30eb94bb66
+        paymentId:
+          type: string
+          format: uuid
+          example: 8eef3e2f-b6c1-4fb1-bec8-c1b5a3c82c10
+        refundOrderId:
+          type: string
+          example: REFUND-12345
+        amount:
+          type: number
+          format: double
+          example: 12.5
+        currencyCode:
+          $ref: >-
+            #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.CurrencyCode
+        status:
+          $ref: >-
+            #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.RefundState
+        pollDelayInMs:
+          type: integer
+          format: int32
+          example: 100
+      additionalProperties: false
+    MobilePay.Shared.PoS.Refund.Client.Models.Refund.QueryRefundIdsResponse:
+      required:
+        - refundIds
+      type: object
+      properties:
+        refundIds:
+          type: array
+          items:
+            type: string
+            format: uuid
+      additionalProperties: false
+    MobilePay.Shared.PoS.Refund.Client.Models.Refund.CreateRefundRequest:
+      required:
+        - amount
+        - currencyCode
+        - paymentId
+        - refundOrderId
+      type: object
+      properties:
+        paymentId:
+          type: string
+          format: uuid
+          example: 8eef3e2f-b6c1-4fb1-bec8-c1b5a3c82c10
+        refundOrderId:
+          type: string
+          example: REFUND-12345
+        amount:
+          type: number
+          format: double
+          example: 12.5
+        currencyCode:
+          $ref: >-
+            #/components/schemas/MobilePay.Shared.PoS.Refund.Client.Models.Refund.CurrencyCode
+      additionalProperties: false
+    MobilePay.Shared.PoS.Refund.Client.Models.Refund.CreateRefundResponse:
+      required:
+        - refundId
+      type: object
+      properties:
+        refundId:
+          type: string
+          format: uuid
+          example: 0f3b3966-c6f5-40c8-a951-ba30eb94bb66
+      additionalProperties: false
+    RestAPI.Controllers.Models.UserCheckInRequest:
+      required:
+        - beaconId
+        - phoneNumber
+      type: object
+      properties:
+        beaconId:
+          type: string
+          description: The beacon Id of the PoS to check in to.
+          example: 1311c525-dbf9-493f-a896-4bfb8db73664
+        phoneNumber:
+          type: string
+          description: The phone number of the user.
+          example: '+4520031801'
+      additionalProperties: false
+    RestAPI.Controllers.Models.AcceptPaymentRequest:
+      required:
+        - beaconId
+        - phoneNumber
+      type: object
+      properties:
+        beaconId:
+          type: string
+          description: >-
+            The beacon Id of the PoS that has a payment request ready to be
+            accepted.
+          example: 1311c525-dbf9-493f-a896-4bfb8db73664
+        phoneNumber:
+          type: string
+          description: The phone number of the user the payment request has been sent to.
+          example: '+4520031801'
+      additionalProperties: false
+    RestAPI.Controllers.Models.CancelPaymentByUserRequest:
+      required:
+        - beaconId
+      type: object
+      properties:
+        beaconId:
+          type: string
+          description: The beacon Id of the PoS that has the payment to be cancelled
+          example: 1311c525-dbf9-493f-a896-4bfb8db73664
+      additionalProperties: false

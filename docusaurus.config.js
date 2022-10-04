@@ -72,6 +72,10 @@ module.exports = {
               label: 'Invoice',
               to: '/api/invoice',
             },
+            {
+              label: 'PoS',
+              to: '/api/pos',
+            },
           ],
         },
         {
@@ -154,6 +158,11 @@ module.exports = {
             id: 'invoice-api-yaml',
             spec: "openapi/invoice.yaml",
             route: "/api/invoice",
+          },
+          {
+            id: 'pos-api-yaml',
+            spec: "openapi/pos.yaml",
+            route: "/api/pos",
           },
         ],
         // Theme Options for modifying how redoc renders them
