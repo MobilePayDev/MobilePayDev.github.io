@@ -50,17 +50,4 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 
 ## Setting up custom transfer reference
 
-If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose [default MobilePay references](https://developer.mobilepay.dk/node/2551) or set up custom references that would reflect in your bank account statement. One of the use cases is when there is a need to set up automation to transfer money further, i.e. franchisee. Custom transfer reference consists of 20 characters: 19 - set by you and a check digit is always automatically added at the end of the reference. Allowed characters are:
-
-| characters               | action                                                                            |
-| -------------------| --------------------------------------------------------------------------------------- |
-| 0-9 | Will not be replaced |
-| <a style={{color:"#5acbff"}}>YY</a> | Will be replaced with the current year |
-| <a style={{color:"#5a78ff"}}>MM</a> | Will be replaced with the current month |
-| <a style={{color:"#8f5aff"}}>DD</a> | Will be replaced with the current day |
-| <a style={{color:"#FF79C6"}}>RRR</a> | Will be replaced with the running number (incremented with each transfer and reset each day) <br/> Running number is unique for every payment point |
-| <a style={{color:"#00DA46"}}>X</a> (added automatically) | Check digit |
-
-:::note
-Example: Payment point has custom transfer reference set to "<a style={{color:"#FF79C6"}}>RRR</a>5555555555<a style={{color:"#5acbff"}}>YY</a><a style={{color:"#5a78ff"}}>MM</a><a style={{color:"#8f5aff"}}>DD</a>". Reference in bank statement "<a style={{color:"#FF79C6"}}>001</a>5555555555<a style={{color:"#5acbff"}}>21</a><a style={{color:"#5a78ff"}}>10</a><a style={{color:"#8f5aff"}}>01</a><a style={{color:"#00DA46"}}>3</a>" indicates that the transfer was the first transfer for this payment point and it was made on 2021-10-01.
-:::
+If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose [default](/docs/reporting/transfers#default-transfer-reference) transfer reference or set up [custom references](/docs/reporting/transfers#custom-transfer-reference) that would reflect in your bank account statement. [Read more about transfer references.](/docs/reporting/transfers#transfer-reference).
