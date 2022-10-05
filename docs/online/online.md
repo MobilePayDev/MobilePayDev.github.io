@@ -12,4 +12,4 @@ You can find an example of a MobilePay Online flow [here](https://mobilepay.dk/e
 
 MobilePay is a digital wallet for iOS and Android that can be used for person to person transfers, in-store purchases, subscriptions, invoices, eCommerce transactions etc. The documentation on this page covers the technical setup of the eCommerce functionality and is directed at Payment Service Providers that wish to offer MobilePay as a payment method to their customers (i.e. web shops).
 
-![Online hero](/img/Hero_online.png)
+![Online hero](/img/Hero_Online.png)
