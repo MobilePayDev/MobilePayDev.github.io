@@ -1,6 +1,7 @@
 ---
-sidebar_position: 4
+sidebar_position: 2
 ---
+import TestApp from '/docs/shared-blocks/_test-app.mdx';
 
 # Testing
 
@@ -14,7 +15,7 @@ The sandbox environment is dedicated for integration purposes. It is the same as
 
 ## Test merchants
 
-You will receive details for a test merchant to use in a sandbox environment during your onboarding. It will allow you to login to [Sandbox MobilePay portal](https://sandprod-portal.mobilepay.dk/) to [generate API keys](authentication.md), and/or to [set up Payment Points](payment-points.md) for your testing purposes. It is a valuable experience since you will need to do the same activities when moving to production.
+You will receive details for a test merchant to use in a sandbox environment during your onboarding. It will allow you to login to [Sandbox MobilePay portal](https://sandprod-portal.mobilepay.dk/) to [generate API keys](/docs/app-payments/authentication), and/or to [set up Payment Points](/docs/app-payments/payment-points) for your testing purposes. It is a valuable experience since you will need to do the same activities when moving to production.
 
 ## Test users
 
@@ -30,41 +31,15 @@ Do not use the test phone number in the production environment, as it might be a
 
 :::
 
-### iOS
+<TestApp />
 
-iOS MobilePay Test app is available in Apple TestFlight.
-
-- [MobilePay Sandbox App for Denmark](https://testflight.apple.com/join/xarydQZ4)
-- [MobilePay Sandbox App for Finland](https://testflight.apple.com/join/hP92EaBR)
-
-:::warning
-
+:::caution
 **MobilePay Sandbox** app supports not only it's own schema `mobilepay-test://` but also the production schema `mobilepay://`. This means that some of you may experience issues in iOS when trying to make a real production payment, sandbox app would open.
 To circumvent this you could try closing MobilePay Sandbox app and opening MobilePay so that it's running in the background while doing the production payment. Read more on how to close an app: https://support.apple.com/en-us/HT201330.
-
 :::
 
-### Android
-
-To install, you will have to allow installation from “unknown sources”.
-
-- [MobilePay Sandbox App for Denmark](https://install.appcenter.ms/orgs/mobilepay-apps/apps/mobilepay-dk-android-sandbox/distribution_groups/external)
-- [MobilePay Sandbox App for Finland](https://install.appcenter.ms/orgs/mobilepay-apps/apps/mobilepay-fi-android-sandbox/distribution_groups/external)
-
-### Log on to test app
-
-1. Install and open the MobilePay DK/FI MobilePay Test app
-2. Select "Log på (Eksisterende bruger)" / "Kirjaudu sovellukseen" / "Log on (existing user)"
-3. Enter a valid Sandbox phone number (you have received during on-boarding)
-4. Enter SSN (Only relevant on a fresh install)
-
-   Denmark CPR no.: 000000-0000
-
-   Finland henkilötunnus: 00000000000
-5. Enter PIN: “1234”
-6. Enter activation code: “123456” and press "OK" / "Jatka"
-
 ## Integration tests
+
 We also have a Payments Testing API in sandbox environment, which has only one endpoint for simulating user's swipe in MobilePay app. You can use that to setup integration tests or in any other way where it fits you.
 
 ```bash title="Simulate user swiping and confirming the payment in MobilePay app."
@@ -77,4 +52,5 @@ curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/
     "userId": {UUID}
   }'
 ```
+
 `paymentSourceId` and `userId` are unique for your test users. You will receive these values during onboarding.

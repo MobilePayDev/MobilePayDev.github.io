@@ -1,6 +1,7 @@
 ---
 sidebar_position: 2
 ---
+import TestApp from '/docs/shared-blocks/_test-app.mdx';
 
 # Test
 
@@ -20,33 +21,7 @@ As PSP, you can now initiate a MobilePay Online payment against our Sandprod env
 
 In order to complete a payment flow in the sandprod environment, a test version of the MobilePay app is available. This version of the MobilePay app is similar to the live version, but only supports payments in the sandprod environment.
 
-### Android
-
-To install, you will have to allow installation from “unknown sources”.
-
-[MobilePay DK Sandbox app](https://install.appcenter.ms/orgs/mobilepay-apps/apps/mobilepay-dk-android-sandbox/distribution_groups/external)
-
-[MobilePay FI Sandbox app](https://install.appcenter.ms/orgs/mobilepay-apps/apps/mobilepay-fi-android-sandbox/distribution_groups/external)
-
-### iOS
-
-iOS MobilePay Sandbox app is available through Apple TestFlight. Therefore Apple TestFlight must be installed to the device.  Using below link on a mobile device will initiate download of and registration to TestFlight. No prior registration or invitation needed.
-Please open below link on your mobile device:
-
-[MobilePay DK Sandbox app](https://testflight.apple.com/join/xarydQZ4)
-
-[MobilePay FI Sandbox app](https://testflight.apple.com/join/hP92EaBR)
-
-### Log on to test app
-
-1. Install and open the MobilePay DK/FI Vendor app
-2. Select "Log på (Eksisterende bruger)" / "Kirjaudu sovellukseen / "Log on (existing user)"
-3. Enter a valid Sandbox phone number (see below section about test users)
-4. Enter SSN (Only relevant on fresh install)
-    * Denmark CPR no.: 000000-0000
-    * Finland henkilötunnus: 00000000000
-5. Enter PIN: “1234”
-6. Enter activation code: “123456” and press "OK" / "Jatka"
+<TestApp />
 
 ## User simulation API
 

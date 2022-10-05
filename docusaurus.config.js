@@ -30,13 +30,13 @@ module.exports = {
         alt: "MobilePay",
         src: "img/logo-blue.svg",
         srcDark: "img/logo-white.svg",
-        href: "/MobilePay-Payments-API/docs/app-payments/introduction",
+        href: "/MobilePay-Payments-API/docs/app-payments/",
       },
       items: [   
         {
           label: 'App Payments',
           position: 'left',
-          to: '/docs/app-payments/introduction',
+          to: '/docs/app-payments/',
         },
         {
           label: 'Online',
