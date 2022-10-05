@@ -6,7 +6,7 @@ sidebar_position: 3
 
 MobilePay Online supports both dual device and single device flows. It depends on which device the user uses when you redirect to redirectToMobilePayUrl. Our landing page will detect if the redirect happens on a mobile device or not. Only the user experience will be affected by type of flow. The payment flow and API requests are the same regardless of flow type.
 
-![Online flow](/img/online-flow.png)
+![Online flow](/img/online-Top-image.png)
 
 ## Single device flow
 

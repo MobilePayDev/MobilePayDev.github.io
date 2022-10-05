@@ -40,7 +40,7 @@ Please visit our [Design page](https://mobilepaygroup.com/design) for more infor
 
 ## Integrator and merchant support
 
-For ongoing technical support, technical questions or feature requests integrators can always contact Developer Support at developer@mobilepay.dk. The Developer Support team will review the request and respond as soon as possible, usually within a business day. Merchant support is the responsibility of the integrator as MobilePay do not have any agreements with merchants and is working as a pass through wallet. Therefore we can rarely assist merchants in any issues.
+For ongoing technical support, technical questions or feature requests integrators can always contact Developer Support at developer@mobilepay.dk. The Developer Support team will review the request and respond as soon as possible, usually within a business day. Merchant support is the responsibility of the integrator as MobilePay do not have any agreements with merchants and is working as a pass through wallet. Therefore we can rarely assist merchants in any issues. If needed you are welcome to supply this page for your merchants with links to our test app [Merchant Sandbox Testing](/docs/online/development-guide/test/merchant-test).
 
 When contacting Developer Support please include as many details as possible relevant to the request. If it concerns a specific issue or bug please include the following and any other details that can be relevant:
 
