@@ -84,7 +84,11 @@ Integrator has been provided with a test merchant to our [MobilePay Portal - San
 
 ![Sandprod admin screen](/img/oidc-sandprod_admin_screen_testmerchant.png)
 
-![Sandprod consent screen](/img/oidc-consent_screen.png)
+<img
+  src={require('/img/oidc-consent_screen.png').default}
+  alt="PoS confirmation screen"
+  width="700"
+/>
 
 Once the user authenticates successfully, the application will be redirected to the redirect_uri, with a code as part of the URL: `https://redirect_url#code=xxx` You can exchange this code with an Access Token using the token endpoint `https://api.sandbox.mobilepay.dk/merchant-authentication-openidconnect/connect/token` 
 

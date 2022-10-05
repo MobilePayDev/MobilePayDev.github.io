@@ -1,6 +1,5 @@
 ---
-sidebar_position: 8
-pagination_next: null
+sidebar_position: 9
 ---
 
 # Release Notes

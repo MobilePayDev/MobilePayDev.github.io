@@ -36,7 +36,7 @@ module.exports = {
         {
           label: 'App Payments',
           position: 'left',
-          to: '/docs/app-payments/introduction',
+          to: '/docs/app-payments/',
         },
         {
           label: 'Invoice',
