@@ -14,7 +14,7 @@ For more information about the http headers, see [API principles](/docs/pos/api-
 |------|-------------|-------------|
 | `x-ibm-client-id` | Guid | Identifies an application created through MobilePay Developer Portal. |
 | `x-mobilepay-merchant-vat-number` | Valid VAT number: IsoCountryCodeVATNumber - Example: DK12345678 | Identifies the merchant the integrator is calling on behalf of |
-| `x-mobilepay-client-system-version` | Valid Client-Version: Major.Minor.Build - Example: 1.2.1 | Identifies the [version of the integrator system](/pos/api-principles#client-versioning) calling the API. |
+| `x-mobilepay-client-system-version` | Valid Client-Version: Major.Minor.Build - Example: 1.2.1 | Identifies the [version of the integrator system](/docs/pos/api-principles#client-versioning) calling the API. |
 | `x-mobilepay-idempotency-key` | String with at most 36 valid characters | Used to allow calls to be [safely retried](/docs/pos/api-principles#error-handling) in case of errors. |
 
 ## Brands
@@ -51,7 +51,7 @@ For more information about a PoS, see [PoS Management](/docs/pos/pos-management)
 
 ## Payments
 
-For more information about payments, see [Payment Flows](docs/pos/payment-flows).
+For more information about payments, see [Payment Flows](/docs/pos/payment-flows).
 
 | Name | Format      | Description |
 |------|-------------|-------------|

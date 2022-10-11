@@ -16,14 +16,22 @@ When an integrator needs to onboard a PoS they need the `storeId` to create all 
 
 When an integrator is building a new integration for a merchant they need to know the store to which the PoS should be created. The goal is to get a list of all the stores that belongs to a merchant and then use the `storeId` from the appropriate store to create the PoS. First the integrator needs to call `GET /v10/stores` without any query parameters and the endpoint will return all the `storeId`s based on the Merchant VAT either provided in the `x-mobilepay-merchant-vat-number` header or provided in the access token (see [Authentication](/docs/pos/authentication#obtaining-an-access-token)). Then the integrator will loop through the list and for each `storeId` call `GET /v10/stores/{storeid}` that will return the store information for that specific store. In the end the integrator have a list of all the stores the merchant has and then the integrator knows which ``storeId`` for each store to use when creating a PoS. Below diagram illustrates a flow to get all merchant stores.
 
-[![Get Stores by VAT](/img/pos-GetStoresByVat.PNG)](/img/pos-GetStoresByVat.PNG)
+<img
+  src={require('/img/pos-GetStoresByVat.PNG').default}
+  alt="Get Stores by VAT"
+  width="550"
+/>
 
 ### Existing solution
 
 A brand is identified by a `merchantBrandId`. A `merchantLocationId` together with a `merchantBrandId` identifies a store within a brand.
 If the merchant already has a MobilePay PoS solution with integration to either API V06, V07 or V08 then an integrator can use the already known `merchantBrandId` and `merchantLocationId` to get the `StoreId`, If the `merchantBrandId` and ``merchantLocationId`` is not known the process from the above paragraph will be the most efficient. To get the `StoreId` the integrator will have to call `GET /v10/stores` with the two ids, and in return they will receive the `storeId`. Below diagram illustrates a flow for getting the ``storeId`` using `GET /v10/stores`.
 
-[![Get store](/img/pos-get_store.png)](/img/pos-get_store.png)
+<img
+  src={require('/img/pos-get_store.png').default}
+  alt="Get Store"
+  width="550"
+/>
 
 ## PoS Creation
 
@@ -94,7 +102,12 @@ When a PoS is deleted it is no longer possible to issue payments. However it wil
 ### When PoS reboots
 
 When the client reboots it is good practice to query the PoS with `GET /v10/pointofsales` with the `merchantPosId` and persist the `posId` in memory to use for initiating payments. If no PoS is returned, the client will have to re-create it. Here is the flow described:
-[![PoS onboarding](/img/pos-PoS_Onboarding.png)](/img/pos-PoS_Onboarding.png)
+
+<img
+  src={require('/img/pos-PoS_Onboarding.png').default}
+  alt="PoS onboarding"
+  width="550"
+/>
 
 We recommend the client to store the following in a configuration file to be able to create the PoS when needed:
 

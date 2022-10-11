@@ -12,7 +12,7 @@ High level `InvoiceDirect` flow diagram
 
 ### Create Invoice Direct
 
-You can create an invoice directly to MobilePay app. Notice that request require a customer mobile phone number. Check how invoice looks in the app [here](visual_examples).
+You can create an invoice directly to MobilePay app. Notice that request require a customer mobile phone number. Check how invoice looks in the app [here](/docs/invoice/visual-examples).
 
 ```json
 POST api/v1/merchants/{merchantId}/invoices

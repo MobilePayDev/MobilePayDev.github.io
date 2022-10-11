@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 3
 ---
 
 # Payment Flow Error Handling
@@ -9,7 +9,12 @@ Of all the ways a payment flow can fail, there are some error scenarios related 
 ## Payment in progress error handling
 
 In the case of an unexpected restart of the client where the payment flow cannot be continued it might be necessary to cancel the active payment since there can be only one active payment on a PoS. If the ``paymentId`` of the active payment is lost it can be retrieved by calling ``GET /v10/payments`` using the ``posId`` and `orderId`. When the `paymentId` is retrieved the payment can be cancelled and the PoS is now ready for a new payment flow. A sequence diagram showing how to handle a payment-in-progress error is shown below.
-[![Initiate payment error active payment](/img/pos-initiate_payment_error_active_payment.png)](/img/pos-initiate_payment_error_active_payment.png)
+
+<img
+  src={require('/img/pos-initiate_payment_error_active_payment.png').default}
+  alt="Initiate payment error"
+  width="650"
+/>
 
 ## Hanging payments in reserved state
 
@@ -17,4 +22,8 @@ The client is responsible for persisting if a reserved payment should be cancell
 
 It is required of the client to implement a periodically scheduled job of running through all their payments left in *Reserved* state, and try to either cancel or capture it. A sequence diagram of this flow is shown below. It is the responsibility of the client to keep track of the payments left in *Reserved* state.
 
-[![Capture cancel hanging reservations](/img/pos-capture_cancel_hanging_reservations.png)](/img/pos-capture_cancel_hanging_reservations.png)
+<img
+  src={require('/img/pos-capture_cancel_hanging_reservations.png').default}
+  alt="Payment capture cancel"
+  width="650"
+/>

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 5
 ---
 
 # Cancel Flows
@@ -15,11 +15,19 @@ If the customer cancels the payment the state will transition to *CancelledByUse
 The diagrams below show the sunshine scenarios for a payment cancelled by the client and a payment cancelled by the customer, respectively.
 When the client cancels the payment a notification is sent to the app. The app returns to the pay screen with a message saying that the payment was cancelled by the shop.
 
-[![Cancel by client](/img/pos-cancel-by-client.png)](/img/pos-cancel-by-client.png)
+<img
+  src={require('/img/pos-cancel-by-client.png').default}
+  alt="Cancel by client"
+  width="750"
+/>
 
 When the customer cancels the payment the app will show a message saying that the payment was cancelled. The status of the payment when queried will be *CancelledByUser*.
 
-[![Cancel by user](/img/pos-cancel-by-user.png)](/img/pos-cancel-by-user.png)
+<img
+  src={require('/img/pos-cancel-by-user.png').default}
+  alt="Cancel by user"
+  width="750"
+/>
 
 The cancel funtionality can be used in various scenarios. It could be that the customer changed their mind about paying with MobilePay or that something in the request was not correct (maybe the customer added another item after the payment was initiated). In these cases the cancelling of the payment is straight forward and as shown in the diagrams above.
 
@@ -33,4 +41,8 @@ A client can end up in situations, where the status of a refund is not known e.g
 A refund is cancellable until it reaches one of the states *CancelledByMobilePay*, *Captured* or *ExpiredAndCapturred*. Refunds can only be cancelled by the client since there is no customer involved in the process. A refund can be cancelled by calling the endpoint `POST /v10/refunds/{refundId}/cancel`. It requires the id of the refund that was returned when the refund was initiated.
 When the refund has been cancelled the state transitions to *CancelledByClient*.
 
-[![Cancel refund by client](/img/pos-cancel-refund-by-client.png)](/img/pos-cancel-refund-by-client.png)
+<img
+  src={require('/img/pos-cancel-refund-by-client.png').default}
+  alt="Cancel refund by client"
+  width="500"
+/>

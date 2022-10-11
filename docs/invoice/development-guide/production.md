@@ -18,11 +18,11 @@ It is possible to do reconciliation in three ways:
 
 1. **API Callback**: You get the status on the invoice through the API. When the Invoice has status paid it means that the money has been transferred to the customer’s bank. If you have instant transfer method chosen, then the individual transactions will contain the same `PaymentReference`, that you have assigned, and that `PaymentReference`, will be returned through the API.
 2. **Export CSV/XLSX file**: The merchant logs-in to our MobilePay [portal](https://admin.mobilepay.dk) where the transactions can be exported in a CSV- or XLSX-file.
-3. Use the [Transaction Reporting API](/docs/reporting/overview).
+3. Use the [Reporting API](/docs/reporting/overview).
 
 For example, if the merchant wants to use their FIK-Creditor-ID for transactions, then you simply choose the reference number, which can be the merchant FIK Creditor ID. There are no special requirements for the merchant FIK creditor-ID to be able to use it for MobilePay Invoice.
 
-All possible invoice statuses returned in callback body can be found in [Get invoice status](https://mobilepaydev.github.io/MobilePay-Invoice/api_reference#get-status) section.
+All possible invoice statuses returned in callback body can be found in [Get invoice status](/docs/invoice/api-endpoint-reference#get-invoice-status) section.
 
 ## Invoice Transfers
 
@@ -38,15 +38,15 @@ It is important to know which transfer type are possible to use as a merchant. T
 |**HOW TO SET IT**| Merchant can set Instant transfers for each Invoice issuer in MobilePay portal. | Merchant can set Daily transfers for each Invoice issuer in MobilePay portal.|
 |**BANK STATEMENT**|`PaymentReference` or `InvoiceNumber` will be used in bank statement in fields: DK: Text field. FI: Text field and Reference no. field.| MobilePay generated reference number will be used in bank statement in fields. DK: Text field. FI: Text field and Reference no. field.|
 
-## Transaction reporting api
+## Reporting api
 
-With the transaction reporting API, you can quickly find all information associated with each of your payment
+With the Reporting API, you can quickly find all information associated with each of your payment
 
-When using the Transaction Reporting API, you will be introduced to the term `paymentPointId`. `paymentPointId` is a GUID assigned to payment point.
+When using the Reporting API, you will be introduced to the term `paymentPointId`. `paymentPointId` is a GUID assigned to payment point.
 
 | API | PaymentPointID | Obtained|
 |--|--|--|
-| Invoice | `InvoiceIssuerID` | You can call `GET /api/v1/merchants/{merchantId}/invoiceissuers`, which will return a list of all invoice issuers, associated with that merchant. Read more [here](https://mobilepaydev.github.io/MobilePay-Invoice/invoice_issuers) |
+| Invoice | `InvoiceIssuerID` | You can call `GET /api/v1/merchants/{merchantId}/invoiceissuers`, which will return a list of all invoice issuers, associated with that merchant. Read more [here](/docs/invoice/invoice-issuers) |
 
 **ExternalTransactionID**
 
@@ -56,4 +56,4 @@ When using the Transaction Reporting API, you will be introduced to the term `pa
 
 `ExternalTransactionId` is ID that could be provided by merchant / payment integrator when initiating payments. In general, it can be used for correlating transactions between MobilePay and external (merchant/integrator) system.
 
-Learn more about Transaciton reporting API [here](/docs/reporting/overview).
+Learn more about Reporting API [here](/docs/reporting/overview).

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 # Prepared Payment Flow
@@ -18,4 +18,8 @@ A prepared payment starts out in state *Prepared* and remains in this state unti
 
 The diagram below shows all the possible states and transitions for a prepared payment flow. The "Prepared Payment Flow" state diagram expands upon the ["Payment Flow" state diagram](/docs/pos/payment-flows#payment-states-for-the-payment-flow) by adding two additional states, *Prepared* and *Paired*. The client and MobilePay can cancel a prepared payment. The customer can cancel a paired payment. The Payment states *Initiated*, *Prepared*, *Paired* and *IssuedToUser* are called *active* states and will block further payments on the same Point-of-Sale.
 
-[![Prepared payment states](/img/pos-prepared-payment-states.png)](/img/pos-prepared-payment-states.png)
+[<img
+  src={require('/img/pos-prepared-payment-states.png').default}
+  alt="PoS confirmation screen"
+  width="800"
+/>](/img/pos-prepared-payment-states.png)

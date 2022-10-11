@@ -10,7 +10,7 @@ After certification you will be able to use the production API and start onboard
 
 In order to start using the production API two things must be in place:
 
-* [Completed self-certification with production clientId](https://mobilepaydev.github.io/MobilePay-PoS-v10/self_certification)
+* Completed self-certification with production clientId
 * Received production security credentials
 
 For more information about this please visit the [self-certification site](/docs/pos/development-guide/verification).
@@ -18,7 +18,7 @@ For more information about this please visit the [self-certification site](/docs
 When above topics are completed you can start to onboard your first merchant in production. We recommend that you select a pilot merchant to ensure that the integration is functional. Afterwards you can continue with a gradual role out.
 If you are migrating from an earlier PoS version we also recommend to start the migration with a test merchant and then gradually migrate the remaining merchant base. We strongly recommend that you enable a roll back option to the former version in case of issues.
 
-In the GitHub documentation you can find a section on how to onboard merchants under [Point-of-Sale management](https://mobilepaydev.github.io/MobilePay-PoS-v10/pos_management). If your merchants does not yet have a PoS solution use the 'No existing solution'. If your merchants already have an existing PoS solution use the 'Existing solution'.
+In the GitHub documentation you can find a section on how to onboard merchants under [Point-of-Sale management](/docs/pos/pos-management). If your merchants does not yet have a PoS solution use the 'No existing solution'. If your merchants already have an existing PoS solution use the 'Existing solution'.
 
 ## Merchant support
 

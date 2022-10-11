@@ -32,20 +32,9 @@ To complete a payment flow in the sandprod environment you will need to make use
 
 <TestApp />
 
-### Log on to test app
-
-1. Install and open the MobilePay DK/FI Vendor app
-2. Select "Log på (Eksisterende bruger)" / "Kirjaudu sovellukseen / "Log on (existing user)"
-3. Enter a valid Sandbox phone number (see below section about test users)
-4. Enter SSN (Only relevant on fresh install)
-    * Denmark CPR no.: 000000-0000
-    * Finland henkilötunnus: 00000000000
-5. Enter PIN: “1234”
-6. Enter activation code: “123456” and press "OK" / "Jatka"
-
 ## User simulation API
 
-To complete a payment flow in the sandprod environment you will need to make user actions. We have made an API that can mimick the actions of a user. You find it in the [API overview](https://sandbox-developer.mobilepay.dk/product): Choose 'PoS User Simulation for Integrators'
+To complete a payment flow in the sandprod environment you will need to make user actions. We have made an API that can mimick the actions of a user. You find it in the [API documentation](/api/pos#tag/User-Simulation).
 
 With the API you can do the following:
 
@@ -57,17 +46,15 @@ You must subscribe to the User simulation API, before you can use it. When calli
 
 |Input| Source|
 |--|--|
-| **Header: x-ibm- client-id**| From the developer portal|
-|**Header: x-ibm-client-secret**|From the developer portal|
 |**BeaconId**|Created through the PoS API|
 |**Phonenumber**|See below list of test users|
 
 ### How to use the User simulation API
 
-1. Perform a check in on a beaconId: POST /app/usersimulation/checkin
-2. Initiate a payment through the PoS API: POST /api/v10/payments
-   * Accept the payment: POST /app/usersimulation/acceptpayment
-   *Cancel payment: POST /app/usersimulation/cancelpaymentbyuser
+1. Perform a check in on a beaconId: `POST /app/usersimulation/checkin`
+2. Initiate a payment through the PoS API: `POST /api/v10/payments`
+   * Accept the payment: `POST /app/usersimulation/acceptpayment`
+   * Cancel payment: `POST /app/usersimulation/cancelpaymentbyuser`
 
 To perform a check in and payment accept, you must supply a phone number for a test user. Below you find a list of test users with different features.
 

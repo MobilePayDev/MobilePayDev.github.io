@@ -30,7 +30,7 @@ The MobilePay PoS V10 API uses TLS for communication security and data integrity
 
 ## Client Versioning
 
-In addition to the access token which identifies the client calling the MobilePay PoS V10 API, all calls must also include the `x-mobilepay-client-system-version` header to identify the version of the client software. The Client Version (`x-mobilepay-client-system-version`) is a 3 dimensional number Major.Minor.Build. It is recommended that when the client software is updated, the client version is updated accordingly. The client version will be used by MobilePay to block versions of clients that are not [certified](/docs/pos/self-certification) and/or are misbehaving. An example of misbehavior is spamming irrelevant HTTP calls that endanger fast response times for other clients.
+In addition to the access token which identifies the client calling the MobilePay PoS V10 API, all calls must also include the `x-mobilepay-client-system-version` header to identify the version of the client software. The Client Version (`x-mobilepay-client-system-version`) is a 3 dimensional number Major.Minor.Build. It is recommended that when the client software is updated, the client version is updated accordingly. The client version will be used by MobilePay to block versions of clients that are not [certified](/docs/pos/development-guide/verification) and/or are misbehaving. An example of misbehavior is spamming irrelevant HTTP calls that endanger fast response times for other clients.
 
 The three parts of the Client Version is defined as described below.
 

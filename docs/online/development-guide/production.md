@@ -30,7 +30,7 @@ It is the responsibility of the PSP to offer test options to their merchants. It
 
 There are two test options you can use:
 
-1. **Perform test using the sandbox API.** To do this you must suplpy your merchants with the test user that we have supplied to you during techincal onboarding. Your merchants can either use the test app or you can make the user simulation API available to them. It is your responsibility to instruct and support merchants in the use of our test app and user simulation API. We have made a 'Merchant Sandbox Testing' page with instructions about the test app. You can supply this to your merchants along with the phone number of your test user.
+1. **Perform test using the sandbox API.** To do this you must suplpy your merchants with the test user that we have supplied to you during techincal onboarding. Your merchants can either use the test app or you can make the user simulation API available to them. It is your responsibility to instruct and support merchants in the use of our test app and user simulation API. We have made a 'Merchant Sandbox Testing' page with instructions about the test app. You can supply this to your merchants along with the phone number of your test user: [Merchant Sandbox Testing](/merchant-test).
 2. **Perform test using the production API.** In order to perform test in production you can either create a merchantId used only for test payments or merchants can test using their own merchantId. To do this merchants must use the production MobilePay app downloaded through App store or Google Play and a production user. All payments should be cancelled to ensure that not transactions are completed.
 
 ## Design guidelines
@@ -40,7 +40,7 @@ Please visit our [Design page](https://mobilepaygroup.com/design) for more infor
 
 ## Integrator and merchant support
 
-For ongoing technical support, technical questions or feature requests integrators can always contact Developer Support at developer@mobilepay.dk. The Developer Support team will review the request and respond as soon as possible, usually within a business day. Merchant support is the responsibility of the integrator as MobilePay do not have any agreements with merchants and is working as a pass through wallet. Therefore we can rarely assist merchants in any issues. If needed you are welcome to supply this page for your merchants with links to our test app [Merchant Sandbox Testing](/docs/online/development-guide/test/merchant-test).
+For ongoing technical support, technical questions or feature requests integrators can always contact Developer Support at developer@mobilepay.dk. The Developer Support team will review the request and respond as soon as possible, usually within a business day. Merchant support is the responsibility of the integrator as MobilePay do not have any agreements with merchants and is working as a pass through wallet. Therefore we can rarely assist merchants in any issues. 
 
 When contacting Developer Support please include as many details as possible relevant to the request. If it concerns a specific issue or bug please include the following and any other details that can be relevant:
 

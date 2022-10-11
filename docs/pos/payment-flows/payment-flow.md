@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 # Payment Flow
@@ -20,4 +20,8 @@ The diagram below shows all the possible states and transitions for a Payment fl
 A payment in the *Initiated* or *IssuedToUser* state can also be cancelled by MobilePay if it has been inactive for too long or an error occurs while reserving the payment amount on the customer's card or account. If a payment is
 cancelled by MobilePay the state transitions to *CancelledByMobilePay*. The Payment states *Initiated* and *IssuedToUser* are called *active* states and will block further payments on the same Point-of-Sale.
 
-[![Payment states](/img/pos-payment-states.png)](/img/pos-payment-states.png)
+<img
+  src={require('/img/pos-payment-states.png').default}
+  alt="PoS confirmation screen"
+  width="700"
+/>

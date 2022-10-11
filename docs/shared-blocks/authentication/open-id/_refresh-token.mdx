@@ -24,7 +24,7 @@ Explanation of parameters:
 |-----------|-------------|-------|----------|
 | `grant_type` | A way to specify how the client will interact with the server | Must be set to "refresh_token" | Yes |
 | `refresh_token` | The refresh token to be used | The existing refresh token | Yes |
-| `client_id` | The client_id that you received by zip file This is not the same as the MerchantID or the e-mail log-in to https://sandprod-admin.mobilepay.dk | The client_id given in the zip file	 | Yes |
+| `client_id` | The client_id that you received by zip file | The client_id given in the zip file	 | Yes |
 | `client_secret` |  The client_secret that you received by zip file. | The client_secret given in the zip file. | Yes |
 
 `Refresh_tokens` are long-lived. This means when a client gets one from a server, this token must be stored securely to keep it from being used by potential attackers. Therefore, it is not safe to store them in the browser. If a `refresh_token` is leaked, it may be used to obtain new `access_tokens` (and access protected resources) until it is blacklisted or invalidated.

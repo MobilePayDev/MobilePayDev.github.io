@@ -1,7 +1,5 @@
 import DocCardList from '@theme/DocCardList';
 
-# OpenId Flow
-
-The OpenId flow consists of 4 step:
+# Development Guide
 
 <DocCardList />

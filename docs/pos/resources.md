@@ -19,5 +19,5 @@ Order PoS stickers and signs in the [web shop](https://mp.bordingcentral.dk/user
 
 Templates for creating PoS signs can be found here:
 
-* DK: [Materialebank](https://mobilepay.dk/materialebank/marketingmateriale/skilte/skiltning)
+* DK: [Materialebank](https://mobilepay.dk/materialebank/marketingmateriale/skilte/skiltning-til-pos)
 * FI: Please contact business.support@mobilepay.fi

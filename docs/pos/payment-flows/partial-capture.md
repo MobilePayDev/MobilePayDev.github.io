@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 6
 ---
 
 # Partial Capture
@@ -9,8 +9,16 @@ Based on the value of this flag, a mechant/integrator must choose to proceed wit
 
 Here is the flow where partial capture is possible.
 
-[![Partial capture](/img/pos-partial-capture.PNG)](/img/pos-partial-capture.PNG)
+<img
+  src={require('/img/pos-partial-capture.PNG').default}
+  alt="Partial capture"
+  width="650"
+/>
 
 Here is the flow where partial capture is not possible and hence the payment needs to be cancelled.
 
-[![Partial capture cancel](/img/pos-partial-capture-cancel.png)](/img/pos-partial-capture-cancel.png)
+<img
+  src={require('/img/pos-partial-capture-cancel.png').default}
+  alt="Partial capture cancel"
+  width="650"
+/>

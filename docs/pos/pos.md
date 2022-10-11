@@ -1,3 +1,8 @@
+---
+pagination_prev: null
+pagination_next: null
+---
+
 # Introduction
 
 MobilePay PoS is a solution for customers to pay through their mobile via a QR code or the white MobilePay box.

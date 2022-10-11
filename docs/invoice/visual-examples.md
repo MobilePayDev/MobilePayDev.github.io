@@ -6,15 +6,25 @@ sidebar_position: 7
 
 ## User pays invoice
 
-[![Initiate payment](/img/invoice-how_user_initiates_payment.jpeg)](/img/invoice-how_user_initiates_payment.jpeg)
+### How users initiate payment
+
+[![Initiate payment](/img/invoice-how_user_initiates_payment.jpg)](/img/invoice-how_user_initiates_payment.jpg)
+
+### Pay invoice
 
 [![Pay invoice now](/img/invoice-pay_invoice_now.jpeg)](/img/invoice-pay_invoice_now.jpeg)
+
+### Schedule invoice payment for future
 
 [![Schedule invoice](/img/invoice-schedule_invoice_payment_for_future.jpeg)](/img/invoice-schedule_invoice_payment_for_future.jpeg)
 
 ## View bill
 
-[![View bill](/img/invoice-view_bill.jpeg)](/img/invoice-view_bill.jpeg)
+<img
+  src={require('/img/invoice-view_bill.jpeg').default}
+  alt="PoS confirmation screen"
+  width="650"
+/>
 
 ## Reject Invoice
 
@@ -23,7 +33,12 @@ sidebar_position: 7
 ## PDF example
 
 Image explains what data of merchant/invoice issuer/invoice is used in the generated PDF and where.
-[![PDF](/img/invoice-pdf.png)](/img/invoice-pdf.png)
+
+[<img
+  src={require('/img/invoice-pdf.png').default}
+  alt="PoS confirmation screen"
+  width="750"
+/>](/img/invoice-pdf.png)
 
 | Marking from example | Mapping Invoice                                                     | EN                | DK                    | FI                   |
 |-------------------------------|---------------------------------------------------------------------|-------------------|-----------------------|----------------------|

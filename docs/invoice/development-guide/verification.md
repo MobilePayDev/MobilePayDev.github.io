@@ -45,25 +45,19 @@ Once you have followed the steps above, you are ready to do the self-certificati
 
 ### Sandbox
 
-1. Read documentation on [GitHub](https://mobilepaydev.github.io/MobilePay-Invoice/)
-2. Confirm user for Sandbox Developer Portal [here](https://sandbox-developer.mobilepay.dk/)
-3. Create app [here](https://sandbox-developer.mobilepay.dk/application)
-4. Subscribe to Api's [here](https://sandbox-developer.mobilepay.dk/product)
-5. Get OpenId Credentials [here](/docs/invoice/authentication)
-6. Make the first call to Sandbox API
-7. Test Invoice [here](/docs/invoice/development-guide/test)
-8. Complete verification
+1. Read documentation on [GitHub](/docs/invoice)
+2. Get OpenId Credentials [here](/docs/invoice/authentication)
+3. Make the first call to Sandbox API
+4. Test Invoice [here](/docs/invoice/development-guide/test)
+5. Complete verification
 
 ### Production
 
-1. Confirm user for Production Developer Portal [here](https://developer.mobilepay.dk/)
-2. Create app [here](https://developer.mobilepay.dk/application).
-3. Subscribe to API [here](https://developer.mobilepay.dk/product).
-4. Get OpenID Connect Credentials. Read more [here](/docs/invoice/authentication)
-5. Confirm that the implementation is working in production.
-6. Ensure you've followed our [design guidelines](https://developer.mobilepay.dk/design)
-7. **Await approval from developer@mobilepay.dk**
-8. Sign up for operational maillist.
+1.Get OpenID Connect Credentials. Read more [here](/docs/invoice/authentication)
+2. Confirm that the implementation is working in production.
+3. Ensure you've followed our [design guidelines](https://www.mobilepaygroup.com/design)
+4. **Await approval from developer@mobilepay.dk**
+4. Sign up for operational maillist.
 
 ## Prerequisites using MobilePay Invoice
 
@@ -80,7 +74,7 @@ Once you have followed the steps above, you are ready to do the self-certificati
 - Integrator must have an onboarding guideline demonstrating how the Merchant goes through the Consent process
 - Integrator must have received production credentials for OpenID Connect
  -Integrator must have signed up for operational mail-list
- -Integrator must use the right [MobilePay logo and buttons](https://developer.mobilepay.dk/design)
+ -Integrator must use the right [MobilePay logo and buttons](https://www.mobilepaygroup.com/design)
 
 ### Technical Prerequisites
 

@@ -52,35 +52,29 @@ Once you have followed the steps above, you are ready to do the self-certificati
 
 ### Sandbox - Checklist
 
-1. Read documentation on [GitHub](https://mobilepaydev.github.io/MobilePay-Subscriptions/)
-2. Confirm user for [Sandbox Developer Portal](https://sandbox-developer.mobilepay.dk/)
-3. [Create App](https://sandbox-developer.mobilepay.dk/application)
-4. Subscribe to [Api's](https://sandbox-developer.mobilepay.dk/product)
-5. Get OpenId Credentials
-6. Make the first call to Sandbox API
-7. [Test Subscriptions](/docs/subscriptions/development-guide/test)
-8. Set [Payment Callback URL](https://mobilepaydev.github.io/MobilePay-Subscriptions/payments#callbacks)
-9. Set [Callback Authentication Scheme](https://mobilepaydev.github.io/MobilePay-Subscriptions/index#rest-callback-authentication)
-10. Complete verification
+1. Read [documentation](/docs/subscriptions)
+2. Get OpenId Credentials
+3. Make the first call to Sandbox API
+4. [Test Subscriptions](/docs/subscriptions/development-guide/test)
+5. Set [Payment Callback URL](/docs/subscriptions/subscriptions-payments#callbacks)
+6. Set [Callback Authentication Scheme](/docs/subscriptions/general-notes#rest-callback-authentication)
+7. Complete verification
 
 ### Production - Checklist
 
 1. Finish business onboarding on [MobilePay Portal](https://admin.mobilepay.dk/)
-2. Confirm developer user for [Production Developer Portal](https://developer.mobilepay.dk/)
-3. Create [App](https://developer.mobilepay.dk/application)
-4. Subscribe to [API](https://developer.mobilepay.dk/product)
-5. Get OpenID Connect Credentials
-6. Set [Payment Callback URL](https://mobilepaydev.github.io/MobilePay-Subscriptions/payments#callbacks)
-7. Set [Callback Authentication Scheme](https://mobilepaydev.github.io/MobilePay-Subscriptions/index#rest-callback-authentication)
-8. [Create agreement](https://mobilepaydev.github.io/MobilePay-Subscriptions/agreement)
-9. [Request a Subscription Payment](https://mobilepaydev.github.io/MobilePay-Subscriptions/payments#requests)
-10. Verify the [Production Payment reconciliation process](/docs/subscriptions/development-guide/production)
-11. Document customers sign-up flow to developer@mobilepay.dk 
+2. Get OpenID Connect Credentials
+3. Set [Payment Callback URL](/docs/subscriptions/subscriptions-payments#callbacks)
+4. Set [Callback Authentication Scheme](/docs/subscriptions/general-notes#rest-callback-authentication)
+5. [Create agreement](/docs/subscriptions/agreement)
+6. [Request a Subscription Payment](/docs/subscriptions/subscriptions-payments)
+7. Verify the [Production Payment reconciliation process](/docs/subscriptions/development-guide/production)
+8. Document customers sign-up flow to developer@mobilepay.dk 
      * You can check our [UX inspiration site ](https://www.mobilepay.dk/erhverv/abonnementer-og-fakturering/mobilepay-subscriptions/inspiration)
-12. When the Subscription Payment is executed, request for review from developer@mobilepay.dk
-13. **Await approval from developer@mobilepay.dk**
-14. Sign up for operational maillist
-15. Keep updated on MobilePay Subscriptions release notes on https://mobilepaydev.github.io/MobilePay-Subscriptions/release_notes
+9. When the Subscription Payment is executed, request for review from developer@mobilepay.dk
+10. **Await approval from developer@mobilepay.dk**
+11. Sign up for operational maillist
+12. Keep updated on MobilePay Subscriptions [release notes](/docs/subscriptions/release-notes)
 
 ### UX - Checklist
 

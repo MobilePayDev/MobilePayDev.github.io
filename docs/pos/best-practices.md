@@ -15,7 +15,7 @@ This is an advantage over both cash and card payments, as the customer has no ne
 ## Payment and loyalty payment flows
 
 There are two main payment flows in the V10 API.
-Initiating a payment followed by a capture (the [Payment Flow](/docs/pos/payment-flows#payment-flow)), and a flow where initiate payment is split into two parts: Prepare-Ready and then followed by a capture (the [Prepared Payment Flow](/docs/pos/payment-flows#prepared-payment-flow)).
+Initiating a payment followed by a capture (the [Payment Flow](/docs/pos/payment-flows/payment-flow)), and a flow where initiate payment is split into two parts: Prepare-Ready and then followed by a capture (the [Prepared Payment Flow](/docs/pos/payment-flows/prepared-payment-flow)).
 The recommendation is to use the Payment Flow if there is no need for knowing the customer before setting the amount.
 Using the Payment Flow will save a call to the API and in the end improve the overall time it takes to complete a payment.
 Cases in which knowing the customer before setting the amount includes loyalty payments where a discount is based on the customer's loyalty ID.

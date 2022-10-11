@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 4
 ---
 
 # Refunds
@@ -11,10 +11,18 @@ A refund can be executed if the store payment balance contains enough money to c
 The sequence diagram below shows a sunshine scenario for a refund. Initiating a refund yields a `refundId` that can be used to capture the refund. A refund starts out in the *Initiated* state and transitions to the *Reserved* state when the refund has been reserved as shown in the state diagram below. Once a refund has been reserved, the client can choose to capture the refund, transitioning the state to *Captured*. When a refund is captured, the refunded amount is immediately transferred to the customer and the customer will be able to see the refund in the activity list.
 A refund reservation will expire and be automatically captured after 24 hours.
 
-[![Refund flow](/img/pos-refund-flow.png)](/img/pos-refund-flow.png)
+<img
+  src={require('/img/pos-refund-flow.png').default}
+  alt="Refund flow"
+  width="650"
+/>
 
 Until the refund has been captured, the client can also choose to cancel the refund. The diagram below shows the possible states and transitions for a refund.
 
-[![Refund states](/img/pos-refund-states.png)](/img/pos-refund-states.png)
+<img
+  src={require('/img/pos-refund-states.png').default}
+  alt="Refund states"
+  width="600"
+/>
 
 To refund a payment, the client needs to provide the paymentId of the payment to be refunded. In case the paymentId has been lost it can be retrieved by calling `GET /v10/payments?orderId={orderId}&state=Captured` with the orderId from the payment to be refunded.

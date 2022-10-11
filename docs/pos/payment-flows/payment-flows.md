@@ -1,8 +1,4 @@
----
-sidebar_position: 1
----
-
-# Payment Overview
+# Payment overview
 
 The MobilePay PoS API exposes two separate flows for payments which are documented in this section:
 
