@@ -8,7 +8,7 @@ In order to implement MobilePay Online you must first obtain an agreement by con
 
 ## Sandbox environment
 
-The MobilePay Sandbox is a self-contained, testing environment that mimics the live MobilePay production environment. It provides you the space to play around and test your implementation and the requests you make to the MobilePay API.
+The MobilePay Sandbox is a self-contained testing environment that mimics the live MobilePay production environment. It provides you the space to play around and test your implementation and the requests you make to the MobilePay API.
 
 ## Register for the technical integration
 
