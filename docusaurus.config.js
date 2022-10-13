@@ -61,7 +61,7 @@ module.exports = {
         {
           label: 'Reporting',
           position: 'left',
-          to: '/docs/reporting/overview',
+          to: '/docs/reporting',
         },
         {
           label: 'API references',

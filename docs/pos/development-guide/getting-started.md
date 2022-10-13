@@ -10,8 +10,11 @@ The MobilePay Sandbox is a self-contained, testing environment that mimics the l
 
 ## Register
 
-* Please fill out this [registration form](https://mobilepay.dk/erhverv/integrator-signup) to start the technical onboarding.
-* Take a look at the API documentation. You'll find it in the [API references menu](/api/pos).
+All merchants should order the product needed on the MobilePay portal: [DK](https://admin.mobilepay.dk/)|[FI](https://admin.mobilepay.fi/). If you are a Third Party integrator and don't have an agreement with MobilePay you can sign up [here](https://www.mobilepaygroup.com/partner/signup). When the sign up has been approved by our business representatives we will contact your technical contact in order to start the integration process.
+
+## API documentation
+
+Take a look at the API documentation. You'll find it in the [API references menu](/api/pos).
 
 ## Receive security credentials
 

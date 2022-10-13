@@ -186,7 +186,11 @@ We're excited to announce, that MobilePay's own QR code reader can now read a QR
 * If the scanned link is already expired, then the user will see an error message in the overlay screen
 * If the invoice is expired, then the endpoint will return a 404 status
 
-[![Android screen](/img/invoice-android_fi2.jpg)](/img/invoice-android_fi2.jpg)
+<img
+  src={require('/img/invoice-android_fi2.jpg').default}
+  alt="Android screen"
+  width="320"
+/>
 
 ---
 

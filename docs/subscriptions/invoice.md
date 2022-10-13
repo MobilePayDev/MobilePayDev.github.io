@@ -128,7 +128,11 @@ We reduced the amount of mandatory fields in `attachment_datails`:
 
 This is the example of how your data will look like to user in the MobilePay, when it is generated to PDF file.
 
-[![PDF](/img/subs-pdf.jpg)](/img/subs-pdf.jpg)
+[<img
+  src={require('/img/subs-pdf.jpg').default}
+  alt="PDF"
+  width="700"
+/>](/img/subs-pdf.jpg)
 
 | Marking from an example | Mapping Subscriptions                                                   | EN                | DK                    | FI                   |
 |----------------------------|-------------------------------------------------------------------------|-------------------|-----------------------|----------------------|

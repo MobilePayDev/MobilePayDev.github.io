@@ -6,14 +6,15 @@ sidebar_position: 1
 
 This guide is designed to help you get started with MobilePay Subscriptions. You'll be starting off in the Sandbox environment. Its purpose is to give developers a shielded environment for testing and integration purposes.
 
-## Step 1 - Register
+## Register
 
-1. All merchants should order the product needed on the [MobilePay portal](https://admin.mobilepay.dk/)
-    * Sign up as an [integrator](https://www.mobilepaygroup.com/partner/signup)
-    * Sign certification agreement
-2. Take a look at the API documentation. You'll find it in the APIs menu.
+All merchants should order the product needed on the MobilePay portal: [DK](https://admin.mobilepay.dk/)|[FI](https://admin.mobilepay.fi/). If you are a Third Party integrator and don't have an agreement with MobilePay you can sign up [here](https://www.mobilepaygroup.com/partner/signup). When the sign up has been approved by our business representatives we will contact your technical contact in order to start the integration process.
 
-## Step 2 - Authentication
+## API documentation
+
+Take a look at the API documentation. You'll find it in the [API references menu](/api/subscriptions).
+
+## Authentication
 
 Once you have obtained credentials via zip file, set a redirect URI and received test data, you can start implementing the OpenID Connect flow. Read more about OpenID Connect and the process [here](/docs/subscriptions/authentication).
 
