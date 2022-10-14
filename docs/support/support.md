@@ -4,7 +4,7 @@ displayed_sidebar: supportSidebar
 
 # Developer Support
 
-MobilePay Developer Support provide **techincal support in regards to integration and maintanance** for the following products:
+MobilePay Developer Support provide **technical support in regards to integration and maintanance** for the following products:
 
 * MobilePay Subscriptions
 * MobilePay Invoice
