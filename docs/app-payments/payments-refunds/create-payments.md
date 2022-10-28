@@ -30,7 +30,7 @@ curl https://api.mobilepay.dk/v1/payments \
 ```json title="Response JSON example"
 {
   "paymentId": "186d2b31-ff25-4414-9fd1-bfe9807fa8b7",
-  "mobilePayAppRedirectUri": "mobilepay://merchant_payments?payment_id=186d2b31-ff25-4414-9fd1-bfe9807fa8b7"
+  "mobilePayAppRedirectUri": "https://products.mobilepay.dk/payments?id=c63bb028-7491-47df-88b6-c384597d7af8&payment_point_id=96769d52-2b8c-41e3-9e31-c92b927c93ae"
 }
 ```
 
