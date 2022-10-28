@@ -147,7 +147,7 @@ We will post the integrator or merchant a callback, and expect a HTTP 2xx respon
 
 ### Payment States
 
-![Payment states](/img/subs-PaymentStates.PNG)
+![Payment states](/img/subs-PaymentStates.png)
 
 ### Payment Validation
 

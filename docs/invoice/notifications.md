@@ -28,7 +28,7 @@ SMS is sent for ignored (not accepted or rejected) invoices.
 * If the future payment can't be processed SMS is sent at 07:00 UTC (09:00 DK time or 10:00 FI time), but only if user hasn't completed payment manually until this time.
 
 <img
-  src={require('/img/invoice-smsfail.PNG').default}
+  src={require('/img/invoice-smsfail.png').default}
   alt="Invoice sms"
   width="350"
 />

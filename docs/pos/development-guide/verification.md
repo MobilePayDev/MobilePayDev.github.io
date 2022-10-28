@@ -44,7 +44,7 @@ In the second step the Integrator selects which major features to certify. There
 * Prepared payments with restrictions - Certification in sections of the API necessary for handling restrictions to prepared payments.
 * Refunds - Certification in sections of the API necessary for handling refunds.
 
-[![Categories step](/img/pos-categories_step.PNG)](/img/pos-categories_step.PNG)
+[![Categories step](/img/pos-categories_step.png)](/img/pos-categories_step.png)
 
 ### Certification Step
 

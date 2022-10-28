@@ -17,7 +17,7 @@ When an integrator needs to onboard a PoS they need the `storeId` to create all 
 When an integrator is building a new integration for a merchant they need to know the store to which the PoS should be created. The goal is to get a list of all the stores that belongs to a merchant and then use the `storeId` from the appropriate store to create the PoS. First the integrator needs to call `GET /v10/stores` without any query parameters and the endpoint will return all the `storeId`s based on the Merchant VAT either provided in the `x-mobilepay-merchant-vat-number` header or provided in the access token (see [Authentication](/docs/pos/authentication#obtaining-an-access-token)). Then the integrator will loop through the list and for each `storeId` call `GET /v10/stores/{storeid}` that will return the store information for that specific store. In the end the integrator have a list of all the stores the merchant has and then the integrator knows which ``storeId`` for each store to use when creating a PoS. Below diagram illustrates a flow to get all merchant stores.
 
 <img
-  src={require('/img/pos-GetStoresByVat.PNG').default}
+  src={require('/img/pos-GetStoresByVat.png').default}
   alt="Get Stores by VAT"
   width="550"
 />

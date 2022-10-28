@@ -10,7 +10,7 @@ Based on the value of this flag, a mechant/integrator must choose to proceed wit
 Here is the flow where partial capture is possible.
 
 <img
-  src={require('/img/pos-partial-capture.PNG').default}
+  src={require('/img/pos-partial-capture.png').default}
   alt="Partial capture"
   width="650"
 />
