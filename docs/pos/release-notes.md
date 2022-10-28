@@ -143,7 +143,7 @@ The Point of Sale API V10 is now in production.
 
 - Clarified the requirements for using long lived access tokens in [Authentication](/docs/pos/authentication)  
 - Reduced the number of test cases in Self Certification by e.g. having more than one error or timeout scenario in one test case. Categories remain the same and this does not require a re-certification since this has not changed what is being tested.
-- Updated picture of Onboarding cases in [Self Certification](/docs/pos/self-certification)
+- Updated picture of Onboarding cases in [Self Certification](/docs/pos/development-guide/verification)
 - Removed x-mobilepay-client-system-name header from table in [Input Formats](/docs/pos/input-and-output-formats)
 - Please do not hesitate to provide feedback
 
@@ -178,7 +178,7 @@ The Point of Sale API V10 is now in production.
 
 #### 2020-06-24
 
-- Updated description and added configuration details in [Self Certification](/docs/pos/self-certification)
+- Updated description and added configuration details in [Self Certification](/docs/pos/development-guide/verification)
 
 ---
 
@@ -271,7 +271,7 @@ The Point of Sale API V10 is now in production.
 
 #### 2020-01-31
 
-- Added a description of Self-Certification to the documention under [Self Certification](/docs/pos/self-certification)
+- Added a description of Self-Certification to the documention under [Self Certification](/docs/pos/development-guide/verification)
 
 ---
 

@@ -56,4 +56,4 @@ When using the Reporting API, you will be introduced to the term `paymentPointId
 
 `ExternalTransactionId` is ID that could be provided by merchant / payment integrator when initiating payments. In general, it can be used for correlating transactions between MobilePay and external (merchant/integrator) system.
 
-Learn more about Reporting API [here](/docs/reporting/overview).
+Learn more about Reporting API [here](/docs/reporting).
