@@ -3,7 +3,7 @@ pagination_prev: null
 pagination_next: null
 ---
 
-# Introduction
+# MobilePay Subscriptions
 
 MobilePay Subscriptions is a solution for recurring billing of your customers. Implement our Subscriptions API to take advantage of MobilePay Subscriptions. Bill your customers with one-off  invoices or automatically on a recurring basis.
 

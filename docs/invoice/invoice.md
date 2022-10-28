@@ -3,7 +3,7 @@ pagination_prev: null
 pagination_next: null
 ---
 
-# Introduction
+# MobilePay Invoice
 
 Our MobilePay Invoice API enables you to send Invoice directly into the MobilePay app or use MobilePay as a payment method in an existing Invoice flow (self serve environments or emails)
 
