@@ -169,7 +169,7 @@ Recommendation for "external_id" is to use up to 30 symbols. For instant transfe
 
 When `auto_reserve` field is set to **true**:
 
-[![OneOff without swipe](/img/subs-One-off-flows-without-swipe.svg)](/img/subsOne-off-flows-without-swipe.svg)
+[![OneOff without swipe](/img/subs-One-off-flows-without-swipe.svg)](/img/subs-One-off-flows-without-swipe.svg)
 
 * Failed `auto_reserve` OneOff  : If the payment fails, and if push messages is also turned off, then a one-off confirmation screen after log in (until session expires) is by displayed for the User. The user can retry the payment from the  Confirmation screen.
 

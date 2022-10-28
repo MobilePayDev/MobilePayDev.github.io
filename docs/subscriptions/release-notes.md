@@ -16,7 +16,7 @@ With MobilePay app August release (version 5.20.0) agreement context screen was 
 
 #### 24 August 2022 - Deprecated features section added
 
-There is now a section in the menu dedicated for [deprecated features](/docs/subscriptions/deprecated-features).
+There is now a section in the menu dedicated for deprecated features.
 
 #### 17 June 2022 - NextPaymentDate is no longer used
 

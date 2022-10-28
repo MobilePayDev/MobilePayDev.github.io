@@ -127,8 +127,8 @@ The Point of Sale API V10 is now in production.
 
 #### 2020-09-08
 
-- Removed Integrator ID from [Self Certification](/docs/pos/self-certification)
-- Updated screenshots in [Self Certification](/docs/pos/self-certification)
+- Removed Integrator ID from [Self Certification](/docs/pos/development-guide/verification)
+- Updated screenshots in [Self Certification](/docs/pos/development-guide/verification)
 
 ---
 

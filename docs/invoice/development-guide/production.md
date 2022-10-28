@@ -18,7 +18,7 @@ It is possible to do reconciliation in three ways:
 
 1. **API Callback**: You get the status on the invoice through the API. When the Invoice has status paid it means that the money has been transferred to the customer’s bank. If you have instant transfer method chosen, then the individual transactions will contain the same `PaymentReference`, that you have assigned, and that `PaymentReference`, will be returned through the API.
 2. **Export CSV/XLSX file**: The merchant logs-in to our MobilePay [portal](https://admin.mobilepay.dk) where the transactions can be exported in a CSV- or XLSX-file.
-3. Use the [Reporting API](/docs/reporting/overview).
+3. Use the [Reporting API](/docs/reporting).
 
 For example, if the merchant wants to use their FIK-Creditor-ID for transactions, then you simply choose the reference number, which can be the merchant FIK Creditor ID. There are no special requirements for the merchant FIK creditor-ID to be able to use it for MobilePay Invoice.
 

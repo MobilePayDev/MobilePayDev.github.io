@@ -181,7 +181,7 @@ High level `InvoiceLink` flow diagram
 
 ### Create InvoiceLink
 
-You can create an invoice and receive a link. That link can be sent to the user by any channel like email, sms, etc. and user can choose to pay with MobilePay. Check `InvoiceLink` flows and how invoice looks in the app [here](visual_examples#link-flows).
+You can create an invoice and receive a link. That link can be sent to the user by any channel like email, sms, etc. and user can choose to pay with MobilePay. Check `InvoiceLink` flows and how invoice looks in the app [here](visual-examples#invoicelink-flows).
 
 :::note
 

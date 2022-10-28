@@ -28,7 +28,7 @@ sidebar_position: 7
 
 ## Reject Invoice
 
-[![Reject invoice](/img/invoice-reject_invoice.jpeg)](/imginvoice-/reject_invoice.jpeg)
+[![Reject invoice](/img/invoice-reject_invoice.jpeg)](/img/invoice-reject_invoice.jpeg)
 
 ## PDF example
 
