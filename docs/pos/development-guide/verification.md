@@ -31,6 +31,8 @@ In the first step the Integrator identifies themselves in the tool. The followin
 * Version numbering - The three dimensional number that defines the version of the Client that needs to be certified. See [Client Identification](/docs/pos/api-principles#client-versioning)
 * Client system name - the name of the software being certified.
 
+[![Identification step](/img/pos-identificationstep.png)](/img/pos-identificationstep.png)
+
 ### Selection Step
 
 In the second step the Integrator selects which major features to certify. There are the following major features in MobilePay PoS API v10:
