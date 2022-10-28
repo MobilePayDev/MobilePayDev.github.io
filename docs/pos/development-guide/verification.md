@@ -8,7 +8,7 @@ After your test is complete you must complete a self-certification in order to g
 
 ## Access to self-certification
 
-Before you can start self-certification you must have a signed agreement with MobilePay and receive a production clientId. 
+Before you can start self-certification you must have a signed agreement with MobilePay and receive a production clientId.
 When your test is completed and you wish to start self-certification please [contact Developer support](mailto:developer@mobilepay.dk?subject=Request%20access%20to%20production%20Developer%20portal%20for%20MobilePay%20PoS&amp;body=Hi%20Developer%20support%2C%0A%0AWe%20have%20completede%20our%20test%20and%20request%20access%20to%20production%20developer%20portal%20for%20organization%3A%0A%0APlease%20invite%20following%20users%20to%20the%20portal%3A%0A%20%0ABest%20regards) to request production security credentials that will include the production clientId needed for the certification.
 
 :::info Note
@@ -30,8 +30,6 @@ In the first step the Integrator identifies themselves in the tool. The followin
 * Client IDs for Sandproduction and Production - ID created on the MobilePay Developer Portal which identifies the client to be certified. Each Integrator is allowed to create multiple Client IDs, however it is also acceptable to have just one Client ID.
 * Version numbering - The three dimensional number that defines the version of the Client that needs to be certified. See [Client Identification](/docs/pos/api-principles#client-versioning)
 * Client system name - the name of the software being certified.
-
-[![Identification step](/img/pos-identificationstep.PNG)](/img/pos-identificationstep.PNG)
 
 ### Selection Step
 
