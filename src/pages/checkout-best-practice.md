@@ -2,7 +2,7 @@
 
 MobilePay Checkout lets webshops offer their customers a faster and easier purchase flow by linking payment and delivery details.
 
-[![checkout main flow](/img/Checkoutmainflow.png)](/img/Checkoutmainflow.png)
+[![checkout main flow](/img/online-Checkoutmainflow.png)](/img/online-Checkoutmainflow.png)
 
 The customer can easily approve the order in his/her MobilePay –and the webshop receives the information to be used to process the order.
 
@@ -41,7 +41,7 @@ Note: the final text depends on the choice of delivery method. Find mandatory te
 Use e.g. overlay or pop-up windows in the webshop to display additional options for the end user. This may be approval of the shop’s terms and conditions or choice of delivery method.
 The MobilePay Checkout button directs the end user to the MobilePay app, where delivery information and payment are approved.
 
-[![overlay](/img/OverlaySmall.png)](/img/Overlay2.png)
+[![overlay](/img/online-OverlaySmall.png)](/img/online-Overlay2.png)
 
 :::info Please note
 Checkout without use of overlay is also possible but you must ensure to add the mandatory text close to the Checkout button.
@@ -70,7 +70,12 @@ You must decide how delivery is to be handled. This is to be defined and constru
 
 ### Delivery option 1 - Simple solution
 
-[![delivery option 1](/img/Deliveryoption1.png)](/img/Deliveryoption1big.png)
+[<img
+  src={require('/img/online-Deliveryoption1big.png').default}
+  alt="PoS confirmation screen"
+  width="200"
+  style={{float : 'right', marginLeft: 20}}
+/>](/img/online-Deliveryoption1big.png)
 
 MobilePay Checkout is integrated in the webshop with delivery to an address (e.g. home address or workplace)
 
@@ -86,7 +91,12 @@ DK: Når du betaler med MobilePay Checkout, vælger du din leveringsadresse i Mo
 
 ### Delivery option 2 - Simple solution
 
-[![delivery option 2](/img/Deliveryoption2.png)](/img/Deliveryoption2big.png)
+[<img
+  src={require('/img/online-Deliveryoption2big.png').default}
+  alt="PoS confirmation screen"
+  width="200"
+  style={{float : 'right', marginLeft: 20}}
+/>](/img/online-Deliveryoption2big.png)
 
 MobilePay Checkout is integrated in the webshop with automatic delivery to the nearest parcel shop
 
@@ -102,7 +112,12 @@ DK: Når du betaler med MobilePay Checkout, sendes dit køb til nærmeste posthu
 
 ### Delivery option 3 - Flexible solution
 
-[![delivery option 3](/img/Deliveryoption3.png)](/img/Deliveryoption3big.png)
+[<img
+  src={require('/img/online-Deliveryoption3big.png').default}
+  alt="PoS confirmation screen"
+  width="200"
+  style={{float : 'right', marginLeft: 20}}
+/>](/img/online-Deliveryoption3big.png)
 
 MobilePay Checkout is integrated in the webshop with delivery to a parcel shop selected by the customer
 
@@ -115,3 +130,5 @@ ENG: When you pay with MobilePay Checkout, your purchase will be sent to the pic
 
 DK: Når du betaler med MobilePay Checkout, sendes dit køb til den afhentningssted du har valgt i butikken
 :::
+
+[Return to documentation](/docs/online/features/checkout)

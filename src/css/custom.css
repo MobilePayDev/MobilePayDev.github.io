@@ -75,3 +75,16 @@ table.webhooks-table thead tr{
 table.webhooks-table tr {
   background:var(--ifm-table-cell-color);
 }
+details.plain-details {
+  border: 0px;
+  box-shadow: none;
+  padding: 10px;
+  background:#00000000;
+    --ifm-color-info-dark:var(--darkBlue);
+}
+div.front-details {
+  border: 3px solid var(--mpBlue80);
+  border-radius: 10px;
+  text-align: center;
+  padding: 10px;
+}

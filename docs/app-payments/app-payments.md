@@ -3,7 +3,7 @@ sidebar_position: 1
 pagination_next: null
 ---
 
-# Introduction
+# MobilePay App Payments
 
 MobilePay provides APIs that work together to enable you to collect and manage payments.
 

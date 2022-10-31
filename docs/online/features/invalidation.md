@@ -10,7 +10,7 @@ In some cases the user goes back to the merchant webshop and adds something to t
 
 If the invalidation request is received by MobilePay before the callback to the PSP is made, no callback will be performed and the invalidation will complete.
 
-[![Payment invalidation before callback](/img/invalidation-before-callback.svg)](/img/invalidation-before-callback.svg)
+[![Payment invalidation before callback](/img/online-invalidation-before-callback.svg)](/img/online-invalidation-before-callback.svg)
 
 ## Invalidation after callback
 
@@ -22,4 +22,4 @@ In this case the invalidation request will be processed in the MobilePay backend
 2. If a callback has been sent but the authorization attempt has not yet been patched or 3DS is ongoing, the invalidation endpoint will return the error code 2101. The authorization attempt must be patched with reasoncode 1010 before invalidation.
 3. A failed authorization will result in a successful invalidation.
 
-[![Payment invalidation after callback](/img/invalidation-after-callback.svg)](/img/invalidation-after-callback.svg)
+[![Payment invalidation after callback](/img/online-invalidation-after-callback.svg)](/img/online-invalidation-after-callback.svg)

@@ -30,7 +30,7 @@ module.exports = {
         alt: "MobilePay",
         src: "img/logo-blue.svg",
         srcDark: "img/logo-white.svg",
-        href: "/MobilePay-Payments-API/docs/app-payments/",
+        href: "/MobilePay-Payments-API/",
       },
       items: [   
         {
@@ -39,14 +39,29 @@ module.exports = {
           to: '/docs/app-payments/',
         },
         {
+          label: 'Invoice',
+          position: 'left',
+          to: '/docs/invoice',
+        },
+        {
           label: 'Online',
           position: 'left',
-          to: '/docs/online/',
+          to: '/docs/online',
+        },
+        {
+          label: 'Point of Sale',
+          position: 'left',
+          to: '/docs/pos',
+        },
+        {
+          label: 'Subscriptions',
+          position: 'left',
+          to: '/docs/subscriptions',
         },
         {
           label: 'Reporting',
           position: 'left',
-          to: '/docs/reporting/overview',
+          to: '/docs/reporting',
         },
         {
           label: 'API references',
@@ -79,13 +94,8 @@ module.exports = {
           ],
         },
         {
-          href: "https://sandbox-developer.mobilepay.dk/",
-          label: "Sandbox Developer Portal",
-          position: "right",
-        },
-        {
-          href: "https://developer.mobilepay.dk/",
-          label: "Developer Portal",
+          label: "Support",
+          to: '/docs/support',
           position: "right",
         },
         {

@@ -13,7 +13,7 @@ When a Merchant is no longer using the solution it must be offboarded using the 
 
 All merchants must be onboarded as individual merchants. If you have super merchants or payment facilitors you can also use them for MobilePay. However each submerchant must be onboarded instead of the super merchant and payment facilitator.
 
-[![merchant sequence diagram](/img/merchant-sequence-diagram.svg)](/img/merchant-sequence-diagram.svg)
+[![merchant sequence diagram](/img/online-merchant-sequence-diagram.svg)](/img/online-merchant-sequence-diagram.svg)
 
 ## Currency and country code
 
