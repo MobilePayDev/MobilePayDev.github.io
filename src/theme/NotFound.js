@@ -26,7 +26,7 @@ export default function NotFound() {
                 <Translate
                   id="theme.NotFound.p1"
                   description="The first paragraph of the 404 page">
-                  We tried really hard but we could not find what ever you were looking for. But we are sure it is here some where. We have been rearanging a lot lately so it may have been lost in the moving process. But fear not we are here to help!
+                  We tried really hard but we could not find whatever you were looking for. But we are sure it is here somewhere. We have been rearanging a lot lately so it may have been lost in the moving process. But fear not we are here to help!
                   
                   If you know what product it concerns you could try the top menu right at the very top. If you look to the right there is also a search option which we think can be really helpfull in times of need.
                 </Translate>
