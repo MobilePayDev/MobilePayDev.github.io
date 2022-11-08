@@ -132,7 +132,8 @@ It is possible to provide `paymentPointId` when creating or updating webhooks. T
   "eventDate": "2021-10-15T15:30:31Z",
   "data": {
     "id": "ceb351ac-9d20-4300-b5ad-e05851d5a3b7",
-    "type": "payment"
+    "type": "payment",
+    "reference": "My-Payment-1"
   }
 }
 ```
@@ -153,7 +154,8 @@ It is possible to provide `paymentPointId` when creating or updating webhooks. T
   "eventDate": "2021-10-22T15:32:14Z",
   "data": {
     "id": "1c6f866d-9633-444b-b00d-33a5a5391869",
-    "type": "payment"
+    "type": "payment",
+    "reference": "My-Payment-2"
   }
 }
 ```
@@ -174,7 +176,8 @@ It is possible to provide `paymentPointId` when creating or updating webhooks. T
   "eventDate": "2021-10-22T15:55:05Z",
   "data": {
     "id": "37cc0040-c78a-4136-8174-3f4079b0ec9c",
-    "type": "payment"
+    "type": "payment",
+    "reference": "My-Payment-3"
   }
 }
 ```
