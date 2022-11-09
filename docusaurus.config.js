@@ -91,6 +91,10 @@ module.exports = {
               label: 'PoS',
               to: '/api/pos',
             },
+            {
+              label: 'Online',
+              to: '/api/online',
+            },
           ],
         },
         {
@@ -173,6 +177,11 @@ module.exports = {
             id: 'pos-api-yaml',
             spec: "openapi/pos.yaml",
             route: "/api/pos",
+          },
+          {
+            id: 'online-api-yaml',
+            spec: "openapi/online.yaml",
+            route: "/api/online",
           },
         ],
         // Theme Options for modifying how redoc renders them
