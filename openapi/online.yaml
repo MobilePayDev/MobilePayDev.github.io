@@ -1,11 +1,14 @@
 openapi: 3.0.1
 info:
-  title: PSP API
+  title: Online
   contact:
     email: developer@mobilepay.dk
   version: v1
 servers:
-  - url: https://proxy-prod-az2-front-ext-rst3.ext.mobilepay.dk:443/cardpassthrough-restapi
+  - url: https://api.mobilepay.dk/cardpassthrough-restapi
+    description: Production server (uses **live** data)
+  - url: https://api.sandbox.mobilepay.dk/cardpassthrough-restapi
+    description: Production server (uses **test** data)
 paths:
   '/api/v1/merchants/{merchantId}':
     delete:
