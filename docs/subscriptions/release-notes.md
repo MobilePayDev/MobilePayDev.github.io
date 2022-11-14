@@ -14,6 +14,8 @@ There is a plan to introduce a new refund error code (60008) on 15th of October.
 
 Users can always delete payment agreement from the app from 5.22.0 app version.
 
+![Agreement deletion](/img/subs-agreement_deletion_by_user.png)
+
 #### 13 September 2022 - Update on agreement signing flow
 
 With MobilePay app August release (version 5.20.0) agreement context screen was removed. In agreement confirm screen confirmation checkbox was added. Updated flow you can find [here](/docs/subscriptions/agreement#agreement-signing-in-dual-device-flow).
