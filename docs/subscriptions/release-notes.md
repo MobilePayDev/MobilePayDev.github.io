@@ -4,10 +4,6 @@ sidebar_position: 8
 
 # Release Notes
 
-## Coming soon
-
-There is a plan to introduce a new refund error code (60008) on 15th of October. The error is related to a situation when a refund is declined due to no funds in merchant’s account.
-
 ## 2022
 
 #### 14 November 2022 - Payment agreement deletion by users
