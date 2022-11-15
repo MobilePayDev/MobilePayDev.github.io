@@ -118,6 +118,78 @@ paths:
           description: No Content
         '409':
           description: Domain error response
+  /api/v3/recurring:
+    delete:
+      tags:
+        - Recurring
+      summary: Terminate agreement
+      parameters:
+        - name: agreementId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+        '409':
+          description: Domain error response
+    post:
+      tags:
+        - Recurring
+      summary: Create agreement
+      parameters:
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CreateRecurringAgreementResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateRecurringAgreementResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CreateRecurringAgreementResponse'
+        '409':
+          description: Domain error response
   /api/v1/merchants:
     get:
       tags:
@@ -236,7 +308,7 @@ paths:
   /api/v1/psp/platforms:
     get:
       tags:
-        - Psp
+        - Platforms
       summary: Get platforms
       parameters:
         - name: CorrelationId
@@ -273,7 +345,7 @@ paths:
           description: Domain error response
     post:
       tags:
-        - Psp
+        - Platforms
       summary: Register platform
       description: Please do not create any platforms unless agreed with developer support
       parameters:
@@ -315,6 +387,82 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/CreatePlatformResponse'
+        '409':
+          description: Domain error response
+  '/api/v3/recurring/{agreementId}':
+    get:
+      tags:
+        - Recurring
+      summary: Get agreement
+      parameters:
+        - name: agreementId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/GetRecurringAgreementResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetRecurringAgreementResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/GetRecurringAgreementResponse'
+        '409':
+          description: Domain error response
+  '/api/v3/recurring/payments/merchant-initiated/payments/{mitPaymentId}/details':
+    get:
+      tags:
+        - Recurring
+      summary: Get MIT payment details
+      parameters:
+        - name: mitPaymentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/MITPaymentDetailsResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MITPaymentDetailsResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/MITPaymentDetailsResponse'
         '409':
           description: Domain error response
   '/api/v1/payments/{paymentId}/authorizationattempts/{authorizationAttemptId}':
@@ -411,7 +559,7 @@ paths:
   '/api/v1/psp/platforms/{platformId}':
     patch:
       tags:
-        - Psp
+        - Platforms
       summary: Update platform
       description: Please do not create any platforms unless agreed with developer support
       parameters:
@@ -446,6 +594,141 @@ paths:
           application/*+json:
             schema:
               $ref: '#/components/schemas/UpdatePlatformRequest'
+      responses:
+        '200':
+          description: Success
+        '409':
+          description: Domain error response
+  '/api/v3/recurring/{recurringAgreementId}':
+    patch:
+      tags:
+        - Recurring
+      summary: Update agreement
+      parameters:
+        - name: recurringAgreementId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
+      responses:
+        '204':
+          description: No Content
+        '409':
+          description: Domain error response
+  '/api/v3/recurring/{agreementId}/card/{paymentId}':
+    patch:
+      tags:
+        - Recurring
+      summary: Confirm or reject card update
+      description: Confirm or reject requested card update on agreement
+      operationId: 84b9cb083b51206325624456c573fe97
+      parameters:
+        - name: agreementId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: paymentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
+      responses:
+        '204':
+          description: No Content
+        '409':
+          description: Domain error response
+  '/api/v3/recurring/payments/merchant-initiated/{paymentId}':
+    patch:
+      tags:
+        - Recurring
+      summary: Update MIT payment
+      description: 'Update MIT on recurring agreement. Indicates that a successful authorization has been made, if ''succeeded'' is set to true.'
+      parameters:
+        - name: paymentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/UpdateMITPaymentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMITPaymentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/UpdateMITPaymentRequest'
       responses:
         '200':
           description: Success
@@ -656,6 +939,269 @@ paths:
                 $ref: '#/components/schemas/InitiatePaymentResponse'
         '409':
           description: Domain error response
+  '/api/v3/recurring/payments/merchant-initiated/{paymentId}/cancels':
+    post:
+      tags:
+        - Recurring
+      summary: Cancel MIT payment
+      description: 'Cancel MIT payment on recurring agreement. Indicates that a successful authorization has been made, if ''succeeded'' is set to true'
+      parameters:
+        - name: paymentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CancelMITPaymentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CancelMITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CancelMITPaymentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CancelMITPaymentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CancelMITPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CancelMITPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CancelMITPaymentResponse'
+        '409':
+          description: Domain error response
+  '/api/v3/recurring/payments/merchant-initiated/{paymentId}/captures':
+    post:
+      tags:
+        - Recurring
+      summary: Capture MIT payment
+      description: Capture MIT payment on recurring agreement
+      parameters:
+        - name: paymentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/CaptureMITPaymentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CaptureMITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CaptureMITPaymentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/CaptureMITPaymentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/CaptureMITPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaptureMITPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/CaptureMITPaymentResponse'
+        '409':
+          description: Domain error response
+  /api/v3/recurring/payments/customer-initiated:
+    post:
+      tags:
+        - Recurring
+      summary: Initiate CIT payment
+      description: Initiate a new CIT payment on recurring agreement
+      parameters:
+        - name: agreementId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InitiateCITPaymentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitiateCITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InitiateCITPaymentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InitiateCITPaymentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InitiateCITPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitiateCITPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InitiateCITPaymentResponse'
+        '409':
+          description: Domain error response
+  /api/v3/recurring/payments/merchant-initiated:
+    post:
+      tags:
+        - Recurring
+      summary: Initiate MIT payment
+      description: Initiate merchant initiated payment on recurring agreement
+      parameters:
+        - name: agreementId
+          in: query
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/InitiateMITPaymentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitiateMITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InitiateMITPaymentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/InitiateMITPaymentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/InitiateMITPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InitiateMITPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/InitiateMITPaymentResponse'
+        '409':
+          description: Domain error response
+  '/api/v3/recurring/payments/merchant-initiated/{paymentId}/refunds':
+    post:
+      tags:
+        - Recurring
+      summary: Refund MIT payment
+      description: Refund a MIT payment on agreement
+      parameters:
+        - name: paymentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json-patch+json:
+            schema:
+              $ref: '#/components/schemas/RefundMITPaymentRequest'
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RefundMITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/RefundMITPaymentRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/RefundMITPaymentRequest'
+      responses:
+        '200':
+          description: Success
+          content:
+            text/plain:
+              schema:
+                $ref: '#/components/schemas/RefundMITPaymentResponse'
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RefundMITPaymentResponse'
+            text/json:
+              schema:
+                $ref: '#/components/schemas/RefundMITPaymentResponse'
+        '409':
+          description: Domain error response
   '/api/v1/payments/{paymentId}/invalidate':
     put:
       tags:
@@ -687,6 +1233,60 @@ paths:
           description: Domain error response
 components:
   schemas:
+    CancelMITPaymentRequest:
+      required:
+        - amount
+        - cancelIdentifier
+        - timestamp
+      type: object
+      properties:
+        cancelIdentifier:
+          minLength: 1
+          type: string
+          description: The PSP's unique id of the cancel to ensure idempotency.
+        amount:
+          type: integer
+          description: 'Cancelled amount in minor unit. If the amount is lower than the originally authorized amount, it is a partial cancel.'
+          format: int64
+        timestamp:
+          type: string
+          description: Timestamp for the cancel event at the PSP
+          format: date-time
+      additionalProperties: false
+    CancelMITPaymentResponse:
+      type: object
+      properties:
+        cancelId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    CaptureMITPaymentRequest:
+      required:
+        - amount
+        - captureIdentifier
+        - timestamp
+      type: object
+      properties:
+        captureIdentifier:
+          minLength: 1
+          type: string
+          description: PSP's unique identifier for the capture to ensure idempotency
+        amount:
+          type: integer
+          description: 'Captured amount in minor unit. If amount is lower than the originally authorized amount, it is a partial Capture.'
+          format: int64
+        timestamp:
+          type: string
+          description: Timestamp for capture as known by the PSP.
+          format: date-time
+      additionalProperties: false
+    CaptureMITPaymentResponse:
+      type: object
+      properties:
+        captureId:
+          type: string
+          format: uuid
+      additionalProperties: false
     CardType:
       required:
         - encryptedPanCallbackUrl
@@ -704,6 +1304,40 @@ components:
         tokenCallbackUrl:
           type: string
           description: 'Url to make callback with Token. Must be valid fully qualified HTTPS URL. Request is described here: ''https://github.com/MobilePayDev/MobilePay-Online#callbacks''.'
+          nullable: true
+      additionalProperties: false
+    ConfirmCardUpdateRequest:
+      required:
+        - succeeded
+      type: object
+      properties:
+        reasonCode:
+          type: integer
+          description: 'Reason code describing the reason for the card update to fail.<br />Codes:<br />1000: rejected<br />1001: rejected, insufficient funds<br />1003: rejected, card expired<br />1004: rejected, fraud suspected<br />1005: rejected, soft blocked<br />1006: rejected, hard blocked<br />1007: rejected, web payment disabled for card<br />1008: soft reject, 3DS stepup required, ThreeDSecureUrl must be supplied<br />1009: after a succesfull 3DS stepup, PSP now has crypto and will retry authorization<br />1010: reject for payment invalidation, don´t forget to also call /invalidate endpoint<br />2000: error<br />2001: error, permanent - don''t try again<br />2002: error, temporary - try again<br />3000: timeout - try again'
+          format: int32
+        reasonMessage:
+          type: string
+          description: Description of why the card update failed.
+          nullable: true
+        succeeded:
+          type: boolean
+          description: 'Property indicating whether or not the card update was successful. If false, reason code and reason message are required.'
+        threeDSecureUrl:
+          type: string
+          description: For reason code 1008 the 3DS (3DSecure) fallback flow is activated. The MobilePay app will open this url in a web view.
+          format: uri
+          nullable: true
+        acquirerVatNumber:
+          type: string
+          description: 'The VAT number of the acquirer to uniquely identify the acquirer used for this card update. Must be given for all reason codes in the 1000 range.<br />Used for our technical surveillance of the transactions and tracking errors.<br />Use the format described here: ''https:\/\/en.wikipedia.org\/wiki\/VAT_identification_number''.<br />Examples:<br />Clearhaus: DK33749996<br />Bambora: SE556233942301<br />Elavon: IE418442<br />Handelsbanken: SE502007786201<br />Nets: DK20016175<br />Swedbank: SE502017775301<br />Valitor: IS23243<br />Wirecard: DE201591202'
+          nullable: true
+        acquirerMerchantId:
+          type: string
+          description: The id of the merchant with the acquirer. Must be given for all reason codes in the 1000 range.
+          nullable: true
+        acquirerPaymentReference:
+          type: string
+          description: The id of the payment with the acquirer. Must be given for all reason codes in the 1000 range.
           nullable: true
       additionalProperties: false
     CreateCancelRequest:
@@ -834,6 +1468,58 @@ components:
           type: string
           format: uuid
       additionalProperties: false
+    CreateRecurringAgreementRequest:
+      required:
+        - externalAgreementId
+        - merchantId
+        - merchantLogoUrl
+        - merchantName
+        - merchantWebsiteUrl
+        - recurringAgreementCallbackUrl
+        - updateCardCallbackUrl
+      type: object
+      properties:
+        merchantId:
+          type: string
+          description: The id of the merchant. Originates from the 'CreateMerchant' response.
+          format: uuid
+        merchantName:
+          minLength: 1
+          type: string
+          description: The display name of the merchant shown to the end-user. Is used for 'Dynamic Linking'. Must be the same as registered with the merchant's acquirer and in schemes.
+        merchantLogoUrl:
+          type: string
+          description: 'The url of the logo shown to the end-user. Must be: 250x250 pixels, png or jpg served over a secure connection, must be https, and publicly available.'
+          format: uri
+        externalAgreementId:
+          minLength: 1
+          type: string
+          description: External id of the agreement.
+        merchantWebsiteUrl:
+          type: string
+          description: Merchant website url.
+          format: uri
+        selfServiceUrl:
+          type: string
+          description: 'Optional url for merchant self service. Must be https, and publicly available.'
+          format: uri
+          nullable: true
+        recurringAgreementCallbackUrl:
+          type: string
+          description: 'Url to be called with agreement state changes. Contains AgreementId and State. Must be https, and publicly available.'
+          format: uri
+        updateCardCallbackUrl:
+          type: string
+          description: 'Called when user requests a card change on agreement. Must be resolved as either accepted or rejected by return call.<br />Must support a http(s) POST callback request with a JSON payload of types <br /> * EncryptedCardUpdateCallbackPayload<br /> * VisaTokenCallbackPayload<br /> * MastercardTokenCallbackPayload<br />Please resolve by return call via ''PATCH api/v3/recurring/{agreementId}/card/{paymentId}''.'
+          format: uri
+      additionalProperties: false
+    CreateRecurringAgreementResponse:
+      type: object
+      properties:
+        recurringAgreementId:
+          type: string
+          format: uuid
+      additionalProperties: false
     CreateRefundRequest:
       required:
         - amount
@@ -862,6 +1548,49 @@ components:
           description: MobilePay RefundId of the refund that has been created
           format: uuid
       additionalProperties: false
+    CryptogramInfo:
+      type: object
+      properties:
+        cryptogram:
+          type: string
+          nullable: true
+        eci:
+          type: string
+          nullable: true
+      additionalProperties: false
+    EncryptedCardUpdateCallbackPayload:
+      type: object
+      properties:
+        agreementId:
+          type: string
+          format: uuid
+        paymentId:
+          type: string
+          format: uuid
+        publicKeyId:
+          type: integer
+          format: int32
+        cardType:
+          type: string
+          nullable: true
+        cardData:
+          type: string
+          nullable: true
+        cardDataType:
+          type: string
+          nullable: true
+          readOnly: true
+      additionalProperties: false
+    ExpirationDate:
+      type: object
+      properties:
+        month:
+          type: string
+          nullable: true
+        year:
+          type: string
+          nullable: true
+      additionalProperties: false
     GetPlatformResponse:
       required:
         - name
@@ -874,6 +1603,188 @@ components:
         name:
           minLength: 1
           type: string
+      additionalProperties: false
+    GetRecurringAgreementResponse:
+      type: object
+      properties:
+        recurringAgreementId:
+          type: string
+          format: uuid
+        merchantId:
+          type: string
+          format: uuid
+        merchantName:
+          type: string
+          nullable: true
+        merchantLogoUrl:
+          type: string
+          format: uri
+          nullable: true
+        externalAgreementId:
+          type: string
+          nullable: true
+        merchantWebsiteUrl:
+          type: string
+          format: uri
+          nullable: true
+        selfServiceUrl:
+          type: string
+          format: uri
+          nullable: true
+        recurringAgreementCallbackUrl:
+          type: string
+          format: uri
+          nullable: true
+        updateCardCallbackUrl:
+          type: string
+          format: uri
+          nullable: true
+        accountVerificationPaymentId:
+          type: string
+          format: uuid
+          nullable: true
+      additionalProperties: false
+    InitiateCITPaymentRequest:
+      required:
+        - allowedCardTypes
+        - amount
+        - currencyCode
+        - merchantLogoUrl
+        - merchantOrderId
+        - merchantUrl
+        - pspReferenceId
+        - publicKeyId
+        - redirectFromMobilePayUrl
+      type: object
+      properties:
+        merchantLogoUrl:
+          minLength: 1
+          type: string
+          description: 'The url of the logo shown to the end-user. Must be: 250x250 pixels, png or jpg served over a secure connection, must be https, and publicly available.'
+        merchantOrderId:
+          minLength: 1
+          type: string
+          description: Merchant's order id.
+        merchantUrl:
+          minLength: 1
+          type: string
+          description: 'Url of the merchant. Max length 150 char. Is used for ''Dynamic Linking''. If the merchant doesn´t have a url, use VAT number (international format) or use the merchant id from MobilePay, as this will also guarantee uniqueness.'
+        pspReferenceId:
+          minLength: 1
+          type: string
+          description: PSP's unique reference of the payment.
+        amount:
+          type: integer
+          description: 'Order amount in minor unit. I.e. 4,95 must be given as 495.'
+          format: int64
+        currencyCode:
+          minLength: 1
+          type: string
+          description: 'Currency of the order. Must be alphabetic or numeric ISO 4217 code. Accepted codes: DKK, EUR, NOK, SEK, USD, GBP, 208, 978, 578, 752, 840, 826'
+        allowedCardTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CardType'
+          description: 'Allowed card types for the payment, includes callback configuration per. card type. See ''CardType''.'
+        publicKeyId:
+          type: integer
+          description: Id of the public key to be used for exchange of card data.
+          format: int32
+        redirectFromMobilePayUrl:
+          minLength: 1
+          type: string
+          description: Where to redirect the user when the payment is complete. Must be fully qualified url.
+        failedPaymentCallbackUrl:
+          type: string
+          description: 'Url to be notified when a payment ends unsuccessful. Must be a fully qualified url. Must be secured by TLS 1.2.<br />You''re strongly encouraged to only set this property if your service handles the callback returned, i.e. reply with an http status 2xx for valid callbacks.'
+          format: uri
+          default: 
+          nullable: true
+        validUntil:
+          type: string
+          description: 'Indicates when the user shouldn''t be able to accept the payment anymore (3DS or Checkout payments will override and extend the remaining time with 15min).<br />If not defined, a default offset of 35 minutes is used. Value, if not null, should be in a valid UTC format, e.g. 2020-04-30T07:35:22.8743886+00:00 or 2020-04-30T07:35+00:00.'
+          format: date-time
+          nullable: true
+        autoCapture:
+          type: boolean
+          description: 'Set to true, if the payment will be automatically captured.<br />In MobilePay the payment will then be marked as captured immediately after the authorization is successful. If false, you need to mark it as captured as usual.'
+        preferVisaPartOfVisaDankort:
+          type: boolean
+          description: 'If set to true, the Visa part of the Danish co-branded Visa/Dankort will be preferred over the Dankort part. The card type given in the callback from MobilePay must still be respected.'
+        customerLanguageCode:
+          type: string
+          description: Override the default language code for the payment.<br />Accepted values are DA|EN|FI.
+          nullable: true
+        isAccountVerification:
+          type: boolean
+          description: 'Set to true if the payment is only an account verification (aka a zero-auth) - if set to true, payment amount cannot exceed 1 (100 in minor units)'
+        minimumMobilePayUserAge:
+          maximum: 150
+          minimum: 0
+          type: integer
+          description: Optional. The payment will fail if the MobilePay user age is below the given minimum age.
+          format: int32
+          nullable: true
+      additionalProperties: false
+    InitiateCITPaymentResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          format: uuid
+        redirectToMobilePayUrl:
+          type: string
+          nullable: true
+        redirectToMobilePayAppUrl:
+          type: string
+          nullable: true
+      additionalProperties: false
+    InitiateMITPaymentRequest:
+      required:
+        - amount
+        - currencyCode
+        - last4
+        - merchantOrderId
+        - merchantUrl
+        - pspReferenceId
+      type: object
+      properties:
+        merchantOrderId:
+          minLength: 1
+          type: string
+          description: Merchant's order id.
+        merchantUrl:
+          minLength: 1
+          type: string
+          description: 'Url of the merchant. Max length 150 char. Is used for ''Dynamic Linking''. If the merchant doesn´t have a Url, use VAT number (international format) or use the merchantId from MobilePay, as this will also guarantee uniqueness.'
+        pspReferenceId:
+          minLength: 1
+          type: string
+          description: PSP's unique reference of the payment.
+        amount:
+          type: integer
+          description: 'Order amount in minor unit. I.e. 4,95 must be given as 495.'
+          format: int64
+        currencyCode:
+          minLength: 1
+          type: string
+          description: 'Currency of the order. Must be alphabetic or numeric ISO 4217 code. Accepted codes: DKK, EUR, NOK, SEK, USD, GBP, 208, 978, 578, 752, 840, 826'
+        autoCapture:
+          type: boolean
+          description: 'Set to true, if the payment will be automatically captured.<br />In MobilePay the payment will then be marked as captured immediately after the authorization is successful. If false, you need to mark it as captured as usual.'
+        last4:
+          maxLength: 4
+          minLength: 4
+          type: string
+          description: 'Must match known last4 of card PAN on agreement to avoid card mismatch between MobilePay and PSP. If card does not match, payment will be rejected and user prompted to update card on agreement.'
+          example: '1234'
+      additionalProperties: false
+    InitiateMITPaymentResponse:
+      type: object
+      properties:
+        paymentId:
+          type: string
+          format: uuid
       additionalProperties: false
     InitiatePaymentResponse:
       type: object
@@ -1000,6 +1911,124 @@ components:
           type: integer
           description: Optional. The payment will fail if the MobilePay user age is below the given minimum age.
           format: int32
+          nullable: true
+      additionalProperties: false
+    MITPaymentDetailsResponse:
+      required:
+        - allowedCardTypes
+        - amount
+        - currencyCode
+        - merchantId
+        - merchantLogoUrl
+        - merchantName
+        - merchantOrderId
+        - merchantUrl
+      type: object
+      properties:
+        merchantId:
+          type: string
+          description: The id of the Merchant.
+          format: uuid
+        merchantName:
+          minLength: 1
+          type: string
+          description: The display name of the merchant shown to the end-user.
+        merchantLogoUrl:
+          minLength: 1
+          type: string
+          description: The url of the logo shown to the end-user.
+        merchantOrderId:
+          minLength: 1
+          type: string
+          description: Unique reference to order.
+        merchantUrl:
+          minLength: 1
+          type: string
+          description: Url of the merchant.
+        pspReferenceId:
+          type: string
+          nullable: true
+        amount:
+          type: integer
+          description: 'Order amount in minor unit. Ie. kr. 4,95 will be 495.'
+          format: int64
+        currencyCode:
+          minLength: 1
+          type: string
+          description: Currency of the order. Must be alphabetic ISO 4217 code.
+        allowedCardTypes:
+          type: array
+          items:
+            type: string
+          description: 'Allowed card types for the payment, includes callback configuration per. card type. See CardType./>.'
+      additionalProperties: false
+    MastercardTokenCallbackPayload:
+      required:
+        - cardDataType
+        - tokenMethod
+      type: object
+      properties:
+        agreementId:
+          type: string
+          format: uuid
+        paymentId:
+          type: string
+          format: uuid
+        cardType:
+          type: string
+          nullable: true
+        cardIssuedInCountryCode:
+          type: string
+          nullable: true
+        maskedCardNumber:
+          type: string
+          nullable: true
+        tokenData:
+          $ref: '#/components/schemas/McTokenData'
+        cardDataType:
+          minLength: 1
+          type: string
+          readOnly: true
+        tokenMethod:
+          minLength: 1
+          type: string
+          readOnly: true
+      additionalProperties: false
+    McDynamicData:
+      type: object
+      properties:
+        dynamicDataType:
+          type: string
+          nullable: true
+        dynamicDataValue:
+          type: string
+          nullable: true
+      additionalProperties: false
+    McToken:
+      type: object
+      properties:
+        paymentToken:
+          type: string
+          nullable: true
+        tokenExpirationMonth:
+          type: string
+          nullable: true
+        tokenExpirationYear:
+          type: string
+          nullable: true
+        paymentAccountReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+    McTokenData:
+      type: object
+      properties:
+        token:
+          $ref: '#/components/schemas/McToken'
+        dynamicData:
+          $ref: '#/components/schemas/McDynamicData'
+        eci:
+          type: string
           nullable: true
       additionalProperties: false
     MerchantCreateResponse:
@@ -1162,6 +2191,77 @@ components:
           format: int32
           nullable: true
       additionalProperties: false
+    PaymentInstrument:
+      type: object
+      properties:
+        last4:
+          type: string
+          nullable: true
+        paymentType:
+          $ref: '#/components/schemas/PaymentType'
+        paymentAccountReference:
+          type: string
+          nullable: true
+      additionalProperties: false
+    PaymentType:
+      type: object
+      properties:
+        cardBrand:
+          type: string
+          nullable: true
+      additionalProperties: false
+    RefundMITPaymentRequest:
+      required:
+        - amount
+        - refundIdentifier
+        - timestamp
+      type: object
+      properties:
+        refundIdentifier:
+          minLength: 1
+          type: string
+          description: PSP's unique identifier for the refund to ensure idempotency.
+        amount:
+          type: integer
+          description: 'Refunded amount in minor unit. If amount is lower than the originally authorized amount, it is a partial refund.'
+          format: int64
+        timestamp:
+          type: string
+          description: Timestamp for refund as known by the PSP.
+          format: date-time
+      additionalProperties: false
+    RefundMITPaymentResponse:
+      type: object
+      properties:
+        refundId:
+          type: string
+          format: uuid
+      additionalProperties: false
+    TokenData:
+      type: object
+      properties:
+        vPaymentDataID:
+          type: string
+          nullable: true
+        cryptogramInfo:
+          $ref: '#/components/schemas/CryptogramInfo'
+        paymentInstrument:
+          $ref: '#/components/schemas/PaymentInstrument'
+        tokenInfo:
+          $ref: '#/components/schemas/TokenInfo'
+      additionalProperties: false
+    TokenInfo:
+      type: object
+      properties:
+        token:
+          type: string
+          nullable: true
+        last4:
+          type: string
+          nullable: true
+        expirationDate:
+          $ref: '#/components/schemas/ExpirationDate'
+      additionalProperties: false
     UpdateAuthorizationAttemptRequest:
       required:
         - succeeded
@@ -1196,6 +2296,35 @@ components:
           format: uri
           nullable: true
       additionalProperties: false
+    UpdateMITPaymentRequest:
+      required:
+        - succeeded
+      type: object
+      properties:
+        reasonCode:
+          type: integer
+          description: 'Reason code describing the reason for the authorization to fail.<br />Codes:<br />1000: rejected<br />1001: rejected, insufficient funds<br />1003: rejected, card expired<br />1004: rejected, fraud suspected<br />1005: rejected, soft blocked<br />1006: rejected, hard blocked<br />1007: rejected, web payment disabled for card<br />1008: soft reject, 3DS stepup required (unsupported for MIT, user not present)<br />2000: error<br />2001: error, permanent - don''t try again<br />2002: error, temporary - try again<br />3000: timeout - try again'
+          format: int32
+        reasonMessage:
+          type: string
+          description: Description of why the authorization failed.
+          nullable: true
+        succeeded:
+          type: boolean
+          description: 'Property indicating whether or not the authorization was successful. If false, reason code and reason message are required.'
+        acquirerVatNumber:
+          type: string
+          description: 'The VAT number of the acquirer to uniquely identify the acquirer used for this authorization attempt. Must be given for all reason codes in the 1000 range.<br />Used for our technical surveillance of the transactions and tracking errors.<br />Use the format described here: ''https:\/\/en.wikipedia.org\/wiki\/VAT_identification_number''.<br />Examples:<br />Clearhaus: DK33749996<br />Bambora: SE556233942301<br />Elavon: IE418442<br />Handelsbanken: SE502007786201<br />Nets: DK20016175<br />Swedbank: SE502017775301<br />Valitor: IS23243<br />Wirecard: DE201591202'
+          nullable: true
+        acquirerMerchantId:
+          type: string
+          description: The id of the merchant with the acquirer. Must be given for all reason codes in the 1000 range.
+          nullable: true
+        acquirerPaymentReference:
+          type: string
+          description: The id of the payment with the acquirer. Must be given for all reason codes in the 1000 range.
+          nullable: true
+      additionalProperties: false
     UpdatePaymentRequest:
       type: object
       properties:
@@ -1218,4 +2347,75 @@ components:
           maxLength: 120
           minLength: 3
           type: string
+      additionalProperties: false
+    UpdateRecurringAgreementRequest:
+      type: object
+      properties:
+        merchantLogoUrl:
+          type: string
+          description: 'The url of the logo shown to the end-user. Must be: 250x250 pixels, png or jpg served over a secure connection, must be https, and publicly available.'
+          format: uri
+          nullable: true
+        merchantWebsiteUrl:
+          type: string
+          description: Merchant website url.
+          format: uri
+          nullable: true
+        selfServiceUrl:
+          type: string
+          description: 'Url for merchant self service. Must be https, and publicly available.'
+          format: uri
+          nullable: true
+        recurringAgreementCallbackUrl:
+          type: string
+          description: 'Url to be called with agreement state changes. Contains AgreementId and State. Must be https, and publicly available.'
+          format: uri
+          nullable: true
+        updateCardCallbackUrl:
+          type: string
+          description: 'Url to be called when user changes card on agreement. Contains AgreementId and token/encrypted card data. Must be https, and publicly available.'
+          format: uri
+          nullable: true
+        allowedCardTypes:
+          type: array
+          items:
+            $ref: '#/components/schemas/CardType'
+          description: 'Allowed card types for the payment, includes callback configuration per. card type. See CardType./>.'
+          nullable: true
+      additionalProperties: false
+    VisaTokenCallbackPayload:
+      required:
+        - cardDataType
+        - isDelegatedAuthentication
+        - tokenMethod
+      type: object
+      properties:
+        agreementId:
+          type: string
+          format: uuid
+        paymentId:
+          type: string
+          format: uuid
+        cardType:
+          type: string
+          nullable: true
+        cardIssuedInCountryCode:
+          type: string
+          nullable: true
+        maskedCardNumber:
+          type: string
+          nullable: true
+        tokenData:
+          $ref: '#/components/schemas/TokenData'
+        cardDataType:
+          minLength: 1
+          type: string
+          readOnly: true
+        tokenMethod:
+          minLength: 1
+          type: string
+          readOnly: true
+        isDelegatedAuthentication:
+          type: boolean
+          readOnly: true
       additionalProperties: false
