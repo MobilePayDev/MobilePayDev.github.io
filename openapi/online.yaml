@@ -1,6 +1,6 @@
 openapi: 3.0.1
 info:
-  title: Online
+  title: Online API
   contact:
     email: developer@mobilepay.dk
   version: v1
@@ -14,7 +14,8 @@ paths:
     delete:
       tags:
         - Merchants
-      summary: 'The merchant can no longer make payments, and is no longer eligible for subscription fee.'
+      summary: Delete merchant
+      description: 'The merchant can no longer make payments, and is no longer eligible for subscription fee.'
       parameters:
         - name: merchantId
           in: path
@@ -25,12 +26,6 @@ paths:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
           schema:
             type: string
         - name: x-ibm-client-id
@@ -41,13 +36,13 @@ paths:
             type: string
       responses:
         '204':
-          description: Success
+          description: No Content
         '409':
           description: Domain error response
     get:
       tags:
         - Merchants
-      summary: Get a given merchant by id
+      summary: Get merchant
       parameters:
         - name: merchantId
           in: path
@@ -58,12 +53,6 @@ paths:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
           schema:
             type: string
         - name: x-ibm-client-id
@@ -90,7 +79,8 @@ paths:
     patch:
       tags:
         - Merchants
-      summary: Update properties on a given merchant. Only provided values will be updated.
+      summary: Update merchant
+      description: Update properties on a given merchant. Only provided values will be updated.
       parameters:
         - name: merchantId
           in: path
@@ -101,12 +91,6 @@ paths:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
           schema:
             type: string
         - name: x-ibm-client-id
@@ -131,24 +115,18 @@ paths:
               $ref: '#/components/schemas/MerchantUpdateRequest'
       responses:
         '204':
-          description: Success
+          description: No Content
         '409':
           description: Domain error response
   /api/v1/merchants:
     get:
       tags:
         - Merchants
-      summary: Get all merchants
+      summary: Get merchants
       parameters:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
           schema:
             type: string
         - name: x-ibm-client-id
@@ -175,17 +153,11 @@ paths:
     post:
       tags:
         - Merchants
-      summary: Create a new merchant
+      summary: Create merchant
       parameters:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
           schema:
             type: string
         - name: x-ibm-client-id
@@ -227,7 +199,7 @@ paths:
     get:
       tags:
         - Payments
-      summary: Get Payment Details
+      summary: Get payment
       parameters:
         - name: paymentId
           in: path
@@ -259,18 +231,6 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/PaymentDetailsV3Response'
-        '404':
-          description: Not Found
-          content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-            application/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
-            text/json:
-              schema:
-                $ref: '#/components/schemas/ProblemDetails'
         '409':
           description: Domain error response
   /api/v1/psp/platforms:
@@ -309,8 +269,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/GetPlatformResponse'
-        '404':
-          description: Not Found
         '409':
           description: Domain error response
     post:
@@ -357,26 +315,23 @@ paths:
             text/json:
               schema:
                 $ref: '#/components/schemas/CreatePlatformResponse'
-        '404':
-          description: Not Found
         '409':
           description: Domain error response
   '/api/v1/payments/{paymentId}/authorizationattempts/{authorizationAttemptId}':
     patch:
       tags:
         - Payments
-      summary: 'UpdateAuthorizationAttempt. Indicates that a successful authorization has been made, if ''succeeded'' is set to true. The user will be shown a confirm message and redirected to RedirectFromMobilePayUrl'
+      summary: Update payment authorization
+      description: 'Indicates that a successful authorization has been made, if ''succeeded'' is set to true. The user will be shown a confirm message and redirected to RedirectFromMobilePayUrl'
       parameters:
         - name: paymentId
           in: path
-          description: Id of the payment that has been authorized. Originates from InitiatePayment response
           required: true
           schema:
             type: string
             format: uuid
         - name: authorizationAttemptId
           in: path
-          description: Id of authorization attempt from the particular CardDataCallback request which CardData was used for the successful authorization
           required: true
           schema:
             type: string
@@ -386,12 +341,6 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
-          schema:
-            type: string
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
@@ -399,7 +348,6 @@ paths:
           schema:
             type: string
       requestBody:
-        description: ''
         content:
           application/json-patch+json:
             schema:
@@ -415,14 +363,14 @@ paths:
               $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
       responses:
         '204':
-          description: Success
+          description: No Content
         '409':
           description: Domain error response
   '/api/v1/payments/{paymentId}':
     patch:
       tags:
         - Payments
-      summary: 'UpdatePayment: Update ReservationExpiryTimestamp, RedirectFromMobilePayUrl or both.'
+      summary: Update payment
       parameters:
         - name: paymentId
           in: path
@@ -435,12 +383,6 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
-          schema:
-            type: string
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
@@ -463,7 +405,7 @@ paths:
               $ref: '#/components/schemas/UpdatePaymentRequest'
       responses:
         '204':
-          description: Success
+          description: No Content
         '409':
           description: Domain error response
   '/api/v1/psp/platforms/{platformId}':
@@ -513,6 +455,7 @@ paths:
     post:
       tags:
         - Payments
+      summary: Cancel payment
       parameters:
         - name: paymentId
           in: path
@@ -523,12 +466,6 @@ paths:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
           schema:
             type: string
         - name: x-ibm-client-id
@@ -570,11 +507,11 @@ paths:
     post:
       tags:
         - Payments
-      summary: 'CreateCapture: Creates a capture. Multiple can be created. Amount must given in minor units of currency.'
+      summary: Capture payment
+      description: Create a capture. Multiple can be created. Amount must given in minor units of currency.
       parameters:
         - name: paymentId
           in: path
-          description: Id of the payment that has been captured.
           required: true
           schema:
             type: string
@@ -584,12 +521,6 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
-          schema:
-            type: string
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
@@ -597,7 +528,6 @@ paths:
           schema:
             type: string
       requestBody:
-        description: captureIdentifier is the PSPs own identifier for the capture event.<br />Amount must given in minor units of currency. An amount smaller than the amount Authorized makes it a partial capture.<br />Timestamp tell when the capture event took place."
         content:
           application/json-patch+json:
             schema:
@@ -630,7 +560,8 @@ paths:
     post:
       tags:
         - Payments
-      summary: Creates a refund. Multiple can be created. Amount must given in minor units of currency.
+      summary: Refund payment
+      description: Creates a refund. Multiple can be created. Amount must given in minor units of currency.
       parameters:
         - name: paymentId
           in: path
@@ -641,12 +572,6 @@ paths:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
           schema:
             type: string
         - name: x-ibm-client-id
@@ -688,7 +613,8 @@ paths:
     post:
       tags:
         - Payments
-      summary: 'InitiatePayment: A payment or checkout always start by initiating the payment.<br /> All provided urls MUST be https with TLS 1.2 or better. <br /> merchantName and merchantUrl are mandatory because those are used for Dynamic Linking.'
+      summary: Initiate payment
+      description: "A payment or checkout always start by initiating the payment.\nAll provided urls MUST be https with TLS 1.2 or better.\n merchantName and merchantUrl are mandatory because those are used for Dynamic Linking."
       parameters:
         - name: CorrelationId
           in: header
@@ -702,7 +628,6 @@ paths:
           schema:
             type: string
       requestBody:
-        description: ''
         content:
           application/json-patch+json:
             schema:
@@ -735,11 +660,11 @@ paths:
     put:
       tags:
         - Payments
-      summary: Invalidate the payment if a successful authorization hasn't been made. Invalidation means that the user cannot accept or create a request on this payment.
+      summary: Invalidate payment
+      description: Invalidate the payment if a successful authorization hasn't been made. Invalidation means that the user cannot accept or create a request on this payment.
       parameters:
         - name: paymentId
           in: path
-          description: Id of the payment that should be invalidated. Originates from InitiatePayment response.
           required: true
           schema:
             type: string
@@ -747,12 +672,6 @@ paths:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: Authorization
-          in: header
-          description: 'Authorization header. Usually in format "Bearer {token}"'
-          required: true
           schema:
             type: string
         - name: x-ibm-client-id
@@ -775,9 +694,11 @@ components:
       type: object
       properties:
         name:
+          minLength: 1
           type: string
           description: 'Allowed card type for the payment. These can be used:<br />MC-DEBIT: MasterCard Debit<br />MC-CREDIT: MasterCard Credit<br />MTRO-DEBIT: Maestro Debit<br />ELEC-DEBIT: VISA Electron Debit<br />VISA-DEBIT: VISA Debit.<br />VISA-CREDIT: VISA Credit<br />DANKORT: Dankort'
         encryptedPanCallbackUrl:
+          minLength: 1
           type: string
           description: 'Url to make callback with encrypted PAN. Must be valid fully qualified HTTPS URL. Request is described here: ''https://github.com/MobilePayDev/MobilePay-Online#callbacks''.'
         tokenCallbackUrl:
@@ -793,6 +714,7 @@ components:
       type: object
       properties:
         cancelIdentifier:
+          minLength: 1
           type: string
           description: The PSP's unique id of the cancel to ensure idempotency.
         amount:
@@ -854,6 +776,7 @@ components:
       type: object
       properties:
         externalId:
+          minLength: 1
           type: string
           description: The PSP's unique id of the merchant.
           example: aarhus-trading-20018
@@ -867,14 +790,17 @@ components:
           example: 1234
         name:
           maxLength: 255
+          minLength: 1
           type: string
           description: The PSP's name of the merchant for billing purposes.
           example: Gedekid og Smoothies
         billingCurrency:
+          minLength: 1
           type: string
           description: Billing currency of the merchant. Possible values are:<br /> DKK<br /> EUR<br /> SEK<br /> NOK
           example: DKK
         countryCode:
+          minLength: 1
           type: string
           description: Merchant country code e.g. Denmark = DK. Use ISO-3166 ('https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2') or special value APAC.
           example: DK
@@ -916,6 +842,7 @@ components:
       type: object
       properties:
         refundIdentifier:
+          minLength: 1
           type: string
           description: PSP's unique id of the refund to ensure idempotency.
         amount:
@@ -945,6 +872,7 @@ components:
           type: string
           format: uuid
         name:
+          minLength: 1
           type: string
       additionalProperties: false
     InitiatePaymentResponse:
@@ -982,18 +910,23 @@ components:
           description: Identifier for the Merchant. Originates from the CreateMerchant response.
           format: uuid
         merchantName:
+          minLength: 1
           type: string
           description: The display name of the merchant shown to the end-user. Is used for 'Dynamic Linking'. Must be the same as registered with the merchants Acquirer and in schemes.
         merchantLogoUrl:
+          minLength: 1
           type: string
           description: 'The url of the logo shown to the end-user. Must be: 250x250 pixels, png or jpg served over a secure connection, must be https, and publicly available.'
         merchantOrderId:
+          minLength: 1
           type: string
           description: Merchant's order id.
         merchantUrl:
+          minLength: 1
           type: string
           description: 'Url of the merchant. Max length 150 char. Is used for ''Dynamic Linking''. If the merchant doesn´t have a Url, use VAT number (international format) or use the merchantId from MobilePay, as this will also guarantee uniqueness.'
         pspReferenceId:
+          minLength: 1
           type: string
           description: PSP's unique reference to payment.
         amount:
@@ -1001,6 +934,7 @@ components:
           description: 'Order amount in minor unit. I.e. 4,95 must be given as 495.'
           format: int64
         currencyCode:
+          minLength: 1
           type: string
           description: 'Currency of the order. Must be alphabetic or numeric ISO 4217 code. Accepted codes: DKK, EUR, NOK, SEK, USD, GBP, 208, 978, 578, 752, 840, 826'
         allowedCardTypes:
@@ -1013,6 +947,7 @@ components:
           description: Id of the public key to be used for exchange of card data.
           format: int32
         redirectFromMobilePayUrl:
+          minLength: 1
           type: string
           description: Where to redirect the user when the payment is complete. Must be fully qualified URL.
         failedPaymentCallbackUrl:
@@ -1175,15 +1110,19 @@ components:
           description: The id of the Merchant.
           format: uuid
         merchantName:
+          minLength: 1
           type: string
           description: The display name of the merchant shown to the end-user.
         merchantLogoUrl:
+          minLength: 1
           type: string
           description: The url of the logo shown to the end-user.
         merchantOrderId:
+          minLength: 1
           type: string
           description: Unique reference to order.
         merchantUrl:
+          minLength: 1
           type: string
           description: Url of the merchant.
         pspReferenceId:
@@ -1194,6 +1133,7 @@ components:
           description: 'Order amount in minor unit. Ie. kr. 4,95 will be 495.'
           format: int64
         currencyCode:
+          minLength: 1
           type: string
           description: Currency of the order. Must be alphabetic ISO 4217 code.
         allowedCardTypes:
@@ -1209,6 +1149,7 @@ components:
           description: Id of the public key to be used for exchange of card data.
           format: int32
         redirectFromMobilePayUrl:
+          minLength: 1
           type: string
           description: Where to redirect the user after finishing the payment. Must be fully qualified URL.
         deliveryAddressAllowed:
@@ -1221,26 +1162,6 @@ components:
           format: int32
           nullable: true
       additionalProperties: false
-    ProblemDetails:
-      type: object
-      properties:
-        type:
-          type: string
-          nullable: true
-        title:
-          type: string
-          nullable: true
-        status:
-          type: integer
-          format: int32
-          nullable: true
-        detail:
-          type: string
-          nullable: true
-        instance:
-          type: string
-          nullable: true
-      additionalProperties: { }
     UpdateAuthorizationAttemptRequest:
       required:
         - succeeded
