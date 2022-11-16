@@ -42,10 +42,6 @@ All described flows must be supported by the PSP.
 Note that a recurring agreement must be requested using our new recurring API, but the authorization of the transaction is still done using our existing API.
 Please observe details on the endpoints to be used in the sequence diagrams below.
 
-----Link to APIs here?
-
-----Insert diagrams from Sequence diagrams | CP Recurring
-
 ## Account verification
 
 When creating a new recurring payment agreement, the integrator must set an amount for the initial transaction.
@@ -70,7 +66,11 @@ The integrator should try again only after receiving a successful card update ca
 
 Example of push notification on card mismatch:
 
-[![Push card mismatch](/img/online_rec-push-card-mismatch.png)](/img/online_rec-push-card-mismatch.png)
+<img
+  src={require('/img/online_rec-push-card-mismatch.png').default}
+  alt="Push card mismatch"
+  width="375"
+/>
 
 ### Soft decline / 3DS
 
@@ -81,7 +81,11 @@ A card update might be soft declined by the issuer so the integrator must suppor
 If a MIT transactions fails at PSP/Acquirer/Issuer, the integrator should provide us with the appropiate error and reason code (see below).
 We will immediately send a push notfication to the end user about the failed transaction:
 
-[![Push failed MIT](/img/online_rec-push-failed-MIT.png)](/img/online_rec-push-failed-MIT.png)
+<img
+  src={require('/img/online_rec-push-failed-MIT.png').default}
+  alt="Push failed MIT"
+  width="375"
+/>
 
 Note that we are not always able to identify whether the user has carried out any actions to resolve the issue. E.g. we will not be informed if the user unblocks their card or adds funds to their bank account etc.
 However, a subsequent card update callback can be considered a valid cue to retry the MIT - the card update could be the user replacing an expired card or using another card that is not blocked etc.
