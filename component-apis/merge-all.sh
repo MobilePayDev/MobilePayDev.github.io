@@ -1,3 +1,5 @@
+#!/bin/sh
+
 ## Merge online apis 
 yarn run openapi-merge-cli --config ./component-apis/online/definition.json
 
