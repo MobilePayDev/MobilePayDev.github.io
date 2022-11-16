@@ -6,12 +6,12 @@ module.exports = {
   title: "MobilePay Developer",
   tagline: "MobilePay Developer",
   url: "https://mobilepaydev.github.io",
-  baseUrl: "/MobilePay-Payments-API/",
+  baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/favicon.ico",
   organizationName: "MobilePayDev",
-  projectName: "MobilePay-Payments-API",
+  projectName: "MobilePayDev.github.io",
   trailingSlash: false,
   themes: [
     [
@@ -30,7 +30,7 @@ module.exports = {
         alt: "MobilePay",
         src: "img/logo-blue.svg",
         srcDark: "img/logo-white.svg",
-        href: "/MobilePay-Payments-API/",
+        href: "/",
       },
       items: [   
         {
@@ -103,7 +103,7 @@ module.exports = {
           position: "right",
         },
         {
-          href: "https://github.com/MobilePayDev/MobilePay-Payments-API",
+          href: "https://github.com/MobilePayDev/MobilePayDev.github.io",
           label: "GitHub",
           position: "right",
         },

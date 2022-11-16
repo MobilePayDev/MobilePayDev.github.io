@@ -7,8 +7,8 @@ pagination_next: null
 
 API documentation:
 
-* [App Payments API](http://localhost:3000/MobilePay-Payments-API/api/app-payments)
-* [Webhooks API](http://localhost:3000/MobilePay-Payments-API/api/wehooks)
+* [App Payments API](http://localhost:3000/api/app-payments)
+* [Webhooks API](http://localhost:3000/api/wehooks)
 
 [Partner site](https://www.mobilepaygroup.com/partner/app-payments): Partner information
 
