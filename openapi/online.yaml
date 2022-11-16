@@ -34,6 +34,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       responses:
         '204':
           description: No Content
@@ -58,6 +64,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -99,6 +111,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json-patch+json:
@@ -121,7 +139,7 @@ paths:
   /api/v3/recurring:
     delete:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Terminate agreement
       parameters:
         - name: agreementId
@@ -140,6 +158,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -147,7 +171,7 @@ paths:
           description: Domain error response
     post:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Create agreement
       parameters:
         - name: CorrelationId
@@ -158,6 +182,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -207,6 +237,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -235,6 +271,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -290,6 +332,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -319,6 +367,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -360,6 +414,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json-patch+json:
@@ -392,7 +452,7 @@ paths:
   '/api/v3/recurring/{agreementId}':
     get:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Get agreement
       parameters:
         - name: agreementId
@@ -409,6 +469,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -430,7 +496,7 @@ paths:
   '/api/v3/recurring/payments/merchant-initiated/payments/{mitPaymentId}/details':
     get:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Get MIT payment details
       parameters:
         - name: mitPaymentId
@@ -447,6 +513,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -495,6 +567,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json-patch+json:
@@ -534,6 +612,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -580,6 +664,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json-patch+json:
@@ -602,7 +692,7 @@ paths:
   '/api/v3/recurring/{recurringAgreementId}':
     patch:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Update agreement
       parameters:
         - name: recurringAgreementId
@@ -619,6 +709,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -644,7 +740,7 @@ paths:
   '/api/v3/recurring/{agreementId}/card/{paymentId}':
     patch:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Confirm or reject card update
       description: Confirm or reject requested card update on agreement
       operationId: 84b9cb083b51206325624456c573fe97
@@ -672,6 +768,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json-patch+json:
@@ -694,7 +796,7 @@ paths:
   '/api/v3/recurring/payments/merchant-initiated/{paymentId}':
     patch:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Update MIT payment
       description: 'Update MIT on recurring agreement. Indicates that a successful authorization has been made, if ''succeeded'' is set to true.'
       parameters:
@@ -712,6 +814,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -754,6 +862,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -810,6 +924,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json-patch+json:
@@ -863,6 +983,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json-patch+json:
@@ -910,6 +1036,12 @@ paths:
           required: true
           schema:
             type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       requestBody:
         content:
           application/json-patch+json:
@@ -942,7 +1074,7 @@ paths:
   '/api/v3/recurring/payments/merchant-initiated/{paymentId}/cancels':
     post:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Cancel MIT payment
       description: 'Cancel MIT payment on recurring agreement. Indicates that a successful authorization has been made, if ''succeeded'' is set to true'
       parameters:
@@ -960,6 +1092,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -995,7 +1133,7 @@ paths:
   '/api/v3/recurring/payments/merchant-initiated/{paymentId}/captures':
     post:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Capture MIT payment
       description: Capture MIT payment on recurring agreement
       parameters:
@@ -1013,6 +1151,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -1048,7 +1192,7 @@ paths:
   /api/v3/recurring/payments/customer-initiated:
     post:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Initiate CIT payment
       description: Initiate a new CIT payment on recurring agreement
       parameters:
@@ -1065,6 +1209,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -1100,7 +1250,7 @@ paths:
   /api/v3/recurring/payments/merchant-initiated:
     post:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Initiate MIT payment
       description: Initiate merchant initiated payment on recurring agreement
       parameters:
@@ -1117,6 +1267,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -1152,7 +1308,7 @@ paths:
   '/api/v3/recurring/payments/merchant-initiated/{paymentId}/refunds':
     post:
       tags:
-        - Recurring
+        - Recurring Payments
       summary: Refund MIT payment
       description: Refund a MIT payment on agreement
       parameters:
@@ -1170,6 +1326,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -1223,6 +1385,12 @@ paths:
         - name: x-ibm-client-id
           in: header
           description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
           required: true
           schema:
             type: string
@@ -2419,3 +2587,8 @@ components:
           type: boolean
           readOnly: true
       additionalProperties: false
+tags:
+  - name: Merchants
+  - name: Payments
+  - name: Recurring Payments
+  - name: Platforms
