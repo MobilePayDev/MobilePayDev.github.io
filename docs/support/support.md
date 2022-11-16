@@ -38,7 +38,7 @@ MobilePay Developer support provides support in Danish and English. You can cont
 * Screenshots, if possible.
 * Please provide your contact information (if not in your email signature):
   * Name
-  * Phone number
+  * Email
 * Please include any other information that may be relevant or possibly helpful.
 
 *Can I call you?*
