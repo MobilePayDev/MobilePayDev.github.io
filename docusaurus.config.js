@@ -76,24 +76,24 @@ module.exports = {
               to: '/api/wehooks',
             },
             {
-              label: 'Reporting (v3)',
-              to: '/api/reporting',
-            },
-            {
-              label: 'Subscriptions',
-              to: '/api/subscriptions',
-            },
-            {
               label: 'Invoice',
               to: '/api/invoice',
+            },
+            {
+              label: 'Online',
+              to: '/api/online',
             },
             {
               label: 'PoS',
               to: '/api/pos',
             },
             {
-              label: 'Online',
-              to: '/api/online',
+              label: 'Subscriptions',
+              to: '/api/subscriptions',
+            },
+            {
+              label: 'Reporting (v3)',
+              to: '/api/reporting',
             },
           ],
         },
