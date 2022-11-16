@@ -42,6 +42,8 @@ All described flows must be supported by the PSP.
 Note that a recurring agreement must be requested using our new recurring API, but the authorization of the transaction is still done using our existing API.
 Please observe details on the endpoints to be used in the sequence diagrams below.
 
+[![Create MIT payment](/img/online_rec-mit.png)](/img/online_rec-mit.png)
+
 ## Account verification
 
 When creating a new recurring payment agreement, the integrator must set an amount for the initial transaction.
