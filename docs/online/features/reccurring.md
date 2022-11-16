@@ -25,7 +25,11 @@ In the MobilePay app, the user accepts that the merchant can carry out recurring
 After the user has accepted recurring payments in MobilePay, the merchant/PSP can carry out recurring transactions in accordance with their agreement with the user.
 When a transaction is captured, the user will receive a notification on their phone.
 
-[![MIT](/img/online_rec-app_flows-MIT.jpg)](/img/online_rec-app_flows-MIT.jpg)
+<img
+  src={require('/img/online_rec-app_flows-MIT.jpg').default}
+  alt="MIT"
+  width="725"
+/>
 
 ### Manage recurring payment agreements
 
@@ -36,13 +40,11 @@ In addition, the user can change the card on the agreement or terminate the agre
 
 ## Sequence diagrams
 
-The following diagrams describe how the solution works including which endpoints are involved.
+In the bottom of this page you will find [diagrams](#sequence-diagrams-overview) describing how the solution works including which endpoints are involved.
 All described flows must be supported by the PSP.
 
 Note that a recurring agreement must be requested using our new recurring API, but the authorization of the transaction is still done using our existing API.
 Please observe details on the endpoints to be used in the sequence diagrams below.
-
-[![Create MIT payment](/img/online_rec-mit.png)](/img/online_rec-mit.png)
 
 ## Account verification
 
@@ -53,7 +55,7 @@ Marking a transaction as an account verification influences how the transaction 
 
 ## Card Update
 
-At any point after a payment agreement has been created, the end user can change the payment card connected to the agreement. 
+At any point after a payment agreement has been created, the end user can change the payment card connected to the agreement.
 When this happens, the new card will be sent to the integrator for account verification.
 The integrator must support this functionality and must use updateCardCallbackUrl when requesting a new agreement to specify how they want to receive these card updates.
 
@@ -106,3 +108,31 @@ We do not expect MITs to be soft declined but if it happens, the integrator shou
 
 Integrators must provide information about capture/cancel/refund events for transactions performed on a recurring payment agreement - the same as for regular MobilePay Online transactions.
 We do not currently reflect all of these events towards the end user, but they are used for billing purposes and incident handling.
+
+## Sequence diagrams overview
+
+The following diagrams describe how the solution works including which endpoints are involved.
+
+### Create and activate recurring agreement
+
+[![Create agreement](/img/online_rec-CreateRecurringAgreement.png)](/img/online_rec-CreateRecurringAgreement.png)
+
+### Create MIT payment
+
+[![Create MIT payment](/img/online_rec-CreateMITPayment.png)](/img/online_rec-CreateMITPayment.png)
+
+### Merchant/PSP terminates agreement
+
+[![Terminate agreement merchant](/img/online_rec-TerminateRecurringAgreementMerchant.png)](/img/online_rec-TerminateRecurringAgreementMerchant.png)
+
+### User terminates recurring agreement via MobilePay
+
+[![Terminate agreement user](/img/online_rec-TerminateRecurringAgreement-User.png)](/img/online_rec-TerminateRecurringAgreement-User.png)
+
+### User terminates recurring agreement via SelfServiceUrl
+
+[![Delete agreement merchant](/img/online_rec-DeleteRecurringAgreementMerchant.png)](/img/online_rec-DeleteRecurringAgreementMerchant.png)
+
+### User updates the card of a recurring agreement
+
+[![Update card](/img/online_rec-UpdateAgreementCard.png)](/img/online_rec-UpdateAgreementCard.png)
