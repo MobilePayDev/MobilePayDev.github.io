@@ -1,0 +1,61 @@
+openapi: 3.0.1
+info:
+  title: Endpoints for simulating user behavior available to integrators
+  contact:
+    email: developer@mobilepay.dk
+  version: v1
+paths:
+  '/api/v1/product/payments/simulation/enter-phone-and-swipe/{paymentId}':
+    post:
+      tags:
+        - Simulation
+      summary: Simulate user behavior
+      description: "1) User enter phone number for payment.\n2) User selects the first eligible card for payment.\n3) User swipes to accept payment."
+      parameters:
+        - name: paymentId
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+        - name: CorrelationId
+          in: header
+          description: CorrelationId used for logging
+          schema:
+            type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SimulateRequestByAliasRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/SimulateRequestByAliasRequest'
+          application/*+json:
+            schema:
+              $ref: '#/components/schemas/SimulateRequestByAliasRequest'
+      responses:
+        '200':
+          description: Success
+        '409':
+          description: Domain error response
+    servers:
+      - url: https://api.sandbox.mobilepay.dk/cardpassthrough-regressiontester-restapi
+        description: User simulation server (uses **test** data)
+components:
+  schemas:
+    SimulateRequestByAliasRequest:
+      required:
+        - phoneNumber
+      type: object
+      properties:
+        phoneNumber:
+          type: string
+        lastFourDigits:
+          type: string
+          description: 'Optional, if defined the user will select the first eligible card that where the last four digits match.'
+          nullable: true
+      additionalProperties: false
+tags:
+  - name: Simulation
+    description: This api is only available for test data.
