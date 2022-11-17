@@ -4,7 +4,7 @@
             "inputFile": "./cardpassthrough.yaml"
         },
         {
-            "inputFile": "./regression-tester.yaml"
+            "inputFile": "./cardpassthrough-regression-tester.yaml"
         }
         
     ],

@@ -86,13 +86,7 @@ paths:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/MerchantDetailsResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/MerchantDetailsResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/MerchantDetailsResponse'
         '409':
@@ -130,16 +124,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/MerchantUpdateRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/MerchantUpdateRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/MerchantUpdateRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/MerchantUpdateRequest'
       responses:
@@ -204,29 +189,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CreateRecurringAgreementRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreateRecurringAgreementResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/CreateRecurringAgreementResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/CreateRecurringAgreementResponse'
         '409':
@@ -258,13 +228,7 @@ paths:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/MerchantListResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/MerchantListResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/MerchantListResponse'
         '409':
@@ -293,29 +257,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CreateMerchantRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateMerchantRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateMerchantRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CreateMerchantRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/MerchantCreateResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/MerchantCreateResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/MerchantCreateResponse'
         '409':
@@ -353,13 +302,7 @@ paths:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/PaymentDetailsV3Response'
             application/json:
-              schema:
-                $ref: '#/components/schemas/PaymentDetailsV3Response'
-            text/json:
               schema:
                 $ref: '#/components/schemas/PaymentDetailsV3Response'
         '409':
@@ -391,17 +334,7 @@ paths:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/GetPlatformResponse'
             application/json:
-              schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/GetPlatformResponse'
-            text/json:
               schema:
                 type: array
                 items:
@@ -433,29 +366,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CreatePlatformRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/CreatePlatformResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/CreatePlatformResponse'
         '409':
@@ -493,13 +411,7 @@ paths:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/GetRecurringAgreementResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/GetRecurringAgreementResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/GetRecurringAgreementResponse'
         '409':
@@ -537,13 +449,7 @@ paths:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/MITPaymentDetailsResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/MITPaymentDetailsResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/MITPaymentDetailsResponse'
         '409':
@@ -589,16 +495,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
       responses:
@@ -637,16 +534,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/UpdatePaymentRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePaymentRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/UpdatePaymentRequest'
       responses:
@@ -686,16 +574,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/UpdatePlatformRequest'
       responses:
@@ -734,16 +613,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
       responses:
@@ -790,16 +660,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/ConfirmCardUpdateRequest'
       responses:
@@ -841,16 +702,7 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/UpdateMITPaymentRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateMITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/UpdateMITPaymentRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/UpdateMITPaymentRequest'
       responses:
@@ -889,29 +741,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CreateCancelRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateCancelRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateCancelRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CreateCancelRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreateCancelResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/CreateCancelResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/CreateCancelResponse'
         '409':
@@ -950,29 +787,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CreateCaptureRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateCaptureRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateCaptureRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CreateCaptureRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreateCaptureResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/CreateCaptureResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/CreateCaptureResponse'
         '409':
@@ -1011,29 +833,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CreateRefundRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateRefundRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateRefundRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CreateRefundRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CreateRefundResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/CreateRefundResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/CreateRefundResponse'
         '409':
@@ -1067,29 +874,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/InitiatePaymentV3Request'
           application/json:
-            schema:
-              $ref: '#/components/schemas/InitiatePaymentV3Request'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/InitiatePaymentV3Request'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/InitiatePaymentV3Request'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/InitiatePaymentResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/InitiatePaymentResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/InitiatePaymentResponse'
         '409':
@@ -1128,29 +920,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CancelMITPaymentRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CancelMITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CancelMITPaymentRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CancelMITPaymentRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CancelMITPaymentResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/CancelMITPaymentResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/CancelMITPaymentResponse'
         '409':
@@ -1187,29 +964,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/CaptureMITPaymentRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/CaptureMITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CaptureMITPaymentRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/CaptureMITPaymentRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/CaptureMITPaymentResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/CaptureMITPaymentResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/CaptureMITPaymentResponse'
         '409':
@@ -1245,29 +1007,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/InitiateCITPaymentRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/InitiateCITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/InitiateCITPaymentRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/InitiateCITPaymentRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/InitiateCITPaymentResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/InitiateCITPaymentResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/InitiateCITPaymentResponse'
         '409':
@@ -1303,29 +1050,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/InitiateMITPaymentRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/InitiateMITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/InitiateMITPaymentRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/InitiateMITPaymentRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/InitiateMITPaymentResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/InitiateMITPaymentResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/InitiateMITPaymentResponse'
         '409':
@@ -1362,29 +1094,14 @@ paths:
             type: string
       requestBody:
         content:
-          application/json-patch+json:
-            schema:
-              $ref: '#/components/schemas/RefundMITPaymentRequest'
           application/json:
-            schema:
-              $ref: '#/components/schemas/RefundMITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/RefundMITPaymentRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/RefundMITPaymentRequest'
       responses:
         '200':
           description: Success
           content:
-            text/plain:
-              schema:
-                $ref: '#/components/schemas/RefundMITPaymentResponse'
             application/json:
-              schema:
-                $ref: '#/components/schemas/RefundMITPaymentResponse'
-            text/json:
               schema:
                 $ref: '#/components/schemas/RefundMITPaymentResponse'
         '409':
@@ -1433,7 +1150,7 @@ paths:
         - Simulation
       summary: Simulate user behavior
       description: |-
-        1) User enter phone number for payment.
+        1) User enters phone number for payment.
         2) User selects the first eligible card for payment.
         3) User swipes to accept payment.
       parameters:
@@ -1451,12 +1168,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/SimulateRequestByAliasRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/SimulateRequestByAliasRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/SimulateRequestByAliasRequest'
       responses:

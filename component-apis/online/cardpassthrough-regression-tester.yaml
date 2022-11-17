@@ -10,7 +10,7 @@ paths:
       tags:
         - Simulation
       summary: Simulate user behavior
-      description: "1) User enter phone number for payment.\n2) User selects the first eligible card for payment.\n3) User swipes to accept payment."
+      description: "1) User enters phone number for payment.\n2) User selects the first eligible card for payment.\n3) User swipes to accept payment."
       parameters:
         - name: paymentId
           in: path
@@ -26,12 +26,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/SimulateRequestByAliasRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/SimulateRequestByAliasRequest'
-          application/*+json:
             schema:
               $ref: '#/components/schemas/SimulateRequestByAliasRequest'
       responses:
