@@ -1,0 +1,12 @@
+{
+    "inputs": [
+        {
+            "inputFile": "./cardpassthrough.yaml"
+        },
+        {
+            "inputFile": "./cardpassthrough-regression-tester.yaml"
+        }
+        
+    ],
+    "output": "../../openapi/online.yaml"
+}
