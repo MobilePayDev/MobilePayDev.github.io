@@ -2790,6 +2790,14 @@ at-least-node@^1.0.0:
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/at-least-node/-/at-least-node-1.0.0.tgz#602cd4b46e844ad4effc92a8011a3c46e0238dc2"
   integrity sha512-+q/t7Ekv1EDY2l6Gda6LLiX14rU9TV20Wa3ofeQmwPFZbOMo9DXrLbOjFaaclkXKWidIaopwAObQDqwWtGUjqg==
 
+atlassian-openapi@^1.0.8:
+  version "1.0.17"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/atlassian-openapi/-/atlassian-openapi-1.0.17.tgz#968ade998b65f50fc0ff9f0780707301344a351b"
+  integrity sha512-8aW0Xgl9mVdL9dCABSZAvCayMPyh6uVu86UzOat8Kc1qDMUtXn2OxcwDsJfm/qCtBSeZ+GE/PkFxx3ZRIp3hFg==
+  dependencies:
+    jsonpointer "^5.0.0"
+    urijs "^1.19.10"
+
 autoprefixer@^10.4.12, autoprefixer@^10.4.7:
   version "10.4.13"
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/autoprefixer/-/autoprefixer-10.4.13.tgz#b5136b59930209a321e9fa3dca2e7c4d223e83a8"
@@ -4100,6 +4108,11 @@ es6-promise@^3.2.1:
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/es6-promise/-/es6-promise-3.3.1.tgz#a08cdde84ccdbf34d027a1451bc91d4bcd28a613"
   integrity sha512-SOp9Phqvqn7jtEUxPWdWfWoLmyt2VaJ6MpvP9Comy1MceMXqE6bxvaTu4iaxpYYPzhny28Lc+M87/c2cPK6lDg==
 
+es6-promise@^4.2.8:
+  version "4.2.8"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/es6-promise/-/es6-promise-4.2.8.tgz#4eb21594c972bc40553d276e510539143db53e0a"
+  integrity sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==
+
 escalade@^3.1.1:
   version "3.1.1"
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
@@ -5356,6 +5369,14 @@ isobject@^3.0.1:
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha512-WhB9zCku7EGTj/HQQRz5aUQEUeoQZH2bWcltRErOpymJ4boYE6wL9Tbr23krRPSZ+C5zqNSrSw+Cc7sZZ4b7vg==
 
+isomorphic-fetch@^3:
+  version "3.0.0"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/isomorphic-fetch/-/isomorphic-fetch-3.0.0.tgz#0267b005049046d2421207215d45d6a262b8b8b4"
+  integrity sha512-qvUtwJ3j6qwsF3jLxkZ72qCgjMysPzDfeV240JHiGZsANBYd+EEuu35v7dfrJ9Up0Ak07D7GGSkGhCHTqg/5wA==
+  dependencies:
+    node-fetch "^2.6.1"
+    whatwg-fetch "^3.4.1"
+
 jest-util@^29.3.1:
   version "29.3.1"
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/jest-util/-/jest-util-29.3.1.tgz#1dda51e378bbcb7e3bc9d8ab651445591ed373e1"
@@ -5408,7 +5429,7 @@ js-levenshtein@^1.1.6:
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
 
-js-yaml@^3.13.1:
+js-yaml@^3.13.1, js-yaml@^3.14.0:
   version "3.14.1"
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/js-yaml/-/js-yaml-3.14.1.tgz#dae812fdb3825fa306609a8717383c50c36a0537"
   integrity sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==
@@ -5473,6 +5494,11 @@ jsonfile@^6.0.1:
     universalify "^2.0.0"
   optionalDependencies:
     graceful-fs "^4.1.6"
+
+jsonpointer@^5.0.0:
+  version "5.0.1"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/jsonpointer/-/jsonpointer-5.0.1.tgz#2110e0af0900fd37467b5907ecd13a7884a1b559"
+  integrity sha512-p/nXbhSEcu3pZRdkW1OfJhpsVtW1gd4Wa1fnQc9YLiTfAjn0312eMKimbdIQzuZl9aa9xUGaRlP9T/CJE/ditQ==
 
 keyv@^3.0.0:
   version "3.1.0"
@@ -5596,7 +5622,7 @@ lodash.uniq@4.5.0, lodash.uniq@^4.5.0:
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha512-xfBaXQd9ryd9dlSDvnvI0lvxfLJlYAZzXomUYzLKtUeOQvOP5piqAWuGtrhWeqaXK9hhoM/iyJc5AV+XfsX3HQ==
 
-lodash@^4.17.11, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21:
+lodash@^4.17.11, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.20, lodash@^4.17.21:
   version "4.17.21"
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -6123,6 +6149,27 @@ open@^8.0.9, open@^8.4.0:
     define-lazy-prop "^2.0.0"
     is-docker "^2.1.1"
     is-wsl "^2.2.0"
+
+openapi-merge-cli@^1.3.1:
+  version "1.3.1"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/openapi-merge-cli/-/openapi-merge-cli-1.3.1.tgz#396e6b082d93890c69670cf05dcdefe90e9115d9"
+  integrity sha512-YGBkzuYrDc4kTMVoGrNTCI/eNCKtE5JcCGmcmkhtl0M7+hNXm4kP+n83ilZ+kCxa7/xicTj0cww/q1P4KxlQ8Q==
+  dependencies:
+    ajv "^6.12.2"
+    commander "^5.1.0"
+    es6-promise "^4.2.8"
+    isomorphic-fetch "^3"
+    js-yaml "^3.14.0"
+    openapi-merge "^1.2.0"
+
+openapi-merge@^1.2.0:
+  version "1.3.2"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/openapi-merge/-/openapi-merge-1.3.2.tgz#dc77a8e85ac63a5d7373eb63f05ab8b93ff78380"
+  integrity sha512-qRWBwPMiKIUrAcKW6lstMPKpFEWy32dBbP1UjHH9jlWgw++2BCqOVbsjO5Wa4H1Ll3c4cn+lyi4TinUy8iswzw==
+  dependencies:
+    atlassian-openapi "^1.0.8"
+    lodash "^4.17.15"
+    ts-is-present "^1.1.1"
 
 openapi-sampler@^1.3.0:
   version "1.3.0"
@@ -8081,6 +8128,11 @@ trough@^1.0.0:
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/trough/-/trough-1.0.5.tgz#b8b639cefad7d0bb2abd37d433ff8293efa5f406"
   integrity sha512-rvuRbTarPXmMb79SmzEp8aqXNKcK+y0XaB298IXueQ8I2PsrATcPBCSPyK/dDNa2iWOhKlfNnOjdAOTBU/nkFA==
 
+ts-is-present@^1.1.1:
+  version "1.2.2"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/ts-is-present/-/ts-is-present-1.2.2.tgz#ba59b4a9d2bc22b99d1ba7f4af3d5eb320408d95"
+  integrity sha512-cA5MPLWGWYXvnlJb4TamUUx858HVHBsxxdy8l7jxODOLDyGYnQOllob2A2jyDghGa5iJHs2gzFNHvwGJ0ZfR8g==
+
 tslib@^2.0.3, tslib@^2.1.0, tslib@^2.4.0:
   version "2.4.1"
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/tslib/-/tslib-2.4.1.tgz#0d0bfbaac2880b91e22df0768e55be9753a5b17e"
@@ -8300,6 +8352,11 @@ uri-js@^4.2.2:
   integrity sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
   dependencies:
     punycode "^2.1.0"
+
+urijs@^1.19.10:
+  version "1.19.11"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/urijs/-/urijs-1.19.11.tgz#204b0d6b605ae80bea54bea39280cdb7c9f923cc"
+  integrity sha512-HXgFDgDommxn5/bIv0cnQZsPhHDA90NPHD6+c/v21U5+Sx5hoP8+dP9IZXBU1gIfvdRfhG8cel9QNPeionfcCQ==
 
 url-loader@^4.1.1:
   version "4.1.1"
@@ -8570,6 +8627,11 @@ websocket-extensions@>=0.1.1:
   version "0.1.4"
   resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/websocket-extensions/-/websocket-extensions-0.1.4.tgz#7f8473bc839dfd87608adb95d7eb075211578a42"
   integrity sha512-OqedPIGOfsDlo31UNwYbCFMSaO9m9G/0faIHj5/dZFDMFqPTcx6UwqyOy3COEaEOg/9VsGIpdqn62W5KhoKSpg==
+
+whatwg-fetch@^3.4.1:
+  version "3.6.2"
+  resolved "http://artifactory.danskenet.net:80/artifactory/api/npm/joined-npm-build/whatwg-fetch/-/whatwg-fetch-3.6.2.tgz#dced24f37f2624ed0281725d51d0e2e3fe677f8c"
+  integrity sha512-bJlen0FcuU/0EMLrdbJ7zOnW6ITZLrZMIarMUVmdKtsGvZna8vxKYaexICWPfZ8qwf9fzNq+UEIZrnSaApt6RA==
 
 whatwg-url@^5.0.0:
   version "5.0.0"
