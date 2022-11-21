@@ -4,7 +4,7 @@ pagination_next: null
 
 # Resources
 
-[API documentation](https://developer.mobilepay.dk/produc/api/subscriptions): The API reference documentation for Subscriptions
+[API documentation](https://developer.mobilepay.dk/api/subscriptions): The API reference documentation for Subscriptions
 
 [Partner site](https://www.mobilepaygroup.com/partner/subscriptions): Integrator onboarding and business information
 
