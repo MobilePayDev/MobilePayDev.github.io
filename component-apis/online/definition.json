@@ -5,8 +5,10 @@
         },
         {
             "inputFile": "./cardpassthrough-regression-tester.yaml"
+        },
+        {
+            "inputFile": "./cardpassthrough-kongonboarding.yaml"
         }
-        
     ],
     "output": "../../openapi/online.yaml"
 }
