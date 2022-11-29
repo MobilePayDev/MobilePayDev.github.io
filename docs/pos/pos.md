@@ -19,7 +19,7 @@ Our MobilePay Point of Sale (PoS) REST API is intended for integrators implement
 
 This document will explain in more detail how to implement the different payment flows, how to manage the PoS, how the Security model is built and what is needed from the integrator.
 
-This document does not include detailed specification of the endpoints, responses and response codes. This information can be found in the [API section](https://sandbox-developer.mobilepay.dk/product).
+This document does not include detailed specification of the endpoints, responses and response codes. This information can be found in the [API section](/api/pos).
 
 ## Payment experience
 
