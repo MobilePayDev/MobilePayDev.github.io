@@ -12,7 +12,7 @@ We will retry our callbacks for 15 seconds in the event of network errors or non
 
 A callback will be made on the encryptedPanCallbackUrl when the user swipes to accept the payment. The callback will have a JSON body like this:
 
-```json title="Card data callback example"
+```json title="EncryptedCardUpdateCallbackPayload"
 {
   "EncryptedCardData": "fsfnsdjkfbgdft34895u7345",
   "PaymentId": "a84781b3-af34-42ae-b296-260cfb6859fe",
