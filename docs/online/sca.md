@@ -44,7 +44,7 @@ Exactly as for encrypted card data callbacks, make sure you respond to the callb
 
 Example of Visa Token Service (VTS) response:
 
-```json title="VTS token callback example"
+```json title="VisaTokenCallbackPayload"
 {
    "paymentId":"8dab9219-ab03-4524-bae7-f0ad55119da5",
    "authorizationAttemptId":"32eedb2b-a536-4eb6-b618-c2d6c1bf7aab",
@@ -82,7 +82,7 @@ Example of Visa Token Service (VTS) response:
 
 Example of Mastercard S4C (MS4C) response:
 
-```json title="MS4C token callback example"
+```json title="MastercardTokenCallbackPayload"
 {
    "paymentId":"1ba21790-5e10-4db1-8e90-330fb41916e7",
    "authorizationAttemptId":"3205ec7c-2d50-49d2-95dc-326e34edce47",
