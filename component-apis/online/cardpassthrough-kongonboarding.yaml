@@ -17,6 +17,18 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Success
@@ -53,6 +65,18 @@ paths:
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
+          schema:
+            type: string
+        - name: x-ibm-client-id
+          in: header
+          description: Client id for authentication
+          required: true
+          schema:
+            type: string
+        - name: x-ibm-client-secret
+          in: header
+          description: Client secret for authentication
+          required: true
           schema:
             type: string
       responses:
