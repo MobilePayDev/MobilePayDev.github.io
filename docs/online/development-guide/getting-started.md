@@ -32,6 +32,29 @@ Take a look at the API documentation. You'll find it in the APIs menu.
 
 ## Authentication
 
+### API credentials
+
+In order to make API requests you need a clientId and secret. These will be used in the following headers for all requests:
+
+```bash title="Headers"
+-H 'x-ibm-client-id: {clientId}'
+-H 'x-ibm-client-secret: {clientSecret}'
+```
+
+You retrieve the credentials by making this request:
+```bash title="Create credentials"
+POST https://api.mobilepay.dk/cardpassthrough-kongonboarding-restapi/api/v1/credentials 
+```
+No body or credentials is required for the request. Response will contain a clientId and secret. Please find the API documentation [here](/api/online#tag/PSP-Onboarding/paths/~1api~1v1~1credentials/post). ClientSecret must be stored in a secure location and not be shared externally. 
+
+It is also possible to reset clientSecret using the endpoint documented [here](http://localhost:3000/api/online#tag/PSP-Onboarding/paths/~1api~1v1~1credentials~1secret/patch).
+
+:::caution Important
+Before your credentials can be used they must be whitelisted. Please send the clientId (NOT the clientSecret) to developer@mobilepay.dk to be whitelisted.
+:::
+
+### PublicKey
+
 We will supply you with a secure link where you can upload two PublicKeys for Card encryption: The RSA public key should be provided as a X.509 SubjectPublicKeyInfo (using ASN.1 DER Encoding) represented in PEM encoding (use PEM file extension). The public key must have a length of 4096 bits. You must clearly state in the file name wich one is for Sandbox and which is for Prod.
 
 Naming template for public key: `{integratorname}-{environment}-public`
