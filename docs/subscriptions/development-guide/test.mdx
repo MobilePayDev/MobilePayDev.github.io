@@ -32,8 +32,6 @@ When you are calling the API, and when you've been through the OpenID Connect fl
  accept: application/json
  content-type: application/json
  authorization::  REPLACE_THIS_VALUE
- x-ibm-client-id: REPLACE_THIS_KEY
- x-ibm-client-secret: REPLACE_THIS_KEY
  ```
 
 When you make a payment request, then we validate the request itself, but not the individual payments. So it only validates if you have the required parameters with the correct types. So the response you get for the payment request, does not say if the payment is pending, but if the payment creation is pending. Then the payments are processed in our system, and they will either be requested (valid) or declined (invalid). Moreover, you will receive a callback to inform whether payments are requested or declined. This will be sent to your payment status callback.
@@ -146,8 +144,6 @@ Make a `POST` to the endpoint
  accept: application/json
  content-type: application/json
  authorization::  REPLACE_THIS_VALUE
- x-ibm-client-id: REPLACE_THIS_KEY
- x-ibm-client-secret: REPLACE_THIS_KEY
 
 {
  "external_id":"OrderNumber1",
@@ -185,8 +181,6 @@ Make a `PATCH` to endpoint
  ```json title="Request example"
  accept: application/json
  content-type: application/json
- x-ibm-client-id: REPLACE_THIS_KEY
- x-ibm-client-secret: REPLACE_THIS_KEY
  authenticateduser: REPLACE_THIS_KEY
 
 {"status":"Accepted"}
