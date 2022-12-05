@@ -47,7 +47,7 @@ POST https://api.mobilepay.dk/cardpassthrough-kongonboarding-restapi/api/v1/cred
 ```
 No body or credentials is required for the request. Response will contain a clientId and secret. Please find the API documentation [here](/api/online#tag/PSP-Onboarding/paths/~1api~1v1~1credentials/post). ClientSecret must be stored in a secure location and not be shared externally. 
 
-It is also possible to reset clientSecret using the endpoint documented [here](http://localhost:3000/api/online#tag/PSP-Onboarding/paths/~1api~1v1~1credentials~1secret/patch).
+It is also possible to reset clientSecret using the endpoint documented [here](/api/online#tag/PSP-Onboarding/paths/~1api~1v1~1credentials~1secret/patch).
 
 :::caution Important
 Before your credentials can be used they must be whitelisted. Please send the clientId (NOT the clientSecret) to developer@mobilepay.dk to be whitelisted.
