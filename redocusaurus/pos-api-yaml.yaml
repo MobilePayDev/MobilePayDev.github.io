@@ -40,23 +40,23 @@ info:
     The API thus supports the following two payment flows:
 
 
-    - Initiate payment (`POST /v10/payments`)
+    - Initiate payment (`POST /pos/v10/payments`)
 
-    - Poll until reserved (`GET /v10/payments/{paymentid}`)
+    - Poll until reserved (`GET /pos/v10/payments/{paymentid}`)
 
-    - Capture (`POST /v10/payments/{paymentid}/capture`)
+    - Capture (`POST /pos/v10/payments/{paymentid}/capture`)
 
 
     or
 
 
-    - Prepare payment (`POST /v10/payments/prepare`)
+    - Prepare payment (`POST /pos/v10/payments/prepare`)
 
-    - Mark as ready (`POST /v10/payments/{paymentid}/ready`)
+    - Mark as ready (`POST /pos/v10/payments/{paymentid}/ready`)
 
-    - Poll until reserved (`GET /v10/payments/{paymentid}`)
+    - Poll until reserved (`GET /pos/v10/payments/{paymentid}`)
 
-    - Capture (`POST /v10/payments/{paymentid}/capture`)
+    - Capture (`POST /pos/v10/payments/{paymentid}/capture`)
 
 
     For more information on payment flows, [see the
@@ -106,7 +106,7 @@ tags:
 
       **Please note that this API is only supported in the Sandbox environment**
 paths:
-  /v10/payments/{paymentid}:
+  /pos/v10/payments/{paymentid}:
     get:
       tags:
         - Payments
@@ -209,7 +209,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/payments:
+  /pos/v10/payments:
     get:
       tags:
         - Payments
@@ -454,7 +454,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/payments/prepare:
+  /pos/v10/payments/prepare:
     post:
       tags:
         - Payments
@@ -586,7 +586,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/payments/{paymentid}/ready:
+  /pos/v10/payments/{paymentid}/ready:
     post:
       tags:
         - Payments
@@ -731,7 +731,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/payments/{paymentid}/capture:
+  /pos/v10/payments/{paymentid}/capture:
     post:
       tags:
         - Payments
@@ -852,7 +852,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/payments/{paymentid}/cancel:
+  /pos/v10/payments/{paymentid}/cancel:
     post:
       tags:
         - Payments
@@ -943,7 +943,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/pointofsales/{posid}:
+  /pos/v10/pointofsales/{posid}:
     get:
       tags:
         - Point Of Sales
@@ -1111,7 +1111,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/pointofsales:
+  /pos/v10/pointofsales:
     get:
       tags:
         - Point Of Sales
@@ -1354,7 +1354,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/pointofsales/{posid}/checkin:
+  /pos/v10/pointofsales/{posid}/checkin:
     get:
       tags:
         - Point Of Sales
@@ -1445,7 +1445,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/stores/{storeid}:
+  /pos/v10/stores/{storeid}:
     get:
       tags:
         - Stores
@@ -1523,7 +1523,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/stores:
+  /pos/v10/stores:
     get:
       tags:
         - Stores
@@ -1599,7 +1599,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/stores/detailed:
+  /pos/v10/stores/detailed:
     get:
       tags:
         - Stores
@@ -1674,7 +1674,7 @@ paths:
                   Error message explaining the error that happened while
                   processing the request
                 correlationId: 113568d5-68fc-4434-ad80-6e67402a3f93
-  /v10/refunds/{refundid}:
+  /pos/v10/refunds/{refundid}:
     get:
       tags:
         - Refunds
@@ -1766,7 +1766,7 @@ paths:
                   processing the request
                 correlationId: bafb1a9a-7a5b-4949-8f43-b1ff7db4d65c
                 origin: PoS
-  /v10/refunds:
+  /pos/v10/refunds:
     get:
       tags:
         - Refunds
@@ -1970,7 +1970,7 @@ paths:
                   processing the request
                 correlationId: bafb1a9a-7a5b-4949-8f43-b1ff7db4d65c
                 origin: PoS
-  /v10/refunds/{refundid}/capture:
+  /pos/v10/refunds/{refundid}/capture:
     post:
       tags:
         - Refunds
@@ -2063,7 +2063,7 @@ paths:
                   processing the request
                 correlationId: bafb1a9a-7a5b-4949-8f43-b1ff7db4d65c
                 origin: PoS
-  /v10/refunds/{refundid}/cancel:
+  /pos/v10/refunds/{refundid}/cancel:
     post:
       tags:
         - Refunds
@@ -2156,7 +2156,7 @@ paths:
                   processing the request
                 correlationId: bafb1a9a-7a5b-4949-8f43-b1ff7db4d65c
                 origin: PoS
-  /app/usersimulation/checkin:
+  /pos/app/usersimulation/checkin:
     post:
       tags:
         - User Simulation
@@ -2208,7 +2208,7 @@ paths:
           description: Unauthorized
         '500':
           description: Internal server error
-  /app/usersimulation/acceptpayment:
+  /pos/app/usersimulation/acceptpayment:
     post:
       tags:
         - User Simulation
@@ -2260,7 +2260,7 @@ paths:
           description: Unauthorized
         '500':
           description: Internal server error
-  /app/usersimulation/cancelpaymentbyuser:
+  /pos/app/usersimulation/cancelpaymentbyuser:
     post:
       tags:
         - User Simulation
