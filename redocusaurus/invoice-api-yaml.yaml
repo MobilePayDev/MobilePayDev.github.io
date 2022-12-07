@@ -2113,7 +2113,7 @@ components:
         paymentDate:
           type: string
           format: date-time
-        payerCard:
+        ConsumerCard:
           type: string
           format: uuid
       additionalProperties: false
