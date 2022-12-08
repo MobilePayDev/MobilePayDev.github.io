@@ -5,7 +5,7 @@ const lightCodeTheme = require("prism-react-renderer/themes/github")
 module.exports = {
   title: "MobilePay Developer",
   tagline: "MobilePay Developer",
-  url: "https://mobilepaydev.github.io",
+  url: "https://developer.mobilepay.dk",
   baseUrl: "/",
   onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
