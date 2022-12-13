@@ -43,7 +43,7 @@ In order to make API requests you need a clientId and secret. These will be used
 
 You retrieve the credentials by making this request:
 ```bash title="Create credentials"
-POST https://api.mobilepay.dk/cardpassthrough-kongonboarding-restapi/api/v1/credentials 
+POST https://api.sandbox.mobilepay.dk/cardpassthrough-kongonboarding-restapi/api/v1/credentials 
 ```
 No body or credentials is required for the request. Response will contain a clientId and secret. Please find the API documentation [here](/api/online#tag/PSP-Onboarding/paths/~1api~1v1~1credentials/post). ClientSecret must be stored in a secure location and not be shared externally. 
 
