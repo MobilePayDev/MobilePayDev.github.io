@@ -64,3 +64,7 @@ Example for sandprod: `company-sandprod-public`
 Example for production: `company-prod-public`
 
 After the PublicKey has been uploaded on our side we will supply you with a PublicKeyId to be used when initiating payments.
+
+:::note
+Please note that if a publicKey is unused for 6 month we will delete it. If this happens you must supply a new publicKey.
+:::
