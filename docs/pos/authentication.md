@@ -4,7 +4,7 @@ sidebar_position: 2
 
 # Authentication
 
-The PoS V10 API uses access tokens to authenticate calls from integrator clients. In order for an integrator client to use the PoS V10 API, it must first obtain an access token using the Integrator Authentication API. The access tokens used in the PoS V10 solution identifies both an integrator client and the integrator and may optionally identify the merchant on which the client is calling on behalf of.
+The PoS V10 API uses access tokens to authenticate calls from integrator clients. In order for an integrator client to use the PoS V10 API, it must first obtain an access token using the Integrator Authentication API. The access tokens used in the PoS V10 solution identifies both an integrator client and the integrator and may optionally identify the merchant on which the client is calling on behalf of. 
 
 ## Credentials Flow
 
@@ -16,7 +16,6 @@ The Integrator Authentication solution is based on the OpenID/OAuth 2.0 specific
  2. The Authorization Server validates the `client_id` and `client_secret`.
  3. The Authorization Server responds with an `access_token`.
  4. The Client application can use the `access_token` to call the PoS V10 API.
-
  5. The PoS V10 API responds.
 
 :::note
@@ -32,7 +31,6 @@ headers must be set:
 
 ```json title="Headers"
 Content-Type: x-www-urlencoded
-x-ibm-client-id: client_id
 Authorization: Basic (client_id:client_secret).toBase64EncodedString().
 ```
 
@@ -69,7 +67,6 @@ You might encounter the following status codes :
 
 ```json title="Example"
 curl --location --request POST 'https://api.sandbox.mobilepay.dk/integrator-authentication/connect/token' \
---header 'x-ibm-client-id: {YOUR_GENERATED_CLIENT-ID}' \
 --header 'Content-Type: application/x-www-form-urlencoded' \
 --header 'Authorization: Basic ({YOUR_CLIENT_ID}:{YOUR_CLIENT_SECRET}).toBase64EncodedString()' \
 --data-urlencode 'grant_type=client_credentials' \
