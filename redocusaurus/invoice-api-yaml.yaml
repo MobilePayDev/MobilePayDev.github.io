@@ -1293,6 +1293,12 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
+        - name: AuthenticatedUser
+          in: header
+          description: AuthenticatedUser used for user simulation
+          schema:
+            type: string
+            format: uuid
       responses:
         '204':
           description: Direct invoice consent deleted
@@ -1321,6 +1327,12 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
+        - name: AuthenticatedUser
+          in: header
+          description: AuthenticatedUser used for user simulation
+          schema:
+            type: string
+            format: uuid
       responses:
         '200':
           description: The pdf is returned as stream content
@@ -1356,6 +1368,12 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
+        - name: AuthenticatedUser
+          in: header
+          description: AuthenticatedUser used for user simulation
+          schema:
+            type: string
+            format: uuid
       responses:
         '200':
           description: Success
@@ -1397,6 +1415,12 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
+        - name: AuthenticatedUser
+          in: header
+          description: AuthenticatedUser used for user simulation
+          schema:
+            type: string
+            format: uuid
       requestBody:
         content:
           application/json-patch+json:
@@ -1468,6 +1492,12 @@ paths:
           description: CorrelationId used for logging
           schema:
             type: string
+        - name: AuthenticatedUser
+          in: header
+          description: AuthenticatedUser used for user simulation
+          schema:
+            type: string
+            format: uuid
       requestBody:
         content:
           application/json-patch+json:
