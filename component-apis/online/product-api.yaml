@@ -3,7 +3,7 @@ info:
   title: Online API
   contact:
     email: developer@mobilepay.dk
-  version: v1
+  version: v1Updated
 servers:
   - url: https://api.mobilepay.dk/cardpassthrough-restapi
     description: Production server (uses **live** data)
@@ -1242,10 +1242,10 @@ components:
         encryptedPanCallbackUrl:
           minLength: 1
           type: string
-          description: 'Url to make callback with encrypted PAN. Must be valid fully qualified HTTPS URL. Request is described here: ''https://github.com/MobilePayDev/MobilePay-Online#callbacks''.'
+          description: 'Url to make callback with encrypted PAN. Must be valid fully qualified HTTPS URL. Request is described here: ''https://developer.mobilepay.dk/docs/online/basics/callbacks''.'
         tokenCallbackUrl:
           type: string
-          description: 'Url to make callback with Token. Must be valid fully qualified HTTPS URL. Request is described here: ''https://github.com/MobilePayDev/MobilePay-Online#callbacks''.'
+          description: 'Url to make callback with Token. Must be valid fully qualified HTTPS URL. Request is described here: ''https://developer.mobilepay.dk/docs/online/basics/callbacks''.'
           nullable: true
       additionalProperties: false
     ConfirmCardUpdateRequest:
@@ -1627,7 +1627,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CardType'
-          description: 'Allowed card types for the payment, includes callback configuration per. card type. See RestApi.Models.Requests.V3.CardType.'
+          description: 'Allowed card types for the payment, includes callback configuration per card type.'
         publicKeyId:
           type: integer
           description: Id of the public key to be used for exchange of card data.
@@ -1794,7 +1794,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CardType'
-          description: 'Allowed card types for the payment, includes callback configuration per. card type. See RestApi.Models.Requests.V3.CardType./>.'
+          description: 'Allowed card types for the payment, includes callback configuration per card type.'
         publicKeyId:
           type: integer
           description: Id of the public key to be used for exchange of card data.
@@ -1814,7 +1814,7 @@ components:
           description: Is the payment a Checkout payment which will require the user to pick an address.
         addressCallbackUrl:
           type: string
-          description: Url to make callback with chosen address data for Checkout payment. Request is described here 'https://github.com/MobilePayDev/MobilePay-Online#callbacks'.
+          description: Url to make callback with chosen address data for Checkout payment. Request is described here 'https://developer.mobilepay.dk/docs/online/basics/callbacks'.
           format: uri
           nullable: true
         deliveryAddressAllowed:
@@ -1902,7 +1902,7 @@ components:
           type: array
           items:
             type: string
-          description: 'Allowed card types for the payment, includes callback configuration per. card type.'
+          description: 'Allowed card type for the payment. These can be used:<br />MC-DEBIT: MasterCard Debit<br />MC-CREDIT: MasterCard Credit<br />MTRO-DEBIT: Maestro Debit<br />ELEC-DEBIT: VISA Electron Debit<br />VISA-DEBIT: VISA Debit.<br />VISA-CREDIT: VISA Credit<br />DANKORT: Dankort'
       additionalProperties: false
     MastercardTokenCallbackPayload:
       required:
@@ -2111,7 +2111,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CardType'
-          description: 'Allowed card types for the payment, includes callback configuration per. card type. See RestApi.Models.Requests.V3.CardType./>.'
+          description: 'Allowed card types for the payment, includes callback configuration per card type.'
         preferVisaPartOfVisaDankort:
           type: boolean
           description: Whether VisaDankort is treated as Visa for the payment.
@@ -2322,7 +2322,7 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/CardType'
-          description: 'Allowed card types for the payment, includes callback configuration per. card type. See RestApi.Models.Requests.V3.CardType./>.'
+          description: 'Allowed card types for the payment, includes callback configuration per card type.'
           nullable: true
       additionalProperties: false
     VisaTokenCallbackPayload:
