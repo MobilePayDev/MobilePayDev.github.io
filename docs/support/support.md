@@ -29,7 +29,7 @@ MobilePay Developer support provides support in Danish and English. You can cont
 * Company details
   * Organization number (find yours at Virk)
   * Merchant_ID  
-* Invironment: Sandbox or the Production
+* Environment: Sandbox or the Production
 * Date and time
 * Any relevant id such as: orderId, transactionId, merchant_id, payment_id, agreement_id etc.
 * For API issues: Complete request and response details (plain HTTP from Postman)
