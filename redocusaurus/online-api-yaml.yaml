@@ -3,7 +3,7 @@ info:
   title: Online API
   contact:
     email: developer@mobilepay.dk
-  version: v1
+  version: v1Updated
 servers:
   - url: https://api.mobilepay.dk/cardpassthrough-restapi
     description: Production server (uses **live** data)
@@ -127,6 +127,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MerchantUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/MerchantUpdateRequest'
       responses:
         '204':
           description: No Content
@@ -190,6 +193,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/CreateRecurringAgreementRequest'
       responses:
@@ -258,6 +264,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/CreateMerchantRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/CreateMerchantRequest'
       responses:
@@ -367,6 +376,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePlatformRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/CreatePlatformRequest'
       responses:
@@ -498,6 +510,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
       responses:
         '204':
           description: No Content
@@ -535,6 +550,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePaymentRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/UpdatePaymentRequest'
       responses:
@@ -577,6 +595,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdatePlatformRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePlatformRequest'
       responses:
         '200':
           description: Success
@@ -614,6 +635,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
       responses:
@@ -663,6 +687,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ConfirmCardUpdateRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
       responses:
         '204':
           description: No Content
@@ -705,6 +732,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateMITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/UpdateMITPaymentRequest'
       responses:
         '200':
           description: Success
@@ -742,6 +772,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCancelRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/CreateCancelRequest'
       responses:
@@ -790,6 +823,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateCaptureRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateCaptureRequest'
       responses:
         '200':
           description: Success
@@ -836,6 +872,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateRefundRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CreateRefundRequest'
       responses:
         '200':
           description: Success
@@ -875,6 +914,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/InitiatePaymentV3Request'
+          text/json:
             schema:
               $ref: '#/components/schemas/InitiatePaymentV3Request'
       responses:
@@ -923,6 +965,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CancelMITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/CancelMITPaymentRequest'
       responses:
         '200':
           description: Success
@@ -965,6 +1010,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/CaptureMITPaymentRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/CaptureMITPaymentRequest'
       responses:
@@ -1010,6 +1058,9 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InitiateCITPaymentRequest'
+          text/json:
+            schema:
+              $ref: '#/components/schemas/InitiateCITPaymentRequest'
       responses:
         '200':
           description: Success
@@ -1051,6 +1102,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/InitiateMITPaymentRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/InitiateMITPaymentRequest'
       responses:
@@ -1095,6 +1149,9 @@ paths:
       requestBody:
         content:
           application/json:
+            schema:
+              $ref: '#/components/schemas/RefundMITPaymentRequest'
+          text/json:
             schema:
               $ref: '#/components/schemas/RefundMITPaymentRequest'
       responses:
@@ -1349,13 +1406,13 @@ components:
           description: >-
             Url to make callback with encrypted PAN. Must be valid fully
             qualified HTTPS URL. Request is described here:
-            'https://github.com/MobilePayDev/MobilePay-Online#callbacks'.
+            'https://developer.mobilepay.dk/docs/online/basics/callbacks'.
         tokenCallbackUrl:
           type: string
           description: >-
             Url to make callback with Token. Must be valid fully qualified HTTPS
             URL. Request is described here:
-            'https://github.com/MobilePayDev/MobilePay-Online#callbacks'.
+            'https://developer.mobilepay.dk/docs/online/basics/callbacks'.
           nullable: true
       additionalProperties: false
     ConfirmCardUpdateRequest:
@@ -1813,7 +1870,7 @@ components:
             $ref: '#/components/schemas/CardType'
           description: >-
             Allowed card types for the payment, includes callback configuration
-            per. card type. See 'CardType'.
+            per card type.
         publicKeyId:
           type: integer
           description: Id of the public key to be used for exchange of card data.
@@ -2040,7 +2097,7 @@ components:
             $ref: '#/components/schemas/CardType'
           description: >-
             Allowed card types for the payment, includes callback configuration
-            per. card type. See CardType./>.
+            per card type.
         publicKeyId:
           type: integer
           description: Id of the public key to be used for exchange of card data.
@@ -2072,7 +2129,7 @@ components:
           description: >-
             Url to make callback with chosen address data for Checkout payment.
             Request is described here
-            'https://github.com/MobilePayDev/MobilePay-Online#callbacks'.
+            'https://developer.mobilepay.dk/docs/online/basics/callbacks'.
           format: uri
           nullable: true
         deliveryAddressAllowed:
@@ -2187,8 +2244,10 @@ components:
           items:
             type: string
           description: >-
-            Allowed card types for the payment, includes callback configuration
-            per. card type. See CardType./>.
+            Allowed card type for the payment. These can be used:<br />MC-DEBIT:
+            MasterCard Debit<br />MC-CREDIT: MasterCard Credit<br />MTRO-DEBIT:
+            Maestro Debit<br />ELEC-DEBIT: VISA Electron Debit<br />VISA-DEBIT:
+            VISA Debit.<br />VISA-CREDIT: VISA Credit<br />DANKORT: Dankort
       additionalProperties: false
     MastercardTokenCallbackPayload:
       required:
@@ -2413,7 +2472,7 @@ components:
             $ref: '#/components/schemas/CardType'
           description: >-
             Allowed card types for the payment, includes callback configuration
-            per. card type. See CardType./>.
+            per card type.
         preferVisaPartOfVisaDankort:
           type: boolean
           description: Whether VisaDankort is treated as Visa for the payment.
@@ -2700,7 +2759,7 @@ components:
             $ref: '#/components/schemas/CardType'
           description: >-
             Allowed card types for the payment, includes callback configuration
-            per. card type. See CardType./>.
+            per card type.
           nullable: true
       additionalProperties: false
     VisaTokenCallbackPayload:
