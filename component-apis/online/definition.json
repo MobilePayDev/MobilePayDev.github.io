@@ -1,7 +1,7 @@
 {
     "inputs": [
         {
-            "inputFile": "./cardpassthrough.yaml"
+            "inputFile": "./product-api.yaml"
         },
         {
             "inputFile": "./cardpassthrough-regression-tester.yaml"
