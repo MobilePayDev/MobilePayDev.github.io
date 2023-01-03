@@ -3,7 +3,7 @@ info:
   title: Online API
   contact:
     email: developer@mobilepay.dk
-  version: v1Updated
+  version: v1
 servers:
   - url: https://api.mobilepay.dk/cardpassthrough-restapi
     description: Production server (uses **live** data)
@@ -1458,8 +1458,8 @@ components:
             used for this card update. Must be given for all reason codes in the
             1000 range.<br />Used for our technical surveillance of the
             transactions and tracking errors.<br />Use the format described
-            here:
-            'https:\/\/en.wikipedia.org\/wiki\/VAT_identification_number'.<br
+            here: [VAT identification
+            number](https://en.wikipedia.org/wiki/VAT_identification_number).<br
             />Examples:<br />Clearhaus: DK33749996<br />Bambora:
             SE556233942301<br />Elavon: IE418442<br />Handelsbanken:
             SE502007786201<br />Nets: DK20016175<br />Swedbank:
@@ -1564,8 +1564,8 @@ components:
           type: integer
           description: >-
             The merchant category code (MCC) is used to classify a business by
-            the types of goods or services it provides. More information here
-            'https://en.wikipedia.org/wiki/Merchant_category_code'.
+            the types of goods or services it provides. More information here:
+            [MCC](https://en.wikipedia.org/wiki/Merchant_category_code).
           format: int32
           nullable: true
           example: 1234
@@ -1586,8 +1586,8 @@ components:
           minLength: 1
           type: string
           description: >-
-            Merchant country code e.g. Denmark = DK. Use ISO-3166
-            ('https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2') or special
+            Merchant country code e.g. Denmark = DK. Use [ISO
+            3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) or special
             value APAC.
           example: DK
         vatNumber:
@@ -2348,8 +2348,8 @@ components:
         countryCode:
           type: string
           description: >-
-            The merchant country code. fx Denmark: DK. More information here
-            'https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2'.
+            The merchant country code. fx Denmark: DK. More information here:
+            [ISO 3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
           nullable: true
         vatNumber:
           type: string
@@ -2357,7 +2357,7 @@ components:
           nullable: true
         merchantCategoryCode:
           type: integer
-          description: "The MCC is used to classify a business by the types of goods or services it provides. More information here 'https://en.wikipedia.org/wiki/Merchant_category_code'.\r\nValue may be null."
+          description: "The MCC is used to classify a business by the types of goods or services it provides. More information here [MCC](https://en.wikipedia.org/wiki/Merchant_category_code).\r\nValue may be null."
           format: int32
           nullable: true
         platformId:
@@ -2388,7 +2388,7 @@ components:
           description: >-
             The MCC is used to classify a business by the types of goods or
             services it provides. More information here
-            'https://en.wikipedia.org/wiki/Merchant_category_code'.
+            [MCC](https://en.wikipedia.org/wiki/Merchant_category_code).
           format: int32
           nullable: true
         name:
@@ -2404,8 +2404,8 @@ components:
         countryCode:
           type: string
           description: >-
-            Merchant country code e.g. Denmark = DK. Use ISO-3166
-            ('https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2') or special
+            Merchant country code e.g. Denmark = DK. Use [ISO
+            3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) or special
             value APAC.
           nullable: true
         vatNumber:
@@ -2666,8 +2666,8 @@ components:
             used for this authorization attempt. Must be given for all reason
             codes in the 1000 range.<br />Used for our technical surveillance of
             the transactions and tracking errors.<br />Use the format described
-            here:
-            'https:\/\/en.wikipedia.org\/wiki\/VAT_identification_number'.<br
+            here: [VAT identification
+            number](https://en.wikipedia.org/wiki/VAT_identification_number).<br
             />Examples:<br />Clearhaus: DK33749996<br />Bambora:
             SE556233942301<br />Elavon: IE418442<br />Handelsbanken:
             SE502007786201<br />Nets: DK20016175<br />Swedbank:
