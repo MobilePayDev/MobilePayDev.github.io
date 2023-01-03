@@ -1406,13 +1406,13 @@ components:
           description: >-
             Url to make callback with encrypted PAN. Must be valid fully
             qualified HTTPS URL. Request is described here:
-            'https://developer.mobilepay.dk/docs/online/basics/callbacks'.
+            [callbacks](https://developer.mobilepay.dk/docs/online/basics/callbacks).
         tokenCallbackUrl:
           type: string
           description: >-
             Url to make callback with Token. Must be valid fully qualified HTTPS
             URL. Request is described here:
-            'https://developer.mobilepay.dk/docs/online/basics/callbacks'.
+            [callbacks](https://developer.mobilepay.dk/docs/online/basics/callbacks).
           nullable: true
       additionalProperties: false
     ConfirmCardUpdateRequest:
@@ -2129,7 +2129,7 @@ components:
           description: >-
             Url to make callback with chosen address data for Checkout payment.
             Request is described here
-            'https://developer.mobilepay.dk/docs/online/basics/callbacks'.
+            [callbacks](https://developer.mobilepay.dk/docs/online/basics/callbacks).
           format: uri
           nullable: true
         deliveryAddressAllowed:
