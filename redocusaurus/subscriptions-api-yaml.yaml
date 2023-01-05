@@ -3447,10 +3447,10 @@ components:
           type: number
           format: double
           nullable: true
-        statusCallbackUrl:
+        status_callback_url:
           type: string
           nullable: true
-        externalId:
+        external_id:
           type: string
           nullable: true
       additionalProperties: false
@@ -3464,10 +3464,10 @@ components:
           type: number
           format: double
           nullable: true
-        statusCallbackUrl:
+        status_callback_url:
           type: string
           nullable: true
-        externalId:
+        external_id:
           type: string
           nullable: true
       additionalProperties: false
