@@ -116,9 +116,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/MerchantUpdateRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/MerchantUpdateRequest'
       responses:
         '204':
           description: No Content
@@ -182,9 +179,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateRecurringAgreementRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/CreateRecurringAgreementRequest'
       responses:
@@ -253,9 +247,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateMerchantRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/CreateMerchantRequest'
       responses:
@@ -365,9 +356,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreatePlatformRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/CreatePlatformRequest'
       responses:
@@ -496,9 +484,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/UpdateAuthorizationAttemptRequest'
       responses:
         '204':
           description: No Content
@@ -536,9 +521,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePaymentRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/UpdatePaymentRequest'
       responses:
@@ -581,9 +563,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdatePlatformRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/UpdatePlatformRequest'
       responses:
         '200':
           description: Success
@@ -621,9 +600,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/UpdateRecurringAgreementRequest'
       responses:
@@ -673,9 +649,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/ConfirmCardUpdateRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/ConfirmCardUpdateRequest'
       responses:
         '204':
           description: No Content
@@ -716,9 +689,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/UpdateMITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/UpdateMITPaymentRequest'
       responses:
         '200':
           description: Success
@@ -756,9 +726,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/CreateCancelRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/CreateCancelRequest'
       responses:
@@ -805,9 +772,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateCaptureRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateCaptureRequest'
       responses:
         '200':
           description: Success
@@ -852,9 +816,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CreateRefundRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CreateRefundRequest'
       responses:
         '200':
           description: Success
@@ -891,9 +852,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/InitiatePaymentV3Request'
-          text/json:
             schema:
               $ref: '#/components/schemas/InitiatePaymentV3Request'
       responses:
@@ -940,9 +898,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/CancelMITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/CancelMITPaymentRequest'
       responses:
         '200':
           description: Success
@@ -985,9 +940,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/CaptureMITPaymentRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/CaptureMITPaymentRequest'
       responses:
@@ -1033,9 +985,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InitiateCITPaymentRequest'
-          text/json:
-            schema:
-              $ref: '#/components/schemas/InitiateCITPaymentRequest'
       responses:
         '200':
           description: Success
@@ -1077,9 +1026,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/InitiateMITPaymentRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/InitiateMITPaymentRequest'
       responses:
@@ -1124,9 +1070,6 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
-              $ref: '#/components/schemas/RefundMITPaymentRequest'
-          text/json:
             schema:
               $ref: '#/components/schemas/RefundMITPaymentRequest'
       responses:
