@@ -4,6 +4,14 @@ sidebar_position: 8
 
 # Release Notes
 
+## 2023
+
+#### 12 January 2023 - Payment Attachments V1 is removed
+
+The old way of creating payments with attachments in one request is now removed. The Payment Attachments V2 is now the only way to add attachments to payments.
+
+More information in [Invoice](/docs/subscriptions/invoice).
+
 ## 2022
 
 #### 14 November 2022 - Payment agreement deletion by users
