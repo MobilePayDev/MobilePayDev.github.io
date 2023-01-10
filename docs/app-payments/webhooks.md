@@ -142,7 +142,7 @@ It is possible to provide `paymentPointId` when creating or updating webhooks. T
 </tr>
 <tr>
 <td> payment.cancelled_by_user </td>
-<td> Published when payment has been cancelled by user insinde Mobilepay app. </td>
+<td> Published when payment has been cancelled by user inside Mobilepay app. </td>
 </tr>
 <tr>
 <td colSpan="2">
