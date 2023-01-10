@@ -2825,8 +2825,6 @@ components:
           type: integer
           format: int32
           nullable: true
-        invoice:
-          $ref: '#/components/schemas/RestAPI.Models.Invoice'
       additionalProperties: false
     RestAPI.Models.Payments.PendingPayment:
       type: object
@@ -2924,8 +2922,6 @@ components:
           items:
             $ref: '#/components/schemas/Shared.Models.ResourceLink'
           nullable: true
-        invoice:
-          $ref: '#/components/schemas/RestAPI.Models.Invoice'
         auto_reserve:
           type: boolean
         expiration_timeout_minutes:
