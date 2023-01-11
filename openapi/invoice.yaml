@@ -947,8 +947,8 @@ paths:
     put:
       tags:
         - Merchants
-      summary: Change REST callback authentication scheme to API Key.
-      description: "All the REST callbacks will be sent to `CallbackUrl` and provided API key will be added to `Authorization` HTTP\r\nheader.\r\n\r\nMore information about callbacks can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/callbacks\">here</a>."
+      summary: Change REST callback authentication scheme to basic.
+      description: "All the REST callbacks will be sent to `CallbackUrl` and contain basic credentials in `Authorization` HTTP header:\r\n`Authorization: Basic [Base64 encoded username:password]`\r\n\r\nMore information about callbacks can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/callbacks\">here</a>."
       parameters:
         - name: merchantid
           in: path
@@ -1003,8 +1003,8 @@ paths:
     put:
       tags:
         - Merchants
-      summary: Change REST callback authentication scheme to basic.
-      description: "All the REST callbacks will be sent to `CallbackUrl` and contain basic credentials in `Authorization` HTTP header:\r\n`Authorization: Basic [Base64 encoded username:password]`\r\n\r\nMore information about callbacks can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/callbacks\">here</a>."
+      summary: Change REST callback authentication scheme to API Key.
+      description: "All the REST callbacks will be sent to `CallbackUrl` and provided API key will be added to `Authorization` HTTP\r\nheader.\r\n\r\nMore information about callbacks can be found <a href=\"https://mobilepaydev.github.io/MobilePay-Invoice/callbacks\">here</a>."
       parameters:
         - name: merchantid
           in: path
