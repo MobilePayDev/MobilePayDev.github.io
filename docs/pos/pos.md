@@ -21,6 +21,11 @@ This document will explain in more detail how to implement the different payment
 
 This document does not include detailed specification of the endpoints, responses and response codes. This information can be found in the [API section](/api/pos).
 
+please notice that as a part of the merger between MobilePay and Norwegian Vipps, we will consolidate products on one joint platform. 
+
+In the beginning of 2024 we will therefore replace the current PoS with a new and scalable version. We will update this page as soon as the docs for the new API is available. 
+
+
 ## Payment experience
 
 MobilePay PoS is an API for setting up a merchant's transaction requests on customers' MobilePay apps in a store. MobilePay PoS does not require the customer to manually enter any information in the MobilePay app pertaining to the transaction. A transaction request can typically be obtained by the customer by holding the mobile device near a merchant device (Terminal, BLE beacon, etc.) or scanning a QR code.
