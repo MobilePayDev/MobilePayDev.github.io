@@ -23,7 +23,7 @@ This document does not include detailed specification of the endpoints, response
 
 please notice that as a part of the merger between MobilePay and Norwegian Vipps, we will consolidate products on one joint platform. 
 
-In the beginning of 2024 we will therefore replace the current PoS with a new and scalable version. We will update this page as soon as the docs for the new API is available. 
+In the beginning of 2024 we will therefore replace the current PoS with a new and scalable version. 
 
 
 ## Payment experience
