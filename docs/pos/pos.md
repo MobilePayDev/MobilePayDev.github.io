@@ -21,7 +21,7 @@ This document will explain in more detail how to implement the different payment
 
 This document does not include detailed specification of the endpoints, responses and response codes. This information can be found in the [API section](/api/pos).
 
-please notice that as a part of the merger between MobilePay and Norwegian Vipps, we will consolidate products on one joint platform. 
+Please notice that as a part of the merger between MobilePay and Norwegian Vipps, we will consolidate products on one joint platform. 
 
 In the beginning of 2024 we will therefore replace the current PoS with a new and scalable version. 
 
