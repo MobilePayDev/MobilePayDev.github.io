@@ -23,7 +23,7 @@ Before moving to hidden production you must have performed below API calls. Plea
 **Payments**
 
 1. Initiate payment: `POST /v1/payments` - paymentId
-2. Accept payment: Using [test app]8/docs/app-payments/development-guide/test#test-app) or [API](/docs/app-payments/development-guide/test#integration-tests) - paymentId
+2. Accept payment: Using [test app](/docs/app-payments/development-guide/test#test-app) or [API](/docs/app-payments/development-guide/test#integration-tests) - paymentId
 2. Cancel payment: `POST /v1/payments/{paymentid}/cancel` - paymentId
 3. Refund Payment: `POST /v1/refunds` - paymentId
 
