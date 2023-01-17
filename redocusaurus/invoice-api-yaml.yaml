@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Invoice
-  description: >-
+  description: >
     MobilePay Invoice allow you to send Invoices directly to your customers
     using our APIs. The MobilePay Invoice API use OAuth 2.0 protocol for
     authentication and authorization and contains endpoints needed to implement
@@ -9,6 +9,12 @@ info:
     acting on behalf of merchant, or merchant creating their own
     integrations.<br/> <a
     href="https://mobilepaydev.github.io/MobilePay-Invoice">Documentation</a>
+    ### Change of Invoice in 2024 Please notice that as part of the merger
+    between MobilePay and Norwegian Vipps, we will consolidate products on one
+    joint platform.  In the beginning of 2024 we will therefore replace the
+    current Invoice API with a new and scalable version. We will update this
+    page as soon as documentation for the new API is available.  [See more
+    here](https://mobilepaygroup.com/products/new-platform)
   contact:
     email: developer@mobilepay.dk
 servers:

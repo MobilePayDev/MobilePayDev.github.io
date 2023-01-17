@@ -2,6 +2,13 @@ openapi: 3.0.1
 info:
   title: PoS Integrator API
   description: >
+    ### Change of PoS in 2024 Please notice that as part of the merger between
+    MobilePay and Norwegian Vipps, we will consolidate products on one joint
+    platform.  In the beginning of 2024 we will therefore replace the current
+    PoS API with a new and scalable version. We will update this page as soon as
+    documentation for the new API is available.  [See more
+    here](https://mobilepaygroup.com/products/new-platform)
+
     ## MobilePay PoS Integrator API v10
 
     The API is split into 3 categories:
