@@ -21,10 +21,11 @@ This document will explain in more detail how to implement the different payment
 
 This document does not include detailed specification of the endpoints, responses and response codes. This information can be found in the [API section](/api/pos).
 
-Please notice that as a part of the merger between MobilePay and Norwegian Vipps, we will consolidate products on one joint platform. 
+### Change of Point of Sale in 2024
+Please notice that as part of the merger between MobilePay and Norwegian Vipps, we will consolidate products on one joint platform. 
 
-In the beginning of 2024 we will therefore replace the current PoS with a new and scalable version. 
-
+In the beginning of 2024 we will therefore replace the current Point of Sale API with a new and scalable version. 
+[See more here](https://mobilepaygroup.com/products/new-platform)
 
 ## Payment experience
 
