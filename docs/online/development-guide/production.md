@@ -12,6 +12,7 @@ Please note that the following is mandatory implementation and you will not be a
 
 * SCA implementations: That includes delegated authentication for Visa, Mastercard and Dankort as well as 3DS fallback. Find information about the SCA in our Github documentation.  
 * Onboard individual merchants and not super merchants. See below section on Merchant onboarding for more details.
+* Make sure all merchants have an MCC registered.
 * Use merchant/web shop name and logo when initiating payments. See below section on Merchant onboarding for more details.
 * Ensure merchants use correct and updated MobilePay logo and buttons. Visit our Design page for guides and ressources.
 * Update all payments with capture or cancel and if refund is performed.
