@@ -365,7 +365,7 @@ The following section addresses how each one should be handled.
 
 ### App Switching
 
-At any point user can close MobilePay app and just return to your app. **This can happen even if payment is already reserved!** Since it is unknown if your app was opened after completed payment, you'll need to check payment state each time your app returns to the foreground. For this, you should use your backend service that provides current state of payment (more details [here](/docs/app-payments/payments-refunds/create-payments)).
+At any point a user can close MobilePay app and just return to your app. **This can happen even if payment is already reserved!** Since it is unknown if your app was opened after completed payment, you'll need to check payment state each time your app returns to the foreground. For this, you should use your backend service that provides current state of payment (more details [here](/docs/app-payments/payments-refunds/create-payments)).
 
 Example how to handle case when user manually switches to your app:
 
