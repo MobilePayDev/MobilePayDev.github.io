@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## 2023
 
-#### 01 February 2023 - Payment attachments V1 is removed
+#### 02 February 2023 - Payment attachments V1 is removed
 
 The old way of creating payments with attachments in one request has been removed.
 
