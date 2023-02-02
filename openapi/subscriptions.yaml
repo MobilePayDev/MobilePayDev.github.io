@@ -2491,130 +2491,6 @@ components:
           type: string
           nullable: true
       additionalProperties: false
-    RestAPI.Models.InvoiceArticle:
-      required:
-        - article_description
-        - article_number
-        - price_per_unit
-        - quantity
-        - total_price_including_vat
-        - total_vat_amount
-        - unit
-        - vat_rate
-      type: object
-      properties:
-        article_number:
-          type: string
-        article_description:
-          type: string
-        vat_rate:
-          maximum: 2147483647
-          minimum: 0
-          type: number
-          format: double
-        total_vat_amount:
-          type: number
-          format: double
-        total_price_including_vat:
-          type: number
-          format: double
-        unit:
-          type: string
-        quantity:
-          maximum: 2147483647
-          minimum: 0
-          type: number
-          format: double
-        price_per_unit:
-          type: number
-          format: double
-        price_reduction:
-          maximum: 2147483647
-          minimum: 0
-          type: number
-          format: double
-          nullable: true
-        price_discount:
-          type: number
-          format: double
-          nullable: true
-        bonus:
-          maximum: 2147483647
-          minimum: 0
-          type: number
-          format: double
-          nullable: true
-      additionalProperties: false
-    RestAPI.Models.Invoice:
-      required:
-        - due_date
-        - invoice_number
-        - issue_date
-        - order_date
-        - total_amount
-        - total_vat_amount
-      type: object
-      properties:
-        consumer_name:
-          type: string
-          nullable: true
-        consumer_phone_number:
-          type: string
-          nullable: true
-        total_amount:
-          maximum: 2147483647
-          minimum: 0
-          type: number
-          format: double
-        total_vat_amount:
-          type: number
-          format: double
-        issue_date:
-          type: string
-          format: date-time
-        invoice_number:
-          type: string
-        order_date:
-          type: string
-          format: date-time
-        due_date:
-          type: string
-          format: date-time
-        consumer_address_lines:
-          type: array
-          items:
-            type: string
-          nullable: true
-        invoice_articles:
-          type: array
-          items:
-            $ref: '#/components/schemas/RestAPI.Models.InvoiceArticle'
-          nullable: true
-        merchant_contact_name:
-          type: string
-          nullable: true
-        delivery_address_lines:
-          type: array
-          items:
-            type: string
-          nullable: true
-        payment_reference:
-          type: string
-          nullable: true
-        delivery_date:
-          type: string
-          format: date-time
-          nullable: true
-        merchant_order_number:
-          type: string
-          nullable: true
-        buyer_order_number:
-          type: string
-          nullable: true
-        comment:
-          type: string
-          nullable: true
-      additionalProperties: false
     RestAPI.Models.Merchant.OneOffPaymentDetails:
       required:
         - amount
@@ -2633,8 +2509,6 @@ components:
         description:
           type: string
           nullable: true
-        invoice:
-          $ref: '#/components/schemas/RestAPI.Models.Invoice'
         expiration_timeout_minutes:
           maximum: 181440
           minimum: 1
@@ -2825,8 +2699,6 @@ components:
           type: integer
           format: int32
           nullable: true
-        invoice:
-          $ref: '#/components/schemas/RestAPI.Models.Invoice'
       additionalProperties: false
     RestAPI.Models.Payments.PendingPayment:
       type: object
@@ -2924,8 +2796,6 @@ components:
           items:
             $ref: '#/components/schemas/Shared.Models.ResourceLink'
           nullable: true
-        invoice:
-          $ref: '#/components/schemas/RestAPI.Models.Invoice'
         auto_reserve:
           type: boolean
         expiration_timeout_minutes:
