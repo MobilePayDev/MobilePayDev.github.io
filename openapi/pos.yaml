@@ -19,7 +19,7 @@ info:
     * **Payments**: Everything needed in order to initiate and complete a payment. 
 
 
-    For more information on working with the API, [see the documentation](https://mobilepaydev.github.io/MobilePay-PoS-v10/).
+    For more information on working with the API, [see the documentation](https://developer.mobilepay.dk/docs/pos).
 
 
 
@@ -62,10 +62,10 @@ info:
 
 
     For more information on payment flows, [see the
-    documentation](https://mobilepaydev.github.io/MobilePay-PoS-v10/payment_flows).
+    documentation](https://developer.mobilepay.dk/docs/pos/payment-flows).
   contact:
     name: MobilePay Developer Support
-    url: https://mobilepaydev.github.io/MobilePay-PoS-v10/index
+    url: https://developer.mobilepay.dk/docs/pos
     email: developer@mobilepay.dk
   version: 10.2.6
 servers:
@@ -306,7 +306,7 @@ paths:
             type: string
         - name: X-MobilePay-Idempotency-Key
           in: header
-          description: Used to ensure retried calls are handled correctly. See [Idempotency Keys](https://mobilepaydev.github.io/MobilePay-PoS-v10/api_principles#idempotency-keys).
+          description: Used to ensure retried calls are handled correctly. See [Idempotency Keys](https://developer.mobilepay.dk/docs/pos/api-principles#idempotency-keys).
           required: true
           schema:
             type: string
@@ -452,7 +452,7 @@ paths:
             type: string
         - name: X-MobilePay-Idempotency-Key
           in: header
-          description: Used to ensure retried calls are handled correctly. See [Idempotency Keys](https://mobilepaydev.github.io/MobilePay-PoS-v10/api_principles#idempotency-keys).
+          description: Used to ensure retried calls are handled correctly. See [Idempotency Keys](https://developer.mobilepay.dk/docs/pos/api-principles#idempotency-keys).
           required: true
           schema:
             type: string
@@ -1025,7 +1025,7 @@ paths:
       tags:
         - Point Of Sales
       summary: Gets a list of point of sale IDs corresponding to the given filters.
-      description: "Multiple filters can be passed, and the returned PoSs will match all filters.\r\n            \r\nWhen passing a beacon ID or a merchant PoS ID, at most one result will be returned."
+      description: "Multiple filters can be passed, and the returned PoSs will match all filters.\r\n\r\nWhen passing a beacon ID or a merchant PoS ID, at most one result will be returned."
       operationId: GetPosWithFilter
       parameters:
         - name: storeId
@@ -1124,7 +1124,7 @@ paths:
             type: string
         - name: X-MobilePay-Idempotency-Key
           in: header
-          description: Used to ensure retried calls are handled correctly. See [Idempotency Keys](https://mobilepaydev.github.io/MobilePay-PoS-v10/api_principles#idempotency-keys).
+          description: Used to ensure retried calls are handled correctly. See [Idempotency Keys](https://developer.mobilepay.dk/docs/pos/api-principles#idempotency-keys).
           required: true
           schema:
             type: string
@@ -1248,7 +1248,7 @@ paths:
       tags:
         - Point Of Sales
       summary: Looks up information about the user currently checked in at a point of sale.
-      description: "This will return 200 OK whether or not a user is checked in; check the `isUserCheckedIn` response property.\r\n            \r\nWhen polling this endpoint waiting for a check-in, please respect the `pollDelayInMs` response property as per the docs."
+      description: "This will return 200 OK whether or not a user is checked in; check the `isUserCheckedIn` response property.\r\n\r\nWhen polling this endpoint waiting for a check-in, please respect the `pollDelayInMs` response property as per the docs."
       operationId: GetCheckIn
       parameters:
         - name: posid
@@ -2224,7 +2224,7 @@ components:
             - ExpiredAndCancelled
             - Captured
           type: string
-          description: The current state of the payment. See [Payment Flows](https://mobilepaydev.github.io/MobilePay-PoS-v10/payment_flows#payment_flow).
+          description: The current state of the payment. See [Payment Flows](https://developer.mobilepay.dk/docs/pos/payment-flows).
           example: Reserved
         customerToken:
           type: string
@@ -2232,14 +2232,14 @@ components:
           example: 09bee223516e44000811ab0988b802b72a193c22
         customerReceiptToken:
           type: string
-          description: "The receipt token for this customer.\r\n            \r\nIf missing, MobilePay has not looked up the receipt token for this user yet; query the payment again later.\r\nIf an empty string, this user has no receipt token."
+          description: "The receipt token for this customer.\r\n\r\nIf missing, MobilePay has not looked up the receipt token for this user yet; query the payment again later.\r\nIf an empty string, this user has no receipt token."
           nullable: true
           example: d0d0f8dc0adc4cec9398d82c93dad0d1
         loyaltyIds:
           type: array
           items:
             type: string
-          description: "The loyalty IDs associated with this user.\r\n            \r\nIf missing, MobilePay has not looked up loyalty for this user yet; query the payment again later.\r\nIf an empty list, the this user is not enrolled in the loyalty program."
+          description: "The loyalty IDs associated with this user.\r\n\r\nIf missing, MobilePay has not looked up loyalty for this user yet; query the payment again later.\r\nIf an empty list, the this user is not enrolled in the loyalty program."
           nullable: true
         paymentExpiresAt:
           type: string
@@ -2247,12 +2247,12 @@ components:
           example: 17-10-2022 06:07:45 +00:00
         partialCapturePossible:
           type: boolean
-          description: "Whether [partial capture](https://mobilepaydev.github.io/MobilePay-PoS-v10/payment_flows#partial_capture) is possible for this payment.\r\nThis property is only available when the payment state is `Reserved`, otherwise it will be missing."
+          description: "Whether [partial capture](https://developer.mobilepay.dk/docs/pos/payment-flows/partial-capture) is possible for this payment.\r\nThis property is only available when the payment state is `Reserved`, otherwise it will be missing."
           nullable: true
           example: false
         pollDelayInMs:
           type: integer
-          description: When polling, wait this long between requests. See [Call Throttling](https://mobilepaydev.github.io/MobilePay-PoS-v10/api_principles#call_throttling).
+          description: When polling, wait this long between requests. See [Call Throttling](https://developer.mobilepay.dk/docs/pos/api-principles#call-throttling).
           format: int32
           example: 1000
       additionalProperties: false
@@ -2284,7 +2284,7 @@ components:
           example: c85916b1-8e17-4275-a388-551e16aa6293
         orderId:
           type: string
-          description: "A merchant-provided order ID to associate with this payment.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          description: "A merchant-provided order ID to associate with this payment.\r\n\r\nMust be at most 36 characters long, and fit the [valid character set](https://developer.mobilepay.dk/docs/pos/input-and-output-formats#valid-characters)."
           example: ORDER-12345
         amount:
           type: number
@@ -2305,7 +2305,7 @@ components:
           nullable: true
         merchantPaymentLabel:
           type: string
-          description: "Merchant-provided label tag for the payment. This is visible in the transaction reporting section on the MobilePay Portal.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          description: "Merchant-provided label tag for the payment. This is visible in the transaction reporting section on the MobilePay Portal.\r\n\r\nMust be at most 36 characters long, and fit the [valid character set](https://developer.mobilepay.dk/docs/pos/input-and-output-formats#valid-characters)."
           nullable: true
           example: PaymentLabel
         plannedCaptureDelay:
@@ -2314,7 +2314,7 @@ components:
             - LessThan24Hours
             - LessThan14Days
           type: string
-          description: When the payment is expected to be captured, see [Specify planned capture delay](https://mobilepaydev.github.io/MobilePay-PoS-v10/best_practices#specify-planned-capture-delay).
+          description: When the payment is expected to be captured, see [Specify planned capture delay](https://developer.mobilepay.dk/docs/pos/best-practices#specify-planned-capture-delay).
           example: None
       additionalProperties: false
     PaymentInitiatedResponse:
@@ -2341,7 +2341,7 @@ components:
           example: c85916b1-8e17-4275-a388-551e16aa6293
         orderId:
           type: string
-          description: "A merchant-provided order ID to associate with this payment.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          description: "A merchant-provided order ID to associate with this payment.\r\n\r\nMust be at most 36 characters long, and fit the [valid character set](https://developer.mobilepay.dk/docs/pos/input-and-output-formats#valid-characters)."
           example: ORDER-12345
       additionalProperties: false
     PaymentReadyRequest:
@@ -2370,7 +2370,7 @@ components:
           nullable: true
         merchantPaymentLabel:
           type: string
-          description: "Merchant-provided label tag for the payment. This is visible in the transaction reporting section on the MobilePay Portal.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          description: "Merchant-provided label tag for the payment. This is visible in the transaction reporting section on the MobilePay Portal.\r\n\r\nMust be at most 36 characters long, and fit the [valid character set](https://developer.mobilepay.dk/docs/pos/input-and-output-formats#valid-characters)."
           nullable: true
           example: PaymentLabel
         plannedCaptureDelay:
@@ -2379,7 +2379,7 @@ components:
             - LessThan24Hours
             - LessThan14Days
           type: string
-          description: When the payment is expected to be captured, see [Specify planned capture delay](https://mobilepaydev.github.io/MobilePay-PoS-v10/best_practices#specify-planned-capture-delay).
+          description: When the payment is expected to be captured, see [Specify planned capture delay](https://developer.mobilepay.dk/docs/pos/best-practices#specify-planned-capture-delay).
           example: None
       additionalProperties: false
     PaymentCaptureRequest:
@@ -2389,7 +2389,7 @@ components:
       properties:
         amount:
           type: number
-          description: "The monetary amount to capture, in the currency previously defined on the payment.\r\n            \r\nIf partial capture is supported, this may be lower than the amount specified in the payment. In that case, only this amount will be captured.\r\nOtherwise, the amount should be the same as specified earlier in the payment flow.\r\nSee [Partial Capture](https://mobilepaydev.github.io/MobilePay-PoS-v10/payment_flows#partial_capture)."
+          description: "The monetary amount to capture, in the currency previously defined on the payment.\r\n\r\nIf partial capture is supported, this may be lower than the amount specified in the payment. In that case, only this amount will be captured.\r\nOtherwise, the amount should be the same as specified earlier in the payment flow.\r\nSee [Partial Capture](https://developer.mobilepay.dk/docs/pos/payment-flows/partial-capture)."
           format: decimal
           example: 12.5
       additionalProperties: false
@@ -2424,11 +2424,11 @@ components:
           example: 'Cafeteria register #2'
         beaconId:
           type: string
-          description: "Beacon ID associated with this point of sale, either a 15-digit number or a GUID.\r\nSee [Beacons](https://mobilepaydev.github.io/MobilePay-PoS-v10/pos_management#beacons)."
+          description: "Beacon ID associated with this point of sale, either a 15-digit number or a GUID.\r\nSee [Beacons](https://developer.mobilepay.dk/docs/pos/pos-management#beacons)."
           example: a7b69d37-6753-4e94-afc3-ef5dab04b7f4
         callbackAlias:
           type: string
-          description: Callback alias, for use with the [Notification Service](https://mobilepaydev.github.io/MobilePay-PoS-v10/notification_service).
+          description: Callback alias, for use with the [Notification Service](https://developer.mobilepay.dk/docs/pos/notification-service).
           nullable: true
           example: Example Alias
         supportedBeaconTypes:
@@ -2468,7 +2468,7 @@ components:
       properties:
         merchantPosId:
           type: string
-          description: "Merchant-defined unique ID to associate with this point of sale; can be used for lookup.\r\nMerchantPosIds are unique for a given integrator and merchant.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          description: "Merchant-defined unique ID to associate with this point of sale; can be used for lookup.\r\nMerchantPosIds are unique for a given integrator and merchant.\r\n\r\nMust be at most 36 characters long, and fit the [valid character set](https://developer.mobilepay.dk/docs/pos/input-and-output-formats#valid-characters)."
           example: My-Pos-1
         storeId:
           type: string
@@ -2477,16 +2477,16 @@ components:
           example: 401b5617-ae5e-4f1a-9a59-5a446dbb3caa
         name:
           type: string
-          description: "Merchant-defined PoS name. This is shown to the user after check-in.\r\n            \r\nMust be at most 36 characters long, and fit the [valid character set](https://mobilepaydev.github.io/MobilePay-PoS-v10/input_formats#valid-characters)."
+          description: "Merchant-defined PoS name. This is shown to the user after check-in.\r\n\r\nMust be at most 36 characters long, and fit the [valid character set](https://developer.mobilepay.dk/docs/pos/input-and-output-formats#valid-characters)."
           example: 'Cafeteria register #2'
         beaconId:
           type: string
-          description: "Beacon ID associated with this point of sale.\r\n            \r\nThis may either be a 15-digit number (eg. white-box QR codes) or a GUID.\r\nIf `null`, a beacon ID will be generated for you.\r\n\r\nSee [Beacons](https://mobilepaydev.github.io/MobilePay-PoS-v10/pos_management#beacons)."
+          description: "Beacon ID associated with this point of sale.\r\n\r\nThis may either be a 15-digit number (eg. white-box QR codes) or a GUID.\r\nIf `null`, a beacon ID will be generated for you.\r\n\r\nSee [Beacons](https://developer.mobilepay.dk/docs/pos/pos-management#beacons)."
           nullable: true
           example: a7b69d37-6753-4e94-afc3-ef5dab04b7f4
         callbackAlias:
           type: string
-          description: Callback alias, only for use with the [Notification Service](https://mobilepaydev.github.io/MobilePay-PoS-v10/notification_service).
+          description: Callback alias, only for use with the [Notification Service](https://developer.mobilepay.dk/docs/pos/notification-service).
           nullable: true
           example: Example Alias
         supportedBeaconTypes:
@@ -2511,7 +2511,7 @@ components:
       properties:
         posId:
           type: string
-          description: "The ID of the point of sale that was created.\r\n            \r\nIf a `null` beacon ID was passed, you must query the point of sale with this ID to obtain the generated beacon ID."
+          description: "The ID of the point of sale that was created.\r\n\r\nIf a `null` beacon ID was passed, you must query the point of sale with this ID to obtain the generated beacon ID."
           format: uuid
           example: c85916b1-8e17-4275-a388-551e16aa6293
       additionalProperties: false
@@ -2529,11 +2529,11 @@ components:
           type: array
           items:
             type: string
-          description: "The loyalty IDs associated with this user.\r\n            \r\nIf missing, MobilePay has not looked up loyalty for this user yet; query the payment again later.\r\nIf an empty list, then this user is not enrolled in the loyalty program."
+          description: "The loyalty IDs associated with this user.\r\n\r\nIf missing, MobilePay has not looked up loyalty for this user yet; query the payment again later.\r\nIf an empty list, then this user is not enrolled in the loyalty program."
           nullable: true
         pollDelayInMs:
           type: integer
-          description: When polling, wait this long between requests. See [Call Throttling](https://mobilepaydev.github.io/MobilePay-PoS-v10/api_principles#call_throttling).
+          description: When polling, wait this long between requests. See [Call Throttling](https://developer.mobilepay.dk/docs/pos/api-principles#call-throttling).
           format: int32
           example: 1000
         customerToken:
