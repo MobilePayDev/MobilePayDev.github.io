@@ -55,7 +55,7 @@ Before your credentials can be used they must be whitelisted. Please send the cl
 
 ### PublicKey
 
-We will supply you with a secure link where you can upload two PublicKeys for Card encryption: The RSA public key should be provided as a X.509 SubjectPublicKeyInfo (using ASN.1 DER Encoding) represented in PEM encoding (use PEM file extension). The public key must have a length of 4096 bits. You must clearly state in the file name wich one is for Sandbox and which is for Prod.
+You must supply two PublicKeys for Card encryption: The RSA public key should be provided as a X.509 SubjectPublicKeyInfo (using ASN.1 DER Encoding) represented in PEM encoding (use PEM file extension). The public key must have a length of 4096 bits. You must clearly state in the file name wich one is for Sandbox and which is for Prod.
 
 Naming template for public key: `{integratorname}-{environment}-public`
 
@@ -63,7 +63,7 @@ Example for sandprod: `company-sandprod-public`
 
 Example for production: `company-prod-public`
 
-After the PublicKey has been uploaded on our side we will supply you with a PublicKeyId to be used when initiating payments.
+Please send the PublicKeys in a ZIP-file. We will register the keys and supply you with a PublicKeyId to be used when initiating payments.
 
 :::note
 Please note that if a publicKey is unused for 6 month we will delete it. If this happens you must supply a new publicKey.
