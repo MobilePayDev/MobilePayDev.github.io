@@ -32,4 +32,5 @@ Before moving to hidden production you must have performed below API calls. Plea
 5. Are you using webhooks? *We strongly advise using webhooks in your integration.* - Yes/No
 6. If you don't use webhooks polling with `GET /v1/payments/{paymentid}` is mandatory - paymentId
 
-We will reply to your email with a link where you must upload a video showing the user experience of a MobilePay App Payment in your app. Meanwhile we will verify the information submitted and prepare to move you to production.
+You also need to include a video showing the user experience of a MobilePay App Payment in your app. Please attach the video in a ZIP file.
+We will then verify the information and video submitted and prepare to move you to production. 
