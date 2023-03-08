@@ -42,7 +42,7 @@ Before moving to hidden production you must have performed below actions. All ac
 13. Implemented delegated authentication for Dankort. If you have not implemented this please explain why.
 14. Test 3DS flow with "succeeded":false "reasonCode":1008: `PATCH /payments/{paymentId}/authorizationattempts/{authorizationAttemptId}` - paymentId
 
-We will verify the above requests and move you to production. If you have not yet supplied us with a publickKey for production, please request a secure link for uploading it.
+We will verify the above requests and move you to production. If you have not yet supplied us with a publickKey for production, please send it in a ZIP-file.
 
 :::info PLEASE NOTE
 Registration of publicKey in production takes longer than in sandbox. So please provide us with the production key well in advance.
