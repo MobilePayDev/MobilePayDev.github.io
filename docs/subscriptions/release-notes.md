@@ -6,6 +6,10 @@ sidebar_position: 8
 
 ## 2023
 
+#### 09 March 2023 - Reserved payment expiration changed from 7 days to 6 days 23 hours 45 minutes
+
+Uncaptured one-off payments expire after 6 days 23 hours 45 minutes.
+
 #### 02 February 2023 - Payment attachments V1 is removed
 
 The old way of creating payments with attachments in one request has been removed.
