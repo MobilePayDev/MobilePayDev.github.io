@@ -1,16 +1,18 @@
 ---
-sidebar_position: 1
+sidebar_position: 5
 ---
 
 # Recurring Payments
 
+:::info Pilot phase
+The Recurring feature is currently in a pilot phase. The API documentation is publicly available but PSPs will not yet be able to utilize the feature.
+:::
+
 By using the MobilePay Online Recurring API, merchants can initiate a payment agreement for MobilePay users.
 The payment agreement, if accepted by the user, enables the merchant (through their PSP) to automatically charge the user for future payments without the need for user interaction every time. Both scheduled and unscheduled recurring payments are possible.
 
-:::info
-A recurring payment agreement is always created alongside a Customer Initiated Transaction (CIT). I.e. the customer is present and actively requesting the initial transaction and the agreement.
+Please be aware that a recurring payment agreement is always created alongside a Customer Initiated Transaction (CIT). I.e. the customer is present and actively requesting the initial transaction and the agreement.
 The subsequent recurring payments are Merchant Initiated Transactions (MIT) where the customer is not present. Recurring agreements are not to be used for one-off payments where the customer is present (only exception being the initial transaction).  
-:::
 
 ## End user experience
 
