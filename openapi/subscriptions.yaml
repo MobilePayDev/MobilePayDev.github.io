@@ -512,12 +512,11 @@ paths:
             nullable: true
         - name: pageNumber
           in: query
-          description: Page number if you're using MS SQL.
+          description: Page number if you're using MS SQL. Initial request should have pageNumber=1
           schema:
             type: integer
-            description: Page number if you're using MS SQL.
+            description: Page number if you're using MS SQL. Initial request should have pageNumber=1
             format: int32
-            nullable: true
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
