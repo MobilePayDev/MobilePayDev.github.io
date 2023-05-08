@@ -513,6 +513,7 @@ paths:
         - name: pageNumber
           in: query
           description: Page number if you're using MS SQL. Initial request should have pageNumber=1
+          required: true
           schema:
             type: integer
             description: Page number if you're using MS SQL. Initial request should have pageNumber=1
