@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## 2023
 
-#### 11 May 2023 - Payments stay refundable for longer and total_price_including_vat is no longer mandatory
+#### 12 May 2023 - Payments stay refundable for longer and total_price_including_vat is no longer mandatory
 
 Payment can now be [refunded](/docs/subscriptions/refund) 365 days after execution (instead of 90).
 total_price_including_vat in [payment attachment's](/docs/subscriptions/invoice) articles is no longer required.
