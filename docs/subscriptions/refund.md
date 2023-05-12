@@ -4,7 +4,7 @@ sidebar_position: 7
 
 # Refund
 
-Merchants can easily refund the customer with MobilePay Subscriptions. This functionality is used to refund previously captured one-off payments or subscriptions payments. A refund transaction can be made up to 365 days after payment execution. Refunds are not restricted by agreement status. Refunds can be made on a cancelled agreement. As long as the payment is successful and no older than 365 days, then it should work.
+Merchants can easily refund the customer with MobilePay Subscriptions. This functionality is used to refund previously captured one-off payments or subscriptions payments. A refund transaction can be made up to 90 days after payment execution. Refunds are not restricted by agreement status. Refunds can be made on a cancelled agreement. As long as the payment is successful and no older than 90 days, then it should work.
 
 A refund can be executed if the Merchants payment balance contains enough money to cover the refund. If the balance doesn’t cover the amount of the refund, the refund will fail. You can issue more than one refund against a payment_id, but you can’t refund a total greater than the original payment_id amount.
 
@@ -81,7 +81,7 @@ When the **Refund's** status changes from *Requested* we will do a callback to t
 |Declined  |_When **Refund** was declined by system_          | Right after the refund was requested |Declined  |Payment was not found.| 60003 |
 |Declined  |_When **Refund** was declined by system_           | Right after the refund was requested |Declined  |Payment cannot be refunded.| 60004 |
 |Declined  |_A catch-all error code when **Refund** was declined by core system. E.g.: more than 2 decimals, receiver is not active, receiver's bank declined refund, etc._           | Right after or up to 3 h after refund was requested |Declined  |Refund was declined by system.| 60005 |
-|Declined  |_When **Refund** was declined by system._           | Right after the refund was requested |Declined  |Cannot refund payments that are older than 365 days.| 60006 |
+|Declined  |_When **Refund** was declined by system._           | Right after the refund was requested |Declined  |Cannot refund payments that are older than 90 days.| 60006 |
 |Declined  |_When **Refund** was declined by system._           | Right after the refund was requested |Declined  |Cannot refund instantly transferred payments.| 60007 |
 |Declined  |_When **Refund** was declined by system._           | Right after the refund was requested |Declined  |No money in account.| 60008 |
 
