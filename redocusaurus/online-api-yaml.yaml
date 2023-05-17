@@ -1493,6 +1493,7 @@ components:
         - billingCurrency
         - countryCode
         - externalId
+        - merchantCategoryCode
         - name
       type: object
       properties:
@@ -1510,7 +1511,6 @@ components:
             the types of goods or services it provides. More information here:
             [MCC](https://en.wikipedia.org/wiki/Merchant_category_code).
           format: int32
-          nullable: true
           example: 1234
         name:
           maxLength: 255
