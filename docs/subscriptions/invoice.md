@@ -101,7 +101,7 @@ We reduced the amount of mandatory fields in `attachment_datails`:
 |                            | article_description       | string     | Article description.                                                        | Required        |
 |                            | vat_rate                  | decimal    | VAT rate of an article.                                                     | Optional        |
 |                            | total_vat_amount          | decimal    | Total VAT amount of an article.                                             | Optional        |
-|                            | total_price_including_vat | decimal    | Total price of an article including VAT. Can be negative.                   | Required        |
+|                            | total_price_including_vat | decimal    | Total price of an article including VAT. Can be negative.                   | Optional        |
 |                            | unit                      | string     | Unit, e.g.: pcs, coli, kg, m.                                               | Optional        |
 |                            | quantity                  | decimal    | Quantity of an article.                                                     | Optional        |
 |                            | price_per_unit            | decimal    | Price per unit.                                                             | Optional        |

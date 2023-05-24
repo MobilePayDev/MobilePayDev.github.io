@@ -63,10 +63,11 @@ In order to complete the slim certification you must supply a test web shop in p
     * Payment expire
     * User reject
 2. Let request expire and see succesfull failedPaymentCallback (only if failedPaymenCallback is utilized)
-3. Accept payment with a not working card (e.g. no funds) and check that a PATCH on authorisationAttempt is made with succeed: false with a meaningfull responseCode
-4. We will ask you to capture and afterwards refund one of the test payments (the rest of the payments should be cancelled or expire)
-5. Confirm implementation of 3DS, VTS and Dankort SCA implementation
-6. Go through merchant documentation. Please see below for details.
+3. Perform multiple authorization attempts for the same payment
+4. Accept payment with a not working card (e.g. no funds) and check that a PATCH on authorisationAttempt is made with succeed: false with a meaningfull responseCode
+5. We will ask you to capture and afterwards refund one of the test payments (the rest of the payments should be cancelled or expire)
+6. Confirm implementation of 3DS, VTS and Dankort SCA implementation
+7. Go through merchant documentation. Please see below for details.
 
 ### Merchant documentation
 

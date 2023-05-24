@@ -1288,6 +1288,8 @@ paths:
                 loyaltyIds:
                   - '123456'
                 pollDelayInMs: 1000
+                customerToken: 09bee223516e44000811ab0988b802b72a193c22
+                customerReceiptToken: d0d0f8dc0adc4cec9398d82c93dad0d1
         '400':
           description: Bad Request. See error response for details
           content:
@@ -2756,4 +2758,4 @@ components:
           type: string
           description: The beacon Id of the PoS that has the payment to be cancelled
           example: a7b69d37-6753-4e94-afc3-ef5dab04b7f4
-      additionalProperties: false    
+      additionalProperties: false

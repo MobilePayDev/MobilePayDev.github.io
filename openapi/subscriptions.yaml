@@ -512,12 +512,12 @@ paths:
             nullable: true
         - name: pageNumber
           in: query
-          description: Page number if you're using MS SQL.
+          description: Page number if you're using MS SQL. Initial request should have pageNumber=1
+          required: true
           schema:
             type: integer
-            description: Page number if you're using MS SQL.
+            description: Page number if you're using MS SQL. Initial request should have pageNumber=1
             format: int32
-            nullable: true
         - name: CorrelationId
           in: header
           description: CorrelationId used for logging
@@ -3001,7 +3001,6 @@ components:
     RestAPI.Models.Payments.ArticleRequest:
       required:
         - article_description
-        - total_price_including_vat
       type: object
       properties:
         article_number:
@@ -3031,6 +3030,7 @@ components:
         total_price_including_vat:
           type: number
           format: double
+          nullable: true
       additionalProperties: false
     RestAPI.Models.Payments.UpdatePaymentAttachmentDetailsRequest:
       required:

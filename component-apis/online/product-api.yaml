@@ -1291,6 +1291,7 @@ components:
         - billingCurrency
         - countryCode
         - externalId
+        - merchantCategoryCode
         - name
       type: object
       properties:
@@ -1305,7 +1306,6 @@ components:
           type: integer
           description: 'The merchant category code (MCC) is used to classify a business by the types of goods or services it provides. More information here: [MCC](https://en.wikipedia.org/wiki/Merchant_category_code).'
           format: int32
-          nullable: true
           example: 1234
         name:
           maxLength: 255
