@@ -9,7 +9,7 @@ After your test is complete you must complete a self-certification in order to g
 ## Access to self-certification
 
 Before you can start self-certification you must have a signed agreement with MobilePay and receive a production clientId.
-When your test is completed and you wish to start self-certification please [contact Developer support](mailto:developer@mobilepay.dk?subject=Request%20access%20to%20production%20for%20MobilePay%20PoS&amp;body=Hi%20Developer%20support%2C%0A%0AWe%20have%20completede%20our%20test%20and%20request%20access%20to%20production%20for%20organization%3A%0A%0APlease%20invite%20following%20users%20to%20the%20portal%3A%0A%20%0ABest%20regards) to request production security credentials that will include the production clientId needed for the certification.
+When your test is completed and you wish to start self-certification please [contact Developer support](mailto:developer@mobilepay.dk) to request production security credentials that will include the production clientId needed for the certification.
 
 :::info Note
 Production security credentials are not to be used for self-certification because this is performed in sandbox. Therefore you must use your security credentials from sandbox. The production security credentials should be used for production after self-certification. 
