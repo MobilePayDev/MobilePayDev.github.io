@@ -2,7 +2,7 @@
 sidebar_position: 13
 ---
 
-# Transition to One Patform
+# Transition to One Platform
 
 ## Our journey to create the ultimate payment wallet in the Nordics 
 On November 1st, 2022, we received the exciting news that the merger between MobilePay and Vipps was officially approved! This is a significant milestone for us, and we're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. By early 2024, we're aiming to launch a single, unified app: MobilePay in Denmark and Finland, and Vipps in Norway. This unified platform will bring together more than 11 million users and over 400,000 merchants across the Nordics, ensuring that you have a unified payment experience throughout.
