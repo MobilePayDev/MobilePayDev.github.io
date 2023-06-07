@@ -23,9 +23,9 @@ We know that you have various ways to send agreement requests to you customer, s
 
 ⚙️ Tech:
 
-API endpoint: POST /api/providers/{providerId}/agreements
+API endpoint: `POST:/api/providers/{providerId}/agreements`
 
-Parameter: expiration_timeout_minutes. Current range from 1 to 181440 minutes, default was 5 minutes. After release, the range will be from 1 to 5 minutes.
+Parameter: `expiration_timeout_minutes`. Current range from 1 to 181440 minutes, default was 5 minutes. After release, the range will be from 1 to 5 minutes.
 
 ### Agreement deletion validations
 No one likes when agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the moment we transition to One Platform, this feature will be unavailable. It was not much used and it didn't often prevent a customer from canceling the agreement. 
@@ -34,9 +34,9 @@ No one likes when agreement gets canceled, right? We do not like it either. The 
 
 ⚙️ Tech:
 
-API endpoint: POST /api/providers/{providerId}/agreements
+API endpoint: `POST:/api/providers/{providerId}/agreements`
 
-Parameter: retention_period_hours will be ignored from the moment we transition to One Platform.
+Parameter: `retention_period_hours` will be ignored from the moment we transition to One Platform.
 
 ## Recurring payments
 
@@ -54,7 +54,7 @@ Error in the payment you sent to your customer?  From the moment we transition t
 
 ⚙️ Tech:
 
-API endpoint: PATCH /api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId} will be unavailable from the moment we transition to One Platform.
+API endpoint: `PATCH:/api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId}` will be unavailable from the moment we transition to One Platform.
 
 ### Push message for the user before recurring payment
 
@@ -64,9 +64,9 @@ Currently, your customers are receiving push messages 1 day in advance about upc
 
 ⚙️ Tech:
 
-API endpoint: POST /api/providers/{providerId}/agreements
+API endpoint: `POST:/api/providers/{providerId}/agreements`
 
-Parameter: disable_notification_management, notifications_on will be ignored from the moment we transition to One Platform.
+Parameter: `disable_notification_management`, notifications_on will be ignored from the moment we transition to One Platform.
 
 ### Invalid recurring payments
 This one is bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From the moment we transition to One Platform, we will stop storing these requests. This will not impact payment validation nor payment execution logic. You will still get callbacks about payments status changes.
@@ -95,9 +95,9 @@ Similarly as with agreements, we are aligning the expiration period for one-off 
 
 ⚙️ Tech:
 
-API endpoint: POST /api/providers/{providerId}/agreements  POST /api/providers/{providerId}/agreements/{agreementId}/oneoffpayments
+API endpoint: `POST:/api/providers/{providerId}/agreements`  `POST:/api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`
 
-Parameter: expiration_timeout_minutes, one_off_payment.expiration_timeout_minutes Current range from 1 to 181440 min, default was 5 minutes. After the moment we transition to One Platform, range will be from 1 to 5 minutes.
+Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, default was 5 minutes. After the moment we transition to One Platform, range will be from 1 to 5 minutes.
 
 ## Refunds
 
@@ -127,7 +127,7 @@ Currently, you can attach extra information about payments, such as a link to an
 
 ⚙️ Tech:
 
-API endpoint:  PUT /api/providers/{providerId}/payments/{paymentId}/attachment
+API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
 Parameter: generate_pdf : true will be ignored from the moment we transition to One Platform.
 
