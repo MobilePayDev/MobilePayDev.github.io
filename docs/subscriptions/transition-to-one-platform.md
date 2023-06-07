@@ -41,13 +41,13 @@ Parameter: `retention_period_hours` will be ignored from the moment we transitio
 
 ## 2. Recurring payments
 
-### 2.1 Recurring payments are visible in the app 8 days in advance
+### 2.1 Payments visible 8 days in advance
 
 We want to empower you with transparency and flexibility when it comes to your recurring payments. Currently, your customer can view upcoming payments in the app up to 8 days in advance, regardless of whether the payment was sent 30 or 60 days earlier. However, from the moment we transition to One Platform, we're excited to announce that customers will be able to see your upcoming payment 35 days in advance, if you send it that early.
 
 **Recommendation:** If 35 days of payment visibility in the app is too long for you, we recommend sending a payment closer to due date. 
 
-### 2.2 Update existing recurring payment
+### 2.2 Update existing payment
 
 Error in the payment you sent to your customer?  From the moment we transition to One Platform, we ask you to update existing payments in a slightly different way. 
 
@@ -55,7 +55,7 @@ Error in the payment you sent to your customer?  From the moment we transition t
 
 ⚙️ Tech: API endpoint: `PATCH:/api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId}` will be unavailable from the moment we transition to One Platform.
 
-### 2.3 Push message for the user before recurring payment
+### 2.3 Push message for the user
 
 Currently, your customers are receiving push messages 1 day in advance about upcoming recurring payments. You have an option to manage this notification through Subscription APIs. From the moment we transition to One Platform, we are removing this push notification for your customers and push management will stop being relevant, too. But do not worry, customers choosing to get those push messages will be informed about executed payments instead; in addition to notifications about all failed payments where they need to change a card, increase funds, etc. 
 
