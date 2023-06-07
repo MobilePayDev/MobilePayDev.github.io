@@ -103,13 +103,13 @@ The new period will be applied only on payments which will be executed on the ne
 
 ## 5.1 App :iphone:
 
-### 5.1 Subscription space in the app
+### 5.1 Merchant visibility
 
 We will be streamlining the user interface of the app to provide a more focused and efficient experience for our and your customers. As a result, the list of potential merchants will no longer be displayed in the app. However, please be assured that all active and stopped agreements will still be readily visible to the app users.
 
 :star:**Recommendation:** We understand that being present in the potential agreement list can be important to you. Although this feature will be going away, please know that we still value your feedback and aim to provide the best experience for our common customers. 
 
-### 5.2 Merchant information on the agreement
+### 5.2 Merchant information on agreements
 
 Currently, you are able to show your contact information in every agreement for your customer in agreement Info tab: Website, Customer Support, Self Service, FAQ. From the moment we transition to One Platform, this contact information will no longer be displayed for the user. 
 
