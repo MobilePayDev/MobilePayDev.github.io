@@ -142,7 +142,7 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Partner setup](https://developer.vippsmobilepay.com/docs/vipps-partner/). 
 
-## Developer Support
+## **7. Developer Support**
 
 We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
