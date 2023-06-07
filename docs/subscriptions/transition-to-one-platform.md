@@ -97,7 +97,7 @@ Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_min
 
 ## 4. Refunds
 
-### 4.1 Refund payments up to 365 days
+### 4.1 Refund up to 365 days
 Currently, you can refund payments which were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
 The new period will be applied only on payments which will be executed on the new platform. 
 
