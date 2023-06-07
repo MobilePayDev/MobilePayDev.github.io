@@ -4,7 +4,8 @@ sidebar_position: 13
 
 # Transition to One Platform :orange_heart: :blue_heart:
 
-## Our journey to create the ultimate payment wallet in the Nordics 
+
+**Our journey to create the ultimate payment wallet in the Nordics**
 
 On November 1st, 2022, we received the exciting news that the merger between MobilePay and Vipps was officially approved! This is a significant milestone for us, and we're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. By early 2024, we're aiming to launch a single, unified app: MobilePay in Denmark and Finland, and Vipps in Norway. This unified platform will bring together more than 11 million users and over 400,000 merchants across the Nordics, ensuring that you have a unified payment experience throughout.
 
@@ -12,7 +13,7 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 
  We want to ensure that your transition to the new One Platform is as smooth and effortless as possible. As part of this transition, we will be merging the Subscriptions product with Vipps MobilePay Recurring product. Rest assured, we have carefully evaluated the usage of all Subscription features and we will ensure that the most commonly used features will continue to exist. To provide you with a simple, lightweight, and valuable product, any features that were not utilized will be closed. Our aim is to make your experience hassle-free and enjoyable.
  
-**Important information - A smooth transition to the new solution**
+:triangular_flag_on_post: **Important information - A smooth transition to the new solution**
 
 * **No Need to Reintegrate:** You can breathe a sigh of relief knowing that there is no need to reintegrate into the new solution. Your existing Subscriptions APIs will continue to work seamlessly until the end of 2024, and possibly even longer. We understand the value of maintaining your current setup.
 * **Changes to Functionality:** While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and considering updating your integration accordingly. We strive to keep you informed every step of the way.
@@ -24,7 +25,7 @@ Thank you for being a part of our journey toward creating the best and most user
 ### Agreement request expiration period
 We know that you have various ways to send agreement requests to you customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for very long time, like when it's sent by email or printed as a QR on a paper invoice. After launch, we will reduce the agreement signing period to maximum 5 minutes.
 
-**Recommendation:** If you want to give more than 5 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions (wink)
+:star: **Recommendation:** If you want to give more than 5 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions (wink)
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
@@ -33,7 +34,7 @@ Parameter: `expiration_timeout_minutes`. Current range from 1 to 181440 minutes,
 ### Agreement deletion validations
 No one likes when agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the moment we transition to One Platform, this feature will be unavailable. It was not much used and it didn't often prevent a customer from canceling the agreement. 
 
-🌟**Recommendation:** We will help you to provide the best payment experience and keep the customer happy so that canceling an agreement will not come into his mind. 
+:star: **Recommendation:** We will help you to provide the best payment experience and keep the customer happy so that canceling an agreement will not come into his mind. 
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
@@ -51,7 +52,7 @@ We want to empower you with transparency and flexibility when it comes to your r
 
 Error in the payment you sent to your customer?  From the moment we transition to One Platform, we ask you to update existing payments in a slightly different way. 
 
-🌟 **Recommendation:** We recommend you to cancel existing payments and create brand new in cases when payment information needs to be updated.
+:star: **Recommendation:** We recommend you to cancel existing payments and create brand new in cases when payment information needs to be updated.
 
 ⚙️ Tech: API endpoint: `PATCH:/api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId}` will be unavailable from the moment we transition to One Platform.
 
@@ -59,7 +60,7 @@ Error in the payment you sent to your customer?  From the moment we transition t
 
 Currently, your customers are receiving push messages 1 day in advance about upcoming recurring payments. You have an option to manage this notification through Subscription APIs. From the moment we transition to One Platform, we are removing this push notification for your customers and push management will stop being relevant, too. But do not worry, customers choosing to get those push messages will be informed about executed payments instead; in addition to notifications about all failed payments where they need to change a card, increase funds, etc. 
 
-🌟 **Recommendation:** Sit back and relax, we will make sure that all payments are executed successfully. 
+:star: **Recommendation:** Sit back and relax, we will make sure that all payments are executed successfully. 
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
@@ -85,7 +86,7 @@ We reevaluated all our product package, usage of this feature and we decided, th
 
 Similarly as with agreements, we are aligning the expiration period for one-off payments. From the moment we transition to One Platform, the maximum expiration timeout will be 5 minutes. 
 
-🌟**Recommendation:**
+:star: **Recommendation:**
 * Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes on agreements here (link to agreement expiration minus change).
 * Flow 2: Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. This type of flow will be moved to Vipps MobilePay  ePayments. You can find more information about the switch in "One-off payments" (link to that paragraph).
 * Flow 3: Merchants can send a One-Off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation. Long expiration time is not relevant for one-off auto reservation payments. So all good here (wink).
@@ -100,25 +101,25 @@ Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_min
 Currently, you can refund payments which were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
 The new period will be applied only on payments which will be executed on the new platform. 
 
-## App
+## App :iphone:
 
 ### Subscription space in the app
 
 We will be streamlining the user interface of the app to provide a more focused and efficient experience for our and your customers. As a result, the list of potential merchants will no longer be displayed in the app. However, please be assured that all active and stopped agreements will still be readily visible to the app users.
 
-**Recommendation:** We understand that being present in the potential agreement list can be important to you. Although this feature will be going away, please know that we still value your feedback and aim to provide the best experience for our common customers. 
+:star:**Recommendation:** We understand that being present in the potential agreement list can be important to you. Although this feature will be going away, please know that we still value your feedback and aim to provide the best experience for our common customers. 
 
 ### Merchant information on the agreement
 
 Currently, you are able to show your contact information in every agreement for your customer in agreement Info tab: Website, Customer Support, Self Service, FAQ. From the moment we transition to One Platform, this contact information will no longer be displayed for the user. 
 
-🌟**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description, if this is necessary. 
+:star:**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description, if this is necessary. 
 
 ### Payment attachments. PDF generation
 
 Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, purchase details, or PDF file generation from purchase details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from the moment we transition to One Platform.
 
-🌟**Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to you customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
+:star:**Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to you customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
 
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
