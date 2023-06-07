@@ -124,11 +124,12 @@ Currently, you can attach extra information about payments, such as a link to an
 
 Parameter: `generate_pdf` : true will be ignored from the moment we transition to One Platform.
 
-**General**
 
 ## **6. Onboarding** 
 
-### 6.1 For merchants
+### 6.1 Authorisation 
+
+**For merchants**
 
 * If you are using or are planning to start using Subscriptions on MobilePay platform before transition to One Platform. All good, nothing to do for you, just make sure you complete authorisation setup before transition to One Platform.
 * If by any chance you will need to restart consent flow, e.g. get new refresh token after we transit to One Platform, you will have to do that already on One Platform.
@@ -136,11 +137,11 @@ Parameter: `generate_pdf` : true will be ignored from the moment we transition t
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/).
 
-### 6.2 For integrators/partners
+**For integrators/partners**
 * If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to new set up from beginning.
 * If you are existing integrator in Subscriptions on MobilePay platform and you want to onboard new merchants, we will ask you to change your authorisation setup. We are sorry, but from the moment we transition to One Platform we will not be able to support existing flow where merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work.
 
-Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Partner setup](https://developer.vippsmobilepay.com/docs/vipps-partner/). 
+Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners). 
 
 ## **7. Developer Support**
 
