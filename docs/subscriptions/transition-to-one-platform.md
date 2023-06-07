@@ -116,13 +116,13 @@ Currently, you are able to show your contact information in every agreement for 
 
 ### 5.3 Payment attachments. PDF generation
 
-Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, purchase details, or PDF file generation from purchase details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from the moment we transition to One Platform.
+Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, payment details, or PDF file generation from payment details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from the moment we transition to One Platform.
 
 :star:**Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to you customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
 
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
-Parameter: generate_pdf : true will be ignored from the moment we transition to One Platform.
+Parameter: `generate_pdf` : true will be ignored from the moment we transition to One Platform.
 
 ## General
 
