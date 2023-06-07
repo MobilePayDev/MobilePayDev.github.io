@@ -124,9 +124,9 @@ Currently, you can attach extra information about payments, such as a link to an
 
 Parameter: `generate_pdf` : true will be ignored from the moment we transition to One Platform.
 
-## General
+**General**
 
-### AUTH setup
+### 6. AUTH setup
 
 **For merchants**
 
@@ -142,11 +142,11 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Partner setup](https://developer.vippsmobilepay.com/docs/vipps-partner/). 
 
-## Developer Suppoort
+## Developer Support
 
 We're Here to Help
 
-If you have any questions or need assistance with managing your recurring payments, our Integration Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
+If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
 *Published 2023-06-05. Updated 2023-06-05.*
