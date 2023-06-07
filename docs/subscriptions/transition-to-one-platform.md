@@ -2,13 +2,18 @@
 sidebar_position: 13
 ---
 
-# Transition to One Platform
+# Transition to One Platform :orange_heart: :blue_heart:
 
 ## Our journey to create the ultimate payment wallet in the Nordics 
+
 On November 1st, 2022, we received the exciting news that the merger between MobilePay and Vipps was officially approved! This is a significant milestone for us, and we're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. By early 2024, we're aiming to launch a single, unified app: MobilePay in Denmark and Finland, and Vipps in Norway. This unified platform will bring together more than 11 million users and over 400,000 merchants across the Nordics, ensuring that you have a unified payment experience throughout.
-## Uniting Subscriptions with Vipps MobilePay Recurring
+
+**Uniting Subscriptions with Vipps MobilePay Recurring**
+
  We want to ensure that your transition to the new One Platform is as smooth and effortless as possible. As part of this transition, we will be merging the Subscriptions product with Vipps MobilePay Recurring product. Rest assured, we have carefully evaluated the usage of all Subscription features and we will ensure that the most commonly used features will continue to exist. To provide you with a simple, lightweight, and valuable product, any features that were not utilized will be closed. Our aim is to make your experience hassle-free and enjoyable.
-## Important information - A smooth transition to the new solution
+ 
+**Important information - A smooth transition to the new solution**
+
 * **No Need to Reintegrate:** You can breathe a sigh of relief knowing that there is no need to reintegrate into the new solution. Your existing Subscriptions APIs will continue to work seamlessly until the end of 2024, and possibly even longer. We understand the value of maintaining your current setup.
 * **Changes to Functionality:** While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and considering updating your integration accordingly. We strive to keep you informed every step of the way.
 Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. Your satisfaction is our top priority, and we are here to support you throughout this process.
