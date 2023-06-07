@@ -45,7 +45,7 @@ Parameter: `retention_period_hours` will be ignored from the moment we transitio
 
 We want to empower you with transparency and flexibility when it comes to your recurring payments. Currently, your customer can view upcoming payments in the app up to 8 days in advance, regardless of whether the payment was sent 30 or 60 days earlier. However, from the moment we transition to One Platform, we're excited to announce that customers will be able to see your upcoming payment 35 days in advance, if you send it that early.
 
-**Recommendation:** If 35 days of payment visibility in the app is too long for you, we recommend sending a payment closer to due date. 
+:star: **Recommendation:** If 35 days of payment visibility in the app is too long for you, we recommend sending a payment closer to due date. 
 
 ### 2.2 Update existing payment
 
@@ -79,7 +79,7 @@ One-off payments in Subscriptions are used in 3 different ways:
 
 We reevaluated all our product package, usage of this feature and we decided, that from the moment we transition to One Platform, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We are planning to keep flow 1 and 3 in the Subscriptions product and also in the Recurring product. Basically, all payments which are merchant initiated (MIT) and do not require Strong Customer Authentication (SCA) stay in Subscriptions and also Recurring. All payments where SCA is needed will be in ePayment product. 
 
-**Recommendation:** If you want to continue charging your customers with payments where SCA is needed, please reintegrate these types of payments to Vipps MobilePay ePayment.
+:star: **Recommendation:** If you want to continue charging your customers with payments where SCA is needed, please reintegrate these types of payments to Vipps MobilePay ePayment.
 
 ### 3.2 One-off expiration period
 
