@@ -20,7 +20,7 @@ Please take a moment to familiarize yourself with the upcoming changes and how t
 
 Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
-## 1. Agreements
+## **1. Agreements**
 ### 1.1 Agreement request expiration period
 We know that you have various ways to send agreement requests to you customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for very long time, like when it's sent by email or printed as a QR on a paper invoice. After launch, we will reduce the agreement signing period to maximum 5 minutes.
 
@@ -39,7 +39,7 @@ No one likes when agreement gets canceled, right? We do not like it either. The 
 
 Parameter: `retention_period_hours` will be ignored from the moment we transition to One Platform.
 
-## 2. Recurring payments
+## **2. Recurring payments**
 
 ### 2.1 Payments visible 8 days in advance
 
@@ -68,7 +68,7 @@ Parameter: `disable_notification_management`, `notifications_on` will be ignored
 ### 2.4 Invalid recurring payments
 This one is bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From the moment we transition to One Platform, we will stop storing these requests. This will not impact payment validation nor payment execution logic. You will still get callbacks about payments status changes.
 
-## 3. One-off payments
+## **3. One-off payments**
 
 ### 3.1 One-off payments types
 
@@ -94,13 +94,13 @@ Similarly as with agreements, we are aligning the expiration period for one-off 
 
 Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, default was 5 minutes. After the moment we transition to One Platform, range will be from 1 to 5 minutes.
 
-## 4. Refunds
+## **4. Refunds**
 
 ### 4.1 Refund up to 365 days
 Currently, you can refund payments which were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
 The new period will be applied only on payments which will be executed on the new platform. 
 
-## 5. App :iphone:
+## **5. App :iphone:**
 
 ### 5.1 Merchant visibility
 
@@ -126,9 +126,9 @@ Parameter: `generate_pdf` : true will be ignored from the moment we transition t
 
 **General**
 
-## 6. Onboarding 
+## **6. Onboarding** 
 
-### 6.1 **For merchants**
+### 6.1 For merchants
 
 * If you are using or are planning to start using Subscriptions on MobilePay platform before transition to One Platform. All good, nothing to do for you, just make sure you complete authorisation setup before transition to One Platform.
 * If by any chance you will need to restart consent flow, e.g. get new refresh token after we transit to One Platform, you will have to do that already on One Platform.
@@ -136,7 +136,7 @@ Parameter: `generate_pdf` : true will be ignored from the moment we transition t
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/).
 
-### 6.2 **For integrators/partners**
+### 6.2 For integrators/partners
 * If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to new set up from beginning.
 * If you are existing integrator in Subscriptions on MobilePay platform and you want to onboard new merchants, we will ask you to change your authorisation setup. We are sorry, but from the moment we transition to One Platform we will not be able to support existing flow where merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work.
 
