@@ -77,7 +77,7 @@ One-off payments in Subscriptions are used in 3 different ways:
 * [Flow 2](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-2---one-off-payment-on-an-existing-agreement): Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement.
 * [Flow 3](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-3---one-off-with-auto-reserve): Merchants can send One-Off payment, which MobilePay will attempt to automatically reserve, without user’s confirmation
 
-We reevaluated all our product package, usage of this feature and we decided, that from the moment we transition to One Platform, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We planning to keep flow 1 and 3 in Subscriptions (Recurring) product. Basically, all payments which are merchant initiated (MIT) and do not require SCA (Strong Customer Authentication) stay in Subscriptions (Recurring) and all payments where SCA (Strong Customer Authentication) is needed will be in ePayment. 
+We reevaluated all our product package, usage of this feature and we decided, that from the moment we transition to One Platform, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We planning to keep flow 1 and 3 in Subscriptions (Recurring) product. Basically, all payments which are merchant initiated (MIT) and do not require SCA (Strong Customer Authentication) stay in Subscriptions (Recurring) and all payments where SCA is needed will be in ePayment. 
 
 **Recommendation:** If you want to continue charging your customers with payments where SCA is needed, please reintegrate these types of payments to Vipps MobilePay ePayment.
 
@@ -142,7 +142,9 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Partner setup](https://developer.vippsmobilepay.com/docs/vipps-partner/). 
 
-## We're Here to Help
+## Developer Suppoort
+
+We're Here to Help
 
 If you have any questions or need assistance with managing your recurring payments, our Integration Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
