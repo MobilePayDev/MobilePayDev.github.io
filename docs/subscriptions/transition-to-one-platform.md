@@ -7,7 +7,7 @@ sidebar_position: 13
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
-On November 1st, 2022, we received the exciting news that the merger between MobilePay and Vipps was officially approved! This is a significant milestone for us, and we're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. By early 2024, we're aiming to launch a single, unified app: MobilePay in Denmark and Finland, and Vipps in Norway. This unified platform will bring together more than 11 million users and over 400,000 merchants across the Nordics, ensuring that you have a unified payment experience throughout. :orange_heart: :blue_heart:
+On November 1st, 2022, we received the exciting news that the merger between MobilePay and Vipps was officially approved! This is a significant milestone for us, and we're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. By early 2024, we're aiming to launch a single, unified app: MobilePay in Denmark and Finland, and Vipps in Norway. This unified platform will bring together more than 11 million users and over 400,000 merchants across the Nordics, ensuring that you have a unified payment experience throughout. 
 
 **Uniting Subscriptions with Vipps MobilePay Recurring**
 
@@ -19,7 +19,7 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 * **Changes to Functionality:** While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and considering updating your integration accordingly. We strive to keep you informed every step of the way.
 Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. Your satisfaction is our top priority, and we are here to support you throughout this process.
 
-Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics.
+Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
 ## 1. Agreements
 ### 1.1 Agreement request expiration period
@@ -127,7 +127,7 @@ Parameter: `generate_pdf` : true will be ignored from the moment we transition t
 
 **General**
 
-### 6. AUTH setup
+## 6. AUTH setup
 
 **For merchants**
 
@@ -145,8 +145,7 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 ## Developer Support
 
-We're Here to Help
-
+We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
