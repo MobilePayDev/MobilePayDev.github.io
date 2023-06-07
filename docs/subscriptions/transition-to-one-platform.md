@@ -21,9 +21,7 @@ We know that you have various ways to send agreement requests to you customer, s
 
 **Recommendation:** If you want to give more than 5 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions (wink)
 
-⚙️ Tech:
-
-API endpoint: `POST:/api/providers/{providerId}/agreements`
+⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
 Parameter: `expiration_timeout_minutes`. Current range from 1 to 181440 minutes, default was 5 minutes. After release, the range will be from 1 to 5 minutes.
 
@@ -32,9 +30,7 @@ No one likes when agreement gets canceled, right? We do not like it either. The 
 
 **Recommendation:** We will help you to provide the best payment experience and keep the customer happy so that canceling an agreement will not come into his mind. 
 
-⚙️ Tech:
-
-API endpoint: `POST:/api/providers/{providerId}/agreements`
+⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
 Parameter: `retention_period_hours` will be ignored from the moment we transition to One Platform.
 
@@ -52,9 +48,7 @@ Error in the payment you sent to your customer?  From the moment we transition t
 
 **Recommendation:** We recommend you to cancel existing payments and create brand new in cases when payment information needs to be updated.
 
-⚙️ Tech:
-
-API endpoint: `PATCH:/api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId}` will be unavailable from the moment we transition to One Platform.
+⚙️ Tech: API endpoint: `PATCH:/api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId}` will be unavailable from the moment we transition to One Platform.
 
 ### Push message for the user before recurring payment
 
@@ -62,9 +56,7 @@ Currently, your customers are receiving push messages 1 day in advance about upc
 
 **Recommendation:** Sit back and relax, we will make sure that all payments are executed successfully. 
 
-⚙️ Tech:
-
-API endpoint: `POST:/api/providers/{providerId}/agreements`
+⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
 Parameter: `disable_notification_management`, notifications_on will be ignored from the moment we transition to One Platform.
 
@@ -93,9 +85,7 @@ Similarly as with agreements, we are aligning the expiration period for one-off 
 * Flow 2: Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. This type of flow will be moved to Vipps MobilePay  ePayments. You can find more information about the switch in "One-off payments" (link to that paragraph).
 * Flow 3: Merchants can send a One-Off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation. Long expiration time is not relevant for one-off auto reservation payments. So all good here (wink).
 
-⚙️ Tech:
-
-API endpoint: `POST:/api/providers/{providerId}/agreements`  `POST:/api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`
+⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`  `POST:/api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`
 
 Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, default was 5 minutes. After the moment we transition to One Platform, range will be from 1 to 5 minutes.
 
@@ -125,9 +115,7 @@ Currently, you can attach extra information about payments, such as a link to an
 
 **Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to you customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
 
-⚙️ Tech:
-
-API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
+⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
 Parameter: generate_pdf : true will be ignored from the moment we transition to One Platform.
 
