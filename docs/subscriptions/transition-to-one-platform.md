@@ -31,7 +31,7 @@ We know that you have various ways to send agreement requests to you customer, s
 Parameter: `expiration_timeout_minutes`. Current range from 1 to 181440 minutes, default was 5 minutes. After release, the range will be from 1 to 5 minutes.
 
 ### 1.2 Agreement deletion validations
-No one likes when agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the moment we transition to One Platform, this feature will be unavailable. It was not much used and it didn't often prevent a customer from canceling the agreement. 
+No one likes when agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the moment we transition to One Platform, this feature will be unavailable.  
 
 :star: **Recommendation:** We will help you to provide the best payment experience and keep the customer happy so that canceling an agreement will not come into his mind. 
 
@@ -63,7 +63,7 @@ Currently, your customers are receiving push messages 1 day in advance about upc
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
-Parameter: `disable_notification_management`, notifications_on will be ignored from the moment we transition to One Platform.
+Parameter: `disable_notification_management`, `notifications_on` will be ignored from the moment we transition to One Platform.
 
 ### 2.4 Invalid recurring payments
 This one is bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From the moment we transition to One Platform, we will stop storing these requests. This will not impact payment validation nor payment execution logic. You will still get callbacks about payments status changes.
@@ -77,7 +77,7 @@ One-off payments in Subscriptions are used in 3 different ways:
 * [Flow 2](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-2---one-off-payment-on-an-existing-agreement): Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement.
 * [Flow 3](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-3---one-off-with-auto-reserve): Merchants can send One-Off payment, which MobilePay will attempt to automatically reserve, without user’s confirmation
 
-We reevaluated all our product package, usage of this feature and we decided, that from the moment we transition to One Platform, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We planning to keep flow 1 and 3 in Subscriptions (Recurring) product. Basically, all payments which are merchant initiated (MIT) and do not require SCA (Strong Customer Authentication) stay in Subscriptions (Recurring) and all payments where SCA is needed will be in ePayment. 
+We reevaluated all our product package, usage of this feature and we decided, that from the moment we transition to One Platform, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We are planning to keep flow 1 and 3 in Subscriptions (Recurring) product. Basically, all payments which are merchant initiated (MIT) and do not require SCA (Strong Customer Authentication) stay in Subscriptions (Recurring) and all payments where SCA is needed will be in ePayment. 
 
 **Recommendation:** If you want to continue charging your customers with payments where SCA is needed, please reintegrate these types of payments to Vipps MobilePay ePayment.
 
