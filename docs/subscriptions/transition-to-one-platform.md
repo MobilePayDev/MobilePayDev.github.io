@@ -115,7 +115,7 @@ Currently, you are able to show your contact information in every agreement for 
 
 :star:**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description, if this is necessary. 
 
-### 5.3 Payment attachments. PDF generation
+### 5.3 Payment attachments
 
 Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, payment details, or PDF file generation from payment details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from the moment we transition to One Platform.
 
