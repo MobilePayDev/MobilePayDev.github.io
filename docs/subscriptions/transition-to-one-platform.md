@@ -28,7 +28,7 @@ Parameter: `expiration_timeout_minutes`. Current range from 1 to 181440 minutes,
 ### Agreement deletion validations
 No one likes when agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the moment we transition to One Platform, this feature will be unavailable. It was not much used and it didn't often prevent a customer from canceling the agreement. 
 
-**Recommendation:** We will help you to provide the best payment experience and keep the customer happy so that canceling an agreement will not come into his mind. 
+🌟**Recommendation:** We will help you to provide the best payment experience and keep the customer happy so that canceling an agreement will not come into his mind. 
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
@@ -46,7 +46,7 @@ We want to empower you with transparency and flexibility when it comes to your r
 
 Error in the payment you sent to your customer?  From the moment we transition to One Platform, we ask you to update existing payments in a slightly different way. 
 
-**Recommendation:** We recommend you to cancel existing payments and create brand new in cases when payment information needs to be updated.
+🌟 **Recommendation:** We recommend you to cancel existing payments and create brand new in cases when payment information needs to be updated.
 
 ⚙️ Tech: API endpoint: `PATCH:/api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId}` will be unavailable from the moment we transition to One Platform.
 
@@ -54,7 +54,7 @@ Error in the payment you sent to your customer?  From the moment we transition t
 
 Currently, your customers are receiving push messages 1 day in advance about upcoming recurring payments. You have an option to manage this notification through Subscription APIs. From the moment we transition to One Platform, we are removing this push notification for your customers and push management will stop being relevant, too. But do not worry, customers choosing to get those push messages will be informed about executed payments instead; in addition to notifications about all failed payments where they need to change a card, increase funds, etc. 
 
-**Recommendation:** Sit back and relax, we will make sure that all payments are executed successfully. 
+🌟 **Recommendation:** Sit back and relax, we will make sure that all payments are executed successfully. 
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
@@ -80,7 +80,7 @@ We reevaluated all our product package, usage of this feature and we decided, th
 
 Similarly as with agreements, we are aligning the expiration period for one-off payments. From the moment we transition to One Platform, the maximum expiration timeout will be 5 minutes. 
 
-**Recommendation:**
+🌟**Recommendation:**
 * Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes on agreements here (link to agreement expiration minus change).
 * Flow 2: Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. This type of flow will be moved to Vipps MobilePay  ePayments. You can find more information about the switch in "One-off payments" (link to that paragraph).
 * Flow 3: Merchants can send a One-Off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation. Long expiration time is not relevant for one-off auto reservation payments. So all good here (wink).
@@ -107,13 +107,13 @@ We will be streamlining the user interface of the app to provide a more focused 
 
 Currently, you are able to show your contact information in every agreement for your customer in agreement Info tab: Website, Customer Support, Self Service, FAQ. From the moment we transition to One Platform, this contact information will no longer be displayed for the user. 
 
-**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description, if this is necessary. 
+🌟**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description, if this is necessary. 
 
 ### Payment attachments. PDF generation
 
 Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, purchase details, or PDF file generation from purchase details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from the moment we transition to One Platform.
 
-**Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to you customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
+🌟**Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to you customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
 
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
