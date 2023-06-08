@@ -115,7 +115,7 @@ Currently, you are able to show your contact information in every agreement for 
 :star:**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description, if this is necessary. 
 
 ### 5.3 Payment attachments
-
+ 
 Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, payment details, or PDF file generation from payment details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from the moment we transition to One Platform.
 
 :star:**Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to you customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
@@ -141,7 +141,7 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 * If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to new set up from beginning.
 * If you are existing integrator in Subscriptions on MobilePay platform and you want to onboard new merchants, we will ask you to change your authorisation setup. We are sorry, but from the moment we transition to One Platform we will not be able to support existing flow where merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work.
 
-Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners). 
+- Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners). 
 
 ## **7. Developer Support**
 
