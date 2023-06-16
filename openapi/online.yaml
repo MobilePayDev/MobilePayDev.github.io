@@ -1530,8 +1530,7 @@ components:
           type: string
           description: >-
             Merchant country code e.g. Denmark = DK. Use [ISO
-            3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) or special
-            value APAC.
+            3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
           example: DK
         vatNumber:
           type: string
@@ -2348,8 +2347,7 @@ components:
           type: string
           description: >-
             Merchant country code e.g. Denmark = DK. Use [ISO
-            3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) or special
-            value APAC.
+            3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
           nullable: true
         vatNumber:
           type: string
