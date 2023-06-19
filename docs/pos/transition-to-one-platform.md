@@ -19,4 +19,4 @@ The new setup will offer one entrance to our platform, opening for easier access
 
 ## New integration
 
-We will continually send out information to all registered integrators about the new integration. To read more about the technical changes of the integration please visit the [migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#point-of-sale-vs-epayment). As soon as we have more information on the documentation for the new version, we will update this page. 
+We will continually send out information to all existing integrators about the new integration. To read more about the technical changes of the integration please visit the [migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#point-of-sale-vs-epayment). As soon as we have more information on the documentation for the new version, we will update this page. 
