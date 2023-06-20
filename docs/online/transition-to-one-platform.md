@@ -15,9 +15,8 @@ Please take a moment to familiarize yourself with the upcoming changes and how t
 
 ## Required changes
 
-Merchant VAT
+Soon to be announced
 
 ## Feature changes
 
-Merchant onboarding
-Payment valid until
+Soon to be announced
