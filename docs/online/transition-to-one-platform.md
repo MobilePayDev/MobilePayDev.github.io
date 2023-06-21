@@ -13,10 +13,18 @@ There is no need to reintegrate into the new solution. Your existing Online inte
 Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. If you have any questions you are always welcome to reach out to us at developer@mobilepay.dk 
 :::
 
-## Required changes
+## VAT number required for all merchants
 
-Soon to be announced
+Before December 2023, please use our API to provide correct VAT number for both new and existing merchants if you’re not already doing so.
+For new merchants, the vatNumber field will become mandatory for the Create merchant endpoint: `POST /v1/merchants`
+For existing merchants, you can use Update merchant `PATCH /api/v1/merchants/{merchantId}` to provide vatNumber.
+
 
 ## Feature changes
-
-Soon to be announced
+During Q1 2024 - once we fully consolidate our platforms – the following endpoints/features will stop working for MobilePay Online.
+For a smooth transition, we recommend reviewing the changes and consider updating your integration accordingly if you are using any of these.
+* Update merchant:
+`PATCH /api/v1/merchants/{merchantId}` will be removed. To update a merchant you must instead delete the merchant and create a new using: `DELETE /v1/merchants/{merchantId}` and `POST /v1/merchants`
+* validUntil: Will default to 5 minutes
+*	Get payment: `GET /api/v3/payments/{paymentId}` will be removed
+*	Invalidate payment: `PUT /v1/payments/{paymentId}/invalidate` will be removed
