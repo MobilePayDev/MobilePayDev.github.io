@@ -94,11 +94,24 @@ Similarly as with agreements, we are aligning the expiration period for one-off 
 
 Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, default was 5 minutes. After the moment we transition to One Platform, range will be from 1 to 5 minutes.
 
+### 3.3 Description of one-off with new agreement
+
+Currently in Subscriptions Description field for one-off which is created together with new agreement is not mandatory. We are changing that and making it as a required field.
+
+:star: **Recommendation:** When creating one-off payment with new agreement provide Description, but if you will forget, do not worrie, we will prefill it with "Initial charge".
+
+⚙️ Tech: API endpoint: POST /api/providers/{providerId}/agreements
+
+Parameter: one_off_payment.description
+
 ## **4. Refunds**
 
 ### 4.1 Refund up to 365 days
 Currently, you can refund payments which were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
 The new period will be applied only on payments which will be executed on the new platform. 
+
+### 4.2 Refunds description
+In Subscriptions Refunds had no Description, but in new Recurring setup this field is present and mandatory. We will prefil it with a simple "Refund" for you.
 
 ## **5. App :iphone:**
 
@@ -149,6 +162,6 @@ We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-06-05.*
+*Published 2023-06-05. Updated 2023-06-16.*
 
 
