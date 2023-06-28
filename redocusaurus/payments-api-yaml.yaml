@@ -695,8 +695,9 @@ components:
           type: string
           description: >-
             MobilePay will use the (international) phone number to prefill the
-            landing page for dual device flows.
+            landing page for dual device flows. Ex. +4512345678
           nullable: true
+          example: null
     InitiatePaymentResponse:
       required:
         - mobilePayAppRedirectUri
