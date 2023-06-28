@@ -689,6 +689,14 @@ components:
           type: string
           description: "MobilePay will use the redirectUri URL to redirect the MobilePay user to the merchant's confirmation page once user\r\naction is completed in MobilePay app. Must be a valid URI."
           example: myapp://redirect
+        customerPhoneNumber:
+          maxLength: 15
+          minLength: 0
+          type: string
+          description: >-
+            MobilePay will use the (international) phone number to prefill the
+            landing page for dual device flows.
+          nullable: true
     InitiatePaymentResponse:
       required:
         - mobilePayAppRedirectUri
