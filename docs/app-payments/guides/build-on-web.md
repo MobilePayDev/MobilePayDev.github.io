@@ -4,8 +4,12 @@ sidebar_position: 3
 
 # Build on Web
 
-This page details how MobilePay app payments should be implemented in a browser or web app.
+This page details how MobilePay App Payments should be implemented in a browser or web app.
 Prerequisites: You already have backend services integrated with [MobilePay APIs](/docs/app-payments/guides/how-it-works).
+
+:::note Pilot
+App Payments for web is still in pilot phase and therefore require approval. Please contact sales@mobilepay.dk if you wish to utilize the feature. 
+:::
 
 ## Implementation
 
