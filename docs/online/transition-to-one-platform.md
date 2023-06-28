@@ -36,4 +36,4 @@ It will no longer be possible to define payment validation. It will instead defa
 `GET /api/v3/payments/{paymentId}` will be removed. 
 
 **Invalidate payment** -
-`PUT /v1/payments/{paymentId}/invalidate` will be removed. 
+`PUT /v1/payments/{paymentId}/invalidate` will be removed and it will not be possible to invalidate payments. 
