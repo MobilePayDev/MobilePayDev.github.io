@@ -68,6 +68,12 @@ Parameter: `disable_notification_management`, `notifications_on` will be ignored
 ### 2.4 Invalid recurring payments
 This one is bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From the moment we transition to One Platform, we will stop storing these requests. This will not impact payment validation nor payment execution logic. You will still get callbacks about payments status changes.
 
+### 2.5 Recurring payment amount validation
+After the Launch we are changing our payment validation rules and introducing amount validation. If you have agreement with amount, your charge amount can be biger, but just up to 5 times more. For example, if agreement states that monthly amount is 10 krona or euro, you can't carge 100 krona or euro.
+
+:star: **Recommendation:** Please update agreement amount to suitable value through `PATCH/api/providers/{providerId}/agreements/{agreementId}`.
+
+
 ## **3. One-off payments**
 
 ### 3.1 One-off payments types
@@ -86,19 +92,32 @@ We reevaluated all our product package, usage of this feature and we decided, th
 Similarly as with agreements, we are aligning the expiration period for one-off payments. From the moment we transition to One Platform, the maximum expiration timeout will be 5 minutes. 
 
 :star: **Recommendation:**
-* Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes on agreements here (link to agreement expiration minus change).
-* Flow 2: Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. This type of flow will be moved to Vipps MobilePay  ePayments. You can find more information about the switch in "One-off payments" (link to that paragraph).
-* Flow 3: Merchants can send a One-Off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation. Long expiration time is not relevant for one-off auto reservation payments. So all good here (wink).
+* Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes on agreements [here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#11-agreement-request-expiration-period).
+* Flow 2: Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. This type of flow will be moved to Vipps MobilePay  ePayments. You can find more information about the switch in ["One-off payments"](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#31-one-off-payments-types).
+* Flow 3: Merchants can send a One-Off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation. Long expiration time is not relevant for one-off auto reservation payments. So all good here 😉.
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`  `POST:/api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`
 
 Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, default was 5 minutes. After the moment we transition to One Platform, range will be from 1 to 5 minutes.
+
+### 3.3 Description of one-off with new agreement
+
+Currently in Subscriptions Description field for one-off which is created together with new agreement is not mandatory. We are changing that and making it as a required field.
+
+:star: **Recommendation:** When creating one-off payment with new agreement provide Description, but if you will forget, do not worrie, we will prefill it with "Initial charge".
+
+⚙️ Tech: API endpoint: `POST /api/providers/{providerId}/agreements`
+
+Parameter: `one_off_payment.description`
 
 ## **4. Refunds**
 
 ### 4.1 Refund up to 365 days
 Currently, you can refund payments which were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
 The new period will be applied only on payments which will be executed on the new platform. 
+
+### 4.2 Refunds description
+In Subscriptions Refunds had no Description, but in new Recurring setup this field is present and mandatory. We will prefil it with a simple "Refund" for you.
 
 ## **5. App :iphone:**
 
@@ -114,7 +133,11 @@ Currently, you are able to show your contact information in every agreement for 
 
 :star:**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description, if this is necessary. 
 
-### 5.3 Payment attachments
+## 6. Payment attachments
+
+Read more [here](https://developer.mobilepay.dk/docs/subscriptions/invoice#payment-attachments-v2).
+
+### 6.1 PDF generation
  
 Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, payment details, or PDF file generation from payment details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from the moment we transition to One Platform.
 
@@ -124,10 +147,25 @@ Currently, you can attach extra information about payments, such as a link to an
 
 Parameter: `generate_pdf` : true will be ignored from the moment we transition to One Platform.
 
+### 6.2 External URL
 
-## **6. Onboarding** 
+Currently we are providing possibility for you to upgrade Subscription payment with extra attachements like External URL. Sadly we most likelly will not make it to re-introduce this feature on One Platform 😢. We are really sorry if this will cause any inconveniance for you, but we promisse to work on it as soon as possible and introduce the feature right after Launch. 
 
-### 6.1 Authorisation 
+⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
+
+Parameter: `external_attachment_url`
+
+### 6.3 Attachement details
+
+Similarly as with External URL, we most likelly will not make it to re-introduce this feature on One Platform. We are really sorry if this will cause any inconveniance for you, but we promisse to work on it as soon as possible and introduce the feature right after Launch. 
+
+⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
+
+Parameter: `attachment_details`
+
+## **7. Onboarding** 
+
+### 7.1 Authorisation 
 
 **For merchants**
 
@@ -143,12 +181,12 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners). 
 
-## **7. Developer Support**
+## **8. Developer Support**
 
 We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-06-05.*
+*Published 2023-06-05. Updated 2023-07-05.*
 
 
