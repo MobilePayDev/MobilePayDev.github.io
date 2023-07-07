@@ -186,12 +186,12 @@ Make a `PATCH` to endpoint
 
 If successfull, you will recieve a http `204 No Content` response. We will then send a callback to the success-callback you have set, when the agreement was created, to inform that the agreement has been accepted:
 
- ```json title="Header example"
+ ```json title="Callback body example"
 {
     "agreement_id" : "AGREEMENT_ID",
     "status" : "Accepted",
     "status_text" : "The agreement has been accepted.",
-    "status_code" : "0",
+    "status_code" : 0,
     "external_id" : "EXTERNAL_ID",
     "timestamp" : "2016-08-24T11:42:27+00:00"
 }
