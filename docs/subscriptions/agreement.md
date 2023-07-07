@@ -208,7 +208,7 @@ If there should be a pause in an agreement, like a temporary stop of a subscript
     "agreement_id" : "63679ab7-cc49-4f75-80a7-86217fc105ea",
     "status" : "Canceled",
     "status_text" : "Canceled by user",
-    "status_code" : "40000",
+    "status_code" : 40000,
     "external_id" : "SF0000568",
     "timestamp" : "2020-01-01T12:34:56+00:00"
 }
