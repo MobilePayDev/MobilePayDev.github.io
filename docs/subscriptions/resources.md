@@ -18,13 +18,13 @@ pagination_next: null
 We're steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. Feel free to explore the following links for more information: 
 
 
-General Information:
+## General Information:
 
 - [New Platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform. :rocket:
 
 - [Overall Migration Information](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide): Learn about the overall migration, timeline, and guidelines.  :calendar:  
 
-Technical Links :link:
+## Technical Links :link:
 
 - [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
 
