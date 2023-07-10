@@ -2,7 +2,9 @@
 pagination_next: null
 ---
 
-# MobilePay Resources
+# Resources 
+
+## MobilePay Resources
 
 - [MobilePay Subscriptions API documentation](https://developer.mobilepay.dk/api/subscriptions): The API reference documentation for Subscriptions
 
@@ -13,18 +15,19 @@ pagination_next: null
 - [Design Guidelines](https://www.mobilepaygroup.com/design): Find MobilePay buttons, logos, banners, etc.
 
 
-# Migration Resources :mag_right:
+## Migration Resources  
 
-We're steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. Feel free to explore the following links for more information: 
+We're steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. 
+Feel free to explore the following links for more information: 
 
 
-## General Information:
+### General Information:
 
-- [New Platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform. :rocket:
+- [New Platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform and read more about the benefits and improvements that you can expect from the New Wallet Launch. :rocket:
 
 - [Overall Migration Information](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide): Learn about the overall migration, timeline, and guidelines.  :calendar:  
 
-## Technical Links :link:
+### Technical Links :link:
 
 - [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
 
@@ -34,4 +37,7 @@ We're steadily moving towards one unified platform that offers new opportunities
 
 - [Subscriptions Changes](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform): Get an overview of changes in functionality and recommendations for the existing MobilePay Subscriptions API.   
 
-- [Merchant Test](https://www.mobilepaygroup.com/partner/merchant-test): Register here to get credentials for the Test environment. Please note that this is the test environment of Vipps MobilePay. 
+- [Merchant Test](https://www.mobilepaygroup.com/partner/merchant-test): Register here to get credentials for the Test environment. Please note that this is the test environment of Vipps MobilePay.
+
+
+Please note: We are continuously working on improving our migration guide so it includes  step-by-step instructions, best practices, and FAQs to help merchants smoothly transition to the new platform.  
