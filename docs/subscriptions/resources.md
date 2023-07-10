@@ -12,18 +12,26 @@ pagination_next: null
 
 - [Design Guidelines](https://www.mobilepaygroup.com/design): Find MobilePay buttons, logos, banners, etc.
 
-# Migration Resources
 
-We are steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. Feel free to explore the following links for more information:
+# Migration Resources :mag_right:
 
-- [Overall migration information](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide): Learn about the overall migration, timeline, and guidelines.
+We're steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. Feel free to explore the following links for more information: 
 
-- [Recurring API](https://developer.vippsmobilepay.com/api/recurring/): Curious about the New Recurring api?  
 
-- [Subscriptions migration](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API.
+General Information:
 
-- [Subscriptions changes of functionality and recommendations](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform): Explore information about changes in functionality and recommendations for the existing MobilePay Subscriptions API.
+- [New Platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform. :rocket:
 
-- [New platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform.
+- [Overall Migration Information](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide): Learn about the overall migration, timeline, and guidelines.  :calendar:  
 
-- [Merchant test](https://www.mobilepaygroup.com/partner/merchant-test): Register here to get credentials for the Test environment.
+Technical Links :link:
+
+- [Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
+
+- [Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
+
+- [Subscriptions Migration](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API.  
+
+- [Subscriptions Changes](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform): Get an overview of changes in functionality and recommendations for the existing MobilePay Subscriptions API.   
+
+- [Merchant Test](https://www.mobilepaygroup.com/partner/merchant-test): Register here to get credentials for the Test environment. 
