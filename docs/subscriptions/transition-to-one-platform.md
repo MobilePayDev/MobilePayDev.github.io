@@ -11,7 +11,8 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 
 **Timeline for existing subscriptions merchants and partners**
 
-![timeline]([static/img/vippsmobilepaylogo.png](https://github.com/MobilePayDev/MobilePayDev.github.io/blob/8a6cfd71b632748fc4e19b91761d241175cf19e1/static/img/timeline.png)) 
+
+![timeline](static/img/timeline.png) 
 
 
 **Uniting Subscriptions with Vipps MobilePay Recurring**
