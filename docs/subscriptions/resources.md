@@ -15,13 +15,13 @@ pagination_next: null
 - [Design Guidelines](https://www.mobilepaygroup.com/design): Find MobilePay buttons, logos, banners, etc.
 
 
-## Migration Resources  
+## New Wallet Launch - Resources  
 
 We're steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. 
 Feel free to explore the following links for more information: 
 
 
-### General Information:
+### Migration Information:
 
 - [New Platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform and read more about the benefits and improvements that you can expect from the New Wallet Launch. :rocket:
 
