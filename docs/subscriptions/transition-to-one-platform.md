@@ -3,7 +3,7 @@ sidebar_position: 13
 ---
 # Transition to One Platform
  
-![Vipps MobilePay](static/img/vippsmobilepaylogo.png)
+![vippsmobilepay](static/img/vippsmobilepaylogo.png)
  
 
 **Our journey to create the ultimate payment wallet in the Nordics**
