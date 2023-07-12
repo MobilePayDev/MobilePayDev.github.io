@@ -24,13 +24,13 @@ The old way of creating payments with attachments in one request has been remove
 
 #### 14 November 2022 - Payment agreement deletion by users
 
-Users can always delete payment agreement from the app from 5.22.0 app version.
+Users can always delete payment agreements from the app from 5.22.0 app version.
 
 ![Agreement deletion](/img/subs-agreement_deletion_by_user.png)
 
 #### 13 September 2022 - Update on agreement signing flow
 
-With MobilePay app August release (version 5.20.0) agreement context screen was removed. In agreement confirm screen confirmation checkbox was added. Updated flow you can find [here](/docs/subscriptions/agreement#agreement-signing-in-dual-device-flow).
+With the MobilePay app August release (version 5.20.0) agreement context screen was removed. In agreement confirm screen confirmation checkbox was added. Updated flow you can find [here](/docs/subscriptions/agreement#agreement-signing-in-dual-device-flow).
 
 #### 24 August 2022 - Deprecated features section added
 
@@ -52,15 +52,15 @@ Merchants are now able to add a line break in the payment attachment's comment f
 
 More information in [Invoice](/docs/subscriptions/invoice).
 
-#### 28 July 2021 - Multiple payments on same due date
+#### 28 July 2021 - Multiple payments on the same due date
 
-Merchants are now able to create multiple payments for same AgreementId and DueDate but such payments must have different ExternalId.
+Merchants are now able to create multiple payments for the same AgreementId and DueDate but such payments must have different ExternalId.
 
 More information in [Payment frequency](/docs/subscriptions/subscriptions-payments#frequency-of-payment-requests).
 
 #### 12 July 2021 - Payment attachments V2
 
-The purpose of payment attachments V2 is to replace existing invoice PDF functionality and to offer more flexibility for the merchant. With this new functionality you will be able to choose how attachment will be presented to the user:
+The purpose of payment attachments V2 is to replace existing invoice PDF functionality and to offer more flexibility for the merchant. With this new functionality, you will be able to choose how attachment will be presented to the user:
 
 - External URL. Your own link to the payment document.
 - Attachment details. Extra payment details.
@@ -70,7 +70,7 @@ More information in [Invoice](/docs/subscriptions/invoice).
 
 #### 23 April 2021 - Sms messages for suspended payments
 
-We recently implemented SMS sending to users, in case they have a `suspended` payment. The purpose of the SMS is to prompt the customer to pay quicker. `suspended`  means that the the Merchant could not withdraw the money from the customers payment card. There can be various reasons why it can he suspended. If the problem persists, and there is not sufficient funds on the customers card, or/and if the card is expired or/and blocked, then the payment will fail. Suspended is a status internally for MobilePay to mark hiccupped payments, which is why it is not a part of the callback table [here](/docs/subscriptions/subscriptions-payments#callbacks). You should still see the status `failed` or `executed` as the final status
+We recently implemented SMS sending to users, in case they have a `suspended` payment. The purpose of the SMS is to prompt the customer to pay quicker. `suspended`  means that the Merchant could not withdraw the money from the customers payment card. There can be various reasons why it can be suspended. If the problem persists, and there is not sufficient funds on the customers card, or/and if the card is expired or/and blocked, then the payment will fail. Suspended is a status internally for MobilePay to mark hiccupped payments, which is why it is not a part of the callback table [here](/docs/subscriptions/subscriptions-payments#callbacks). You should still see the status `failed` or `executed` as the final status
 
 |New Status|Condition|When to expect|Callback *status*  | Callback *status_text* | Callback *status_code* |
 |----------|---------|--------------|-------------------|------------------------|------------------------|
