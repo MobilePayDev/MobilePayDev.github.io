@@ -140,7 +140,7 @@ Currently, you are able to show your contact information in every agreement for 
 
 :star:**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description if this is necessary. 
 
-## 6. Payment attachments
+## **6. Payment attachments**
 
 Read more [here](https://developer.mobilepay.dk/docs/subscriptions/invoice#payment-attachments-v2).
 
@@ -178,17 +178,26 @@ Parameter: `attachment_details`
 
 * If you are using or are planning to start using Subscriptions on the MobilePay platform before transitioning to One Platform. All good, nothing to do for you, just make sure you complete the authorization setup before transitioning to One Platform.
 * If by any chance you will need to restart the consent flow, e.g. get a new refresh token after we transit to One Platform, you will have to do that already on One Platform.
-* If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to the new setup from the beginning. 
+* If you are planning to start using Recurring on the New Vipps MobilePay platform, just integrate into the new setup from the beginning. 
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/).
 
 **For integrators/partners**
 * If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to the new setup from the beginning.
-* If you are an existing integrator in Subscriptions on MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. We are sorry, but from the moment we transition to One Platform, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work.
+* If you are an existing integrator in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. We are sorry, but from the moment we transition to One Platform, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work.
 
-- Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners). 
+- Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
-## **8. Developer Support**
+
+## **8. FAQ** 
+
+1. How will migration of data work? In sandbox and production?
+2. When can I integrate to the Recurring API?
+3. Does the Recurring API have callbacks? 
+4. We are  working on implementing callbacks for recurring payments, but at the moment, the primary method is polling. Although callbacks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that callbacks will be included with the launch date. 
+- How and when can I get started?
+
+## **9. Developer Support**
 
 We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
