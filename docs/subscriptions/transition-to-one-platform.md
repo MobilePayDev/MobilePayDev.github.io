@@ -12,7 +12,7 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 **Timeline for existing subscriptions merchants and partners**
 
 
-![timeline](static/img/timeline.png) 
+[![timeline](/img/timeline.png)](/img/timeline.png)
 
 
 **Uniting Subscriptions with Vipps MobilePay Recurring**
@@ -194,6 +194,6 @@ We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-07-05.*
+*Published 2023-06-05. Updated 2023-07-17.*
 
 
