@@ -22,8 +22,7 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 :triangular_flag_on_post: **Important information - A smooth transition to the new solution**
 
 * **No Need to Reintegrate:** You can breathe a sigh of relief knowing that there is no need to reintegrate into the new solution. Your existing Subscriptions APIs will continue to work seamlessly until the end of 2024, and possibly even longer. We understand the value of maintaining your current setup.
-* **Changes to Functionality:** While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and considering updating your integration accordingly. We strive to keep you informed every step of the way.
-Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. Your satisfaction is our top priority, and we are here to support you throughout this process.
+* **Changes to Functionality:** While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process.
 
 Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
@@ -191,11 +190,32 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 ## **8. FAQ** 
 
-1. How will migration of data work? In sandbox and production?
-2. When can I integrate to the Recurring API?
-3. Does the Recurring API have callbacks? 
-4. We are  working on implementing callbacks for recurring payments, but at the moment, the primary method is polling. Although callbacks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that callbacks will be included with the launch date. 
-- How and when can I get started?
+**1. Do I need to reintegrate now to new solution, APIs?**
+
+No, you dont need to reintegrate to new solution. We are biulding Facade which will forward all your integration messages to new solution and return needed responses. Only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly.
+
+
+**2. How will migration of data work? In sandbox and production?**
+
+We will migrate 3 years of production data to new environment. Sandpbox data will not be migrate due to diferent merchant and payment point setup. 
+
+
+**3. When can I integrate to the Recurring API?**
+
+If you already want to reintegrate (even if this is not mandatory) you can start now! More information [here](https://www.mobilepaygroup.com/partner/new-platform).
+
+
+**4. Does the Recurring API have callbacks?**
+
+We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is polling. Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included with the Launch date.
+
+
+**5. Will i be able to continue testing my integration in sandbox?**
+
+Yes, you will be able to test your integration to Subscriptions APIs though merchant test environment on new platform. There are some actions that you will have to do:
+
+TBD
+
 
 ## **9. Developer Support**
 
@@ -203,6 +223,6 @@ We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-07-17.*
+*Published 2023-06-05. Updated 2023-07-18.*
 
 
