@@ -33,6 +33,8 @@ Feel free to explore the following links for more information:
 
 - [NEW Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
 
+- [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All notable changes to the Recurring API. 
+
 - [Subscriptions Migration](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API.  
 
 - [Subscriptions Changes](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform): Get an overview of changes in functionality and recommendations for the existing MobilePay Subscriptions API.   
