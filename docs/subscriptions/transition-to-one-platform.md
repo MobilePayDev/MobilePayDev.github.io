@@ -192,7 +192,7 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 **1. Do I need to reintegrate now to the new solution, APIs?**
 
-No, you don't need to reintegrate to the new solution. We are building Facade which will forward all your integration messages to the new solution and return needed responses. The only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly.
+No, you don't need to reintegrate to the new solution right now. We are building Facade which will forward all your integration messages to the new solution and return needed responses. The only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly.
 
 
 **2. How will the migration of data work? In sandbox and production?**
