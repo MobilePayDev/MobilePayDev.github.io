@@ -190,14 +190,14 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 ## **8. FAQ** 
 
-**1. Do I need to reintegrate now to new solution, APIs?**
+**1. Do I need to reintegrate now to the new solution, APIs?**
 
-No, you dont need to reintegrate to new solution. We are biulding Facade which will forward all your integration messages to new solution and return needed responses. Only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly.
+No, you don't need to reintegrate to the new solution. We are building Facade which will forward all your integration messages to the new solution and return needed responses. The only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly.
 
 
-**2. How will migration of data work? In sandbox and production?**
+**2. How will the migration of data work? In sandbox and production?**
 
-We will migrate 3 years of production data to new environment. Sandpbox data will not be migrate due to diferent merchant and payment point setup. 
+We will migrate 3 years of production data to the new environment. Sandbox data will not be migrated due to different merchant and payment point setups. 
 
 
 **3. When can I integrate to the Recurring API?**
@@ -210,9 +210,9 @@ If you already want to reintegrate (even if this is not mandatory) you can start
 We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is polling. Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included with the Launch date.
 
 
-**5. Will i be able to continue testing my integration in sandbox?**
+**5. Will I be able to continue testing my integration in Sandbox?**
 
-Yes, you will be able to test your integration to Subscriptions APIs though merchant test environment on new platform. There are some actions that you will have to do:
+Yes, you will be able to test your integration to Subscriptions APIs through merchant test environment on the new platform. There are some actions that you will have to do:
 
 TBD
 
