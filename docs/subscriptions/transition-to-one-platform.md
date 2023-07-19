@@ -155,7 +155,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
     <td>Charge was refunded</td>
     <td>
      
-```json
+```
 {
   "id": "d5f51369-5c3b-4246-958e-9aefeb2ac5fe",
   "amount": 500,
@@ -171,7 +171,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
     <td>Something went wrong while trying to refund charge/payment</td>
     <td>
 
-```json
+```
 {
   "status_code": 100,
   "status_text": "Something went wrong while refunding charge",
@@ -185,7 +185,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
     <td>Charge is too old to refund (older than 365 days)</td>
     <td>
 
-```json
+```
 {
 
   "status_code": 101,
@@ -200,7 +200,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
     <td>Agreement for charge is in wrong status to refund (if accepting and pending)</td>
     <td>
 
-```json
+```
 {
 
   "status_code": 102,
@@ -215,7 +215,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
     <td>Charge is in wrong status to refund (not charged/captured or partially captured)</td>
     <td>
 
-```json
+```
 {
 
   "status_code": 103,
@@ -230,7 +230,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
     <td>Trying to refund higher amount than what is charged/captured</td>
     <td>
 
-```json
+```
 {
 
   "status_code": 104,
