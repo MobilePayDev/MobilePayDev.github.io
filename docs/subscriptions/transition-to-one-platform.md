@@ -45,6 +45,16 @@ No one likes when an agreement gets canceled, right? We do not like it either. T
 
 Parameter: `retention_period_hours` will be ignored from the moment we transition to One Platform.
 
+### 1.3 Agreements without amount
+
+Current agreements where amount is not stated will be depicted as agreements with variable amount.
+
+:star: **Recommendation:** We recommend you to update/create agreements with amount if its known in practice.
+
+⚙️ Tech: API endpoint: `POST /api/providers/{providerId}/agreements` or `PATCH /api/providers/{providerId}/agreements/{agreementId}` Parameter `amount`
+
+
+
 ## **2. Recurring payments**
 
 ### 2.1 Payments visible 8 days in advance
@@ -222,8 +232,9 @@ We are  working on implementing webhooks for Recurring API, but at the moment, t
 
 Yes, you will be able to test your integration to Subscriptions APIs through merchant test environment on the new platform. There are some actions that you will have to do:
 
-TBD
-
+1. You will have to recreate your test data. All test data(agreements, payments, refunds etc.) that was created before will not be migrated from Subscriptions sandbox to Recurring merchant test.
+2. Mapp to new merchant, user and sales unit (provider) IDs. New IDs will be created in 2023Q4.
+3. You will have to integrate to new and much simpler Access Token API for merchant test environment. Old MobilePay issued access and refresh tokens for sandbox will stop working after the Launch of Nordic Wallet. Client IDs and client secrets for calling new Access Token API will be ready in 2023Q4. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
 ## **9. Developer Support**
 
