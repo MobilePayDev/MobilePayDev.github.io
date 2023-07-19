@@ -29,8 +29,7 @@ App Payments for web supports both dual device and single device flows. It depen
 
 If the redirect happens on a mobile device the MobilePay app will automatically be launched. The user can then accept or reject the payment and we will redirect the user to redirectUri afterwards. This url will always open in the default browser (determined by the operating system) of the mobile device.
 
-* If the MobilePay app is not installed and therefore cannot be opened our landing page will open in the browser instead and the flow will continue as a dual device flow.
-* When the redirect is performed inside a frame the automatic switch may be blocked. Our landing page will open in the browser instead and the flow will continue as a dual device flow.
+If the MobilePay app is not installed and therefore cannot be opened our landing page will open in the browser instead and the flow will continue as a dual device flow.
 
 ### Dual device flow
 
