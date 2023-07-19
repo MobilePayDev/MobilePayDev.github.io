@@ -53,7 +53,9 @@ Current agreements where amount is not stated will be depicted as agreements wit
 
 ⚙️ Tech: API endpoint: `POST /api/providers/{providerId}/agreements` or `PATCH /api/providers/{providerId}/agreements/{agreementId}` Parameter `amount`
 
+<img src="https://github.com/MobilePayDev/MobilePayDev.github.io/blob/main/static/img/vmpamount.png" width="30%" height="30%">
 
+*Draft version of agreement screen, not final version.*
 
 ## **2. Recurring payments**
 
@@ -134,6 +136,113 @@ The new period will be applied only to payments that will be executed on the new
 
 ### 4.2 Refunds description
 In Subscriptions, Refunds had no Description, but in the new Recurring setup, this field is present and mandatory. We will prefill it with a simple "Refund" for you.
+
+### 4.3 Refund responses
+There will be no callbacks anymore for refunds. All needed information will be handled through API response. 
+
+:star: **Recommendation:** If you use refunds review planned API responses and adjust your integration to handle it. 
+
+⚙️ Tech:
+
+<table>
+  <tr>
+    <th>HTTP status</th>
+    <th>Description</th>
+    <th>Examples</th>
+  </tr>
+  <tr>
+    <td>200</td>
+    <td>Charge was refunded</td>
+    <td>
+     
+```json
+{
+  "id" : "d5f51369-5c3b-4246-958e-9aefeb2ac5fe",
+  "amount": 500,
+  "external_id": "AA3F5Y6G4",
+  "status_callback_url": "https://merchantProviderUrl.com/refund"
+}
+```
+
+</td>
+  </tr>
+  <tr>
+    <td>500</td>
+    <td>Something went wrong while trying to refund charge/payment</td>
+    <td>
+
+```json
+{
+  "status_code": 100,
+  "status_text": "Something went wrong while refunding charge",
+}
+```
+  
+  </td>
+  </tr>
+   <tr>
+    <td>400</td>
+    <td>Charge is too old to refund (older than 365 days)</td>
+    <td>
+
+```json
+{
+
+  "status_code": 101,
+  "status_text": "Cannot refund a charge older than 365 days",
+
+}
+```
+  </td>
+  </tr>
+   <tr>
+    <td>400</td>
+    <td>Agreement for charge is in wrong status to refund (if accepting and pending)</td>
+    <td>
+
+```json
+{
+
+  "status_code": 102,
+  "status_text": "Cannot modify an agreement which is not active.",
+
+}
+```
+  </td>
+  </tr>
+   <tr>
+    <td>400</td>
+    <td>Charge is in wrong status to refund (not charged/captured or partially captured)</td>
+    <td>
+
+```json
+{
+
+  "status_code": 103,
+  "status_text": "Invalid status.",
+
+}
+```
+  </td>
+  </tr>
+   <tr>
+    <td>400</td>
+    <td>Trying to refund higher amount than what is charged/captured</td>
+    <td>
+
+```json
+{
+
+  "status_code": 104,
+  "status_text": "Invalid amount, you cannot refund more than the remaining value on this charge/payment.",
+
+}
+```
+
+</td>
+</tr>
+</table>
+
 
 ## **5. App :iphone:**
 
@@ -242,6 +351,6 @@ We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-07-18.*
+*Published 2023-06-05. Updated 2023-07-19.*
 
 
