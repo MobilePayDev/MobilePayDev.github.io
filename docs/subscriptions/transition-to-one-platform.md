@@ -207,9 +207,12 @@ If you already want to reintegrate (even if this is not mandatory) you can start
 
 **4. Does the Recurring API have callbacks?**
 
-We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is polling. Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included with the Launch date.
+We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is [polling](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/). Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included with the Launch date.
+* [Webhooks technical documentation](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/)
+* [Webhooks endpoint documentation](https://developer.vippsmobilepay.com/api/webhooks/)
+* [Polling guidelines](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/)
 
-
+ 
 **5. Will I be able to continue testing my integration in Sandbox?**
 
 Yes, you will be able to test your integration to Subscriptions APIs through merchant test environment on the new platform. There are some actions that you will have to do:
