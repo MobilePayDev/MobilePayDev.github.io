@@ -53,7 +53,7 @@ Current agreements where amount is not stated will be depicted as agreements wit
 
 ⚙️ Tech: API endpoint: `POST /api/providers/{providerId}/agreements` or `PATCH /api/providers/{providerId}/agreements/{agreementId}` Parameter `amount`
 
-<img src="https://github.com/MobilePayDev/MobilePayDev.github.io/blob/main/static/img/vmpamount.png" width=30% height=30%>
+<img src="https://github.com/MobilePayDev/MobilePayDev.github.io/blob/main/static/img/vmpamount.png" width="30%" height="30%">
 
 *Draft version of agreement screen, not final version.*
 
