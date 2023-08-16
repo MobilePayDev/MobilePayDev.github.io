@@ -192,7 +192,7 @@ The flow will be processed for the number of days that can be specified in `grac
         "payment_date" : "2016-09-29",
         "status" : "Rejected",
         "status_text" : "Rejected by user.",
-        "status_code" : "50001",
+        "status_code" : 50001,
         "external_id" : "SFPMT134560",
         "payment_type" : "Regular"
     }
