@@ -148,18 +148,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
 
 ⚙️ Tech:
 
-<table>
-  <tr>
-    <th>HTTP status</th>
-    <th>Description</th>
-    <th>Examples</th>
-  </tr>
-  <tr>
-    <td>200</td>
-    <td>Charge was refunded</td>
-    <td>
-
-```json
+```json title="HTTP 200 - Charge was refunded"
 {
   "id": "d5f51369-5c3b-4246-958e-9aefeb2ac5fe",
   "amount": 500,
@@ -168,87 +157,40 @@ There will be no callbacks anymore for refunds. All needed information will be h
 }
 ```
 
-</td>
-  </tr>
-  <tr>
-    <td>500</td>
-    <td>Something went wrong while trying to refund charge/payment</td>
-    <td>
-
-```json
+```json title="HTTP 500 - Something went wrong while trying to refund charge/payment"
 {
   "status_code": 100,
-  "status_text": "Something went wrong while refunding charge",
+  "status_text": "Something went wrong while refunding charge"
 }
 ```
   
-  </td>
-  </tr>
-   <tr>
-    <td>400</td>
-    <td>Charge is too old to refund (older than 365 days)</td>
-    <td>
-
-```json
+``` json title="HTTP 400 - Charge is too old to refund (older than 365 days)"
 {
-
   "status_code": 101,
-  "status_text": "Cannot refund a charge older than 365 days",
-
+  "status_text": "Cannot refund a charge older than 365 days"
 }
 ```
-
-  </td>
-  </tr>
-   <tr>
-    <td>400</td>
-    <td>Agreement for charge is in wrong status to refund (if accepting and pending)</td>
-    <td>
-
-```json
+ 
+``` json title="HTTP 400 - Agreement for charge is in wrong status to refund (if accepting and pending)"
 {
-
   "status_code": 102,
-  "status_text": "Cannot modify an agreement which is not active.",
-
+  "status_text": "Cannot modify an agreement which is not active"
 }
 ```
 
-  </td>
-  </tr>
-   <tr>
-    <td>400</td>
-    <td>Charge is in wrong status to refund (not charged/captured or partially captured)</td>
-    <td>
-
-```json
+```json title="HTTP 400 - Charge is in wrong status to refund (not charged/captured or partially captured)"
 {
-
   "status_code": 103,
-  "status_text": "Invalid status.",
-
+  "status_text": "Invalid status"
 }
 ```
 
-  </td>
-  </tr>
-   <tr>
-    <td>400</td>
-    <td>Trying to refund higher amount than what is charged/captured</td>
-    <td>
-
-```json
+```json title="HTTP 400 - Trying to refund higher amount than what is charged/captured"
 {
-
   "status_code": 104,
-  "status_text": "Invalid amount, you cannot refund more than the remaining value on this charge/payment.",
-
+  "status_text": "Invalid amount, you cannot refund more than the remaining value on this charge/payment"
 }
 ```
-
-</td>
-</tr>
-</table>
 
 ## **5. App :iphone:**
 
