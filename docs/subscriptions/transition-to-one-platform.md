@@ -53,7 +53,11 @@ Current agreements where amount is not stated will be depicted as agreements wit
 
 ⚙️ Tech: API endpoint: `POST /api/providers/{providerId}/agreements` or `PATCH /api/providers/{providerId}/agreements/{agreementId}` Parameter `amount`
 
-<img src="https://github.com/MobilePayDev/MobilePayDev.github.io/blob/main/static/img/vmpamount.png" width="30%" height="30%">
+[<img
+  src={require('/img/vmpamount.png').default}
+  alt="WMP Amount"
+  width="250"
+/>](/img/vmpamount.png)
 
 *Draft version of agreement screen, not final version.*
 
@@ -154,10 +158,10 @@ There will be no callbacks anymore for refunds. All needed information will be h
     <td>200</td>
     <td>Charge was refunded</td>
     <td>
-     
+
 ```json
 {
-  "id" : "d5f51369-5c3b-4246-958e-9aefeb2ac5fe",
+  "id": "d5f51369-5c3b-4246-958e-9aefeb2ac5fe",
   "amount": 500,
   "external_id": "AA3F5Y6G4",
   "status_callback_url": "https://merchantProviderUrl.com/refund"
@@ -193,6 +197,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
 
 }
 ```
+
   </td>
   </tr>
    <tr>
@@ -208,6 +213,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
 
 }
 ```
+
   </td>
   </tr>
    <tr>
@@ -223,6 +229,7 @@ There will be no callbacks anymore for refunds. All needed information will be h
 
 }
 ```
+
   </td>
   </tr>
    <tr>
@@ -242,7 +249,6 @@ There will be no callbacks anymore for refunds. All needed information will be h
 </td>
 </tr>
 </table>
-
 
 ## **5. App :iphone:**
 
@@ -352,5 +358,3 @@ If you have any questions or need assistance with managing your recurring paymen
 
 
 *Published 2023-06-05. Updated 2023-07-19.*
-
-
