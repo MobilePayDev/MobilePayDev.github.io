@@ -87,7 +87,7 @@ Parameter: `disable_notification_management`, `notifications_on` will be ignored
 This one is a bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check the whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From the moment we transition to One Platform, we will stop storing these requests. This will not impact payment validation or payment execution logic. You will still get callbacks about payment status changes.
 
 ### 2.5 Recurring payment amount validation
-After the Launch we are changing our payment validation rules and introducing amount validation. If you have an agreement with an amount, your charge amount can be bigger, but just up to 5 times more. For example, if the agreement states that the monthly amount is 10 krona or euro, you can't charge 100 krona or euro.
+After the Launch we are changing our payment validation rules and introducing amount validation. If you have an agreement with an amount, your charge amount can be bigger, but just up to 5 times more. For example, if the agreement states that the monthly amount is 10 krona or euro, you can't charge 100 krona or euro. If such payment will be present in payment batch request - we will send a callback with status "Declined", status code 60001 and status text "Payment amount is 5 times higher than agreement amount.".
 
 :star: **Recommendation:** Please update the agreement amount to a suitable value through `PATCH/api/providers/{providerId}/agreements/{agreementId}`.
 
