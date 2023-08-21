@@ -1863,7 +1863,7 @@ paths:
               $ref: >-
                 #/components/schemas/RestAPI.Models.Payments.UpdatePaymentAttachmentRequest
       responses:
-        '200':
+        '204':
           description: Attachment created
         '400':
           description: Something's wrong with request body.
