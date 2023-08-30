@@ -16,7 +16,7 @@ Please take a moment to familiarize yourself with the upcoming changes and how t
 ## VAT number required for all merchants
 
 Before December 2023, please use our API to provide correct VAT number for both new and existing merchants if you’re not already doing so.
-For new merchants, the vatNumber field will become mandatory for the Create merchant endpoint: `POST /v1/merchants`
+For new merchants, the vatNumber field will be required for the Create merchant endpoint: `POST /v1/merchants`
 For existing merchants, you can use Update merchant `PATCH /api/v1/merchants/{merchantId}` to provide vatNumber.
 
 If you do not update the VAT number of your existing merchants they will still exist after the transition to one platform, but you will not be able to initiate payments. You must then delete them and create a new merchant. 
