@@ -60,6 +60,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     get:
+      deprecated: true
       summary: fetch a list of payments
       tags:
         - Payments
@@ -381,6 +382,7 @@ paths:
               schema:
                 $ref: '#/components/schemas/ErrorResponse'
     get:
+      deprecated: true
       summary: fetch a list of refunds
       tags:
         - Refunds
