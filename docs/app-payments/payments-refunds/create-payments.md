@@ -83,6 +83,7 @@ Property `state` can have these values:
 - **cancelledBySystem** - no user interactions with payment were made in 5-10 minutes after creation, so our automated job cancelled it.
 - **cancelledByUser** - user cancelled payment inside MobilePay app.
 
+<!---
 ## Get all payments
 
 There's also a possibility to list all your payments in pages. Multiple searching criteria can be used as query parameters.
@@ -115,7 +116,7 @@ curl https://api.mobilepay.dk/v1/payments \
   ]
 }
 ```
-
+--->
 ## Capture payment
 
 After you receive a notification that payment was reserved or you retrieve payment and it has a state `reserved`, you must capture payment in order to end the flow and receive the money with a nightly transfer.

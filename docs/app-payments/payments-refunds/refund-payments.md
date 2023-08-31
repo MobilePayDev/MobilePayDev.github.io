@@ -53,7 +53,7 @@ curl https://api.mobilepay.dk/v1/refunds/{refundid} \
   -H 'Authorization: Bearer {API_KEY}' \
   -H 'Content-Type: application/json'
 ```
-
+<!---
 Or to see all refunds.
 
 ```bash title="List refunds"
@@ -79,3 +79,4 @@ curl https://api.mobilepay.dk/v1/refunds \
   ]
 }
 ```
+--->
