@@ -256,7 +256,7 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 ## **8. Callbacks**
 **1. Callbacks will be sent from new IP address**
-If you are dependant on IP address which is used to send callbacks, don't hesitate to contact BIS team --email-- and they will help you out
+If you are dependant on IP address which is used to send callbacks, don't hesitate to contact BIS team developer@mobilepay.dk and they will help you out.
 
 **2. Callback changes**
 We will stop sending our old callbacks for One-off payment expiration and rejection by user. Instead in both cases merchants will receive this callback:
@@ -291,7 +291,7 @@ Also merchants will start to receive callbacks for merchants initiated cancellat
 }
 ]
 
-Above callbacks will also be sent for each pending recurring payment which is cancelled due to user or merchant initiated cancellation of agreement or cancellation of pending one off payment, due to merchant initiated cancellation of pending agreement.
+Above callbacks will be sent for each pending recurring payment which is cancelled due to user or merchant initiated cancellation of agreement or cancellation of pending one off payment, due to merchant initiated cancellation of pending agreement.
 
 ## **9. FAQ** 
 
