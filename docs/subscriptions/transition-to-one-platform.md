@@ -345,4 +345,8 @@ We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-07-19.*
+*Published 2023-06-05. Updated 2023-09-04.*
+
+## **11. Changelog**
+
+2023-09-04 Added section 8. Callbacks
