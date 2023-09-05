@@ -255,7 +255,7 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
 ## **8. Callbacks**
-**1. Callbacks will be sent from new IP address**
+**1. From the Nordic Wallet Launch callbacks will be sent from new IP address**
 
 If you are dependant on IP address which is used to send callbacks, don't hesitate to contact BIS team developer@mobilepay.dk and they will help you out.
 
@@ -345,8 +345,8 @@ We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-09-04.*
+*Published 2023-06-05. Updated 2023-09-05.*
 
 ## **11. Changelog**
 
-2023-09-04 Added section 8. Callbacks
+2023-09-05 Added section 8. Callbacks
