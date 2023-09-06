@@ -254,8 +254,54 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
+## **8. Callbacks**
+**1. From the Nordic Wallet Launch callbacks will be sent from new IP address**
 
-## **8. FAQ** 
+If you are dependant on IP address which is used to send callbacks, don't hesitate to contact BIS team developer@mobilepay.dk and they will help you out.
+
+**2. Callback changes**
+
+We will stop sending our old callbacks for One-off payment expiration and rejection by user. Instead in both cases merchants will receive this callback:
+
+```
+[
+{
+  "agreement_id": "d230e533-dceb-483b-a9ce-cf99e7851d0e",
+  "payment_id": "86957d1c-00f5-4b9c-bd29-dd2e8de082d8",
+  "amount": "54.00",
+  "currency": "DKK",
+  "payment_date": "2023-08-24",
+  "payment_type": "OneOff",
+  "status": "Cancelled",
+  "status_text": "Payment cancelled.",
+  "status_code": 60003,
+  "external_id": "ed40a2e7-a14b-44c8-a35d-ec015e6d31f0"
+}
+]
+```
+
+Also merchants will start to receive callbacks for merchants initiated cancellation of recurring payment in the following format:
+
+```
+[
+{
+  "agreement_id": "d230e533-dceb-483b-a9ce-cf99e7851d0e",
+  "payment_id": "86957d1c-00f5-4b9c-bd29-dd2e8de082d8",
+  "amount": "54.00",
+  "currency": "DKK",
+  "payment_date": "2023-08-24",
+  "payment_type": "Regular",
+  "status": "Cancelled",
+  "status_text": "Payment cancelled.",
+  "status_code": 60003,
+  "external_id": "ed40a2e7-a14b-44c8-a35d-ec015e6d31f0"
+}
+]
+```
+
+Above callbacks will be sent for each pending recurring payment which is cancelled due to user or merchant initiated cancellation of agreement or cancellation of pending one off payment, due to merchant initiated cancellation of pending agreement.
+
+## **9. FAQ** 
 
 **1. Do I need to reintegrate now to the new solution, APIs?**
 
@@ -293,10 +339,14 @@ Yes, you will be able to test your integration to Subscriptions APIs through mer
 2. Mapp to new merchant, user and sales unit (provider) IDs. New IDs will be created in 2023Q4.
 3. You will have to integrate to new and much simpler Access Token API for merchant test environment. Old MobilePay issued access and refresh tokens for sandbox will stop working after the Launch of Nordic Wallet. Client IDs and client secrets for calling new Access Token API will be ready in 2023Q4. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
-## **9. Developer Support**
+## **10. Developer Support**
 
 We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-07-19.*
+*Published 2023-06-05. Updated 2023-09-05.*
+
+## **11. Changelog**
+
+2023-09-05 Added section 8. Callbacks
