@@ -255,9 +255,9 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
 ## **8. Callbacks**
-**1. From the Nordic Wallet Launch callbacks will be sent from new IP address**
+**1. From the Nordic Wallet Launch callbacks will be sent from new DNS address**
 
-If you are dependant on IP address which is used to send callbacks, don't hesitate to contact BIS team developer@mobilepay.dk and they will help you out.
+Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
 
 **2. Callback changes**
 
@@ -350,3 +350,4 @@ If you have any questions or need assistance with managing your recurring paymen
 ## **11. Changelog**
 
 2023-09-05 Added section 8. Callbacks
+2023-09-07 Added callback sending DNS address list
