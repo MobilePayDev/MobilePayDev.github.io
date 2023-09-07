@@ -261,7 +261,9 @@ Please make sure that these DNS addresses are allowed through your firewall http
 
 **2. Callback changes**
 
-We will stop sending our old callbacks for One-off payment expiration and rejection by user. Instead in both cases merchants will receive this callback:
+We will stop sending our old callbacks for one-off payment expiration and rejection by users. 
+
+Instead we will start sending new callback for both recurring and one-off payment:
 
 ```
 [
@@ -279,9 +281,6 @@ We will stop sending our old callbacks for One-off payment expiration and reject
 }
 ]
 ```
-
-Also merchants will start to receive callbacks for merchants initiated cancellation of recurring payment in the following format:
-
 ```
 [
 {
@@ -299,7 +298,14 @@ Also merchants will start to receive callbacks for merchants initiated cancellat
 ]
 ```
 
-Above callbacks will be sent for each pending recurring payment which is cancelled due to user or merchant initiated cancellation of agreement or cancellation of pending one off payment, due to merchant initiated cancellation of pending agreement.
+Above callbacks will be sent in following cases:
+
+* For each pending recurring payment which is cancelled due to users' initiated cancellation of agreement
+* For each pending recurring payment which is cancelled due to merchants' initiated cancellation of agreement
+* For merchants' initiated cancellation of pending recurring payment
+* For each one-off payment expiration
+* For each one-off payment rejection by user
+* For each cancellation of pending one-off payment, due to merchants' initiated cancellation of pending agreement
 
 ## **9. FAQ** 
 
