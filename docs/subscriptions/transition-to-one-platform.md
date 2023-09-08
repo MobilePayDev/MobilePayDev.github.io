@@ -255,13 +255,15 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
 ## **8. Callbacks**
-**1. From the Nordic Wallet Launch callbacks will be sent from new IP address**
+**1. From the Nordic Wallet Launch callbacks will be sent from new DNS address**
 
-If you are dependant on IP address which is used to send callbacks, don't hesitate to contact BIS team developer@mobilepay.dk and they will help you out.
+Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
 
 **2. Callback changes**
 
-We will stop sending our old callbacks for One-off payment expiration and rejection by user. Instead in both cases merchants will receive this callback:
+We will stop sending our old callbacks for one-off payment expiration and rejection by users. 
+
+Instead we will start sending new callback for both recurring and one-off payment:
 
 ```
 [
@@ -279,9 +281,6 @@ We will stop sending our old callbacks for One-off payment expiration and reject
 }
 ]
 ```
-
-Also merchants will start to receive callbacks for merchants initiated cancellation of recurring payment in the following format:
-
 ```
 [
 {
@@ -299,7 +298,14 @@ Also merchants will start to receive callbacks for merchants initiated cancellat
 ]
 ```
 
-Above callbacks will be sent for each pending recurring payment which is cancelled due to user or merchant initiated cancellation of agreement or cancellation of pending one off payment, due to merchant initiated cancellation of pending agreement.
+Above callbacks will be sent in following cases:
+
+* For each pending recurring payment which is cancelled due to users' initiated cancellation of agreement
+* For each pending recurring payment which is cancelled due to merchants' initiated cancellation of agreement
+* For merchants' initiated cancellation of pending recurring payment
+* For each one-off payment expiration
+* For each one-off payment rejection by user
+* For each cancellation of pending one-off payment, due to merchants' initiated cancellation of pending agreement
 
 ## **9. FAQ** 
 
@@ -350,3 +356,4 @@ If you have any questions or need assistance with managing your recurring paymen
 ## **11. Changelog**
 
 2023-09-05 Added section 8. Callbacks
+2023-09-07 Added callback sending DNS address list
