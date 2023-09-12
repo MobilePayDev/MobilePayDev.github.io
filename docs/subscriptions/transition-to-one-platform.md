@@ -1,7 +1,7 @@
 ---
 sidebar_position: 13
 ---
-# Transition to One Platform
+# 💙🧡 Transition to One Platform
  
 
 **Our journey to create the ultimate payment wallet in the Nordics**
