@@ -32,12 +32,6 @@ The refund description will no longer be shown to users or be present when query
 When using endpoint [`GET /v1/payments`](https://developer.mobilepay.dk/api/app-payments#tag/Payments/operation/get-payments-list) the RedirectURI response field will be cut off after the first 100 characters when querying the list of payments. 
 Note: This will not affect the payment initiation, only when retrieving the list of payments.
 
-### No management of payment points
-We will migrate all existing payments to the new platform so they are ready to be used through the facade after the launch of one platform. After the launch it will not be possible for merchants to manage the payment points. This includes logo, payment point name and change of bank account. All changes must be done prior to the launch.
-
-### No new merchants
-It will not be possible to onboard any new merchants or integrators to the facade. All new merchants and integrators must use the [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/). 
-
 ### UserSimulation endpoint
 The request to the userSimulation endpoint will be simplified. 
 ```bash title="Old MobilePay request"
