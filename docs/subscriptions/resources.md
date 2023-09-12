@@ -2,7 +2,7 @@
 pagination_next: null
 ---
 
-# Important Resources 🔗
+# Migration info 🔗
 
 
 
