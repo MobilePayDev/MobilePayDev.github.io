@@ -227,6 +227,10 @@ As a MobilePay app user, the user can be informed about payment issues, dependin
 
 It means that you can not withdraw the money from the customer's payment card, and then the payment gets suspended. There can be various reasons why it can be suspended. If the problem persists, and there are not sufficient funds on the customer's card, or/and if the card is expired or/and blocked, then the payment will fail. Suspended is a status internally for MobilePay to mark hiccupped payments, which is why it is not a part of the callback table above.
 
+`Suspended` will occur as soon as we have attempted 1 time - and that attempt has failed. It's fine that the Merchant use 'suspended' themselves to, in some way, nudge the customers to 'do something.' But it is primarily MobilePay's task - which we handle through push notifications and SMS.
+
+
+
 Solution: MobilePay sends the customer a push notification, if there was an error with the card, in order to catch errors. If there were insufficient funds on the customer's card, we also push the customer to execute the payment manually. The Merchant should contact the customer and have it cleared out with the customer.
 
 We also send sms messages each day at 10:00 in Denmark and 11:00 in Finland for customers who have suspended payments (one sms for each payment).
