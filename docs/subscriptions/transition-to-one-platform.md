@@ -346,9 +346,18 @@ Yes, you will have the opportunity to test your integration with the Subscriptio
 3. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
 **6. How will I find data about my payments?**
-There is a legal requirement stating that we must have data available for at least 13 months. So now, we are  figuring out how we can smartest move the older data.  Possibilities are [Portal](https://portal.vipps.no/register) and integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/)
 
-**7. Will users get a new app?**
+We will migrate 3 years of historical data. You will be able to access that data though:
+1. API GET calls.
+3. Though [Merchant Portal](https://portal.vipps.no/register)
+4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/)
+
+**7. I am using Transaction Reportin API, what should I do?**
+
+Sadly, we are not builing any facade for Transaction reporting API. We are asking you to reintegrate to alternative solution [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). We are sorry if this feature was important to you, your satisfaction is our top priority, and we are here to support you throughout this process.
+
+**8. Will users get a new app?**
+
 Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform.
 
 ## **10. Developer Support**
@@ -357,9 +366,9 @@ We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
-*Published 2023-06-05. Updated 2023-09-05.*
 
 ## **11. Changelog**
 
 2023-09-05 Added section 8. Callbacks
 2023-09-07 Added callback sending DNS address list
+2023-09-20 FAQ "How will I find data about my payments?" updated; FAQ "I am using Transaction Reportin API, what should I do?" added
