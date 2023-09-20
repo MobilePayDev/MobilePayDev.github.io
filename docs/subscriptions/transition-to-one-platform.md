@@ -345,6 +345,9 @@ Yes, you will be able to test your integration to Subscriptions APIs through mer
 2. Mapp to new merchant, user and sales unit (provider) IDs. New IDs will be created in 2023Q4.
 3. You will have to integrate to new and much simpler Access Token API for merchant test environment. Old MobilePay issued access and refresh tokens for sandbox will stop working after the Launch of Nordic Wallet. Client IDs and client secrets for calling new Access Token API will be ready in 2023Q4. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
+**6. How will I find data about my payments?**
+There is a legal requirement stating that we must have data available for at least 13 months. So now, we are  figuring out how we can smartest move the older data.  Possibilities are [Portal](https://portal.vipps.no/register) and integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/)
+
 ## **10. Developer Support**
 
 We're Here to Help!
