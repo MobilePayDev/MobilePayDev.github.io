@@ -22,28 +22,28 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 :triangular_flag_on_post: **Important information - A smooth transition to the new solution**
 
 * **No Need to Reintegrate:** You can breathe a sigh of relief knowing that there is no need to reintegrate into the new solution. Your existing Subscriptions APIs will continue to work seamlessly until the end of 2024, and possibly even longer. We understand the value of maintaining your current setup.
-* **Changes to Functionality:** While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process.
+* **Changes to Functionality:** While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly till Nordic Wallet Launch 🚀. We strive to keep you informed every step of the way and support you throughout this process.
 
 Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
 ## **1. Agreements**
 ### 1.1 Agreement request expiration period
-We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After launch, we will reduce the agreement signing period to a maximum of 5 minutes.
+We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After Nordic Wallet Launch, we will reduce the agreement signing period to a maximum of 5 minutes.
 
-:star: **Recommendation:** If you want to give more than 5 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on a paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions (wink)
+:star: **Recommendation:** If you want to give more than 5 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on a paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions 😉
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
-Parameter: `expiration_timeout_minutes`. The current range is from 1 to 181440 minutes, the default was 5 minutes. After release, the range will be from 1 to 5 minutes.
+Parameter: `expiration_timeout_minutes`. The current range is from 1 to 181440 minutes, the default was 5 minutes. After Nordic Wallet Launch, the range will be from 1 to 5 minutes.
 
 ### 1.2 Agreement deletion validations
-No one likes when an agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the moment we transition to One Platform, this feature will be unavailable.  
+No one likes when an agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the Nordic Wallet Launch, this feature will be unavailable.  
 
 :star: **Recommendation:** We will help you to provide the best payment experience and keep the customer happy so that canceling an agreement will not come into his mind. 
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
-Parameter: `retention_period_hours` will be ignored from the moment we transition to One Platform.
+Parameter: `retention_period_hours` will be ignored from the Nordic Wallet Launch.
 
 ### 1.3 Agreements without amount
 
@@ -65,33 +65,33 @@ Current agreements where amount is not stated will be depicted as agreements wit
 
 ### 2.1 Payments visible 8 days in advance
 
-We want to empower you with transparency and flexibility when it comes to your recurring payments. Currently, your customer can view upcoming payments in the app up to 8 days in advance, regardless of whether the payment was sent 30 or 60 days earlier. However, from the moment we transition to One Platform, we're excited to announce that customers will be able to see your upcoming payment 35 days in advance if you send it that early.
+We want to empower you with transparency and flexibility when it comes to your recurring payments. Currently, your customer can view upcoming payments in the app up to 8 days in advance, regardless of whether the payment was sent 30 or 60 days earlier. However, from Nordic Wallet Launch, we're excited to announce that customers will be able to see your upcoming payment 35 days in advance if you send it that early.
 
 :star: **Recommendation:** If 35 days of payment visibility in the app is too long for you, we recommend sending a payment closer to the due date. 
 
 ### 2.2 Update existing payment
 
-Error in the payment you sent to your customer?  From the moment we transition to One Platform, we ask you to update existing payments in a slightly different way. 
+Error in the payment you sent to your customer?  From Nordic Wallet Launch, we ask you to update existing payments in a slightly different way. 
 
 :star: **Recommendation:** We recommend that you cancel existing payments and create brand-new ones in cases when payment information needs to be updated.
 
-⚙️ Tech: API endpoint: `PATCH:/api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId}` will be unavailable from the moment we transition to One Platform.
+⚙️ Tech: API endpoint: `PATCH:/api/providers/{providerId}/agreements/{agreementId}/paymentrequests/{paymentId}` will be unavailable from Nordic Wallet Launch.
 
 ### 2.3 Push message for the user
 
-Currently, your customers are receiving push messages 1 day in advance about upcoming recurring payments. You have the option to manage this notification through Subscription APIs. From the moment we transition to One Platform, we are removing this push notification for your customers, and push management will stop being relevant, too. But do not worry, customers choosing to get those push messages will be informed about executed payments instead; in addition to notifications about all failed payments where they need to change a card, increase funds, etc. 
+Currently, your customers are receiving push messages 1 day in advance about upcoming recurring payments. You have the option to manage this notification through Subscription APIs. From Nordic Wallet Launch, we are removing this push notification for your customers, and push management will stop being relevant, too. But do not worry, customers choosing to get those push messages will be informed about executed payments instead; in addition to notifications about all failed payments where they need to change a card, increase funds, etc. 
 
 :star: **Recommendation:** Sit back and relax, we will make sure that all payments are executed successfully. 
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
-Parameter: `disable_notification_management`, `notifications_on` will be ignored from the moment we transition to One Platform.
+Parameter: `disable_notification_management`, `notifications_on` will be ignored from Nordic Wallet Launch.
 
 ### 2.4 Invalid recurring payments
-This one is a bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check the whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From the moment we transition to One Platform, we will stop storing these requests. This will not impact payment validation or payment execution logic. You will still get callbacks about payment status changes.
+This one is a bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check the whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From Nordic Wallet Launch, we will stop storing these requests. This will not impact payment validation or payment execution logic. You will still get callbacks about payment status changes.
 
 ### 2.5 Recurring payment amount validation
-After the Launch we are changing our payment validation rules and introducing amount validation. If you have an agreement with an amount, your charge amount can be bigger, but just up to 5 times more. For example, if the agreement states that the monthly amount is 10 krona or euro, you can't charge 100 krona or euro. If such payment will be present in payment batch request - we will send a callback with status "Declined", status code 60001 and status text "Payment amount is 5 times higher than agreement amount.".
+After the Nordic Wallet Launch we are changing our payment validation rules and introducing amount validation. If you have an agreement with an amount, your charge amount can be bigger, but just up to 5 times more. For example, if the agreement states that the monthly amount is 10 krona or euro, you can't charge 100 krona or euro. If such payment will be present in payment batch request - we will send a callback with status "Declined", status code 60001 and status text "Payment amount is 5 times higher than agreement amount.".
 
 :star: **Recommendation:** Please update the agreement amount to a suitable value through `PATCH/api/providers/{providerId}/agreements/{agreementId}`.
 
@@ -105,13 +105,13 @@ One-off payments in Subscriptions are used in 3 different ways:
 * [Flow 2](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-2---one-off-payment-on-an-existing-agreement): Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement.
 * [Flow 3](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-3---one-off-with-auto-reserve): Merchants can send One-Off payment, which MobilePay will attempt to automatically reserve, without user’s confirmation
 
-We reevaluated all our product packages, and usage of this feature and we decided, that from the moment we transition to One Platform, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We are planning to keep flows 1 and 3 in the Subscriptions product and also in the Recurring product. Basically, all payments which are merchant initiated (MIT) and do not require Strong Customer Authentication (SCA) stay in Subscriptions and also Recurring. All payments where SCA is needed will be in ePayment product. 
+We reevaluated all our product packages, and usage of this feature and we decided, that from Nordic Wallet Launch, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We are planning to keep flows 1 and 3 in the Subscriptions product and also in the Recurring product. Basically, all payments which are merchant initiated (MIT) and do not require Strong Customer Authentication (SCA) stay in Subscriptions and also Recurring. All payments where SCA is needed will be in ePayment product. 
 
 :star: **Recommendation:** If you want to continue charging your customers with payments where SCA is needed, please reintegrate these types of payments to Vipps MobilePay ePayment.
 
 ### 3.2 One-off expiration period
 
-Similarly, as with agreements, we are aligning the expiration period for one-off payments. From the moment we transition to One Platform, the maximum expiration timeout will be 5 minutes. 
+Similarly, as with agreements, we are aligning the expiration period for one-off payments. From Nordic Wallet Launch, the maximum expiration timeout will be 5 minutes. 
 
 :star: **Recommendation:**
 * Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes in agreements [here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#11-agreement-request-expiration-period).
@@ -120,7 +120,7 @@ Similarly, as with agreements, we are aligning the expiration period for one-off
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`  `POST:/api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`
 
-Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, the default was 5 minutes. After the moment we transition to One Platform, the range will be from 1 to 5 minutes.
+Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, the default was 5 minutes. After Nordic Wallet Launch, the range will be from 1 to 5 minutes.
 
 ### 3.3 Description of a one-off with a new agreement
 
@@ -136,13 +136,13 @@ Parameter: `one_off_payment.description`
 
 ### 4.1 Refund up to 365 days
 Currently, you can refund payments that were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
-The new period will be applied only to payments that will be executed on the new platform. 
+The new period will be applied only to payments that will be executed on the new platform after Nordic Wallet Launch. 
 
 ### 4.2 Refunds description
 In Subscriptions, Refunds had no Description, but in the new Recurring setup, this field is present and mandatory. We will prefill it with a simple "Refund" for you.
 
 ### 4.3 Refund responses
-There will be no callbacks anymore for refunds. All needed information will be handled through API response. 
+There will be no callbacks anymore for refunds after Nordic Wallet Launch. All needed information will be handled through API response. 
 
 :star: **Recommendation:** If you use refunds review planned API responses and adjust your integration to handle it. 
 
@@ -202,7 +202,7 @@ We will be streamlining the user interface of the app to provide a more focused 
 
 ### 5.2 Merchant information on agreements
 
-Currently, you are able to show your contact information in every agreement for your customer in the agreement Info tab: Website, Customer Support, Self Service, FAQ. From the moment we transition to One Platform, this contact information will no longer be displayed for the user. 
+Currently, you are able to show your contact information in every agreement for your customer in the agreement Info tab: Website, Customer Support, Self Service, FAQ. From Nordic Wallet Launch, this contact information will no longer be displayed for the user. 
 
 :star:**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description if this is necessary. 
 
@@ -212,17 +212,17 @@ Read more [here](https://developer.mobilepay.dk/docs/subscriptions/invoice#payme
 
 ### 6.1 PDF generation
  
-Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, payment details, or PDF file generation from payment details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from the moment we transition to One Platform.
+Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, payment details, or PDF file generation from payment details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from Nordic Wallet Launch.
 
 :star:**Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to your customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
 
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
-Parameter: `generate_pdf` : true will be ignored from the moment we transition to One Platform.
+Parameter: `generate_pdf` : true will be ignored from Nordic Wallet Launch.
 
 ### 6.2 External URL
 
-Currently, we are providing the possibility for you to upgrade your Subscription payment with extra attachments like External URL. Sadly we most likely will not make it to re-introduce this feature on One Platform 😢. We are really sorry if this will cause any inconvenience for you, but we promise to work on it as soon as possible and introduce the feature right after Launch. 
+Currently, we are providing the possibility for you to upgrade your Subscription payment with extra attachments like External URL. Sadly we most likely will not make it to re-introduce this feature from the moment of Nordic Wallet Launch 😢. We are really sorry if this will cause any inconvenience for you, but we promise to work on it as soon as possible and introduce the feature right after Launch. 
 
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
@@ -230,7 +230,7 @@ Parameter: `external_attachment_url`
 
 ### 6.3 Attachement details
 
-Similarly, as with External URL, we most likely will not make it to re-introduce this feature on One Platform. We are really sorry if this will cause any inconvenience for you, but we promise to work on it as soon as possible and introduce the feature right after Launch. 
+Similarly, as with External URL, we most likely will not make it to re-introduce this feature from the moment of Nordic Wallet Launch. We are really sorry if this will cause any inconvenience for you, but we promise to work on it as soon as possible and introduce the feature right after Launch. 
 
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
@@ -242,15 +242,15 @@ Parameter: `attachment_details`
 
 **For merchants**
 
-* If you are using or are planning to start using Subscriptions on the MobilePay platform before transitioning to One Platform. All good, nothing to do for you, just make sure you complete the authorization setup before transitioning to One Platform.
-* If by any chance you will need to restart the consent flow, e.g. get a new refresh token after we transit to One Platform, you will have to do that already on One Platform.
+* If you are using or are planning to start using Subscriptions on the MobilePay platform before transitioning to One Platform. All good, nothing to do for you, just make sure you complete the authorization setup before Nordic Wallet Launch.
+* If by any chance you will need to restart the consent flow, e.g. get a new refresh token after Nordic Wallet Launch, you will have to do that already though new Vipps MobilePay platform.
 * If you are planning to start using Recurring on the New Vipps MobilePay platform, just integrate into the new setup from the beginning. 
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/).
 
 **For integrators/partners**
 * If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to the new setup from the beginning.
-* If you are an existing integrator in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. We are sorry, but from the moment we transition to One Platform, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work.
+* If you are an existing partner in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. We are sorry, but from the Nordic Wallet Launch, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work.
 
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
@@ -261,7 +261,7 @@ Please make sure that these DNS addresses are allowed through your firewall http
 
 **2. Callback changes**
 
-We will stop sending our old callbacks for one-off payment expiration and rejection by users. 
+We will stop sending our old callbacks for one-off payment expiration and rejection by users from Nordic Wallet Launch. 
 
 Instead we will start sending new callback for both recurring and one-off payment:
 
@@ -331,7 +331,7 @@ If you already want to reintegrate (even if this is not mandatory) you can start
 
 **4. Does the Recurring API have callbacks?**
 
-We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is [polling](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/). Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included with the Launch date.
+We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is [polling](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/). Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included in Nordic Wallet Launch.
 * [Webhooks technical documentation](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/)
 * [Webhooks endpoint documentation](https://developer.vippsmobilepay.com/api/webhooks/)
 * [Polling guidelines](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/)
@@ -349,7 +349,7 @@ Yes, you will have the opportunity to test your integration with the Subscriptio
 There is a legal requirement stating that we must have data available for at least 13 months. So now, we are  figuring out how we can smartest move the older data.  Possibilities are [Portal](https://portal.vipps.no/register) and integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/)
 
 **7. Will users get a new app?**
-Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform
+Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform.
 
 ## **10. Developer Support**
 
