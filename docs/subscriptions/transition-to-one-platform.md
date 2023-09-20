@@ -339,14 +339,17 @@ We are  working on implementing webhooks for Recurring API, but at the moment, t
  
 **5. Will I be able to continue testing my integration in Sandbox?**
 
-Yes, you will be able to test your integration to Subscriptions APIs through merchant test environment on the new platform. There are some actions that you will have to do:
+Yes, you will have the opportunity to test your integration with the Subscriptions APIs through the merchant test environment on the new platform. However, there are some necessary actions you will need to take:
 
-1. You will have to recreate your test data. All test data(agreements, payments, refunds etc.) that was created before will not be migrated from Subscriptions sandbox to Recurring merchant test.
-2. Mapp to new merchant, user and sales unit (provider) IDs. New IDs will be created in 2023Q4.
-3. You will have to integrate to new and much simpler Access Token API for merchant test environment. Old MobilePay issued access and refresh tokens for sandbox will stop working after the Launch of Nordic Wallet. Client IDs and client secrets for calling new Access Token API will be ready in 2023Q4. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
+1. You will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
+2. You will need to map to the new merchant, user, and sales unit (provider) IDs. New IDs will be generated in 2023Q4.
+3. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
 **6. How will I find data about my payments?**
 There is a legal requirement stating that we must have data available for at least 13 months. So now, we are  figuring out how we can smartest move the older data.  Possibilities are [Portal](https://portal.vipps.no/register) and integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/)
+
+**7. Will users get a new app?**
+Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform
 
 ## **10. Developer Support**
 
