@@ -311,8 +311,7 @@ Above callbacks will be sent in following cases:
 
 **1. Do I need to reintegrate now to the new solution, APIs?**
 
-No, you don't need to reintegrate to the new solution right now. We are building Facade which will forward all your integration messages to the new solution and return needed responses. The only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly.
-
+No, you don't need to reintegrate to the new solution right now. We are building Facade which will forward all your integration messages to the new solution and return needed responses. The only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly. 
 
 **2. How will the migration of data work? In sandbox and production?**
 
@@ -322,6 +321,8 @@ We will migrate 3 years of production data to the new environment. Sandbox data 
 **3. When can I integrate to the Recurring API?**
 
 If you already want to reintegrate (even if this is not mandatory) you can start now! More information [here](https://www.mobilepaygroup.com/partner/new-platform).
+
+It is still the same team as before that is here to assist you with technical questions. Just send an email to developer@vippsmobilepay.com, and we'll be happy to help! 😊
 
 - [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
 
@@ -361,6 +362,10 @@ Sadly, we are not builing any facade for Transaction reporting API. We are askin
 **8. Will users get a new app?**
 
 Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform.
+
+**9. What cool features are there ahead?**
+There are several exciting features on the horizon. For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
+
 
 ## **10. Developer Support**
 
