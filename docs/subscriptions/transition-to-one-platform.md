@@ -336,6 +336,8 @@ We are  working on implementing webhooks for Recurring API, but at the moment, t
 * [Webhooks endpoint documentation](https://developer.vippsmobilepay.com/api/webhooks/)
 * [Polling guidelines](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/)
 
+Callbacks will work on the facade API. We will also release callbacks (called webhooks) on the new platfrom too.
+
  
 **5. Will I be able to continue testing my integration in Sandbox?**
 
@@ -352,7 +354,7 @@ We will migrate 3 years of historical data. You will be able to access that data
 3. Though [Merchant Portal](https://portal.vipps.no/register)
 4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/)
 
-**7. I am using Transaction Reportin API, what should I do?**
+**7. I am using Transaction Reporting API, what should I do?**
 
 Sadly, we are not builing any facade for Transaction reporting API. We are asking you to reintegrate to alternative solution [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). We are sorry if this feature was important to you, your satisfaction is our top priority, and we are here to support you throughout this process.
 
