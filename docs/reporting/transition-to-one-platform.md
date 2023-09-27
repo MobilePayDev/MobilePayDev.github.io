@@ -2,7 +2,7 @@
 sidebar_position: 15
 ---
 
-# Transition to One Platform 🧡💙
+# 🧡💙 Transition to One Platform 
 
 **One Platform – More Reach**
 
