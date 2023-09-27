@@ -12,6 +12,6 @@ On November 1st, 2022, the merger between MobilePay and Norwegian Vipps was appr
 
 We will need to replace the current MobilePay Reporting with the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). This transition will require a new integration.
 
-We will consistently provide updates and information to all our existing integrators and merchants regarding the new integration. For information, refer to [Report API]( https://developer.vippsmobilepay.com/docs/APIs/report-api/).   
+We will consistently provide updates and information to you all regarding the new integration. For information, refer to [Report API]( https://developer.vippsmobilepay.com/docs/APIs/report-api/).   
 
 For technical changes related to the Report API integration, please visit the [Report API migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#point-of-sale-vs-epayment). We will promptly update these pages with additional information as soon as we have more details.
