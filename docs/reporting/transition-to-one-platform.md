@@ -1,0 +1,19 @@
+---
+sidebar_position: 15
+---
+
+# Transition to One Platform
+
+**One Platform – More Reach**
+
+On November 1st, 2022, the merger between MobilePay and Norwegian Vipps was approved. We are now fully committed to transitioning towards a unified platform to become the premier and most widely used payment wallet in the Nordics, both for our valued customers and partners. By early 2024, our ambition is to have a single app, branded as MobilePay in Denmark and Finland, and as Vipps in Norway. We aim to unite under one platform boasting more than 11 million users and over 400,000 merchants across the Nordics.
+
+## Shifting to Report API in Early 2024
+
+We will need to replace the current MobilePay Reporting  with the Report API. This transition will necessitate a new integration.
+
+## New Integration
+
+We will continuously provide updates and information to all our existing integrators regarding the new integration. For detailed information about the solution replacing MobilePay Reporting, please refer to the [here](https://www.mobilepaygroup.com/partner/new-platform) link.  
+
+For technical changes related to the Report API integration, please visit the [REPORT API migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#point-of-sale-vs-epayment). We will promptly update these pages with additional information as soon as we have more details. 
