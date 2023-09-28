@@ -1,5 +1,16 @@
 # MobilePay Reporting API
 
+
+# Changes
+
+:::caution Change of Reporting API in 2024
+
+Please notice that as part of the merger between MobilePay and Norwegian Vipps, we will consolidate products on one joint platform. 
+[See more here]([/docs/pos/transition-to-one-platform](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/))
+
+:::
+
+
 Reporting API allows you to query all transactions taking place at any of your MobilePay payment locations (payment points).
 
 The main objective is to make it easier for you to do reconciliation on your side. We at MobilePay will provide you a detailed list of transactions (payments, fees, refunds) to help with that.
@@ -12,13 +23,7 @@ Reporting API lets you fetch transactions from these products offered by MobileP
 - MyShop
 - PoS
 
-:::
-
-## Migration from transaction reporting API
-
-Reporting API is a newer version of Transaction Reporting API, more about the old API you can find [here](https://mobilepaydev.github.io/MobilePay-TransactionReporting-API/).
-
-Also, you can use this guide on [how to migrate](/docs/reporting/migrate-from-v1v2) from the old API.
+::: 
 
 ## How does it work
 
