@@ -6,7 +6,7 @@
 :::caution Change of Reporting API in 2024
 
 Please notice that as part of the merger between MobilePay and Norwegian Vipps, we will consolidate products on one joint platform. 
-[See more here]([/docs/pos/transition-to-one-platform](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/))
+[See more here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/)
 
 :::
 
