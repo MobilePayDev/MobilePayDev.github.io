@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## 2023
 
-#### 02 October 2023 - total_price_including_vat is no longer mandatory
+#### 02 October 2023 - Amount limit increased for DK merchants
 
 For DK merchants [payment](/docs/subscriptions/subscriptions-payments#request-parameters) amount limit is increased from 60000 to 300000.
 
