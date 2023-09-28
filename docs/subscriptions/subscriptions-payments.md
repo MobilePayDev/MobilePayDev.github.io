@@ -43,7 +43,8 @@ Once created, Recurring Payment Request can be updated (until it expires or is e
 - We recommend that you send the payments before 00:00:00 so that you are sure that they will be included in our payment processing.
 - The MobilePay user will be able to see Payments in the app from 8 days to 1 day before the due date depending on when you sent the payment.
 - If a payment changes status e.g. declined by users, a callback on the specific payment will be made to `/payment_status_callback_url`
-- On the due date we process the payments starting from 02:00. If some payments weren't successfully completed, we will then try again approx. every 2 hours. When `grace_period_days` field is not set or is set to __1__, we will keep retrying to complete the payment up until 23:59 of the same day. When `grace_period_days` is set to more than __1__, we will be trying to complete the payment for the specified number of days.
+- On the due date we process the payments starting from 02:00 local time. If some payments weren't successfully completed, we will then try again at 06:00 local time and couple of more time per day. Read more about hiccups in [Failed payments](https://github.com/MobilePayDev/MobilePayDev.github.io/edit/main/docs/subscriptions/subscriptions-payments.md#failed-payments). Payment execution might take coupul of hours depending on payment load. We aim to complete all payment execution till 06:00 local time. Most heavy days is first and last days of the month, if possible we recommend you to choose other due date for your payment execution.
+- When `grace_period_days` field is not set or is set to __1__, we will keep retrying to complete the payment up until 23:59 of the same day. When `grace_period_days` is set to more than __1__, we will be trying to complete the payment for the specified number of days.
 - User will get a notification of approx. at 08:30 that we cannot process the payment and that they can complete it manually (by swiping). Notification will be sent every day at the same time for the whole grace period if `grace_period_days` is specified.
 - At 23:59 we will decline the transaction and revert back with a callback  
 - Subscription payments are collected automatically, so there is no need for the customer to swipe.
@@ -158,9 +159,9 @@ You will receive a callback if certain business rules are not met and payment is
 
 The process for failed payments the DueDate is as follows:
 
--06:00 First hiccup is run at 06:00 on the due date. Once done, a notification about completion is returned. Merchant is informed about successful payments and user about failed payment.
--13:30 Second hiccup is run at 13:30 on the due date. Once done, a notification about completion is returned. Merchant is informed about successful payments and user about failed payment.
--18:00 20:00 22:30 - hiccups keep running throughout the day. Once done, a notification about completion is returned. Merchant is informed about successful payments and user about failed payment.
+- 06:00 First hiccup is run at 06:00 on the due date. Once done, a notification about completion is returned. Merchant is informed about successful payments and user about failed payment.
+- 13:30 Second hiccup is run at 13:30 on the due date. Once done, a notification about completion is returned. Merchant is informed about successful payments and user about failed payment.
+- 18:00 20:00 22:30 23:40 - hiccups keep running throughout the day. Once done, a notification about completion is returned. Merchant is informed about successful payments and user about failed payment.
 
 :::note
 The flow will be processed for the number of days that can be specified in `grace_period_days`, otherwise the flow will be processed once. Merchants will be notified about failed payments on the last day of the grace period.
