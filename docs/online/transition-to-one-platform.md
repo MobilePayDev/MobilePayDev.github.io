@@ -21,6 +21,8 @@ For existing merchants, you can use Update merchant `PATCH /api/v1/merchants/{me
 
 If you do not update the VAT number of your existing merchants they will still exist after the transition to one platform, but you will not be able to initiate payments. You must then delete them and create a new merchant. 
 
+For sole props. not having a VAT no. you can use an alternative number for example your own unique merchant id.
+
 ## Feature changes
 During Q1 2024 - once we fully consolidate our platforms – the following endpoints/features will stop working for MobilePay Online.
 For a smooth transition, we recommend reviewing the changes and consider updating your integration accordingly if you are using any of these.
