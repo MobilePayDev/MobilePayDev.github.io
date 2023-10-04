@@ -131,4 +131,4 @@ ENG: When you pay with MobilePay Checkout, your purchase will be sent to the pic
 DK: Når du betaler med MobilePay Checkout, sendes dit køb til den afhentningssted du har valgt i butikken
 :::
 
-[Return to documentation](/docs/online/features/checkout)
+[Return to documentation](/checkout)
