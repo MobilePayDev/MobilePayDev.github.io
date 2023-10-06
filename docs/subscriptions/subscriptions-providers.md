@@ -43,7 +43,7 @@ For example, if a single merchant has several brands, then each brand would be a
 
 Before requesting payments a status callback URL must be set by calling `PATCH /api/providers/{providerId}`:
 
-```json title="ayment status callback URL"
+```json title="Payment status callback URL"
 [
     {
         "value": "https://merchant.dk/notifications_from_mobilepay/payments",
