@@ -91,7 +91,7 @@ Parameter: `disable_notification_management`, `notifications_on` will be ignored
 This one is a bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check the whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From Nordic Wallet Launch, we will stop storing these requests. This will not impact payment validation or payment execution logic. You will still get callbacks about payment status changes.
 
 ### 2.5 Recurring payment amount validation
-After the Nordic Wallet Launch we are changing our payment validation rules and introducing amount validation. If you have an agreement with an amount, your charge amount can be bigger, but just up to 5 times more. For example, if the agreement states that the monthly amount is 10 krona or euro, you can't charge 100 krona or euro. If such payment will be present in payment batch request - we will send a callback with status "Declined", status code 60001 and status text "Payment amount is 5 times higher than agreement amount.".
+After the Nordic Wallet Launch we are changing our payment validation rules and introducing amount validation. If you have an agreement with an amount, your charge amount can be bigger, but just up to 5 times more. For example, if the agreement states that the monthly amount is 10 krona or euro, you can't charge 100 krona or euro. If such payment will be present in payment batch request - we will send a callback with status "Declined", status code 70001 and status text "Payment amount is 5 times higher than agreement amount.".
 
 :star: **Recommendation:** Please update the agreement amount to a suitable value through `PATCH/api/providers/{providerId}/agreements/{agreementId}`.
 
@@ -299,7 +299,7 @@ Instead we will start sending new callback for both recurring and one-off paymen
   "payment_type": "OneOff",
   "status": "Cancelled",
   "status_text": "Payment cancelled.",
-  "status_code": 60003,
+  "status_code": 70003,
   "external_id": "ed40a2e7-a14b-44c8-a35d-ec015e6d31f0"
 }
 ]
@@ -315,7 +315,7 @@ Instead we will start sending new callback for both recurring and one-off paymen
   "payment_type": "Regular",
   "status": "Cancelled",
   "status_text": "Payment cancelled.",
-  "status_code": 60003,
+  "status_code": 70003,
   "external_id": "ed40a2e7-a14b-44c8-a35d-ec015e6d31f0"
 }
 ]
@@ -403,3 +403,4 @@ If you have any questions or need assistance with managing your recurring paymen
 2023-09-07 Added callback sending DNS address list
 2023-09-20 FAQ "How will I find data about my payments?" updated; FAQ "I am using Transaction Reportin API, what should I do?" added
 2023-10-05 New section "Settlements" with 3 new items added 
+2023-10-09 Changed callback status codes from "6000..." to "7000..."
