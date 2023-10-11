@@ -257,32 +257,32 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 ## **8. Settlements**
 
 
-**8.1. From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements**
+### 8.1. From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
 
 Currently you were able to select how to receive settlements: daily or instant. After Nordic wallet launch all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settleded separately (not bundled up) and you will receive it in 2 days after payment was executed. 
 
 :star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after Nordic wallet launch and select Single payment settlement functionality. 
 
 
-**8.2. Settlement time changes**
+### 8.2. Settlement time changes
 
 Currently your money is settled 1 day after payments were executed, after Nordic Wallet Launch we will settle you money bit latter - 2 days after payments were executed. 
 
 :star:**Recommendation:** We are sorry if this feature was important to you, your feedback is very important for us, let us know if you have a need to get settlements faster.
 
 
-**8.3. Gross Settlements**
+### 8.3. Gross Settlements
 
 Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After Nordic Wallet Launch we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
 
 
-## **9. Callbacks**
+## **9. Other**
 
-**9.1. From the Nordic Wallet Launch callbacks will be sent from new DNS address**
+### 9.1. From the Nordic Wallet Launch callbacks will be sent from new DNS address
 
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
 
-**9.2. Callback changes**
+### 9.2. Callback changes for one-offs
 
 We will stop sending our old callbacks for one-off payment expiration and rejection by users from Nordic Wallet Launch. 
 
@@ -329,6 +329,30 @@ Above callbacks will be sent in following cases:
 * For each one-off payment expiration
 * For each one-off payment rejection by user
 * For each cancellation of pending one-off payment, due to merchants' initiated cancellation of pending agreement
+
+### 9.3. Error messages
+
+We are making adjustments to error responses, specifically related to `error_description.message` and `error_description.error_type`. Some values will remain unchanged, some will be modified, and new validations will be introduced. Some messages may be less explicit than before, as they are generated directly from the backend and not specifically tailored for exact app branding (MobilePay or Vipps) responses.
+
+Example:
+```
+{
+   "error": "BadRequest",
+   "error_description": {
+      "message": "The field 'phoneNumber' has an invalid format for a phone number, provided value: '44444444444444'",
+      "error_type": "InputError",
+      "correlation_id": "ef928510-ae19-4fe7-ae1e-76b43de202f5",
+      "error_code": null,
+      "localized_message": "A technical error occurred."
+   }
+}
+```
+
+Some field names, like `mobile_phone_number`, will undergo changes; for instance, it will be referred to as `phoneNumber`. If clarity is needed, refer to [Recurring documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) for field specifications.
+
+
+:star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
+
 
 ## **FAQ** 
 
@@ -404,3 +428,4 @@ If you have any questions or need assistance with managing your recurring paymen
 2023-09-20 FAQ "How will I find data about my payments?" updated; FAQ "I am using Transaction Reportin API, what should I do?" added
 2023-10-05 New section "Settlements" with 3 new items added 
 2023-10-09 Changed callback status codes from "6000..." to "7000..."
+2023-10-11 Section 9 renamed to Other and new topic added 9.3 Error messages. 
