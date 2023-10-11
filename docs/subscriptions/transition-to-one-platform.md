@@ -281,6 +281,8 @@ Currently we are sending you gross settlements (full amount of the payments) and
 **9.1. From the Nordic Wallet Launch callbacks will be sent from new DNS address**
 
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
+Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
+
 
 **9.2. Callback changes**
 
@@ -404,3 +406,4 @@ If you have any questions or need assistance with managing your recurring paymen
 2023-09-20 FAQ "How will I find data about my payments?" updated; FAQ "I am using Transaction Reportin API, what should I do?" added
 2023-10-05 New section "Settlements" with 3 new items added 
 2023-10-09 Changed callback status codes from "6000..." to "7000..."
+2023-10-11 Clarification, that OAuth2 token retrieval requests will be sent from new DNS address
