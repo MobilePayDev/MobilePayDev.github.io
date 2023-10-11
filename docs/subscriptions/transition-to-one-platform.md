@@ -271,7 +271,7 @@ Currently your money is settled 1 day after payments were executed, after Nordic
 :star:**Recommendation:** We are sorry if this feature was important to you, your feedback is very important for us, let us know if you have a need to get settlements faster.
 
 
-### 8.3. Gross Settlements**
+### 8.3. Gross Settlements
 
 Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After Nordic Wallet Launch we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
 
@@ -428,3 +428,4 @@ If you have any questions or need assistance with managing your recurring paymen
 2023-09-20 FAQ "How will I find data about my payments?" updated; FAQ "I am using Transaction Reportin API, what should I do?" added
 2023-10-05 New section "Settlements" with 3 new items added 
 2023-10-09 Changed callback status codes from "6000..." to "7000..."
+2023-10-11 Section 9 renamed to Other and new topic added 9.3 Error messages. 
