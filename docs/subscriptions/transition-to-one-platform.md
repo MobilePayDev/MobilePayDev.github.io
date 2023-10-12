@@ -275,13 +275,15 @@ Currently your money is settled 1 day after payments were executed, after Nordic
 
 Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After Nordic Wallet Launch we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
 
+## **9. Callbacks for reintegrated merchants**
+
+
 
 ## **9. Other**
 
 ### 9.1. From the Nordic Wallet Launch callbacks will be sent from new DNS address
 
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
-Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
 ### 9.2. Callback changes for one-offs
 
@@ -331,7 +333,57 @@ Above callbacks will be sent in following cases:
 * For each one-off payment rejection by user
 * For each cancellation of pending one-off payment, due to merchants' initiated cancellation of pending agreement
 
-### 9.3. Error messages
+### 9.3. Callbacks for reintegrated merchants
+
+If you are planning to reintegrate, you will have to start using new callback(webhook) solution https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/
+By default even after reintegration you will receive webhooks in the old MobilePay format, but there is no possibility to change callback url or authentication method.
+It is important to notice that after integrating towards new webhook solution you will be receiving both new and old webhooks. You have to notify us about integration to webhooks, in order for us to turn of old mobilepay callbacks for you.
+
+These are the available fields of payment webhook we will be sending
+
+| Field name       | Type              | Description                                                          | Possible values                        |
+|------------------|-------------------|----------------------------------------------------------------------|----------------------------------------|
+| agreementId      | string            | Id of an agreement                                                   | "agr_kFW4chk"                          |
+| chargeExternalId | nullable string   | Merchant provided externalId of payment                                         | "ExtId123"                             |
+| chargeId         | string            | Id of payment                                                        | "82ce990f-d08a-448c-bd26-ee6be8418d06" |
+| amount           | number            | Amount of payment in cents                                           | 300                                    |
+| chargeType       | enum              | Indicates if it is recurring, or agreement's initial one off payment | "RECURRING", "INITIAL"                 |
+| eventType        | enum              | Indicates what has happened to a charge                              | Values provided in a table below       |
+| currency         | enum              | Currency of payment                                                  | "DKK", "NOK", "EUR"                    |
+| occurred         | ISO 8601 UTC date | When change has occurred                                             | 2023-10-10T13:30:36.079765975Z         |
+| amountCaptured   | number            | Amount of payment that was captured                                  | 100                                    |
+| amountCanceled   | number            | Amount of payment that was canceled                                  | 200                                    | 
+| amountRefunded   | number            | Amount of payment that was refunded                                  | 100                                    | 
+
+These are the possible event types in payment callback
+
+| Event type                     | Description                                                                                                                              |
+|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
+| "recurring.charge-reserved.v1"        | Payment was reserved. Event is not sent for recurring payments with transation type "DIRECT_CAPTURE" |
+| "recurring.charge-captured.v1"        | Payment was fully or partially captured                                                              |
+| "recurring.charge-canceled.v1"        | Payment was fully or partially cancelled                                                             |
+| "recurring.charge-failed.v1"          | Payment failed and will no longer be retried                                                         |
+| "recurring.charge-creation-failed.v1" | Payment failed to be created. Sent when merchants                         
+                                         are using charge batch creation endpoint and cahrges are created asynchronously                       |
+
+This is an example of new payment callback
+```
+{
+  "agreementId": "agr_kFW4chk",
+  "chargeExternalId": "extId",
+  "chargeId": "82ce990f-d08a-448c-bd26-ee6be8418d06",
+  "amount": 300,
+  "chargeType": "RECURRING",
+  "eventType": "recurring.charge-canceled.v1",
+  "currency": "NOK",
+  "occurred": "2023-10-10T13:30:36.079765975Z",
+  "amountCaptured": 0,
+  "amountCanceled": 300,
+  "amountRefunded": 0
+}
+```
+
+### 9.4. Error messages
 
 We are making adjustments to error responses, specifically related to `error_description.message` and `error_description.error_type`. Some values will remain unchanged, some will be modified, and new validations will be introduced. Some messages may be less explicit than before, as they are generated directly from the backend and not specifically tailored for exact app branding (MobilePay or Vipps) responses.
 
@@ -430,4 +482,3 @@ If you have any questions or need assistance with managing your recurring paymen
 2023-10-05 New section "Settlements" with 3 new items added 
 2023-10-09 Changed callback status codes from "6000..." to "7000..."
 2023-10-11 Section 9 renamed to Other and new topic added 9.3 Error messages. 
-2023-10-11 Clarification, that OAuth2 token retrieval requests will be sent from new DNS address
