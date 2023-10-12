@@ -415,9 +415,15 @@ If you have any questions or need assistance with managing your recurring paymen
 ## **Changelog**
 
 2023-09-05 Added section 8. Callbacks
+
 2023-09-07 Added callback sending DNS address list
+
 2023-09-20 FAQ "How will I find data about my payments?" updated; FAQ "I am using Transaction Reportin API, what should I do?" added
+
 2023-10-05 New section "Settlements" with 3 new items added 
+
 2023-10-09 Changed callback status codes from "6000..." to "7000..."
+
 2023-10-11 Section 9 renamed to Other and new topic added 9.3 Error messages. 
+
 2023-10-11 Clarification, that OAuth2 token retrieval requests will be sent from new DNS address
