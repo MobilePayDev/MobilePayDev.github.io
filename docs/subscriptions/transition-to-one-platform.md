@@ -361,7 +361,7 @@ These are the possible event types in payment callback
 | "recurring.charge-canceled.v1"        | Payment was fully or partially cancelled                                                             |
 | "recurring.charge-failed.v1"          | Payment failed and will no longer be retried                                                         |
 | "recurring.charge-creation-failed.v1" | Payment failed to be created. Sent when merchants                         
-                                         are using charge batch creation endpoint and cahrges are created asynchronously                       |
+                                         are using charge batch creation endpoint and charges are created asynchronously                       |
 
 This is an example of new payment callback
 ```
