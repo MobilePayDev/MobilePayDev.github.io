@@ -341,7 +341,7 @@ These are the available fields of payment webhook we will be sending
 | Field name       | Type              | Description                                                          | Possible values                        |
 |------------------|-------------------|----------------------------------------------------------------------|----------------------------------------|
 | agreementId      | string            | Id of an agreement                                                   | "agr_kFW4chk"                          |
-| chargeExternalId | nullable string   | Merchant provided externalId of payment                                         | "ExtId123"                             |
+| chargeExternalId | nullable string   | Merchant provided externalId of payment                              | "ExtId123"                             |
 | chargeId         | string            | Id of payment                                                        | "82ce990f-d08a-448c-bd26-ee6be8418d06" |
 | amount           | number            | Amount of payment in cents                                           | 300                                    |
 | chargeType       | enum              | Indicates if it is recurring, or agreement's initial one off payment | "RECURRING", "INITIAL"                 |
@@ -360,8 +360,8 @@ These are the possible event types in payment callback
 | "recurring.charge-captured.v1"        | Payment was fully or partially captured                                                              |
 | "recurring.charge-canceled.v1"        | Payment was fully or partially cancelled                                                             |
 | "recurring.charge-failed.v1"          | Payment failed and will no longer be retried                                                         |
-| "recurring.charge-creation-failed.v1" | Payment failed to be created. Sent when merchants                         
-                                         are using charge batch creation endpoint and charges are created asynchronously                       |
+| "recurring.charge-creation-failed.v1" | Payment failed to be created. Sent when merchants                                                    |
+                                        | are using charge batch creation endpoint and charges are created asynchronously                      |
 
 This is an example of new payment callback
 ```
