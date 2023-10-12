@@ -275,15 +275,12 @@ Currently your money is settled 1 day after payments were executed, after Nordic
 
 Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After Nordic Wallet Launch we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
 
-## **9. Callbacks for reintegrated merchants**
-
-
-
 ## **9. Other**
 
 ### 9.1. From the Nordic Wallet Launch callbacks will be sent from new DNS address
 
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
+Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
 ### 9.2. Callback changes for one-offs
 
@@ -482,3 +479,4 @@ If you have any questions or need assistance with managing your recurring paymen
 2023-10-05 New section "Settlements" with 3 new items added 
 2023-10-09 Changed callback status codes from "6000..." to "7000..."
 2023-10-11 Section 9 renamed to Other and new topic added 9.3 Error messages. 
+2023-10-11 Clarification, that OAuth2 token retrieval requests will be sent from new DNS address
