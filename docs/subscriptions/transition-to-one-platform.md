@@ -379,6 +379,48 @@ This is an example of new payment callback
 }
 ```
 
+These are the available fields of agreement webhook we will be sending
+
+| Field name          | Type              | Description                                                                      | Possible values                        |
+|---------------------|-------------------|----------------------------------------------------------------------------------|----------------------------------------|
+| agreementId         | string            | Id of an agreement                                                               | "agr_kFW4chk"                          |
+| agreementUUID       | UUID              | Id of an agreement                                                               | "82ce990f-d08a-448c-bd26-ee6be8418d06" |
+| agreementExternalId | nullable string   | Merchant provided externalId of agreement                                        | "ExtId123"                             |
+| eventType           | enum              | Indicates what has happened to an agreement                                      | Values provided in a table below       |
+| occurred            | ISO 8601 UTC date | When change has occurred                                                         | 2023-10-10T13:30:36.079765975Z         |
+| actor               | nullable enum     | Indicates who has initiated action. Applicable only for agreementStopped webhook | "MERCHANT", "USER"                     |
+
+These are the possible event types in agreement callback
+
+| Event type                            | Description                                          |
+|---------------------------------------|------------------------------------------------------|
+| "recurring.agreement-activated.v1" | User has accepted agreement                             |
+| "recurring.agreement-rejected.v1"  | User has rejected agreement                             |
+| "recurring.agreement-stopped.v1"   | Agreement was stopped either by merchant either by user |  
+| "recurring.agreement-expired.v1"   | Agreement has expired                                   |                                                    
+
+
+This is an examples of new agreement callback
+```
+{
+  "agreementId": "agr_hXbXJUN",
+  "occurred": "2023-10-11T09:51:04.562829303Z",
+  "agreementExternalId": null,
+  "eventType": "recurring.agreement-expired.v1",
+  "agreementUUID": "c81bf516-7972-488e-bbf1-146dcd8592f9",
+  "actor": null
+}
+
+{
+  "agreementId": "agr_hXbXJUN",
+  "occurred": "2023-10-11T09:51:04.562829303Z",
+  "agreementExternalId": null,
+  "eventType": "recurring.agreement-stopped.v1",
+  "agreementUUID": "c81bf516-7972-488e-bbf1-146dcd8592f9",
+  "actor": "MERCHANT"
+}
+```
+
 ### 9.4. Error messages
 
 We are making adjustments to error responses, specifically related to `error_description.message` and `error_description.error_type`. Some values will remain unchanged, some will be modified, and new validations will be introduced. Some messages may be less explicit than before, as they are generated directly from the backend and not specifically tailored for exact app branding (MobilePay or Vipps) responses.
