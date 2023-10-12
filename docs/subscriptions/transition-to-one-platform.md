@@ -354,14 +354,13 @@ These are the available fields of payment webhook we will be sending
 
 These are the possible event types in payment callback
 
-| Event type                     | Description                                                                                                                              |
-|--------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
-| "recurring.charge-reserved.v1"        | Payment was reserved. Event is not sent for recurring payments with transation type "DIRECT_CAPTURE" |
-| "recurring.charge-captured.v1"        | Payment was fully or partially captured                                                              |
-| "recurring.charge-canceled.v1"        | Payment was fully or partially cancelled                                                             |
-| "recurring.charge-failed.v1"          | Payment failed and will no longer be retried                                                         |
-| "recurring.charge-creation-failed.v1" | Payment failed to be created. Sent when merchants                                                    |
-                                        | are using charge batch creation endpoint and charges are created asynchronously                      |
+| Event type                            | Description                                                                                                                        |
+|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| "recurring.charge-reserved.v1"        | Payment was reserved. Event is not sent for recurring payments with transation type "DIRECT_CAPTURE"                               |
+| "recurring.charge-captured.v1"        | Payment was fully or partially captured                                                                                            |
+| "recurring.charge-canceled.v1"        | Payment was fully or partially cancelled                                                                                           |
+| "recurring.charge-failed.v1"          | Payment failed and will no longer be retried                                                                                       |
+| "recurring.charge-creation-failed.v1" | Payment failed to be created. Sent when merchants  are using charge batch creation endpoint and charges are created asynchronously |                                                    
 
 This is an example of new payment callback
 ```
