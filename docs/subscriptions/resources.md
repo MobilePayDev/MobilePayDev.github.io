@@ -6,39 +6,50 @@ pagination_next: null
 
 
 
-## New Wallet Launch :rocket:  
+## Nordic Wallet Launch :rocket:  
 
 We're steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. Feel free to explore the following links for more information, and share them with your collegues.  
 
+**Refiew your option for migration in decision tree**
+
+[![decision tree](/img/Subs_reintegration_treemap.png)](/img/Subs_reintegration_treemap.png)
+
+
 
 ## Migration Information: 
-Familiarize yourself with what migration entails, so you are prepared for the migration process. 
-
-- [New Platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform and read more about the benefits and improvements that you can expect from the New Wallet Launch. 
+Familiarize yourself with what migration entails, so you are prepared for the migration process.
 
 - [Overall Migration Information](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide): Learn about the overall migration, timeline, and guidelines.  :calendar:
+  
+- [Subscriptions Migration (full reintegration)](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API. This is relevant for existing merchants and partner who wants to do full reintegration.
 
-- [MobilePay Subscriptions Changes](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform): Get an overview of changes in functionality and recommendations for the existing MobilePay Subscriptions API and how you best can transition to One Platform. 
+- [Prepare for the facade period](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform): Get an overview of changes in functionality and recommendations for the existing MobilePay Subscriptions API and how you best can prepare for facade period without full reintegration.
+  
 
 
-## Technical Links :link:
 
-Familiarize yourself with the Vipps MobilePay API platform. Visit the website, read our documentation to understand our capabilities and features. 
+## New Platform Resources
 
-- [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the API reference for the New Recurring API.   
+Familiarize yourself with the Vipps MobilePay API platform. Visit the website, read our documentation to understand our capabilities and features. This is relevant for new merchants and partner or for existing ones who wants to do full reintegration.
 
-- [NEW Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
+- [New Platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform and read more about the benefits and improvements that you can expect from the New Wallet Launch.
 
-- [Subscriptions Migration](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API.  
-
+- [NEW Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.
+  
+- [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the API reference for the New Recurring API.      
 
 - [Merchant Test](https://www.mobilepaygroup.com/partner/merchant-test): Register here to get credentials for the Test environment. Please note that this is the test environment of Vipps MobilePay.
+
+
+  
 
 ## Stay updated 
 
 - [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All notable changes to the Recurring API.
 
 - [Subscribe to newsetter](https://developer.vippsmobilepay.com/docs/newsletters/): Technical newsletter, with important information about the APIs.
+
+  
 
 ## MobilePay Resources
 
