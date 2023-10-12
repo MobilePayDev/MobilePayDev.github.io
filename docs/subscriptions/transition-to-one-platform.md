@@ -283,7 +283,6 @@ Currently we are sending you gross settlements (full amount of the payments) and
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
 Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
-
 ### 9.2. Callback changes for one-offs
 
 We will stop sending our old callbacks for one-off payment expiration and rejection by users from Nordic Wallet Launch. 
