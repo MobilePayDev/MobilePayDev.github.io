@@ -11,7 +11,9 @@ The following card types are allowed:
 | Visa electron | ELEC-DEBIT |
 | Mastercard credit | MC-CREDIT |
 | Mastercard debit | MC-DEBIT |
-| Maestro | MTRO-DEBIT |
+| ~~Maestro~~* | MTRO-DEBIT |
 | Visa credit | VISA-CREDIT |
 | Visa debit | VISA-DEBIT |
 | Dankort | DANKORT |
+
+*Maestro is deprecated and should not be used
