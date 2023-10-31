@@ -18,6 +18,6 @@ Take a look at the API documentation. You'll find it in the [API references menu
 
 Once you have obtained credentials via zip file, set a redirect URI and received test data, you can start implementing the OpenID Connect flow. Read more about OpenID Connect and the process [here](/docs/subscriptions/authentication).
 
-Currently, we utilize IPs in these ranges **212.93.32.0/19 185.218.228.0/22 and 165.225.194.* **
+Currently, we utilize IPs in these ranges **212.93.32.0/19 185.218.228.0/22 and 165.225.194.0/24 **
 
 As an external party, you might need to modify your firewall rules to allow traffic from us from 212.93.32.0/19 and 185.218.228.0/22 instead. Otherwise our traffic may be blocked, and our services stop working.
