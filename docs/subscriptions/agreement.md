@@ -244,8 +244,6 @@ Please note:  user-redirect is primarily for the visual user experience. The mer
 
 #### When the user cancels an Active agreement
 
-:::note
-If `cancel-redirect`url is set on an agreement, then this flow is not relevant, because agreement cancellation is not possible in the MobilePay app.
-:::note
+
 
 ![Cancel agreement](/img/subs-CancelAgreement_User.png)

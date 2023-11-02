@@ -1,13 +1,13 @@
 ---
 sidebar_position: 13
 ---
-# 💙🧡 Transition to One Platform
+# 💙🧡 Preparation for facade period
  
 
-**Our journey to create the ultimate payment wallet in the Nordics**
+This page contans all the changes that will be introduced to **existing integrations** on Nordic Wallet Launch 🚀. You **do not need to reintegrate** to new Recurring APIs, your existing Subscriptions APIs will continue to work until the end of 2024 (and possibly even longer) though facade we biuld. We understand the value of maintaining your current setup. While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process.
 
+Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
-On November 1st, 2022, we received the exciting news that the merger between MobilePay and Vipps was officially approved! This is a significant milestone for us, and we're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. By early 2024, we're aiming to launch a single, unified app: MobilePay in Denmark and Finland, and Vipps in Norway. This unified platform will bring together more than 11 million users and over 400,000 merchants across the Nordics, ensuring that you have a unified payment experience throughout. 
 
 **Timeline for existing subscriptions merchants and partners**
 
@@ -15,16 +15,6 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 [![timeline](/img/timeline.png)](/img/timeline.png)
 
 
-**Uniting Subscriptions with Vipps MobilePay Recurring**
-
- We want to ensure that your transition to the new One Platform is as smooth and effortless as possible. As part of this transition, we will be merging the Subscriptions product with Vipps MobilePay Recurring product. Rest assured, we have carefully evaluated the usage of all Subscription features and we will ensure that the most commonly used features will continue to exist. To provide you with a simple, lightweight, and valuable product, any features that were not utilized will be closed. Our aim is to make your experience hassle-free and enjoyable.
- 
-:triangular_flag_on_post: **Important information - A smooth transition to the new solution**
-
-* **No Need to Reintegrate:** You can breathe a sigh of relief knowing that there is no need to reintegrate into the new solution. Your existing Subscriptions APIs will continue to work seamlessly until the end of 2024, and possibly even longer. We understand the value of maintaining your current setup.
-* **Changes to Functionality:** While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly till Nordic Wallet Launch 🚀. We strive to keep you informed every step of the way and support you throughout this process.
-
-Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
 ## **1. Agreements**
 ### 1.1 Agreement request expiration period
@@ -91,7 +81,7 @@ Parameter: `disable_notification_management`, `notifications_on` will be ignored
 This one is a bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check the whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From Nordic Wallet Launch, we will stop storing these requests. This will not impact payment validation or payment execution logic. You will still get callbacks about payment status changes.
 
 ### 2.5 Recurring payment amount validation
-After the Nordic Wallet Launch we are changing our payment validation rules and introducing amount validation. If you have an agreement with an amount, your charge amount can be bigger, but just up to 5 times more. For example, if the agreement states that the monthly amount is 10 krona or euro, you can't charge 100 krona or euro. If such payment will be present in payment batch request - we will send a callback with status "Declined", status code 60001 and status text "Payment amount is 5 times higher than agreement amount.".
+After the Nordic Wallet Launch we are changing our payment validation rules and introducing amount validation. If you have an agreement with an amount, your charge amount can be bigger, but just up to 5 times more. For example, if the agreement states that the monthly amount is 10 krona or euro, you can't charge 100 krona or euro. If such payment will be present in payment batch request - we will send a callback with status "Declined", status code 70001 and status text "Payment amount is 5 times higher than agreement amount.".
 
 :star: **Recommendation:** Please update the agreement amount to a suitable value through `PATCH/api/providers/{providerId}/agreements/{agreementId}`.
 
@@ -254,12 +244,36 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
-## **8. Callbacks**
-**1. From the Nordic Wallet Launch callbacks will be sent from new DNS address**
+## **8. Settlements**
+
+
+### 8.1. From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
+
+Currently you were able to select how to receive settlements: daily or instant. After Nordic wallet launch all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settleded separately (not bundled up) and you will receive it in 2 days after payment was executed. 
+
+:star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after Nordic wallet launch and select Single payment settlement functionality. 
+
+
+### 8.2. Settlement time changes
+
+Currently your money is settled 1 day after payments were executed, after Nordic Wallet Launch we will settle you money bit latter - 2 days after payments were executed. 
+
+:star:**Recommendation:** We are sorry if this feature was important to you, your feedback is very important for us, let us know if you have a need to get settlements faster.
+
+
+### 8.3. Gross Settlements
+
+Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After Nordic Wallet Launch we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
+
+
+## **9. Other**
+
+### 9.1. From the Nordic Wallet Launch callbacks will be sent from new DNS address
 
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
+Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
-**2. Callback changes**
+### 9.2. Callback changes for one-offs
 
 We will stop sending our old callbacks for one-off payment expiration and rejection by users from Nordic Wallet Launch. 
 
@@ -276,7 +290,7 @@ Instead we will start sending new callback for both recurring and one-off paymen
   "payment_type": "OneOff",
   "status": "Cancelled",
   "status_text": "Payment cancelled.",
-  "status_code": 60003,
+  "status_code": 70003,
   "external_id": "ed40a2e7-a14b-44c8-a35d-ec015e6d31f0"
 }
 ]
@@ -292,7 +306,7 @@ Instead we will start sending new callback for both recurring and one-off paymen
   "payment_type": "Regular",
   "status": "Cancelled",
   "status_text": "Payment cancelled.",
-  "status_code": 60003,
+  "status_code": 70003,
   "external_id": "ed40a2e7-a14b-44c8-a35d-ec015e6d31f0"
 }
 ]
@@ -307,7 +321,31 @@ Above callbacks will be sent in following cases:
 * For each one-off payment rejection by user
 * For each cancellation of pending one-off payment, due to merchants' initiated cancellation of pending agreement
 
-## **9. FAQ** 
+### 9.3. Error messages
+
+We are making adjustments to error responses, specifically related to `error_description.message` and `error_description.error_type`. Some values will remain unchanged, some will be modified, and new validations will be introduced. Some messages may be less explicit than before, as they are generated directly from the backend and not specifically tailored for exact app branding (MobilePay or Vipps) responses.
+
+Example:
+```
+{
+   "error": "BadRequest",
+   "error_description": {
+      "message": "The field 'phoneNumber' has an invalid format for a phone number, provided value: '44444444444444'",
+      "error_type": "InputError",
+      "correlation_id": "ef928510-ae19-4fe7-ae1e-76b43de202f5",
+      "error_code": null,
+      "localized_message": "A technical error occurred."
+   }
+}
+```
+
+Some field names, like `mobile_phone_number`, will undergo changes; for instance, it will be referred to as `phoneNumber`. If clarity is needed, refer to [Recurring documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) for field specifications.
+
+
+:star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
+
+
+## **FAQ** 
 
 **1. Do I need to reintegrate now to the new solution, APIs?**
 
@@ -315,7 +353,7 @@ No, you don't need to reintegrate to the new solution right now. We are building
 
 **2. How will the migration of data work? In sandbox and production?**
 
-We will migrate 3 years of production data to the new environment. Sandbox data will not be migrated due to different merchant and payment point setups. 
+We will migrate 3 years of production data (agreements, payment requests, refunds) to the new environment. Sandbox data will not be migrated due to different merchant and payment point setups. 
 
 
 **3. When can I integrate to the Recurring API?**
@@ -350,10 +388,10 @@ Yes, you will have the opportunity to test your integration with the Subscriptio
 
 **6. How will I find data about my payments?**
 
-We will migrate 3 years of historical data. You will be able to access that data though:
-1. API GET calls.
-3. Though [Merchant Portal](https://portal.vipps.no/register)
-4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/)
+We will migrate 3 years of historical data (agreements, payment requests, refunds). You will be able to access that data though:
+1. API GET calls. All 3 years of historical data (agreements, payment requests, refunds).
+3. Though [Merchant Portal](https://portal.vipps.no/register). Around 6 months of historical data of executed transactions (executed payments and refunds).
+4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Around 6 months of historical data of executed transactions (executed payments and refunds).
 
 **7. I am using Transaction Reporting API, what should I do?**
 
@@ -367,15 +405,25 @@ Yes, all app users will need to download the new app versions; this will be a ma
 There are several exciting features on the horizon. For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
 
 
-## **10. Developer Support**
+## **Developer Support**
 
 We're Here to Help!
 If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@mobilepay.dk) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
 
 
 
-## **11. Changelog**
+## **Changelog**
 
 2023-09-05 Added section 8. Callbacks
+
 2023-09-07 Added callback sending DNS address list
+
 2023-09-20 FAQ "How will I find data about my payments?" updated; FAQ "I am using Transaction Reportin API, what should I do?" added
+
+2023-10-05 New section "Settlements" with 3 new items added 
+
+2023-10-09 Changed callback status codes from "6000..." to "7000..."
+
+2023-10-11 Section 9 renamed to Other and new topic added 9.3 Error messages. 
+
+2023-10-11 Clarification, that OAuth2 token retrieval requests will be sent from new DNS address

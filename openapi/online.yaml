@@ -734,9 +734,10 @@ components:
           type: string
           description: >-
             Allowed card type for the payment. These can be used:<br />MC-DEBIT:
-            MasterCard Debit<br />MC-CREDIT: MasterCard Credit<br />MTRO-DEBIT:
-            Maestro Debit<br />ELEC-DEBIT: VISA Electron Debit<br />VISA-DEBIT:
-            VISA Debit.<br />VISA-CREDIT: VISA Credit<br />DANKORT: Dankort
+            MasterCard Debit<br />MC-CREDIT: MasterCard Credit<br />ELEC-DEBIT:
+            VISA Electron Debit<br />VISA-DEBIT: VISA Debit.<br />VISA-CREDIT:
+            VISA Credit<br />DANKORT: Dankort<br />MTRO-DEBIT: Maestro Debit is
+            deprecated and should not be used.
         encryptedPanCallbackUrl:
           minLength: 1
           type: string
@@ -1238,9 +1239,10 @@ components:
             type: string
           description: >-
             Allowed card type for the payment. These can be used:<br />MC-DEBIT:
-            MasterCard Debit<br />MC-CREDIT: MasterCard Credit<br />MTRO-DEBIT:
-            Maestro Debit<br />ELEC-DEBIT: VISA Electron Debit<br />VISA-DEBIT:
-            VISA Debit.<br />VISA-CREDIT: VISA Credit<br />DANKORT: Dankort
+            MasterCard Debit<br />MC-CREDIT: MasterCard Credit<br />ELEC-DEBIT:
+            VISA Electron Debit<br />VISA-DEBIT: VISA Debit.<br />VISA-CREDIT:
+            VISA Credit<br />DANKORT: Dankort<br />MTRO-DEBIT: Maestro Debit is
+            deprecated and should not be used.
       additionalProperties: false
     MastercardTokenCallbackPayload:
       required:

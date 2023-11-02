@@ -4,9 +4,7 @@
   "private": true,
   "scripts": {
     "docusaurus": "docusaurus",
-    "prestart": "./component-apis/merge-all.sh",
     "start": "docusaurus start",
-    "prebuild": "./component-apis/merge-all.sh",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",

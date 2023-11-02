@@ -657,7 +657,7 @@ components:
           maxLength: 200
           minLength: 0
           type: string
-          description: "Optional payment information to be displayed in MobilePay app to the customer. Max length: 200 characters.<br />\r\nThis can be, for example, an invoice number, ticket number, or short description that uniquely identifies the\r\npurchase."
+          description: "Optional payment information to be displayed in MobilePay app to the customer. Max length: 100 characters.<br />\r\nThis can be, for example, an invoice number, ticket number, or short description that uniquely identifies the\r\npurchase."
           nullable: true
           example: Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         paymentPointId:
