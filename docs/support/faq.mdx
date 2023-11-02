@@ -7,17 +7,38 @@ import PaymentReference from '/docs/support/faq/_payment-reference.mdx';
 
 # Frequently asked questions
 
+## What are the MobilePay IP addresses?
+
+:::danger Important info
+We are currently in the process of changing our IPs for both API and callbacks. This is status of the change:
+- API 
+  - Sandbox: changed ✔
+  - Production: NOT changed. Planned for second week of November ❌
+- Callbacks 
+  - Sandbox: changed ✔
+  - Production: changed ✔
+:::
+Note that MobilePay does not require merchants to whitelist specific IP addresses to access REST APIs.
+We utulize different ranges for the APIs and callbacks as well as for the different environments. We cannot supply specific IPs because we may change IPs within the listed ranges and therefore recommend to whitelist the entire range.
+
+**API requests**<br />
+*Current IP ranges* for both environments:
+212.93.32.0/19 and 185.218.228.0/22 
+
+*New IPs* from 2nd week of November:<br />
+Production: 20.238.5.64/28 and 4.175.250.192/28<br />
+Sandbox: 4.245.40.224/28
+
+**Callbacks** <br />
+Production and sandbox:
+212.93.32.0/19 and 185.218.228.0/22 
+
+**Port**: 443 
+
 <details className="plain-details">
   <summary>What is the difference between Sandbox and Production</summary>
   <div>
       <Difference />
-  </div>
-</details>
-
-<details className="plain-details">
-  <summary>What are the MobilePay IP addresses?</summary>
-  <div>
-      <IP />
   </div>
 </details>
 
