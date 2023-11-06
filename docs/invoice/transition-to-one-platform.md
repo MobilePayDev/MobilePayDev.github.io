@@ -20,7 +20,7 @@ We ask you to change your existing integration from Invoice APIs to [ePayment AP
 🌟 We recommend:
 1. Get familiar with [ePayment APIs](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)  documentation, [migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#invoice-vs-epayment) and other related documentation for the [new platform](https://developer.vippsmobilepay.com/). 
 2. If you are a partner, inform your merchants about your reintegration progress.
-3. Get access to new [merchant test environment](https://www.mobilepaygroup.com/partner/merchant-test).
+3. Get access to the test environment as [partner](https://www.vippsmobilepay.com/partner/become-a-partner) or [merchant](https://vippsmobilepay.com/merchant-test-account-sign-up).
 4. Implement new integration till Nordic Wallet Launch which will happen in 2024 Q1.
 5. All Invoices which are sent and not paid will be canceled by system on Nordic wallet Launch day. We recommend you to recreated these invoices on the Nordic Wallet Launch day using ePayments API. 
 
