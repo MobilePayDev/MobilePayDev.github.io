@@ -6,7 +6,7 @@ sidebar_position: 8
 
 ## Invoice 1.5 Release Notes
 
-#### 07 november 2023 - Callback intervals
+#### 06 november 2023 - Callback intervals
 
 Invoice TotalAmount limit increased from 15000 DKK to 300000 DKK.
 
