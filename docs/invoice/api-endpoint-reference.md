@@ -657,7 +657,7 @@ A set of business rules apply for an `invoice` before it gets created. If any of
 |---------------|----------|---------------------------------------------------|-----------|------------------------------------------------------------------|
 |`DueDate`      |DK/FI     |CreatedDate <= DueDate < CreatedDate + 400 days  |10310/10311|`DueDate` must be no more than 400 days in the future.               |
 |`IssueDate`    |DK/FI     |IssueDate <= CreatedDate                         |10312      |`IssueDate` can not be later than invoice creation date.            |
-|`TotalAmount`  |DK        |TotalAmount <= 15000 DKK                         |10201      |`TotalAmount` is limited to 15000 DKK.                              |
+|`TotalAmount`  |DK        |TotalAmount <= 15000 DKK                         |10201      |`TotalAmount` is limited to 300000 DKK.                              |
 |               |FI        |TotalAmount <= 2000 EUR                           |10201      |`TotalAmount` is limited to 2000 EUR.                                |
 
 If all of the fields in the request are exactly the same as some existing invoice's fields, the duplication validation fails and the invoice cannot be created.
