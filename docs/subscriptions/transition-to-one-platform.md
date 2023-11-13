@@ -4,7 +4,9 @@ sidebar_position: 13
 # 💙🧡 Preparation for facade period
  
 
-This page contans all the changes that will be introduced to **existing integrations** on Nordic Wallet Launch 🚀. You **do not need to reintegrate** to new Recurring APIs, your existing Subscriptions APIs will continue to work until the end of 2024 (and possibly even longer) though facade we biuld. We understand the value of maintaining your current setup. While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process.
+This page contans all the changes that will be introduced to **existing integrations** on Nordic Wallet Launch 🚀. Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
+
+We understand the value of maintaining your current setup. While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process.
 
 Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
