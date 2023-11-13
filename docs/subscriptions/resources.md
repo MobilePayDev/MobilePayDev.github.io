@@ -25,6 +25,7 @@ Key dates:
 - **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark 🇩🇰 
 - **2025Q1** Be ready with your API integration to the Recurring API. 🧡 💙 The facade will be switched off. 
 
+:::
 
 ## Migration Information: 
 Familiarize yourself with what migration entails, so you are prepared for the migration process.
