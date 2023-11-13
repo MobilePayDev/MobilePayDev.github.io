@@ -52,9 +52,11 @@ Familiarize yourself with the Vipps MobilePay API platform. Visit the website, r
 
 ## Test 
 
-- [Sign up for Merchant Test](https://vippsmobilepay.com/merchant-test-account-sign-up): Register here to get credentials for the Test environment. Please note that this is the test environment of Vipps MobilePay.
+- [Sign up for Merchant Test](https://vippsmobilepay.com/merchant-test-account-sign-up): Register here to get merchant credentials for the Test environment.  
+-  [Sign up for Partner Test](https://vipps.no/developer/bli-partner/partnerskjema/) : Register here to get merchant credentials for the Test environment.  
+- [Info about test environment](https://developer.vippsmobilepay.com/docs/test-environment/) : The Merchant Test (MT) environment is available for all merchants who have access to the Vipps MobilePay APIs.
 
-- [Info about test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+
  
 ## Stay updated ☕️
 
