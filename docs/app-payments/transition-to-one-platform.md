@@ -32,11 +32,16 @@ The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/
 
 Neither the existing or new webhook API's will support `paymentpoint.activated` and `transfer.succeeded` events. 
 
-### Reference
+### Payments
+
+#### Reference
 The payment reference will be shown on the payment receipt. If the reference is not unique we will postfix a counter separated by a delimiter:
 `reference{delimiter}{counter}`. Example: `order123#1`.
 
 This will only be shown to the user on the receipt. If you retrieve the payment data through the API you will get the reference you have defined in payment initiation which does not include the counter.  
+
+#### Description
+The payment description can no longer exceed 100 characters. If a payment description exceeds this length the remaining description text will be cut off.
 
 ### Refund
 The refund description will no longer be shown to users or be present when querying refunds.
