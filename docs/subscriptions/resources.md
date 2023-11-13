@@ -14,6 +14,16 @@ We're steadily moving towards one unified platform that offers new opportunities
 
 [![decision tree](/img/Subs_reintegration_treemap.png)](/img/Subs_reintegration_treemap.png)
 
+:::caution Change of Subscriptions API 
+ 
+After we have switched to One platform, you can transition to our [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) using the [Subscriptions to Recurring migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/subscriptions/) Familiarize yourself with what migration entails, so you are prepared for the migration process.
+
+Key dates: 
+- **NOW** Take a look at the change list here and implement changes if needed for the Facade period
+- **2024** Plan and integrate new [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/)
+- **2024.01.01** Be ready with adjustments needed for your integration for the Facade period.
+- **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark 🇩🇰 
+- **2025Q1** Be ready with your API integration to the Recurring API. 🧡 💙 The facade will be switched off. 
 
 
 ## Migration Information: 
@@ -23,10 +33,11 @@ Familiarize yourself with what migration entails, so you are prepared for the mi
   
 - [Subscriptions Migration (full reintegration)](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API. This is relevant for existing merchants and partner who wants to do full reintegration.
 
+Please note: We are continuously working on improving our migration guide so it includes  step-by-step instructions, best practices, and FAQs to help merchants smoothly transition to the new platform.  
+
+
 - [Prepare for the facade period](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform): Get an overview of changes in functionality and recommendations for the existing MobilePay Subscriptions API and how you best can prepare for facade period without full reintegration.
   
-
-
 
 ## New Platform Resources
 
@@ -38,31 +49,16 @@ Familiarize yourself with the Vipps MobilePay API platform. Visit the website, r
   
 - [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the API reference for the New Recurring API.      
 
-- [Merchant Test](https://www.mobilepaygroup.com/partner/merchant-test): Register here to get credentials for the Test environment. Please note that this is the test environment of Vipps MobilePay.
+## Test 
 
+- [Sign up for Merchant Test](https://vippsmobilepay.com/merchant-test-account-sign-up): Register here to get credentials for the Test environment. Please note that this is the test environment of Vipps MobilePay.
 
-  
-
-## Stay updated 
+- [Info about test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+ 
+## Stay updated ☕️
 
 - [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All notable changes to the Recurring API.
 
-- [Subscribe to newsetter](https://developer.vippsmobilepay.com/docs/newsletters/): Technical newsletter, with important information about the APIs.
+- [Subscribe to newsletter](https://developer.vippsmobilepay.com/docs/newsletters/): Technical newsletter, with important information about the APIs.
 
   
-
-## MobilePay Resources
-
-
-- [MobilePay Subscriptions API documentation](https://developer.mobilepay.dk/api/subscriptions): The API reference documentation for Subscriptions
-
-- [MobilePayPartner site](https://www.mobilepaygroup.com/partner/subscriptions): Integrator onboarding and business information
-
-- MobilePay site [DK](https://www.mobilepay.dk/erhverv/abonnementer-og-fakturering/mobilepay-subscriptions) | [FI](https://mobilepay.fi/yrityksille/toistuvat-maksut-ja-laskutus/mobilepay-subscriptions): Product information and support for merchants
-
-- [Design Guidelines](https://www.mobilepaygroup.com/design): Find MobilePay buttons, logos, banners, etc.
-
-
-
-
-Please note: We are continuously working on improving our migration guide so it includes  step-by-step instructions, best practices, and FAQs to help merchants smoothly transition to the new platform.  
