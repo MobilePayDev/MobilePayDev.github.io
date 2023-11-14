@@ -7,7 +7,7 @@ pagination_next: null
 
 [API documentation](/api/invoice): The API reference documentation for Invoice
 
-MobilePay site [DK](https://www.mobilepay.dk/erhverv/abonnementer-og-fakturering/mobilepay-invoice) | [FI](https://mobilepay.fi/yrityksille/toistuvat-maksut-ja-laskutus/mobilepay-invoice): Product information and support for merchants
+ 
 
 ## New Wallet Launch - Resources  
 
