@@ -381,7 +381,10 @@ It is still the same team as before that is here to assist you with technical qu
 
 - [NEW Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
 
-- [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All notable changes to the Recurring API. 
+- [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All notable changes to the Recurring API.
+
+
+
 
 **4. Does the Recurring API have callbacks?**
 
@@ -419,6 +422,16 @@ Yes, all app users will need to download the new app versions; this will be a ma
 **9. What cool features are there ahead?**
 There are several exciting features on the horizon. For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
 
+**10. How can I start to test the new shiny Recurring API?**
+
+The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+
+In order to request access to the test environment, please use the following links:
+
+- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
+- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
+
+We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
 
 ## **Developer Support**
 
