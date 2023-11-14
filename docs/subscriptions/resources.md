@@ -30,9 +30,9 @@ Key dates:
 ## Migration Information: 
 Familiarize yourself with what migration entails, so you are prepared for the migration process.
 
-- [Overall Migration Information](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide): Learn about the overall migration, timeline, and guidelines.  :calendar:
+- [Overall Migration Information](https://developer.vippsmobilepay.com/docs/mp-migration-guide): Learn about the overall migration, timeline, and guidelines.  :calendar:
   
-- [Subscriptions Migration (full reintegration)](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API. This is relevant for existing merchants and partner who wants to do full reintegration.
+- [Subscriptions Migration (full reintegration)](https://developer.vippsmobilepay.com/docs/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API. This is relevant for existing merchants and partner who wants to do full reintegration.
 
 Please note: We are continuously working on improving our migration guide so it includes  step-by-step instructions, best practices, and FAQs to help merchants smoothly transition to the new platform.  
 
