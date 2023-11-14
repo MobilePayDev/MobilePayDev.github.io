@@ -22,8 +22,8 @@ Templates for creating PoS signs can be found here:
 
 # Migration
 
-Information about hte [new integration](https://www.mobilepaygroup.com/partner/new-platform) 
+Information about the [new integration](https://www.mobilepaygroup.com/partner/new-platform) 
 
-[Migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#point-of-sale-vs-epayment) covering the technical details of the new migration
+[Migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/pos/) covering the technical details of the new migration
 
-Requst access to [test environment](https://www.mobilepaygroup.com/partner/merchant-test)
+As a merchant - Requst access to [test environment](https://www.mobilepaygroup.com/partner/merchant-test)
