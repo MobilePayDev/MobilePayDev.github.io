@@ -7,11 +7,7 @@ pagination_next: null
 
 [API documentation](/api/invoice): The API reference documentation for Invoice
 
-[Partner site](https://www.mobilepaygroup.com/partner/invoice): Integrator onboarding and business information
-
 MobilePay site [DK](https://www.mobilepay.dk/erhverv/abonnementer-og-fakturering/mobilepay-invoice) | [FI](https://mobilepay.fi/yrityksille/toistuvat-maksut-ja-laskutus/mobilepay-invoice): Product information and support for merchants
-
-[Design Guidelines](https://www.mobilepaygroup.com/design): Find MobilePay buttons, logos, banners etc.
 
 ## New Wallet Launch - Resources  
 
@@ -23,7 +19,7 @@ Feel free to explore the following links for more information:
 
 - [New Platform](https://www.mobilepaygroup.com/partner/new-platform): Discover more about the New Platform and read more about the benefits and improvements that you can expect from the New Wallet Launch. :rocket:
 
-- [Overall Migration Information](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide): Learn about the overall migration, timeline, and guidelines.  :calendar:  
+- [Overall Migration Information](https://developer.vippsmobilepay.com/docs/mp-migration-guide/): Learn about the overall migration, timeline, and guidelines.  :calendar:  
 
 ### Technical Links :link:
 
@@ -31,7 +27,7 @@ Feel free to explore the following links for more information:
 
 - [ePayment API Documentation](https://developer.vippsmobilepay.com/docs/APIs/epayment/): Find detailed information on the ePayment API.   
 
-- [Invoice Migration](http://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/invoice/): Read our migration guide and prepare for migrating to the ePayment API.  
+- [Invoice Migration](http://https://developer.vippsmobilepay.com/docs/mp-migration-guide/invoice/): Read our migration guide and prepare for migrating to the ePayment API.  
 
 - [Merchant Test](https://www.mobilepaygroup.com/partner/merchant-test): Register here to get credentials for the Test environment. Please note that this is the test environment of Vipps MobilePay.
 
