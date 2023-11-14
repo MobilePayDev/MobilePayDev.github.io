@@ -404,6 +404,16 @@ Yes, you will have the opportunity to test your integration with the Subscriptio
 2. You will need to map to the new merchant, user, and sales unit (provider) IDs. New IDs will be generated in 2023Q4.
 3. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
+
+The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+
+In order to request access to the test environment, please use the following links:
+
+- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
+- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
+
+We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
+
 **6. How will I find data about my payments?**
 
 We will migrate 3 years of historical data (agreements, payment requests, refunds). You will be able to access that data though:
@@ -421,17 +431,8 @@ Yes, all app users will need to download the new app versions; this will be a ma
 
 **9. What cool features are there ahead?**
 There are several exciting features on the horizon. For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
+ 
 
-**10. How can I start to test the new shiny Recurring API?**
-
-The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
-
-In order to request access to the test environment, please use the following links:
-
-- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
-- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
-
-We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
 
 ## **Developer Support**
 
