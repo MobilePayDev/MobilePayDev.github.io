@@ -1072,6 +1072,7 @@ components:
             will also guarantee uniqueness.
         pspReferenceId:
           minLength: 1
+          maxLength: 50
           type: string
           description: PSP's unique reference to payment.
         amount:
