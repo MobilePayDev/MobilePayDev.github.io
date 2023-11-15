@@ -1,4 +1,4 @@
----
+ ---
 sidebar_position: 9
 ---
 
@@ -11,18 +11,23 @@ Early 2024, the ambition is to have one app, branded locally as MobilePay in Den
 
 ## Migrate to a new API early 2024
 
-To allow for the flexibility and reach that we aim for, we will have to replace the current MobilePay Invoice API with new APIs on the new joint platform by early of 2024. This will require a new integration.  
+To allow for the flexibility and reach that we aim for, we will have to replace the current MobilePay Invoice API with new APIs on the new joint platform by early of 2024. This will require a new integration. 
+
+**Nordic Wallet Launch 🚀** - this will be the the day when all MobilePay users will get new, updaraded app version. On the same date Invoice APIs will stop working and you will have to switch your trafic to ePayments APIs. 
 
 ### ➡️ If you have direct integration
 
 We ask you to change your existing integration from Invoice APIs to [ePayment APIs](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/). This API has multiple options and variations how it can be used not just for Invoice payments. Here is some recomendations how you can create similar flow of Invoice payment on ePayments API [here](https://developer.vippsmobilepay.com/docs/solutions/invoice-through-epayments/).
 
-🌟 We recommend:
+**Before Nordic Wallet Launch Date 🚀:**
 1. Get familiar with [ePayment APIs](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/)  documentation, [migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/invoice/) and other related documentation for the [new platform](https://developer.vippsmobilepay.com/). 
 2. If you are a partner, inform your merchants about your reintegration progress.
 3. Get access to the test environment as [partner](https://www.vippsmobilepay.com/partner/become-a-partner) or [merchant](https://vippsmobilepay.com/merchant-test-account-sign-up).
 4. Implement new integration till Nordic Wallet Launch which will happen in 2024 Q1.
-5. All Invoices which are sent and not paid will be canceled by system on Nordic wallet Launch day. We recommend you to recreated these invoices on the Nordic Wallet Launch day using ePayments API. 
+
+**On Nordic Wallet Launch Date 🚀:**
+1. All Invoices which are sent and not paid will be canceled by system.
+2. We recommend you to recreated these invoices using ePayments API as soon as old invoices is canceled by system. 
 
 ### ➡️ If you are using Invoice though partner
 
