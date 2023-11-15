@@ -30,7 +30,7 @@ Please contact your partner for more information about its plans to reintegrate 
  
 
 ## FAQ
-**1. Will users get a new app?**
+**1. Will users get a new app? 📱 **
 
 Yes, all app users will have to download the new app versions, this will be a force upgrade on Nordic Wallet Launch day. We will make sure, that user do not need to create new account, their profiles will be migrated to new platform. 
 
