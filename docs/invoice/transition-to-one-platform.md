@@ -49,3 +49,14 @@ Yes, you can use profile sharing feature where user can grant you consent and sh
 **5. We are using [Link to Direct](https://developer.mobilepay.dk/docs/invoice/api-endpoint-reference#user-consent-for-invoicedirect) consent flow, where can we find user consent which is already granted to us?**
 
 You can extract all consent users gave you though [Get consent details](https://developer.mobilepay.dk/docs/invoice/api-endpoint-reference#get-consent-details) API. You will have to store these consents in your environment from Nordic Wallet Launch. Read more [here](https://developer.vippsmobilepay.com/docs/APIs/userinfo-api/). 
+
+**6. How do I register to test ePayments?**
+
+The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+
+In order to request access to the test environment, please use the following links:
+
+- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
+- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
+
+We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
