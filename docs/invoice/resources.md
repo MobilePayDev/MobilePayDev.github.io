@@ -27,7 +27,7 @@ Feel free to explore the following links for more information:
 
 - [ePayment API Documentation](https://developer.vippsmobilepay.com/docs/APIs/epayment/): Find detailed information on the ePayment API.   
 
-- [Invoice Migration](http://https://developer.vippsmobilepay.com/docs/mp-migration-guide/invoice/): Read our migration guide and prepare for migrating to the ePayment API.  
+- [Invoice Migration](https://developer.vippsmobilepay.com/docs/mp-migration-guide/invoice/): Read our migration guide and prepare for migrating to the ePayment API.  
 
 - [Merchant Test](https://www.mobilepaygroup.com/partner/merchant-test): Register here to get credentials for the Test environment. Please note that this is the test environment of Vipps MobilePay.
 
