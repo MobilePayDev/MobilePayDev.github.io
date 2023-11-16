@@ -1,8 +1,4 @@
- ---
-sidebar_position: 9
----
-
-# 💙🧡 Transition to One Platform
+## 💙🧡 Transition to One Platform
 
 **One platform – more reach**
 
