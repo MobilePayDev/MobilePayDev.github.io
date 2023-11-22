@@ -372,13 +372,13 @@ No, you don't need to reintegrate to the new solution right now. We are building
 ### **2. How will the migration of data work?**
 
 Vipps MobilePay will make sure that all needed data is migrated from Subscriptions to Recurring:
-- All active merchants and their payment points will be migrated to the new system.
-  
+- All active merchants and their payment points will be migrated to the new system. The primary identifiers are `provider_id`, `agreement_id`, `payment_id`, and `refund_id`. These remain unchanged; there is no changes there.
+ 
 - All partners/integrators will be created in the new system.
   
 - We will make sure that proper connection of merchant and partner/integrator is maintained on the new setup.
   
-- We will migrate all active agreements. There is no need to recreate agreements from NWL neither from reintegration.
+- We will migrate all active agreements. There is no need to recreate agreements from NewWalletLaunch neither from reintegration.
   
 - All payment requests with due dates will be migrated and executed on new system.
 
