@@ -20,11 +20,11 @@ Thank you for being a part of our journey toward creating the best and most user
 
 - **NOW** Take a look at the change list here and implement changes if needed for the Facade period
   
+- **2024Q1** Be ready with adjustments needed for your integration for the Facade period. We recommend for Finnish merchants and partners to be ready till 2024.01.01.
+
+- **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark 🇩🇰
+  
 - **2024** Plan and integrate new [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) 
-
-- **2024.01.01** Be ready with adjustments needed for your integration for the Facade period. 
-
-- **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark 🇩🇰 
 
 - **2025Q1** Be ready with your API integration to the Recurring API. 🧡 💙 The facade will be switched off. 
 
@@ -362,16 +362,30 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 ## **FAQ** 
 
-**1. Do I need to reintegrate now to the new solution, APIs?**
+### **1. Do I need to reintegrate now to the new solution, APIs?**
 
 No, you don't need to reintegrate to the new solution right now. We are building Facade which will forward all your integration messages to the new solution and return needed responses. The only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly. 
 
-**2. How will the migration of data work? In sandbox and production?**
+### **2. How will the migration of data work?**
 
-We will migrate 3 years of production data (agreements, payment requests, refunds) to the new environment. Sandbox data will not be migrated due to different merchant and payment point setups. 
+Vipps MobilePay will make sure that all needed data is migrated from Subscriptions to Recurring:
+- All active merchants and their payment points will be migrated to the new system.
+  
+- All partners/integrators will be created in the new system.
+  
+- We will make sure that proper connection of merchant and partner/integrator is maintained on the new setup.
+  
+- We will migrate all active agreements. There is no need to recreate agreements from NWL neither from reintegration.
+  
+- All payment requests with due dates will be migrated and executed on new system.
+
+- We will migrate 3 years of historical production data (agreements, payment requests, refunds) to the new environment.
+  
+  
+Sandbox data will not be migrated due to different merchant and payment point setups. 
 
 
-**3. When can I integrate to the Recurring API?**
+### **3. When can I integrate to the Recurring API?**
 
 If you already want to reintegrate (even if this is not mandatory) you can start now! More information [here](https://www.mobilepaygroup.com/partner/new-platform).
 
@@ -386,7 +400,7 @@ It is still the same team as before that is here to assist you with technical qu
 
 
 
-**4. Does the Recurring API have callbacks?**
+### **4. Does the Recurring API have callbacks?**
 
 We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is [polling](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/). Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included in Nordic Wallet Launch.
 * [Webhooks technical documentation](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/)
@@ -396,7 +410,7 @@ We are  working on implementing webhooks for Recurring API, but at the moment, t
 Callbacks will work on the facade API. We will also release callbacks (called webhooks) on the new platfrom too.
 
  
-**5. Will I be able to continue testing my integration in Sandbox?**
+### **5. Will I be able to continue testing my integration in Sandbox?**
 
 Yes, you will have the opportunity to test your integration with the Subscriptions APIs through the merchant test environment on the new platform. However, there are some necessary actions you will need to take:
 
@@ -414,22 +428,23 @@ In order to request access to the test environment, please use the following lin
 
 We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
 
-**6. How will I find data about my payments?**
+### **6. How will I find data about my payments?**
 
 We will migrate 3 years of historical data (agreements, payment requests, refunds). You will be able to access that data though:
 1. API GET calls. All 3 years of historical data (agreements, payment requests, refunds).
 3. Though [Merchant Portal](https://portal.vipps.no/register). Around 6 months of historical data of executed transactions (executed payments and refunds).
 4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Around 6 months of historical data of executed transactions (executed payments and refunds).
 
-**7. I am using Transaction Reporting API, what should I do?**
+### **7. I am using Transaction Reporting API, what should I do?**
 
 Sadly, we are not builing any facade for Transaction reporting API. We are asking you to reintegrate to alternative solution [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). We are sorry if this feature was important to you, your satisfaction is our top priority, and we are here to support you throughout this process.
 
-**8. Will users get a new app?**
+### **8. Will users get a new app?**
 
 Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform.
 
-**9. What cool features are there ahead?**
+### **9. What cool features are there ahead?**
+
 There are several exciting features on the horizon. For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
  
 
@@ -442,6 +457,8 @@ If you have any questions or need assistance with managing your recurring paymen
 
 
 ## **Changelog**
+
+2023-11-22 FAQ #2 updated
 
 2023-09-05 Added section 8. Callbacks
 
