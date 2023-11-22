@@ -10,6 +10,9 @@ We understand the value of maintaining your current setup. While our primary goa
 
 Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
+:::danger Important info
+ We're moving all your data — your agreements/payments, and how your merchant consent is set up and tokens. You need to concentrate on the facade section below and make any necessary adjustments to your integration. If you have read the information below and made the necessary adjustments, you are good to go.
+:::
 
 **Timeline for existing subscriptions merchants and partners**
 
