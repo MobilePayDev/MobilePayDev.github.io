@@ -10,8 +10,10 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 
 :::info No Need to Reintegrate
 There is no need to reintegrate into the new solution. Your existing Online integration will continue to work and while our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and considering updating your integration accordingly. 
-Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. If you have any questions you are always welcome to reach out to us at developer@mobilepay.dk 
+Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration.
 :::
+
+To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. If you have any questions, feel free to reach out to us at developer@mobilepay.dk 
 
 ## VAT number required for all merchants
 
@@ -39,3 +41,6 @@ It will no longer be possible to define payment validation. It will instead defa
 
 **Invalidate payment** -
 `PUT /v1/payments/{paymentId}/invalidate` will be removed and it will not be possible to invalidate payments. 
+
+**Callback servers**
+On our new platform we will use different callback servers than currently used. If you have whitelisted our IP ranges for callbacks please ensure to include our new servers. You can find our server guidelines [here](https://developer.vippsmobilepay.com/docs/developer-resources/servers/). Note that this is only for callbacks. During the transition period to our new platform you may receive callbacks from our old setup and new servers. Therefore you must both the [old](/support/faq) and [new servers](https://developer.vippsmobilepay.com/docs/developer-resources/servers/) for a period of time until we have completely transitioned to one platform. We encourage you to enable this as soon as possible as this will come into effect in January 2024.

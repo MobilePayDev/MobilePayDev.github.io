@@ -3,7 +3,7 @@ sidebar_position: 10
 ---
 
 # Transition to One Platform
-#THIS DOCUMENT WAS LAST UPDATED ON 25.10.2023#
+*THIS DOCUMENT WAS LAST UPDATED ON 22.11.2023*
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
@@ -13,7 +13,9 @@ On November 1st, 2022, we received the exciting news that the merger between Mob
 There is no need to reintegrate into the new solution yet as the existing App Payments integration will continue to work until Q1 2025. But you are very welcome to start the integration already now. As replacement for App Payments API we offer our new product [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/). This will have many of the same features but also offer new possibilities together with our range of supporting APIs. Please have a look at [recommended flows](https://developer.vippsmobilepay.com/docs/solutions/) to get inspiration for the new possibilities . The new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) will be available in Finland and Denmark from Q1 2024. Please visit the [migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/app-payments/) for information about the migration.
 
 # App Payments Facade 
-To ease the switch to a new platform we will supply a facade for the existing MobilePay App Payments API that will be available during and after the launch of the new platform. There is no need to reintegrate into the new solution now. Your existing App Payments integration will continue to work and while our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and consider updating your integration accordingly. Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. If you have any questions you are always welcome to reach out to us at developer@mobilepay.dk 
+To ease the switch to a new platform we will supply a facade for the existing MobilePay App Payments API that will be available during and after the launch of the new platform. There is no need to reintegrate into the new solution now. Your existing App Payments integration will continue to work and while our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and consider updating your integration accordingly. Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. 
+
+To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. If you have any questions, feel free to reach out to us at developer@mobilepay.dk 
 
 ## Changes to The Facade
 
@@ -31,6 +33,10 @@ The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/
 The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/) will contain different [events](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/events/). When registering new webhooks you will be able to choose between the [existing MobilePay events](https://developer.mobilepay.dk/docs/app-payments/webhooks#available-webhook-events) and the [new Vipps MobilePay events](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/events/). Documentation for this will come soon.
 
 Neither the existing or new webhook API's will support `paymentpoint.activated` and `transfer.succeeded` events. 
+
+:::danger 
+For the facade we will use different webhook servers than currently used. If you have whitelisted our IP ranges for webhooks please ensure to include our new servers. You can find our server guidelines [here](https://developer.vippsmobilepay.com/docs/developer-resources/servers/).
+::: 
 
 ### Payments
 

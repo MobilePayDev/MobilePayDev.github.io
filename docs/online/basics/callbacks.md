@@ -47,7 +47,4 @@ In case the payment times out a callback is made to the FailedPaymentCallbackUrl
 
 ## Endpoint security
 
-To ensure no unauthorized calls to your callback endpoints we strongly suggest you apply either (or both) of these limitations:
-
-1. Firewall rules. These are the IP-ranges that MobilePay backend will be calling from: 212.93.32.0/19 and 185.218.228.0/22
-2. SSL "Common name" inspection. The "Common name" in our SSL client certificate should never change. Even when the certificate itself changes or is issued to a different root.
+To ensure no unauthorized calls to your callback endpoints we strongly suggest you apply SSL "Common name" inspection. The "Common name" in our SSL client certificate should never change. Even when the certificate itself changes or is issued to a different root.
