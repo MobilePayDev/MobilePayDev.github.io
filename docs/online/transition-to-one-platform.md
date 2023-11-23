@@ -29,18 +29,18 @@ For sole props. not having a VAT no. you can use an alternative number for examp
 During Q1 2024 - once we fully consolidate our platforms – the following endpoints/features will stop working for MobilePay Online.
 For a smooth transition, we recommend reviewing the changes and consider updating your integration accordingly if you are using any of these.
 
-**Update merchant** - 
+### Update merchant 
 `PATCH /api/v1/merchants/{merchantId}` will be removed. To update a merchant you must instead delete the merchant and create a new using: `DELETE /v1/merchants/{merchantId}` and `POST /v1/merchants`.
 If you need to update an active merchant we recomend that you create the new merchant and then delete the old. This is to avoid downtime since it is not possible to initiate payments on deleted merchants. Authorization updates and payment updates such as capture, cancel and refund is on payment level and will therefore not be affected by this. 
 
-**validUntil** - 
+### validUntil 
 It will no longer be possible to define payment validation. It will instead default to 5 minutes. Read more [here](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/timeouts/).
 
-**Get payment** -
+### Get payment
 `GET /api/v3/payments/{paymentId}` will be removed. 
 
-**Invalidate payment** -
+### Invalidate payment
 `PUT /v1/payments/{paymentId}/invalidate` will be removed and it will not be possible to invalidate payments. 
 
-**Callback servers**
+### Callback servers
 On our new platform we will use different callback servers than currently used. If you have whitelisted our IP ranges for callbacks please ensure to include our new servers. You can find our server guidelines [here](https://developer.vippsmobilepay.com/docs/developer-resources/servers/). Note that this is only for callbacks. During the transition period to our new platform you may receive callbacks from our old setup and new servers. Therefore you must both the [old](/docs/support/faq) and [new servers](https://developer.vippsmobilepay.com/docs/developer-resources/servers/) for a period of time until we have completely transitioned to one platform. We encourage you to enable this as soon as possible as this will come into effect in January 2024.
