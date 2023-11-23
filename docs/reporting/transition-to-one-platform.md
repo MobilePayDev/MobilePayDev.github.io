@@ -15,3 +15,6 @@ We will need to replace the current MobilePay Reporting with the [Report API](ht
 We will consistently provide updates and information to you all regarding the new integration. For information, refer to [Report API]( https://developer.vippsmobilepay.com/docs/APIs/report-api/).   
 
 For technical changes related to the Report API integration, please visit the [Report API migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/). We will promptly update these pages with additional information as soon as we have more details.
+
+## API Transition Timeline
+[![Reporttimeline](/img/Reporttimeline.png)](/img/Reporttimeline.png)
