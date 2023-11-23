@@ -45,7 +45,12 @@ For the facade we will use different webhook servers than currently used. If you
 The payment reference will be shown on the payment receipt. If the reference is not unique we will postfix a counter separated by a delimiter:
 `reference{delimiter}{counter}`. Example: `order123#1`.
 
-This will only be shown to the user on the receipt. If you retrieve the payment data through the API you will get the reference you have defined in payment initiation which does not include the counter.  
+If the payment reference is not unique and too large to have a postfix an appropriate amount will be trimmed from the end of the reference before adding the postfix.
+Example  `this-reference-is-64-chars` will become `this-reference-is-64-cha#1`.
+
+This will only be shown to the user on the receipt. If you retrieve the payment data through the API you will get the reference you have defined in payment initiation which does not include the counter or trimming.
+
+Only the Ascii charset is supported for the reference. If the reference contains non Ascii characters the payment will fail with a 400 Bad Request response.
 
 #### Description
 The payment description can no longer exceed 100 characters. If a payment description exceeds this length the remaining description text will be cut off.
