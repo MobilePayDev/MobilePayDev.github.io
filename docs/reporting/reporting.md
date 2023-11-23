@@ -10,6 +10,9 @@ Please notice that as part of the merger between MobilePay and Norwegian Vipps, 
 
 :::
 
+## API Transition Timeline
+[![Reporttimeline](/img/Reporttimeline.png)](/img/Reporttimeline.png)
+
 
 Reporting API allows you to query all transactions taking place at any of your MobilePay payment locations (payment points).
 
