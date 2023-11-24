@@ -1,4 +1,4 @@
-## 💙🧡 Transition to One Platform
+# 💙🧡 Transition to One Platform
 
 **One platform – more reach**
 
