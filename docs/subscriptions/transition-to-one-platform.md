@@ -434,8 +434,8 @@ We will send you an e-mail with the information you need to get started. This is
 ### **6. How will I find data about my payments?**
 
 We will migrate 3 years of historical data (agreements, payment requests, refunds). You will be able to access that data though:
-1. API GET calls. All 3 years of historical data (agreements, payment requests, refunds).
-3. Though [Merchant Portal](https://portal.vipps.no/register). Around 6 months of historical data of executed transactions (executed payments and refunds).
+1. API GET calls. For new and historical data.
+3. Though [Merchant Portal](https://portal.vipps.no/register). Just for new transactions done after Nordic Wallet Launch.
 4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.
 
 ### **7. I am using Transaction Reporting API, what should I do?**
