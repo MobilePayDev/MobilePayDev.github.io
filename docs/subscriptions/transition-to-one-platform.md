@@ -274,9 +274,9 @@ Currently you were able to select how to receive settlements: daily or instant. 
 
 ### 8.2. Settlement time changes
 
-Currently your money is settled 1 day after payments were executed, after Nordic Wallet Launch we will settle you money bit latter - 2 days after payments were executed. 
+Currently your money is settled 1 day after payments were executed, after Nordic Wallet Launch **nothing will change**. ~we will settle you money bit latter - 2 days after payments were executed~. 
 
-:star:**Recommendation:** We are sorry if this feature was important to you, your feedback is very important for us, let us know if you have a need to get settlements faster.
+:star: ~**Recommendation:** We are sorry if this feature was important to you, your feedback is very important for us, let us know if you have a need to get settlements faster.~
 
 
 ### 8.3. Gross Settlements
@@ -460,6 +460,8 @@ If you have any questions or need assistance with managing your recurring paymen
 
 
 ## **Changelog**
+
+2023-11-29 8.2. Settlement time changes Updated
 
 2023-11-28 FAQ #6 and #7 updated regarding Report API
 
