@@ -150,7 +150,9 @@ The new period will be applied only to payments that will be executed on the new
 In Subscriptions, Refunds had no Description, but in the new Recurring setup, this field is present and mandatory. We will prefill it with a simple "Refund" for you.
 
 ### 4.3 Refund responses
-There will be no callbacks anymore for refunds after Nordic Wallet Launch. All needed information will be handled through API response. 
+There will be no callbacks anymore for refunds after Nordic Wallet Launch. All needed information will be handled through API response.  
+
+Note: The Facade will return the status_callback_url, although it will not be utilized in the backend logic since callbacks for refunds will no longer be present. 
 
 :star: **Recommendation:** If you use refunds review planned API responses and adjust your integration to handle it. 
 
@@ -292,6 +294,9 @@ Please make sure that these DNS addresses are allowed through your firewall http
 Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
 ### 9.2. Callback changes for one-offs
+
+ 
+
 
 We will stop sending our old callbacks for one-off payment expiration and rejection by users from Nordic Wallet Launch. 
 
