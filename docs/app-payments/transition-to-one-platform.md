@@ -23,7 +23,7 @@ To make the transition as smooth as possible, we will migrate all merchants and 
 ### Webhooks
 
 #### SignatureKey
-SignatureKey can no longer be fetched. You will have to fetch them now and store them securely for validating Webhook signatures.
+SignatureKey can no longer be fetched through the API. You will have to fetch them from the portal and store them securely for validating Webhook signatures.
 
 #### Migration and management
 We will migrate all existing webhooks to the new platform. The existing [MobilePay Webhook API](https://developer.mobilepay.dk/api/wehooks) will close but you can manage your webhooks after transition to one platform using the new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/). This will require that you use the new [Access token API](https://developer.vippsmobilepay.com/api/access-token/) in order to authenticate towards the API. 
