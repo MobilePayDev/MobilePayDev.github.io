@@ -13,7 +13,7 @@ MobilePay Online supports both dual device and single device flows. It depends o
 If the redirect happens on a mobile device the MobilePay app will be launched. The user can then accept or reject the payment and we will redirect the user to redirectFromMobilePayUrl afterwards. This url will always open in the default browser (determined by the operating system) of the mobile device.
 
 * If the MobilePay app is not installed and therefore cannot be opened our landing page will open in the browser instead and the flow will continue as a dual device flow.
-* It is also possible to pop the app directly instead of using the universal link. To do this you will need to use the redirectToMobilePayAppUrl given in the response from initiating a payment. This can be useful when using frames. See [Manually engaging the App](/docs/online/features/embedded-flow#manually-engaging-the-app-from-the-parent-page) for a guide on this.
+* It is also possible to pop the app directly instead of using the universal link. To do this you will need to use the redirectToMobilePayAppUrl given in the response from initiating a payment. This can be useful when using frames. See [Manually engaging the App](/docs/online/basics/embedded-flow#manually-engaging-the-app-from-the-parent-page) for a guide on this.
 
 ## Dual device flow
 
