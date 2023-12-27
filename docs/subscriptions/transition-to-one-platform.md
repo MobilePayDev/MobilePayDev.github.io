@@ -410,10 +410,10 @@ It is still the same team as before that is here to assist you with technical qu
 
 ### **4. Does the Recurring API have callbacks?**
 
-We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is [polling](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/). Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included in Nordic Wallet Launch.
+We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is [polling](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines/). Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included in Nordic Wallet Launch.
 * [Webhooks technical documentation](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/)
 * [Webhooks endpoint documentation](https://developer.vippsmobilepay.com/api/webhooks/)
-* [Polling guidelines](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/polling-guidelines/)
+* [Polling guidelines](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines/))
 
 Callbacks will work on the facade API. We will also release callbacks (called webhooks) on the new platfrom too.
 
