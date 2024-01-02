@@ -152,7 +152,7 @@ In Subscriptions, Refunds had no Description, but in the new Recurring setup, th
 ### 4.3 Refund responses
 There will be no callbacks anymore for refunds after Nordic Wallet Launch. All needed information will be handled through API response.  
 
-Note: For payments made before Nordic Wallet Launch, status_callback_url will still be required and callbacks will still be sent. For payments made after Nordict Wallet Launch, the Facade will return the status_callback_url, although it will not be utilized in the backend logic since callbacks for refunds will no longer be present. 
+Note: For payments made before Nordic Wallet Launch, status_callback_url will still be required and callbacks will still be sent. For payments made after Nordic Wallet Launch, the Facade will return the status_callback_url, although it will not be utilized in the backend logic since callbacks for refunds will no longer be present. 
 
 :star: **Recommendation:** If you use refunds review planned API responses and adjust your integration to handle it. 
 
