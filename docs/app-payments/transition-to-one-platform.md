@@ -31,7 +31,7 @@ We will migrate all existing webhooks to the new platform. The existing [MobileP
 The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/) will support webhooks on partner level or merchant sales unit level. This means that partners can register one webhook for all their merchants or a webhook for each individual sales unit. Merchants has to register webhooks for each of their sales units individually. A sales unit is equal to a payment point. 
 
 #### Webhook Events
-The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/) will contain different [events](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/events/). When registering new webhooks you will be able to choose between the [existing MobilePay events](https://developer.mobilepay.dk/docs/app-payments/webhooks#available-webhook-events) and the [new Vipps MobilePay events](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/events/). Documentation for this will come soon.
+The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/) will contain different [events](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/events/). When registering new webhooks you will be able to choose between the [existing MobilePay events](https://developer.mobilepay.dk/docs/app-payments/webhooks#available-webhook-events) and the [new Vipps MobilePay events](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/events/).
 
 Neither the existing or new webhook API's will support `paymentpoint.activated` and `transfer.succeeded` events. 
 
