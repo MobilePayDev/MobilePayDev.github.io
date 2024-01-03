@@ -142,6 +142,8 @@ Parameter: `one_off_payment.description`
 
 ## **4. Refunds**
 
+In general: it is possible to do GET requests for pre-launch refunds. Furthermore, it is also possible to make refunds for pre-launch payments. Please note: We can only handle 90 days backward for pre-launch payments, whereas we can handle 365 days backward on the new platform, if the payment is completed on the new platform)  
+
 ### 4.1 Refund up to 365 days
 Currently, you can refund payments that were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
 The new period will be applied only to payments that will be executed on the new platform after Nordic Wallet Launch. 
