@@ -3,14 +3,30 @@ sidebar_position: 10
 ---
 
 # Transition to One Platform
-*THIS DOCUMENT WAS LAST UPDATED ON 20.12.2023*
+*THIS DOCUMENT WAS LAST UPDATED ON 04.01.2024*
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
 On November 1st, 2022, we received the exciting news that the merger between MobilePay and Vipps was officially approved! This is a significant milestone for us, and we're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. By early 2024, we're aiming to launch a single, unified app: MobilePay in Denmark and Finland, and Vipps in Norway.
 
-# New ePayments API
+# App Payments to ePayments API
 There is no need to reintegrate into the new solution yet as the existing App Payments integration will continue to work until Q1 2025. But you are very welcome to start the integration already now. As replacement for App Payments API we offer our new product [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/). This will have many of the same features but also offer new possibilities together with our range of supporting APIs. Please have a look at [recommended flows](https://developer.vippsmobilepay.com/docs/solutions/) to get inspiration for the new possibilities . The new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) will be available in Finland and Denmark from Q1 2024. Please visit the [migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/app-payments/) for information about the migration.
+
+**Timeline for existing App Payments merchants and partners**
+
+:::caution Key dates
+
+- **NOW** Take a look at the change list here and implement changes if needed for the Facade period
+  
+- **2024Q1** Be ready with adjustments needed for your integration for the Facade period. We recommend for Finnish merchants and partners to be ready till 2024.01.01.
+
+- **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark 🇩🇰
+  
+- **2024** Plan and integrate new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) 
+
+- **2025Q1** Be ready with your API integration to the App Payments API. The facade will be switched off. 
+
+:::
 
 # App Payments Facade 
 To ease the switch to a new platform we will supply a facade for the existing MobilePay App Payments API that will be available during and after the launch of the new platform. There is no need to reintegrate into the new solution now. Your existing App Payments integration will continue to work and while our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and consider updating your integration accordingly. Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. 
