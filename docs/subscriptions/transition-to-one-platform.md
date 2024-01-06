@@ -69,6 +69,12 @@ Current agreements where amount is not stated will be depicted as agreements wit
 
 *Draft version of agreement screen, not final version.*
 
+### 1.4 Agreement cancelation by merchant
+
+When merchant tries to cancel agreement, which has payments in reserved state - agreement gets cancelled, payments stay in reserved state. This is changing from Nordic Wallet Launch. When merchant cancels agreement all reserved payments will be canceled too. 
+
+:star: **Recommendation:** Capture reserved payments if needed before calceling the agreement. This applies just if you have agreement cancelation implimented from your environment and you are using payments with reservation. 
+
 ## **2. Recurring payments**
 
 ### 2.1 Payments visible 8 days in advance
@@ -467,6 +473,8 @@ If you have any questions or need assistance with managing your recurring paymen
 
 
 ## **Changelog**
+
+2024-01-08 Added new section 1.4 Agreement cancelation by merchant
 
 2023-11-28 FAQ #6 and #7 updated regarding Report API
 
