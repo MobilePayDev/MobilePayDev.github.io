@@ -890,6 +890,7 @@ components:
         - externalId
         - merchantCategoryCode
         - name
+        - vatNumber
       type: object
       properties:
         externalId:
@@ -928,9 +929,9 @@ components:
             3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
           example: DK
         vatNumber:
+          minLength: 1
           type: string
           description: The VAT number of the merchant.
-          nullable: true
           example: '11102248'
       additionalProperties: false
     CreateRefundRequest:
@@ -1370,37 +1371,30 @@ components:
     MerchantUpdateRequest:
       type: object
       properties:
+        vatNumber:
+          type: string
+          description: The VAT number of the merchant.
+          nullable: true
         externalId:
           type: string
-          description: The PSP's unique id for the merchant.
+          description: DEPRECATED
           nullable: true
         merchantCategoryCode:
           type: integer
-          description: >-
-            The MCC is used to classify a business by the types of goods or
-            services it provides. More information here
-            [MCC](https://en.wikipedia.org/wiki/Merchant_category_code).
+          description: DEPRECATED
           format: int32
           nullable: true
         name:
           type: string
-          description: The PSP's name of the merchant for billing purposes.
+          description: DEPRECATED
           nullable: true
         billingCurrency:
           type: string
-          description: >-
-            Billing currency of the merchant. Possible values are:<br /> DKK<br
-            /> EUR<br /> SEK<br /> NOK
+          description: DEPRECATED
           nullable: true
         countryCode:
           type: string
-          description: >-
-            Merchant country code e.g. Denmark = DK. Use [ISO
-            3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
-          nullable: true
-        vatNumber:
-          type: string
-          description: The VAT number of the merchant.
+          description: DEPRECATED
           nullable: true
       additionalProperties: false
       description: >-
