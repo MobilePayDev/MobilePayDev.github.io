@@ -375,6 +375,24 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 :star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
 
+## **Test the Facade**
+
+Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. We will provide you with a designated user for testing.
+
+Preparation:
+- Create a new Payment point in the MobilePay portal.
+- Inform VMP when it's completed.
+- We will initiate a switch and notify you to commence testing.
+
+How to test:
+- Plan your test scenarios and execute actions that do not require user integration.
+- For testing involving user integration, we will schedule a meeting between you and our designated test user.
+
+Important:
+- It’s up to the merchant to decide if they want to test the facade.
+- There are no new feature in the facade
+- We require that you have specific test requirements and scenarios in mind.
+
 
 ## **FAQ** 
 
@@ -474,7 +492,7 @@ If you have any questions or need assistance with managing your recurring paymen
 
 ## **Changelog**
 
-2024-01-08 Added new section 1.4 Agreement cancelation by merchant
+2024-01-08 Added new section 1.4 Agreement cancelation by merchant. Recommendations how to test the facade added. 
 
 2023-11-28 FAQ #6 and #7 updated regarding Report API
 
