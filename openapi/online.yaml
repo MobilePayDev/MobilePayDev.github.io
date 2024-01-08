@@ -890,6 +890,7 @@ components:
         - externalId
         - merchantCategoryCode
         - name
+        - vatNumber
       type: object
       properties:
         externalId:
@@ -928,9 +929,9 @@ components:
             3166-1](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2).
           example: DK
         vatNumber:
+          minLength: 1
           type: string
           description: The VAT number of the merchant.
-          nullable: true
           example: '11102248'
       additionalProperties: false
     CreateRefundRequest:
