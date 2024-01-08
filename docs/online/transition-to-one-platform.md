@@ -3,6 +3,7 @@ sidebar_position: 5
 ---
 
 # Transition to One Platform
+*THIS DOCUMENT WAS LAST UPDATED ON 08.01.2024*
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
@@ -17,9 +18,8 @@ To make the transition as smooth as possible, we will migrate all merchants and 
 
 ## VAT number required for all merchants
 
-Before December 2023, please use our API to provide correct VAT number for both new and existing merchants if you’re not already doing so.
-For new merchants, the vatNumber field will be required for the Create merchant endpoint: `POST /v1/merchants`
-For existing merchants, you can use Update merchant `PATCH /api/v1/merchants/{merchantId}` to provide vatNumber.
+VAT number is now required for all merchants. For new merchants, the vatNumber field is required for the Create merchant endpoint: `POST /v1/merchants`
+For existing merchants without VAT numbers you must, you can use Update merchant `PATCH /api/v1/merchants/{merchantId}` to provide vatNumber. Note that the Update endpoint only accepts VAT number. It is not possible to update any other details. Please see [Update merchant](#update-merchant) if you need to change any other details of the merchant.
 
 If you do not update the VAT number of your existing merchants they will still exist after the transition to one platform, but you will not be able to initiate payments. You must then delete them and create a new merchant. 
 
@@ -33,7 +33,7 @@ During Q1 2024 - once we fully consolidate our platforms – the following endpo
 For a smooth transition, we recommend reviewing the changes and consider updating your integration accordingly if you are using any of these.
 
 ### Update merchant 
-`PATCH /api/v1/merchants/{merchantId}` will be removed. To update a merchant you must instead delete the merchant and create a new using: `DELETE /v1/merchants/{merchantId}` and `POST /v1/merchants`.
+`PATCH /api/v1/merchants/{merchantId}` only support update of VAT number. We will soon remove it completely. To update a merchant you must instead delete the merchant and create a new using: `DELETE /v1/merchants/{merchantId}` and `POST /v1/merchants`.
 If you need to update an active merchant we recomend that you create the new merchant and then delete the old. This is to avoid downtime since it is not possible to initiate payments on deleted merchants. Authorization updates and payment updates such as capture, cancel and refund is on payment level and will therefore not be affected by this. 
 
 ### validUntil 
