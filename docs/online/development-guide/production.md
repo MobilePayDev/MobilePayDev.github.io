@@ -23,7 +23,7 @@ In order to onboard merchants you must use: `POST /api/v1/merchants`. It is only
 
 The input giving when creating merchants is only used for billing and support purposes. The information shown to the users when completing payments is supplied when initiating payments using `POST /api/v3/payments`. Similar to merchant creation it is important that you use the details of the specific merchant and not a super merchant or payment facilitator. **Therefore you must use the proper merchant/web shop name as well as logo.** This will ensure better user experience and conversion rate.
 
-You can always contact us at developer@mobilepay.dk if you have any questions or conserns regarding merchant onboarding.
+You can always contact us at developer@vippsmobilepay.com if you have any questions or conserns regarding merchant onboarding.
 
 ## Test options for merchants
 
@@ -41,7 +41,7 @@ Please visit our [Design page](https://mobilepaygroup.com/design) for more infor
 
 ## Integrator and merchant support
 
-For ongoing technical support, technical questions or feature requests integrators can always contact Developer Support at developer@mobilepay.dk. The Developer Support team will review the request and respond as soon as possible, usually within a business day. Merchant support is the responsibility of the integrator as MobilePay do not have any agreements with merchants and is working as a pass through wallet. Therefore we can rarely assist merchants in any issues. 
+For ongoing technical support, technical questions or feature requests integrators can always contact Developer Support at developer@vippsmobilepay.com. The Developer Support team will review the request and respond as soon as possible, usually within a business day. Merchant support is the responsibility of the integrator as MobilePay do not have any agreements with merchants and is working as a pass through wallet. Therefore we can rarely assist merchants in any issues. 
 
 When contacting Developer Support please include as many details as possible relevant to the request. If it concerns a specific issue or bug please include the following and any other details that can be relevant:
 
@@ -54,5 +54,5 @@ When contacting Developer Support please include as many details as possible rel
 * Any logs that can be relevant to the issue
 
 :::tip
-Tip: Sign up for our operational mail list to be informed about any operational issues concerning Online. Just contact developer@mobilepay.dk in order to be added to the mail list.
+Tip: Sign up for our operational mail list to be informed about any operational issues concerning Online. Just contact developer@vippsmobilepay.com in order to be added to the mail list.
 :::

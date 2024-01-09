@@ -631,13 +631,13 @@ When creating `InvoiceDirect` or `InvoiceLink` these values can be returned as `
 |10102      |MobilePay user not available                                                 |
 |10103      |MobilePay user not found                                                     |
 |10104      |Invoice already exists                                                       |
-|10105      |Technical error - please contact MobilePay developer support  developer@mobilepay.dk |
+|10105      |Technical error - please contact MobilePay developer support  developer@vippsmobilepay.com |
 |10008      |Total amount must be greater than 0                                          |
 |10201      |Total invoice amount is exceeded                                             |
 |10202      |Invoice issuer not found                                                     |
 |10203      |Account validation error                                                     |
 |10204      |Account validation error                                                     |
-|10205      |Technical error - please contact MobilePay developer support  developer@mobilepay.dk |
+|10205      |Technical error - please contact MobilePay developer support  developer@vippsmobilepay.com |
 |10301      |Invoice already exists                                                       |
 |10302      |Merchant not found                                                           |
 |10303      |Invoice issuer not found                                                     |

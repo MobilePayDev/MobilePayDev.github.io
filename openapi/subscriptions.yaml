@@ -3,7 +3,7 @@ info:
   title: Subscriptions API
   description: The MobilePay Subscriptions API uses OAuth 2.0 protocol for authentication and authorization and contains endpoints needed to implement MobilePay Subscriptions in your system. This API is for the technical integrator acting on behalf of merchant, or merchant creating their own integrations. MobilePay Subscriptions allow you to offer recurring billing for your customers, including One-off payments and Refunds.<br/> <a href="https://mobilepaydev.github.io/MobilePay-Subscriptions">Documentation</a>
   contact:
-    email: developer@mobilepay.dk
+    email: developer@vippsmobilepay.com
 servers:
   - url: https://api.mobilepay.dk/subscriptions
     description: Production server (uses **live** data)

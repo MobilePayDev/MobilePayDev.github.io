@@ -14,7 +14,7 @@ There is no need to reintegrate into the new solution. Your existing Online inte
 Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration.
 :::
 
-To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. If you have any questions, feel free to reach out to us at developer@mobilepay.dk 
+To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
 
 ## VAT number required for all merchants
 

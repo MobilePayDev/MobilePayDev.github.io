@@ -24,4 +24,4 @@ When creating a merchant billingCurrency and countryCode is defined:
 
 ## Franchise and partners
 
-For franchises you must create  each franchisor as individual merchants. You can also choose to setup the franchisee as partner if you want to, but that is not required from our side. Please contact developer@mobilepay.dk to inquire about partner setup.
+For franchises you must create  each franchisor as individual merchants. You can also choose to setup the franchisee as partner if you want to, but that is not required from our side. Please contact developer@vippsmobilepay.com to inquire about partner setup.

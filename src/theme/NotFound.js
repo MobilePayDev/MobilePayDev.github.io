@@ -35,7 +35,7 @@ export default function NotFound() {
                 <Translate
                   id="theme.NotFound.p2"
                   description="The 2nd paragraph of the 404 page">
-                  If everything else fails you are very welcome to contact us at developer@mobilepay.dk. We will gladly help you find what you are looking for or answer any questions you might have. 
+                  If everything else fails you are very welcome to contact us at developer@vippsmobilepay.com. We will gladly help you find what you are looking for or answer any questions you might have. 
                 </Translate>
               </p>
             </div>

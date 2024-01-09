@@ -34,7 +34,7 @@ Content-Type: x-www-urlencoded
 Authorization: Basic (client_id:client_secret).toBase64EncodedString().
 ```
 
-The OAuth `client_id`and `client_secret` will be sent to the integrator in a closed zip file from [developer@mobilepay.dk](mailto:developer@mobilepay.dk) to integrators e-mail (step 4 in the [Client onboarding guide](/docs/pos/development-guide/getting-started#step-4---receive-security-credentials)).
+The OAuth `client_id`and `client_secret` will be sent to the integrator in a closed zip file from [developer@vippsmobilepay.com](mailto:developer@vippsmobilepay.com) to integrators e-mail (step 4 in the [Client onboarding guide](/docs/pos/development-guide/getting-started#step-4---receive-security-credentials)).
 
 In addition, the `grant_type` parameter must be set and a `merchant_vat` parameter may optionally be set as described below:
 

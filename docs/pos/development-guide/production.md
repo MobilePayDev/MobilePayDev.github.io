@@ -31,12 +31,12 @@ If merchant needs assistance in regards to business onboarding to your solution 
 Be sure to inform and train your sales and support team on the onboarding process for your system. Our business support will assist the merchants with the MobilePay onboarding, but they cannot support the merchants when onboarding your system. Therefore it is important that your sales and support team are properly trained to do so.
 :::
 
-* **Solution/technical support**: If a merchant needs support or encounter issue with the PoS solution integrator is responsible for 1st level support. If integrators investigation shows and issue with MobilePay services they can contact Developer Support at developer@mobilepay.dk with relevant information and we will investigate the issue.
+* **Solution/technical support**: If a merchant needs support or encounter issue with the PoS solution integrator is responsible for 1st level support. If integrators investigation shows and issue with MobilePay services they can contact Developer Support at developer@vippsmobilepay.com with relevant information and we will investigate the issue.
 Please do not advise merchants to contact us directly as they cannot provide the needed details and are usually not familiar with the technical integration. This also applies to subcontractors and resellers. The support communication must be handled directly between MobilePay Developer Support and integrator.
 
 ## Integrator support
 
-For ongoing technical support, technical questions or feature requests integrators can always contact Developer Support at developer@mobilepay.dk. The Developer Support team will review the request and respond as soon as possible, usually within a business day.
+For ongoing technical support, technical questions or feature requests integrators can always contact Developer Support at developer@vippsmobilepay.com. The Developer Support team will review the request and respond as soon as possible, usually within a business day.
 
 When contacting Developer Support please include as many details as possible relevant to the request. If it concerns a specific issue or bug please include the following and any other details that can be relevant:
 
@@ -51,7 +51,7 @@ When contacting Developer Support please include as many details as possible rel
 * Any logs that can be relevant to the issue
 
 :::tip
-Sign up for our operational mail list to be informed about any operational issues concerning PoS v10. Just contact developer@mobilepay.dk in order to be added to the mail list.
+Sign up for our operational mail list to be informed about any operational issues concerning PoS v10. Just contact developer@vippsmobilepay.com in order to be added to the mail list.
 :::
 
 ## Confirmation screen

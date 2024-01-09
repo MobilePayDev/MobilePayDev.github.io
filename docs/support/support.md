@@ -21,7 +21,7 @@ If you have **business related** questions or product feedback, feel free to con
 
 ## We help with technical issues
 
-MobilePay Developer support provides support in Danish and English. You can contact us either by using the contact form below or write us an email at developer@mobilepay.dk or developer@mobilepay.fi. We will respond as soon as possible, within one business day. The Developer Support is closed on Danish holidays and we will reply you, as soon as possible.
+MobilePay Developer support provides support in Danish and English. You can contact us either by using the contact form below or write us an email at developer@vippsmobilepay.com or developer@mobilepay.fi. We will respond as soon as possible, within one business day. The Developer Support is closed on Danish holidays and we will reply you, as soon as possible.
 
 ### What to include in the email
 

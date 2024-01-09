@@ -39,7 +39,7 @@ To complete the verification, you must go through the steps listed below. This i
 
 ### Internal Self-verification
 
-Once you have followed the steps above, you are ready to do the self-certification. Please send an email to developer@mobilepay.dk informing about completed steps and we will verify these.
+Once you have followed the steps above, you are ready to do the self-certification. Please send an email to developer@vippsmobilepay.com informing about completed steps and we will verify these.
 
 ## Going from Sandbox to Production
 
@@ -56,7 +56,7 @@ Once you have followed the steps above, you are ready to do the self-certificati
 1.Get OpenID Connect Credentials. Read more [here](/docs/invoice/authentication)
 2. Confirm that the implementation is working in production.
 3. Ensure you've followed our [design guidelines](https://www.mobilepaygroup.com/design)
-4. **Await approval from developer@mobilepay.dk**
+4. **Await approval from developer@vippsmobilepay.com**
 4. Sign up for operational maillist.
 
 ## Prerequisites using MobilePay Invoice
