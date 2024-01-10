@@ -142,7 +142,7 @@ The new period will be applied only to payments that will be executed on the new
 In Subscriptions, Refunds had no Description, but in the new Recurring setup, this field is present and mandatory. We will prefill it with a simple "Refund" for you.
 
 ### 4.3 Refund responses
-There will be no callbacks anymore for refunds after Nordic Wallet Launch. All needed information will be handled through API response. 
+There will be no callbacks anymore when refunding payment executed in new platform after Nordic Wallet Launch. All needed information will be handled through API response. Although if you are refunding a payment which was reserved and/or captured before Nordic Wallet Launch you still need to provide status_callback_url and you will receive callback in provided url about refund status.
 
 :star: **Recommendation:** If you use refunds review planned API responses and adjust your integration to handle it. 
 
@@ -521,3 +521,4 @@ If you have any questions or need assistance with managing your recurring paymen
 2023-10-09 Changed callback status codes from "6000..." to "7000..."
 2023-10-11 Section 9 renamed to Other and new topic added 9.3 Error messages. 
 2023-10-11 Clarification, that OAuth2 token retrieval requests will be sent from new DNS address
+2024-01-10 Refunding of payment executed in mobilepay will still trigger a callback
