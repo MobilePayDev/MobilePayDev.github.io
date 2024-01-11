@@ -19,7 +19,7 @@ info:
     new API is available.  [See more
     here](https://mobilepaygroup.com/products/new-platform)
   contact:
-    email: developer@mobilepay.dk
+    email: developer@vippsmobilepay.com
 servers:
   - url: https://api.mobilepay.dk/invoice-restapi
     description: Production server (uses **live** data)

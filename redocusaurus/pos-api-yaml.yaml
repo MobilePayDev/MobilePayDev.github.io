@@ -73,7 +73,7 @@ info:
   contact:
     name: MobilePay Developer Support
     url: https://developer.mobilepay.dk/docs/pos
-    email: developer@mobilepay.dk
+    email: developer@vippsmobilepay.com
   version: 10.2.6
 servers:
   - url: https://api.mobilepay.dk

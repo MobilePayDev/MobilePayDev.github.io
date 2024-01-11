@@ -10,7 +10,7 @@ info:
     customers, including One-off payments and Refunds.<br/> <a
     href="https://mobilepaydev.github.io/MobilePay-Subscriptions">Documentation</a>
   contact:
-    email: developer@mobilepay.dk
+    email: developer@vippsmobilepay.com
 servers:
   - url: https://api.mobilepay.dk/subscriptions
     description: Production server (uses **live** data)

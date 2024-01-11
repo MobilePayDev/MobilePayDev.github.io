@@ -2,7 +2,7 @@ openapi: 3.0.3
 info:
   title: Online API
   contact:
-    email: developer@mobilepay.dk
+    email: developer@vippsmobilepay.com
   version: v1
 servers:
   - url: https://api.mobilepay.dk/cardpassthrough-restapi

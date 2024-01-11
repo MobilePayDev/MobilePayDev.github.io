@@ -11,7 +11,7 @@ info:
 
     Event `transfer.succeeded` is generic and supports all products.
   contact:
-    email: developer@mobilepay.dk
+    email: developer@vippsmobilepay.com
 servers:
   - url: https://api.mobilepay.dk
     description: Production server (uses **live** data)
