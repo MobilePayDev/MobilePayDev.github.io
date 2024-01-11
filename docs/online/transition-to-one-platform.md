@@ -3,7 +3,7 @@ sidebar_position: 5
 ---
 
 # Transition to One Platform
-*THIS DOCUMENT WAS LAST UPDATED ON 08.01.2024*
+*THIS DOCUMENT WAS LAST UPDATED ON 11.01.2024*
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
