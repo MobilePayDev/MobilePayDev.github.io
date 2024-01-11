@@ -14,14 +14,19 @@ There is no need to reintegrate into the new solution. Your existing Online inte
 Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration.
 :::
 
-To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
+To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. The migration will happen in two phases:
+- **January 23th** we will launch the new platform in **Finland** and migrate all Finnish merchants. 
+- **March 12th** we will launch the new platofmr in **Denmark** and migrate all Danish merchants.
+  
+If a merchant is neither Finnish or Danish we will migrate them according to the currency of their transactions. Below changes must be implemented for the merchants depending on country. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
+
 
 ## VAT number required for all merchants
 
 VAT number is now required for all merchants. For new merchants, the vatNumber field is required for the Create merchant endpoint: `POST /v1/merchants`
 For existing merchants without VAT numbers you must, you can use Update merchant `PATCH /api/v1/merchants/{merchantId}` to provide vatNumber. Note that the Update endpoint only accepts VAT number. It is not possible to update any other details. Please see [Update merchant](#update-merchant) if you need to change any other details of the merchant.
 
-If you do not update the VAT number of your existing merchants they will still exist after the transition to one platform, but you will not be able to initiate payments. You must then delete them and create a new merchant. 
+If you do not update the VAT number of your existing merchants you will not be able to initiate payments for these after the launch of the new platform. You must then delete them and create a new merchant. 
 
 For sole props. not having a VAT no. you can use an alternative number for example your own unique merchant id.
 
@@ -33,7 +38,7 @@ During Q1 2024 - once we fully consolidate our platforms – the following endpo
 For a smooth transition, we recommend reviewing the changes and consider updating your integration accordingly if you are using any of these.
 
 ### Update merchant 
-`PATCH /api/v1/merchants/{merchantId}` only support update of VAT number. We will soon remove it completely. To update a merchant you must instead delete the merchant and create a new using: `DELETE /v1/merchants/{merchantId}` and `POST /v1/merchants`.
+`PATCH /api/v1/merchants/{merchantId}` currently only support update of VAT number. We will soon remove the endpoint completely. Note that you can only update VAT number using `PATCH` before the launch of the new platform. After launch you must instead delete the merchant and create a new using: `DELETE /v1/merchants/{merchantId}` and `POST /v1/merchants`.
 If you need to update an active merchant we recomend that you create the new merchant and then delete the old. This is to avoid downtime since it is not possible to initiate payments on deleted merchants. Authorization updates and payment updates such as capture, cancel and refund is on payment level and will therefore not be affected by this. 
 
 ### validUntil 
