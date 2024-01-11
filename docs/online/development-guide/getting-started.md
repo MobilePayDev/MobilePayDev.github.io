@@ -12,7 +12,7 @@ The MobilePay Sandbox is a self-contained testing environment that mimics the li
 
 ## Register for the technical integration
 
-Send an email to [developer@mobilepay.dk](mailto:developer@mobilepay.dk?subject=Register%20as%20MobilePay%20Online%20Integrator&body=Hi%20MobilePay%2C%0D%0A%0D%0AOfficial%20company%20name%3A%0D%0AVAT%20number%3A%0D%0A%0D%0AContact%20person%20for%20PCI-DSS%20AoC%3A%0D%0A%0D%0ABusiness%20Contact%20Name%3A%0D%0ABusiness%20Contact%20E-mail%3A%0D%0A%0D%0ATechnical%20Contact%20Name%3A%0D%0ATechnical%20Contact%20E-mail%3A%0D%0A%0D%0APSP%20Homepage%3A%0D%0AExpected%20go%20live%20date%3A%0D%0AAdditional%20information%3A%0D%0A) with the following information:
+Send an email to [developer@vippsmobilepay.com](mailto:developer@vippsmobilepay.com?subject=Register%20as%20MobilePay%20Online%20Integrator&body=Hi%20MobilePay%2C%0D%0A%0D%0AOfficial%20company%20name%3A%0D%0AVAT%20number%3A%0D%0A%0D%0AContact%20person%20for%20PCI-DSS%20AoC%3A%0D%0A%0D%0ABusiness%20Contact%20Name%3A%0D%0ABusiness%20Contact%20E-mail%3A%0D%0A%0D%0ATechnical%20Contact%20Name%3A%0D%0ATechnical%20Contact%20E-mail%3A%0D%0A%0D%0APSP%20Homepage%3A%0D%0AExpected%20go%20live%20date%3A%0D%0AAdditional%20information%3A%0D%0A) with the following information:
 
     * Official company name
     * VAT number
@@ -50,7 +50,7 @@ No body or credentials is required for the request. Response will contain a clie
 It is also possible to reset clientSecret using the endpoint documented [here](/api/online#tag/PSP-Onboarding/paths/~1api~1v1~1credentials~1secret/patch).
 
 :::caution Important
-Before your credentials can be used they must be whitelisted. Please send the clientId (NOT the clientSecret) to developer@mobilepay.dk to be whitelisted.
+Before your credentials can be used they must be whitelisted. Please send the clientId (NOT the clientSecret) to developer@vippsmobilepay.com to be whitelisted.
 :::
 
 ### PublicKey

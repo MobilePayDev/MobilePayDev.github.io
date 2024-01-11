@@ -46,7 +46,7 @@ Example of `external_id`: "external_id": "CompanynameAgreement"
 
 ### Internal Self-verification
 
-Once you have followed the steps above, you are ready to do the self-certification. Please send an email to developer@mobilepay.dk informing about completed steps and we will verify these.
+Once you have followed the steps above, you are ready to do the self-certification. Please send an email to developer@vippsmobilepay.com informing about completed steps and we will verify these.
 
 ## Going from Sandbox to Production
 
@@ -69,10 +69,10 @@ Once you have followed the steps above, you are ready to do the self-certificati
 5. [Create agreement](/docs/subscriptions/agreement)
 6. [Request a Subscription Payment](/docs/subscriptions/subscriptions-payments)
 7. Verify the [Production Payment reconciliation process](/docs/subscriptions/development-guide/production)
-8. Document customers sign-up flow to developer@mobilepay.dk 
+8. Document customers sign-up flow to developer@vippsmobilepay.com 
      * You can check our [UX inspiration site ](https://www.mobilepay.dk/erhverv/abonnementer-og-fakturering/mobilepay-subscriptions/inspiration)
-9. When the Subscription Payment is executed, request for review from developer@mobilepay.dk
-10. **Await approval from developer@mobilepay.dk**
+9. When the Subscription Payment is executed, request for review from developer@vippsmobilepay.com
+10. **Await approval from developer@vippsmobilepay.com**
 11. Sign up for operational maillist
 12. Keep updated on MobilePay Subscriptions [release notes](/docs/subscriptions/release-notes)
 

@@ -10,7 +10,7 @@ info:
     In the beginning of 2024 we will therefore replace the current Invoice API with a new and scalable version. We will update this page as soon as documentation for the new API is available. 
     [See more here](https://mobilepaygroup.com/products/new-platform)
   contact:
-    email: developer@mobilepay.dk
+    email: developer@vippsmobilepay.com
 servers:
   - url: https://api.mobilepay.dk/invoice-restapi
     description: Production server (uses **live** data)

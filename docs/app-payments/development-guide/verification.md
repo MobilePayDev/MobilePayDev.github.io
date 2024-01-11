@@ -6,7 +6,7 @@ sidebar_position: 3
 
 To ensure that your system is ready for production you need to have performed the basic API calls as described in the verification form below. Once we have verified that the steps has been completed successfully you are ready to start testing in production.
 
-When your test in production are done and you are getting ready to go live with MobilePay App Payments please let us know at developer@mobilepay.dk and we will stand by for any assistance you may need.
+When your test in production are done and you are getting ready to go live with MobilePay App Payments please let us know at developer@vippsmobilepay.com and we will stand by for any assistance you may need.
 
 ## Error handling & Flow
 
@@ -18,7 +18,7 @@ We highly recommend that you use the description parameter to inform your custom
 
 ## Sandbox verification
 
-Before moving to hidden production you must have performed below API calls. Please insert the listed details and submit the form in order for us to confirm the API calls. All actions are mandatory.  Please send an email to developer@mobilepay.dk with data for each point or use this [template](mailto:developer@mobilepay.dk?subject=Sandbox%20verification%20-%20Online&body=Hi%20MobilePay%2C%0D%0A%0D%0APayments%0D%0A1.%20Initiate%20payment%3A%20POST%20%2Fv1%2Fpayments%20-%20paymentId%0D%0A2.%20Accept%20payment%3A%20Using%20test%20app%20or%20API%20-%20paymentId%0D%0A2.%20Cancel%20payment%3A%20POST%20%2Fv1%2Fpayments%2F%7Bpaymentid%7D%2Fcancel%20-%20paymentId%0D%0A3.%20Refund%20Payment%3A%20POST%20%2Fv1%2Frefunds%20-%20paymentId%0D%0A%0D%0AWebhooks%0D%0A5.%20Are%20you%20using%20webhooks%3F%20*We%20strongly%20advise%20using%20webhooks%20in%20your%20integration.*%20-%20Yes%2FNo%0D%0A6.%20If%20you%20don't%20use%20webhooks%20polling%20with%20%60GET%20%2Fv1%2Fpayments%2F%7Bpaymentid%7D%60%20is%20mandatory%20-%20paymentId%0D%0A).
+Before moving to hidden production you must have performed below API calls. Please insert the listed details and submit the form in order for us to confirm the API calls. All actions are mandatory.  Please send an email to developer@vippsmobilepay.com with data for each point or use this [template](mailto:developer@vippsmobilepay.com?subject=Sandbox%20verification%20-%20Online&body=Hi%20MobilePay%2C%0D%0A%0D%0APayments%0D%0A1.%20Initiate%20payment%3A%20POST%20%2Fv1%2Fpayments%20-%20paymentId%0D%0A2.%20Accept%20payment%3A%20Using%20test%20app%20or%20API%20-%20paymentId%0D%0A2.%20Cancel%20payment%3A%20POST%20%2Fv1%2Fpayments%2F%7Bpaymentid%7D%2Fcancel%20-%20paymentId%0D%0A3.%20Refund%20Payment%3A%20POST%20%2Fv1%2Frefunds%20-%20paymentId%0D%0A%0D%0AWebhooks%0D%0A5.%20Are%20you%20using%20webhooks%3F%20*We%20strongly%20advise%20using%20webhooks%20in%20your%20integration.*%20-%20Yes%2FNo%0D%0A6.%20If%20you%20don't%20use%20webhooks%20polling%20with%20%60GET%20%2Fv1%2Fpayments%2F%7Bpaymentid%7D%60%20is%20mandatory%20-%20paymentId%0D%0A).
 
 **Payments**
 
