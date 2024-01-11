@@ -3,7 +3,7 @@ sidebar_position: 10
 ---
 
 # Transition to One Platform
-*THIS DOCUMENT WAS LAST UPDATED ON 04.01.2024*
+*THIS DOCUMENT WAS LAST UPDATED ON 09.01.2024* (NEW CONTENT: HOW TO TEST THE FACADE)
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
@@ -106,7 +106,25 @@ curl xxx/v1/integration-test/payments/{PAYMENT_ID}/reserve \
 }'
 ```
 
-### The test environment 
+# Testing the facade (Only in production)
+
+Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees, so we will assist you with the testing.
+
+Preparation:
+- Create a new Payment point in the MobilePay portal.
+- Inform VMP when it's completed.
+- We will toggle a switch for that specific payment point so traffic is routed through the facade.
+
+How to test:
+- Make requests as usual through the API on the new payment point.
+- To test a full payment flow, user interaction is required. Contact us at developer@mobilepay.dk and we will schedule a meeting.
+
+Important:
+- It’s up to the merchant to decide if they want to test the facade.
+- There are no new features in the facade.
+
+
+# The test environment 
 
 The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
 
