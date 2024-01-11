@@ -8,7 +8,7 @@ This guide is designed to help you get started with MobilePay Subscriptions. You
 
 ## Register
 
-All merchants should order the product needed on the MobilePay portal: [DK](https://admin.mobilepay.dk/)|[FI](https://admin.mobilepay.fi/). If you are a Third Party integrator and don't have an agreement with MobilePay you can sign up [here](https://www.mobilepaygroup.com/partner/signup). When the sign up has been approved by our business representatives we will contact your technical contact in order to start the integration process.
+All merchants should order the product needed on the MobilePay portal: [DK](https://admin.mobilepay.dk/)|[FI](https://admin.mobilepay.fi/). 
 
 ## API documentation
 
