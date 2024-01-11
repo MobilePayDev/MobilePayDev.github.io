@@ -37,7 +37,7 @@ For a smooth transition, we recommend reviewing the changes and consider updatin
 If you need to update an active merchant we recomend that you create the new merchant and then delete the old. This is to avoid downtime since it is not possible to initiate payments on deleted merchants. Authorization updates and payment updates such as capture, cancel and refund is on payment level and will therefore not be affected by this. 
 
 ### validUntil 
-It will no longer be possible to define payment validation. It will instead default to 5 minutes. Read more [here](https://developer.vippsmobilepay.com/docs/vipps-developers/common-topics/timeouts/).
+It will no longer be possible to define payment validation. It will instead default to 5 minutes. 
 
 ### Get payment
 `GET /api/v3/payments/{paymentId}` will be removed. 
