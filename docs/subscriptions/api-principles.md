@@ -113,6 +113,9 @@ When utilizing callbacks, it is important that you evaluate your usage of ``exte
 We recommend that the ``external_id`` for a payment should be associated with the specified ``orderId`` on merchant side. 
 We recommend that the ``external_id`` for an Agreement should be associated with the specified customer number on merchant side. 
 
+## content-length
+It is important that you include ``content-length`` header in API calls. is a fundamental principle that enhances performance, resource management, error handling, security, and interoperability. We expect you include ``content-length`` header to ensure better compatibility and interoperability with a wide range of tools, libraries, and frameworks. Including the ``content-length`` header enables better resource management on both client and server sides. Servers can allocate memory more accurately, avoiding unnecessary buffering or memory overflows. Clients, in turn, can optimize their resource usage by pre-allocating buffers based on the known content length, preventing wasteful consumption of resources.
+
 ## Capture or cancellation of old reservations
 
 All reservations should be captured or cancelled as soon as possible practically. If an error occurs that result in either cancellation or capture being impossible the client is responsible for persisting which payments should be captured at a later stage. We encourage you to capture as soon as a service is rendered or order shipped. It results in bad end-user experience, if the amount is reserved on the customer’s account for too long, as the customer can see the amount on their bank statement.
