@@ -113,7 +113,7 @@ When utilizing callbacks, it is important that you evaluate your usage of ``exte
 We recommend that the ``external_id`` for a payment should be associated with the specified ``orderId`` on merchant side. 
 We recommend that the ``external_id`` for an Agreement should be associated with the specified customer number on merchant side. 
 
-## content-length
+## Content-length
 It is important that you include ``content-length`` header in API calls. is a fundamental principle that enhances performance, resource management, error handling, security, and interoperability. We expect you include ``content-length`` header to ensure better compatibility and interoperability with a wide range of tools, libraries, and frameworks. Including the ``content-length`` header enables better resource management on both client and server sides. Servers can allocate memory more accurately, avoiding unnecessary buffering or memory overflows. Clients, in turn, can optimize their resource usage by pre-allocating buffers based on the known content length, preventing wasteful consumption of resources.
 
 ## Capture or cancellation of old reservations
