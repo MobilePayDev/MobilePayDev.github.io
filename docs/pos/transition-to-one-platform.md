@@ -21,3 +21,16 @@ The new setup will offer one entrance to our platform, opening for easier access
 
 We will continually send out information to all existing integrators about the new integration. To read more about the solution replacing MobilePay PoS please find details [here](https://www.mobilepaygroup.com/partner/new-platform). On this page you can also request access to the test environment to initiate the new integration work. 
 For technical changes of the integration please visit the [migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#point-of-sale-vs-epayment). As soon as we have more information on the documentation for the new version, we will update these page. 
+
+## FAQ
+### What will happen to the merchants signed up for MobilePay PoS?
+To make the transition as smooth as possible, we will migrate all merchants and their data to the new platform. They will be signed up for ePayments which is the replacement for PoS. As an integrator your responsibility is to implement the new solution and make it available for your merchants.
+
+### What will happen if we use the MobilePay PoS API after launch of the new platform?
+It will be possible to initiate payments on the old MobilePay PoS API after we launch our new platform. It will take a while before we close the old platform. But it will not be possible for any useres to accept these payments. The payments will stay in status initiated. So please note that you will not receive an error when attempting to use the API after the launch date. 
+
+### Is it possible to resue the existing QR codes?
+Yes it is possible to register the existing MobilePay PoS QR codes on the new platform. Please visit the [migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/pos/#checkout-neither-has-qr-scanners-nor-customer-facing-screens) for more information.
+
+### What happens if a user scan a MobilePay PoS QR code after the launch of the new platform?
+User will get a new app on the day of the launch. If you have [migrated the QR code](https://developer.vippsmobilepay.com/docs/mp-migration-guide/pos/#checkout-neither-has-qr-scanners-nor-customer-facing-screens) to the new platform then it can be used for ePayments and users can scan it with the new. If you have not migrated the QR code (and it therefore does not exist on the new platform) then the user will see an error in the app stating that we cannot recognize the QR code. It is therefore important that you migrate the QR codes or remove them. 
