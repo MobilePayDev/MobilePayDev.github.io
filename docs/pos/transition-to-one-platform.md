@@ -27,9 +27,9 @@ For technical changes of the integration please visit the [migration guide](http
 To make the transition as smooth as possible, we will migrate all merchants and their data to the new platform. They will be signed up for ePayments which is the replacement for PoS. As an integrator your responsibility is to implement the new solution and make it available for your merchants.
 
 ### What will happen if we use the MobilePay PoS API after launch of the new platform?
-It will be possible to initiate payments on the old MobilePay PoS API after we launch our new platform. It will take a while before we close the old platform. But it will not be possible for any useres to accept these payments. The payments will stay in status initiated. So please note that you will not receive an error when attempting to use the API after the launch date. 
+It will take a while before we close the old platform so it will be possible to initiate payments on the old MobilePay PoS API after we launch our new platform. But it will not be possible for any users to accept these payments because we have moved all users to our new platform. This means that you will not receive any API errors when attempting to initiate payments (or make any other requests to the API). But the payments will stay in status initiated and no user will be able to interact with the payments.
 
-### Is it possible to resue the existing QR codes?
+### Is it possible to reuse the existing QR codes?
 Yes it is possible to register the existing MobilePay PoS QR codes on the new platform. Please visit the [migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/pos/#checkout-neither-has-qr-scanners-nor-customer-facing-screens) for more information.
 
 ### What happens if a user scan a MobilePay PoS QR code after the launch of the new platform?
