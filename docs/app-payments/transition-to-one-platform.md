@@ -3,7 +3,7 @@ sidebar_position: 10
 ---
 
 # Transition to One Platform
-*THIS DOCUMENT WAS LAST UPDATED ON 09.01.2024* (NEW CONTENT: HOW TO TEST THE FACADE)
+*This document was last updated on 09.01.2024* (New content: How to test the facade)
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
