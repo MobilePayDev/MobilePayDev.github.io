@@ -282,7 +282,7 @@ Currently we are sending you gross settlements (full amount of the payments) and
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
 Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
-### 9.2. Callback changes for one-offs
+### 9.2. Callback changes for recurring and one-off payments
 
 We will stop sending our old callbacks for one-off payment expiration and rejection by users from Nordic Wallet Launch. 
 
@@ -330,7 +330,61 @@ Above callbacks will be sent in following cases:
 * For each one-off payment rejection by user
 * For each cancellation of pending one-off payment, due to merchants' initiated cancellation of pending agreement
 
-### 9.3. Callbacks for reintegrated merchants
+### 9.3. Callbacks for non reintegrated merchants after NWL
+
+These are the callbacks we will be sending for non reintegrated merchants.
+
+Agreement callbacks (no changes):
+
+
+| Status       | Status code      | Status text                                   |                           
+|--------------|------------------|-----------------------------------------------|
+| Accepted     | 0                | The agreement has been accepted.              |
+| Expired      | 40001            | Pending agreement expired.                    |
+| Rejected     | 40000            | Rejected by user.                             |
+| Canceled     | 40002            | The agreement was canceled by the user.       |                      
+| Canceled     | 40003            | The agreement was canceled by the merchant.   |                                          
+
+Recurring payment callbacks:
+
+| Status        | Status code      | Status text                                               |  Callback sending condition                   
+|---------------|------------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003            | Payment cancelled.                                        | Pending payment cancelled due to user cancelling an agreement
+|               |                  |                                                           | Pending payment cancelled due to merchant cancelling an agreement
+|               |                  |                                                           | Merchants' initiated cancellation of pending recurring payment
+|               |                  |                                                           |    
+| Executed      | 0                | null                                                      | Payment succesfully executed on due date 
+| Failed        | 50000            | Payment failed to execute during the due date             | Payment failed to execute during the due date
+| Declined      | 70001            | Payment amount is 5 times higher than agreement amount.   | Payment batch request contains a payment which amount is 5 times higher than     
+|               |                  |                                                           | agreement's amount. Applicable when agreement has an amount more than 0
+| Declined      | 50003            | Declined by system: Agreement is not in \"Active\" state. | Payment batch request contains a payment for non-active agreement 
+| Declined      | 50006            | Declined by system.                                       | Unspecified error when processing payment from payment batch request
+
+
+One-off payment sent with an agreement:
+
+| Status        | Status code      | Status text                                               |  Callback sending condition                   
+|---------------|------------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003            | Payment cancelled.                                        | Pending agreement with one-off payment has expired
+|               |                  |                                                           | Pending agreement with one-off payment was rejected by user
+|               |                  |                                                           | Merchant cancels pending agreement with one-off payment
+|               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved
+|               |                  |                                                           | Merchant cancells Reserved one-off payment
+|               |                  |                                                           |    
+| Reserved      | 0                | Payment successfully reserved.                            | Agreement with one-off payment was accepted and payment was reserved
+
+
+Autoreserve one-off payment:
+
+| Status        | Status code      | Status text                                               |  Callback sending condition                   
+|---------------|------------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003            | Payment cancelled.                                        | Merchant cancells autoreserve one-off payment in Requested or Reserved status
+|               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved or Requested
+|               |                  |                                                           |    
+| Reserved      | 0                | Payment successfully reserved.                            | Payment reserved
+| Requested     | 50013            | Automatic reservation failed. User action is needed.      | Reservation failed
+
+### 9.4. Callbacks for reintegrated merchants
 
 If you are planning to reintegrate, you will have to start using new callback(webhook) solution https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/
 By default even after reintegration you will receive webhooks in the old MobilePay format, but there is no possibility to change callback url or authentication method.
@@ -421,7 +475,7 @@ This is an examples of new agreement callback
 }
 ```
 
-### 9.4. Error messages
+### 9.5. Error messages
 
 We are making adjustments to error responses, specifically related to `error_description.message` and `error_description.error_type`. Some values will remain unchanged, some will be modified, and new validations will be introduced. Some messages may be less explicit than before, as they are generated directly from the backend and not specifically tailored for exact app branding (MobilePay or Vipps) responses.
 
