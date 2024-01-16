@@ -293,7 +293,6 @@ Currently your money is settled 1 day after payments were executed, after Nordic
 
 Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After Nordic Wallet Launch we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
 
-
 ## **9. Other**
 
 ### 9.1. From the Nordic Wallet Launch callbacks will be sent from new DNS address
@@ -301,7 +300,7 @@ Currently we are sending you gross settlements (full amount of the payments) and
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
 Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
-### 9.2. Callback changes for one-offs
+### 9.2. Callback changes for recurring and one-off payments
 
  
 
@@ -352,7 +351,152 @@ Above callbacks will be sent in following cases:
 * For each one-off payment rejection by user
 * For each cancellation of pending one-off payment, due to merchants' initiated cancellation of pending agreement
 
-### 9.3. Error messages
+### 9.3. Callbacks for non reintegrated merchants after NWL
+
+These are the callbacks we will be sending for non reintegrated merchants.
+
+Agreement callbacks (no changes):
+
+
+| Status       | Status code      | Status text                                   |                           
+|--------------|------------------|-----------------------------------------------|
+| Accepted     | 0                | The agreement has been accepted.              |
+| Expired      | 40001            | Pending agreement expired.                    |
+| Rejected     | 40000            | Rejected by user.                             |
+| Canceled     | 40002            | The agreement was canceled by the user.       |                      
+| Canceled     | 40003            | The agreement was canceled by the merchant.   |                                          
+
+Recurring payment callbacks:
+
+| Status        | Status code      | Status text                                               |  Callback sending condition                   
+|---------------|------------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003            | Payment cancelled.                                        | Pending payment cancelled due to user cancelling an agreement
+|               |                  |                                                           | Pending payment cancelled due to merchant cancelling an agreement
+|               |                  |                                                           | Merchants' initiated cancellation of pending recurring payment
+|               |                  |                                                           |    
+| Executed      | 0                | null                                                      | Payment succesfully executed on due date 
+| Failed        | 50000            | Payment failed to execute during the due date             | Payment failed to execute during the due date
+| Declined      | 70001            | Payment amount is 5 times higher than agreement amount.   | Payment batch request contains a payment which amount is 5 times higher than     
+|               |                  |                                                           | agreement's amount. Applicable when agreement has an amount more than 0
+| Declined      | 50003            | Declined by system: Agreement is not in \"Active\" state. | Payment batch request contains a payment for non-active agreement 
+| Declined      | 50006            | Declined by system.                                       | Unspecified error when processing payment from payment batch request
+
+
+One-off payment sent with an agreement:
+
+| Status        | Status code      | Status text                                               |  Callback sending condition                   
+|---------------|------------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003            | Payment cancelled.                                        | Pending agreement with one-off payment has expired
+|               |                  |                                                           | Pending agreement with one-off payment was rejected by user
+|               |                  |                                                           | Merchant cancels pending agreement with one-off payment
+|               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved
+|               |                  |                                                           | Merchant cancells Reserved one-off payment
+|               |                  |                                                           |    
+| Reserved      | 0                | Payment successfully reserved.                            | Agreement with one-off payment was accepted and payment was reserved
+
+
+Autoreserve one-off payment:
+
+| Status        | Status code      | Status text                                               |  Callback sending condition                   
+|---------------|------------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003            | Payment cancelled.                                        | Merchant cancells autoreserve one-off payment in Requested or Reserved status
+|               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved or Requested
+|               |                  |                                                           |    
+| Reserved      | 0                | Payment successfully reserved.                            | Payment reserved
+| Requested     | 50013            | Automatic reservation failed. User action is needed.      | Reservation failed
+
+### 9.4. Callbacks for reintegrated merchants
+
+If you are planning to reintegrate, you will have to start using new callback(webhook) solution https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/
+By default even after reintegration you will receive webhooks in the old MobilePay format, but there is no possibility to change callback url or authentication method.
+It is important to notice that after integrating towards new webhook solution you will be receiving both new and old webhooks. You have to notify us about integration to webhooks, in order for us to turn of old mobilepay callbacks for you.
+
+These are the available fields of payment webhook we will be sending
+
+| Field name       | Type              | Description                                                          | Possible values                        |
+|------------------|-------------------|----------------------------------------------------------------------|----------------------------------------|
+| agreementId      | string            | Id of an agreement                                                   | "agr_kFW4chk"                          |
+| chargeExternalId | nullable string   | Merchant provided externalId of payment                              | "ExtId123"                             |
+| chargeId         | string            | Id of payment                                                        | "82ce990f-d08a-448c-bd26-ee6be8418d06" |
+| amount           | number            | Amount of payment in cents                                           | 300                                    |
+| chargeType       | enum              | Indicates if it is recurring, or agreement's initial one off payment | "RECURRING", "INITIAL"                 |
+| eventType        | enum              | Indicates what has happened to a charge                              | Values provided in a table below       |
+| currency         | enum              | Currency of payment                                                  | "DKK", "NOK", "EUR"                    |
+| occurred         | ISO 8601 UTC date | When change has occurred                                             | 2023-10-10T13:30:36.079765975Z         |
+| amountCaptured   | number            | Amount of payment that was captured                                  | 100                                    |
+| amountCanceled   | number            | Amount of payment that was canceled                                  | 200                                    | 
+| amountRefunded   | number            | Amount of payment that was refunded                                  | 100                                    | 
+
+These are the possible event types in payment callback
+
+| Event type                            | Description                                                                                                                        |
+|---------------------------------------|------------------------------------------------------------------------------------------------------------------------------------|
+| "recurring.charge-reserved.v1"        | Payment was reserved. Event is not sent for recurring payments with transation type "DIRECT_CAPTURE"                               |
+| "recurring.charge-captured.v1"        | Payment was fully or partially captured                                                                                            |
+| "recurring.charge-canceled.v1"        | Payment was fully or partially cancelled                                                                                           |
+| "recurring.charge-failed.v1"          | Payment failed and will no longer be retried                                                                                       |
+| "recurring.charge-creation-failed.v1" | Payment failed to be created. Sent when merchants  are using charge batch creation endpoint and charges are created asynchronously |                                                    
+
+This is an example of new payment callback
+```
+{
+  "agreementId": "agr_kFW4chk",
+  "chargeExternalId": "extId",
+  "chargeId": "82ce990f-d08a-448c-bd26-ee6be8418d06",
+  "amount": 300,
+  "chargeType": "RECURRING",
+  "eventType": "recurring.charge-canceled.v1",
+  "currency": "NOK",
+  "occurred": "2023-10-10T13:30:36.079765975Z",
+  "amountCaptured": 0,
+  "amountCanceled": 300,
+  "amountRefunded": 0
+}
+```
+
+These are the available fields of agreement webhook we will be sending
+
+| Field name          | Type              | Description                                                                      | Possible values                        |
+|---------------------|-------------------|----------------------------------------------------------------------------------|----------------------------------------|
+| agreementId         | string            | Id of an agreement                                                               | "agr_kFW4chk"                          |
+| agreementUUID       | UUID              | Id of an agreement                                                               | "82ce990f-d08a-448c-bd26-ee6be8418d06" |
+| agreementExternalId | nullable string   | Merchant provided externalId of agreement                                        | "ExtId123"                             |
+| eventType           | enum              | Indicates what has happened to an agreement                                      | Values provided in a table below       |
+| occurred            | ISO 8601 UTC date | When change has occurred                                                         | 2023-10-10T13:30:36.079765975Z         |
+| actor               | nullable enum     | Indicates who has initiated action. Applicable only for agreementStopped webhook | "MERCHANT", "USER"                     |
+
+These are the possible event types in agreement callback
+
+| Event type                            | Description                                          |
+|---------------------------------------|------------------------------------------------------|
+| "recurring.agreement-activated.v1" | User has accepted agreement                             |
+| "recurring.agreement-rejected.v1"  | User has rejected agreement                             |
+| "recurring.agreement-stopped.v1"   | Agreement was stopped either by merchant either by user |  
+| "recurring.agreement-expired.v1"   | Agreement has expired                                   |                                                    
+
+
+This is an examples of new agreement callback
+```
+{
+  "agreementId": "agr_hXbXJUN",
+  "occurred": "2023-10-11T09:51:04.562829303Z",
+  "agreementExternalId": null,
+  "eventType": "recurring.agreement-expired.v1",
+  "agreementUUID": "c81bf516-7972-488e-bbf1-146dcd8592f9",
+  "actor": null
+}
+
+{
+  "agreementId": "agr_hXbXJUN",
+  "occurred": "2023-10-11T09:51:04.562829303Z",
+  "agreementExternalId": null,
+  "eventType": "recurring.agreement-stopped.v1",
+  "agreementUUID": "c81bf516-7972-488e-bbf1-146dcd8592f9",
+  "actor": "MERCHANT"
+}
+```
+
+### 9.5. Error messages
 
 We are making adjustments to error responses, specifically related to `error_description.message` and `error_description.error_type`. Some values will remain unchanged, some will be modified, and new validations will be introduced. Some messages may be less explicit than before, as they are generated directly from the backend and not specifically tailored for exact app branding (MobilePay or Vipps) responses.
 
