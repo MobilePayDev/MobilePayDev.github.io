@@ -9,6 +9,12 @@ sidebar_position: 10
 
 On November 1st, 2022, we received the exciting news that the merger between MobilePay and Vipps was officially approved! This is a significant milestone for us, and we're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. By early 2024, we're aiming to launch a single, unified app: MobilePay in Denmark and Finland, and Vipps in Norway.
 
+## Forced app upgrade after facade switch
+When we switch to the facade the night between Monday the 22nd and Tuesday the 23rd of January, all users in Finland will need to upgrade their MobilePay app before they can use it.
+The new app will update automatically in the background for most of our users.
+For those who do not have automatic updates enabled the upgrade may be triggered by the app switch from your app to MobilePay. In these cases the payment flow will be prolonged and perhaps disturbed. Please allow for extra time and inform your support during this period.
+The new app version will replace the current one, and login will happen from the same app icon as before.
+
 ## App Payments to ePayments API
 There is no need to reintegrate into the new solution yet as the existing App Payments integration will continue to work until Q1 2025. But you are very welcome to start the integration already now. As replacement for App Payments API we offer our new product [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/). This will have many of the same features but also offer new possibilities together with our range of supporting APIs. Please have a look at [recommended flows](https://developer.vippsmobilepay.com/docs/solutions/) to get inspiration for the new possibilities . The new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) will be available in Finland and Denmark from Q1 2024. Please visit the [migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/app-payments/) for information about the migration.
 
