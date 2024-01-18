@@ -21,6 +21,8 @@ There is no need to reintegrate into the new solution yet as the existing App Pa
 - **2024Q1** Be ready with adjustments needed for your integration for the Facade period. We recommend for Finnish merchants and partners to be ready till 2024.01.01.
 
 - **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark 🇩🇰
+  - **January 23rd** we will launch the new platform in **Finland** and migrate all Finnish merchants. 
+  - **March 12th** we will launch the new platform in **Denmark** and migrate all Danish merchants.
   
 - **2024** Plan and integrate new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) 
 
