@@ -10,6 +10,8 @@ Early 2024, the ambition is to have one app, branded locally as MobilePay in Den
 To allow for the flexibility and reach that we aim for, we will have to replace the current MobilePay Invoice API with new APIs on the new joint platform by early of 2024. This will require a new integration. 
 
 **Nordic Wallet Launch 🚀** - this will be the the day when all MobilePay users will get new, updaraded app version. On the same date Invoice APIs will stop working and you will have to switch your trafic to ePayments APIs. 
+- **January 23rd** we will launch the new platform in **Finland** and migrate all Finnish merchants. 
+- **March 12th** we will launch the new platform in **Denmark** and migrate all Danish merchants.
 
 ### ➡️ If you have direct integration
 
