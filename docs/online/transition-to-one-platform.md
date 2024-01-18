@@ -15,7 +15,7 @@ Please take a moment to familiarize yourself with the upcoming changes and how t
 :::
 
 To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. The migration will happen in two phases:
-- **January 23th** we will launch the new platform in **Finland** and migrate all Finnish merchants. 
+- **January 23rd** we will launch the new platform in **Finland** and migrate all Finnish merchants. 
 - **March 12th** we will launch the new platform in **Denmark** and migrate all Danish merchants.
   
 If a merchant is neither Finnish or Danish we will migrate them according to the currency of their transactions. Below changes must be implemented for the merchants depending on country. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
