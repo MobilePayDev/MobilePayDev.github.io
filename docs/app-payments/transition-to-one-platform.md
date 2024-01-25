@@ -78,7 +78,8 @@ The payment reference will be shown on the payment receipt. If the reference is 
 If the payment reference is not unique and too large to have a postfix an appropriate amount will be trimmed from the end of the reference before adding the postfix.
 Example  `this-reference-is-64-chars` will become `this-reference-is-64-cha#1`.
 
-This will only be shown to the user on the receipt. If you retrieve the payment data through the API you will get the reference you have defined in payment initiation which does not include the counter or trimming.
+This modified reference will be shown on the receipt and in the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/).
+If you retrieve the payment data through the app payments facade API you will get the reference you have defined on payment initiation which does not include a counter or any trimming.
 
 ##### Description
 The payment description can no longer exceed 100 characters. If a payment description exceeds this length the remaining description text will be cut off.
