@@ -403,9 +403,12 @@ Autoreserve one-off payment:
 |---------------|------------------|-----------------------------------------------------------|------------------------------
 | Cancelled     | 70003            | Payment cancelled.                                        | Merchant cancells autoreserve one-off payment in Requested or Reserved status
 |               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved or Requested
-|               |                  |                                                           |    
+|               |                  |                                                           | Payment expires
+|               |                  |                                                           |
 | Reserved      | 0                | Payment successfully reserved.                            | Payment reserved
 | Requested     | 50013            | Automatic reservation failed. User action is needed.      | Reservation failed
+
+In the new platform reservation failure and expiration callbacks are sent only after payment expiration with few seconds delay between each other.
 
 ### 9.4. Callbacks for reintegrated merchants
 
@@ -421,7 +424,7 @@ These are the available fields of payment webhook we will be sending
 | chargeExternalId | nullable string   | Merchant provided externalId of payment                              | "ExtId123"                             |
 | chargeId         | string            | Id of payment                                                        | "82ce990f-d08a-448c-bd26-ee6be8418d06" |
 | amount           | number            | Amount of payment in cents                                           | 300                                    |
-| chargeType       | enum              | Indicates if it is recurring, or agreement's initial one off payment | "RECURRING", "INITIAL"                 |
+| chargeType       | enum              | Indicates if it is recurring, or agreement's initial one off payment | "RECURRING", "INITIAL", "UNSCHEDULED"  |
 | eventType        | enum              | Indicates what has happened to a charge                              | Values provided in a table below       |
 | currency         | enum              | Currency of payment                                                  | "DKK", "NOK", "EUR"                    |
 | occurred         | ISO 8601 UTC date | When change has occurred                                             | 2023-10-10T13:30:36.079765975Z         |
@@ -469,8 +472,8 @@ These are the available fields of agreement webhook we will be sending
 
 These are the possible event types in agreement callback
 
-| Event type                            | Description                                          |
-|---------------------------------------|------------------------------------------------------|
+| Event type                         | Description                                             |
+|------------------------------------|---------------------------------------------------------|
 | "recurring.agreement-activated.v1" | User has accepted agreement                             |
 | "recurring.agreement-rejected.v1"  | User has rejected agreement                             |
 | "recurring.agreement-stopped.v1"   | Agreement was stopped either by merchant either by user |  
