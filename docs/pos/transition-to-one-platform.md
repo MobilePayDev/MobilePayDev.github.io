@@ -23,7 +23,7 @@ The new setup will offer one entrance to our platform, opening for easier access
 
 ## New integration
 
-We will continually send out information to all existing integrators about the new integration. To read more about the solution replacing MobilePay PoS please find details [here]([https://www.mobilepaygroup.com/partner/new-platform](https://vippsmobilepay.com/new-platform)). On this page you can also request access to the test environment to initiate the new integration work. 
+We will continually send out information to all existing integrators about the new integration. To read more about the solution replacing MobilePay PoS please find details [here](https://www.mobilepaygroup.com/partner/new-platform). On this page you can also request access to the test environment to initiate the new integration work. 
 For technical changes of the integration please visit the [migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#point-of-sale-vs-epayment). As soon as we have more information on the documentation for the new version, we will update these page. 
 
 ## FAQ
