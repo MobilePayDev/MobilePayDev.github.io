@@ -52,3 +52,8 @@ It will no longer be possible to define payment validation. It will instead defa
 ### Invalidate payment
 `PUT /v1/payments/{paymentId}/invalidate` will be removed and it will not be possible to invalidate payments. 
 
+## Use the RedirectURLs we supply and don't change it
+RedirectURLs start with the basepath vipps://? follow by the token "token=(TOKEN)". Always use the Redirect link we send. Do not change it in any way.
+If you have hardcoded dependencies make sure you allow for these.
+Example:
+ "redirectToMobilePayAppUrl": "vipps://?token=(TOKEN)"
