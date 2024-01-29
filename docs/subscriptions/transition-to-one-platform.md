@@ -526,7 +526,7 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. We will provide you with a designated user for testing.
 
 Preparation:
-- Create a new Payment point in the MobilePay portal.
+- Create a new Payment point in  [the MobilePay portal](https://admin.mobilepay.dk). Click on the product for which you want to create a new payment point in the left menu. For example, if you have Subscriptions, click on 'Subscriptions'. Fill in the necessary information.  To enhance clarity, we suggest you name the payment point "facade testing." This will make it clear, which payment point is made for testing the facade, so you don't use the wrong Payment Point by accident. 
 - Inform VMP when it's completed.
 - We will initiate a switch and notify you to commence testing.
 
