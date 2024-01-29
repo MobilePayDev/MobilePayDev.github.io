@@ -22,7 +22,7 @@ This page contans all the changes that will be introduced to **existing integrat
   
 - **2024Q1** Be ready with adjustments needed for your integration for the Facade period. We recommend for Finnish merchants and partners to be ready till 2024.01.01.
 
-- **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark 🇩🇰
+- **2024Q1** We finally launch Nordic Wallet Launch in Finland on 23rdof january 🇫🇮 and then Denmark March 12th🇩🇰
   - **January 23rd** we will launch the new platform in **Finland** and migrate all Finnish merchants. 
   - **March 12th** we will launch the new platform in **Denmark** and migrate all Danish merchants.
   
