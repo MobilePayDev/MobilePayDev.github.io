@@ -5,13 +5,10 @@ sidebar_position: 13
  
 
 This page contans all the changes that will be introduced to **existing integrations** on Nordic Wallet Launch 🚀. Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
-
-We understand the value of maintaining your current setup. While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process.
-
-Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
+ While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process. Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
 :::danger Important info
- To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you need to do is ensure that you have adjusted your integration to the changes mentioned below, and we'll take care of everything else. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com
+ To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you need to do is ensure that you have adjusted your integration to the changes mentioned below before 12th of martch, and we'll take care of everything else. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com
 :::
 
 **Timeline for existing subscriptions merchants and partners**
