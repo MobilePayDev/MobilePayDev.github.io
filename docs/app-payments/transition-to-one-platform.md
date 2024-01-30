@@ -80,6 +80,8 @@ Example  `this-reference-is-64-chars` will become `this-reference-is-64-cha#1`.
 
 This modified reference will be shown on the receipt and in the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/).
 If you retrieve the payment data through the app payments facade API you will get the reference you have defined on payment initiation which does not include a counter or any trimming.
+Be aware that this might cause issues for reconciliations purposes as there may be a mismatch in the reference you send and the one returned by the Report API.
+We strongly recommend you don't ever reuse the same reference.
 
 ##### Description
 The payment description can no longer exceed 100 characters. If a payment description exceeds this length the remaining description text will be cut off.
