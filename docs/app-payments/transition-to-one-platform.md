@@ -96,6 +96,10 @@ There will be some changes in the availability to create new merchants and payme
 
 From the launch of our new platform you will be able to use the new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) where there is not limitation to the creation of new merchants and payment points. Please visit the [migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/app-payments/) for information about the migration. 
 
+#### Fetch a list of payments endpoint changes
+The payment point was deprecated in 2023 since it won't continue to function as is on the facade. It is still possible to use it, but it will be limited to only returning payments with status 'Reserved' going forward.
+Find the API spec for the endpoint here: https://developer.mobilepay.dk/api/app-payments#tag/Payments/operation/get-payments-list
+
 #### UserSimulation endpoint
 The request to the userSimulation endpoint will be simplified. 
 ```bash title="Old MobilePay request"
