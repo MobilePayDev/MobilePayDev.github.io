@@ -561,9 +561,11 @@ Vipps MobilePay will make sure that all needed data is migrated from Subscriptio
 
 - We will migrate 3 years of historical production data (agreements, payment requests, refunds) to the new environment.
   
-  
 Sandbox data will not be migrated due to different merchant and payment point setups. 
 
+If you have a need to have a list of old and new ID's, we have an endpoint for obtaining agreements that offers both `ExternalId` and `AgreementUuid`.
+Please refer to the [NEW Recurring API endpoint description](https://developer.vippsmobilepay.com/api/recurring/) - You can utilize `Agreement-v3-endpoints ListAgreementsV3`  endpoint for mapping.  
+ 
 
 ### **3. When can I integrate to the Recurring API?**
 
