@@ -581,7 +581,7 @@ Below you can find information for when merchants will re-integrate to the [NEW 
 
 **agreements**
 
-⚙️ Docs on [agreements](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#agreements
+⚙️ Docs on agreements [here](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#agreements
 ):
 
 - Merchants can call GET agreement using either `agr_xxxxxx` or the `uuid`.
@@ -589,12 +589,12 @@ Below you can find information for when merchants will re-integrate to the [NEW 
 
 **`charges`**
 
-⚙️ Docs on [charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#charges):
+⚙️ Docs on charges [here](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#charges):
 - id stays the same. charge.id = paymentId
 
 **For `refunds`**
 
-⚙️ Docs on [refunds](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#refund-a-charge): 
+⚙️ Docs on refunds [here](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#refund-a-charge): 
 - Merchant will need to call the GET charge endpoint using the id of the charge refunded.
 - Refunds won't have their own ids. 
 
@@ -614,13 +614,14 @@ It is still the same team as before that is here to assist you with technical qu
 
 
 ### **4. Does the Recurring API have callbacks?**
-
-We are  working on implementing webhooks for Recurring API, but at the moment, the primary method is [polling](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines/). Although webhooks will eventually be implemented, we don't have a specific timeline for it yet. However, we can guarantee that webhooks will be included in Nordic Wallet Launch.
-* [Webhooks technical documentation](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/)
+Yes! [webhooks](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#webhooks-integration)
+* [Webhooks technical documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#webhooks-integration
+)
 * [Webhooks endpoint documentation](https://developer.vippsmobilepay.com/api/webhooks/)
+Another method is [polling](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines/).    
 * [Polling guidelines](https://developer.vippsmobilepay.com/docs/knowledge-base/polling-guidelines/))
 
-Callbacks will work on the facade API. We will also release callbacks (called webhooks) on the new platfrom too.
+Callbacks will work on the facade API.  
 
  
 ### **5. Will I be able to continue testing my integration in Sandbox?**
