@@ -523,7 +523,8 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 ## **Test the Facade**
 
-Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. We will provide you with a designated user for testing.
+Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. In rare cases, we will provide you with a designated user for testing, but with the requirement that you have clearly considered and planned your test scenarios.
+ 
 
 Preparation:
 - Create a new Payment point in  [the MobilePay portal](https://admin.mobilepay.dk). Click on the product for which you want to create a new payment point in the left menu. For example, if you have Subscriptions, click on 'Subscriptions'. Fill in the necessary information.  To enhance clarity, we suggest you name the payment point "facade testing." This will make it clear, which payment point is made for testing the facade, so you don't use the wrong Payment Point by accident. 
@@ -532,14 +533,15 @@ Preparation:
 
 How to test:
 - Plan your test scenarios and execute actions that do not require user integration.
-- For testing involving user integration, we will schedule a meeting between you and our designated test user.
+- For testing, that involving user integration, we will schedule a meeting between you and our designated test user.
 
 Important:
 - It’s up to the merchant to decide if they want to test the facade.
 - There are no new feature in the facade
 - We require that you have specific test requirements and scenarios in mind.
 
-
+Please note that you are still testing in Production with real money and real users. You are responsible for testing the facade. Most merchants do not need to test the facade; therefore, it is crucial to exercise caution during the testing process.
+ 
 ## **FAQ** 
 
 ### **1. Do I need to reintegrate now to the new solution, APIs?**
