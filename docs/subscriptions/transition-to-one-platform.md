@@ -571,15 +571,15 @@ Sandbox data will not be migrated due to different merchant and payment point se
 If you have a need to have a list of old and new ID's, we have an endpoint for obtaining agreements that offers both `ExternalId` and `AgreementUuid`.
 Please refer to the [NEW Recurring API endpoint description](https://developer.vippsmobilepay.com/api/recurring/) - You can utilize `Agreement-v3-endpoints ListAgreementsV3`  endpoint for mapping.  
 
-To be clear:
+**To be clear:**
 
- While merchants are on facade:
-- There will be not changes to the identifiers. The facade api will return the exact same identifiers.
+- While merchants are on facade: There will be not changes to the identifiers. The facade api will return the exact same identifiers.
 
 When merchants will re-integrate to the [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/)
 
 
 **For `agreements`:**
+
 Docs on [agreements](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#agreements
 ):
 
@@ -587,12 +587,14 @@ Docs on [agreements](https://developer.vippsmobilepay.com/docs/APIs/recurring-ap
 - We will return both `agreementId` ( "agr_xxxxxxx" format ) and a `uuid`.
 
 **For `charges`**
+
 Docs on [charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#charges):
 - id stays the same. charge.id = paymentId
 
 **For `refunds`**
-[refunds](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#refund-a-charge): 
-•	They will need to call the GET charge endpoint using the id of the charge refunded. (Refunds won't have their own ids)
+
+Docs on [refunds](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#refund-a-charge): 
+- They will need to call the GET charge endpoint using the id of the charge refunded. (Refunds won't have their own ids)
 
 ### **3. When can I integrate to the Recurring API?**
 
