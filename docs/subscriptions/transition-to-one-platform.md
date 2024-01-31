@@ -580,7 +580,7 @@ When merchants will re-integrate to the [NEW Recurring API Reference](https://de
 
 **For `agreements`:**
 
-Docs on [agreements](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#agreements
+⚙️ Docs on [agreements](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#agreements
 ):
 
 - Merchants can call GET agreement using either `agr_xxxxxx` or the `uuid`.
@@ -588,12 +588,12 @@ Docs on [agreements](https://developer.vippsmobilepay.com/docs/APIs/recurring-ap
 
 **For `charges`**
 
-Docs on [charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#charges):
+⚙️ Docs on [charges](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#charges):
 - id stays the same. charge.id = paymentId
 
 **For `refunds`**
 
-Docs on [refunds](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#refund-a-charge): 
+⚙️ Docs on [refunds](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#refund-a-charge): 
 - They will need to call the GET charge endpoint using the id of the charge refunded. (Refunds won't have their own ids)
 
 ### **3. When can I integrate to the Recurring API?**
