@@ -138,7 +138,7 @@ Preparation:
 
 How to test:
 - Make requests as usual through the API on the new payment point.
-- To test a full payment flow, user interaction is required. Contact us at developer@mobilepay.dk and we will schedule a meeting.
+- To test a full payment flow, user interaction is required. Contact us at developer@vippsmobilepay.com and we will schedule a meeting.
 
 Important:
 - It’s up to the merchant to decide if they want to test the facade.
