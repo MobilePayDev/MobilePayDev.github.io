@@ -21,8 +21,8 @@ After we have switched to One platform, you can transition to our [Recurring API
 Key dates: 
 - **NOW** Take a look at the change list here and implement changes if needed for the Facade period
 - **2024** Plan and integrate new [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/)
-- **2024.01.01** Be ready with adjustments needed for your integration for the Facade period.
-- **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark 🇩🇰 
+- **2024.01.01** Be ready with adjustments needed for your integration for the Facade period .
+- **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark on the 12th of march 🇩🇰 
 - **2025Q1** Be ready with your API integration to the Recurring API. 🧡 💙 The facade will be switched off. 
 
 :::
