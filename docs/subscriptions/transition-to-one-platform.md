@@ -271,21 +271,21 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 ### 8.1. From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
 
-Currently you were able to select how to receive settlements: daily or instant. After Nordic wallet launch all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settleded separately (not bundled up) and you will receive it in 2 days after payment was executed. 
+Currently you were able to select how to receive settlements: daily or instant. After NWL all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settleded separately (not bundled up) and you will receive it in 2 days after payment was executed. 
 
-:star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after Nordic wallet launch and select Single payment settlement functionality. 
+:star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after NWL and select Single payment settlement functionality. 
 
 
 ### 8.2. Settlement time changes
 
-Currently your money is settled 1 day after payments were executed, after Nordic Wallet Launch we will settle you money bit latter - 2 days after payments were executed. 
+Currently your money is settled 1 day after payments were executed, after NWL we will settle you money bit later - 2 days after payments were executed. 
 
-:star:**Recommendation:** We are sorry if this feature was important to you, your feedback is very important for us, let us know if you have a need to get settlements faster.
+:star:**Recommendation:**  your feedback is very important for us, let us know if you have a need to get settlements faster.
 
 
 ### 8.3. Gross Settlements
 
-Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After Nordic Wallet Launch we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
+Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After NWL we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
 
 ## **9. Other**
 
@@ -646,11 +646,10 @@ We will migrate 3 years of historical data (agreements, payment requests, refund
 
 ### **7. I am using Transaction Reporting API, what should I do?**
 
-Sadly, we are not builing any facade for Transaction reporting API. We are asking you to reintegrate to alternative solution [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period. We are sorry if this feature was important to you, your satisfaction is our top priority, and we are here to support you throughout this process.
-
+Sadly, we are not builing any facade for Transaction reporting API. We are asking you to reintegrate to alternative solution [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.  
 ### **8. Will users get a new app?**
 
-Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform.
+Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform. However, since users need to download the new app version, there is an increased risk of expired payments around 12th of march. 
 
 ### **9. What cool features are there ahead?**
 
@@ -661,7 +660,7 @@ There are several exciting features on the horizon. For instance, there's profil
 ## **Developer Support**
 
 We're Here to Help!
-If you have any questions or need assistance with managing your recurring payments, our  Developer support team (developer@vippsmobilepay.com) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine. Your satisfaction is our priority, and we're committed to making your payment experience as seamless as possible.
+If you have any questions, our  Developer support team (developer@vippsmobilepay.com) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine.  
 
 
 
