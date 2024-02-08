@@ -617,7 +617,7 @@ Callbacks will work on the facade API.
 
 You will be able to test the new Recurring API through the merchant test environment on the new platform. 
 Please note:
-1. If you want to resuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
+1. If you want to reuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
 2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
 The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
