@@ -1,6 +1,8 @@
 ---
 sidebar_position: 13
 ---
+import Launch from '/docs/shared-blocks/_launch.mdx';
+
 # 💙🧡 Preparation for facade period
  
 
@@ -13,21 +15,16 @@ This page contans all the changes that will be introduced to **existing integrat
 
 **Timeline for existing subscriptions merchants and partners**
 
-
 [![timeline](/img/timeline.png)](/img/timeline.png)
 
-:::caution Key dates
-
-- **NOW** Take a look at the change list here and implement changes if needed for the Facade period
-  
+- **NOW** Take a look at the change list here and implement changes if needed for the Facade period 
 - **2024Q1** Be ready with adjustments needed for your integration for the Facade period.
-
 - **2024Q1 March 12th** We finally launch Nordic Wallet Launch in Denmark 🇩🇰 and migrate all Danish merchants
-  
 - **2024** Plan and integrate new [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) 
-
 - **2025Q1** Be ready with your API integration to the Recurring API. 🧡 💙 The facade will be switched off. 
 
+:::info Prepare for launch
+<Launch />
 :::
 
 ## **1. Agreements**

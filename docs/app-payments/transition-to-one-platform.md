@@ -1,6 +1,7 @@
 ---
 sidebar_position: 10
 ---
+import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # Transition to One Platform
 *This document was last updated on 09.01.2024* (New content: How to test the facade)
@@ -14,19 +15,12 @@ There is no need to reintegrate into the new solution yet as the existing App Pa
 
 **Timeline for existing App Payments merchants and partners**
 
-:::caution Key dates
-
 - **NOW** Take a look at the change list here and implement changes if needed for the Facade period
-  
 - **2024Q1** Be ready with adjustments needed for your integration for the Facade period.
-
 - **2024Q1 March 12th** We finally launch Nordic Wallet Launch in  Denmark 🇩🇰 and migrate all Danish merchants
-  
 - **2024** Plan and integrate new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) 
-
 - **2025Q1** Be ready with your API integration to the App Payments API. The facade will be switched off. 
 
-:::
 ### The test environment for the new platform
 
 The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
@@ -47,7 +41,9 @@ To ease the switch to a new platform we will supply a facade for the existing Mo
 To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
 :::
 ### Changes to The Facade
-
+:::info Prepare for launch
+<Launch />
+:::
 #### Webhooks
 
 ##### SignatureKey
