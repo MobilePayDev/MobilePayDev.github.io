@@ -615,12 +615,10 @@ Callbacks will work on the facade API.
  
 ### **5. Will I be able to continue testing my integration in Sandbox?**
 
-Yes, you will have the opportunity to test your integration with the Subscriptions APIs through the merchant test environment on the new platform. However, there are some necessary actions you will need to take:
-
-1. You will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
-2. You will need to map to the new merchant, user, and sales unit (provider) IDs. New IDs will be generated in 2023Q4.
-3. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
-
+You will be able to test the new Recurring API through the merchant test environment on the new platform. 
+Please note:
+1. If you want to resuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
+2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
 The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
 
