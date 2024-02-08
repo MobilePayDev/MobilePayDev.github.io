@@ -417,6 +417,19 @@ These are the available fields of payment webhook we will be sending
 | amountCaptured   | number            | Amount of payment that was captured                                  | 100                                    |
 | amountCanceled   | number            | Amount of payment that was canceled                                  | 200                                    | 
 | amountRefunded   | number            | Amount of payment that was refunded                                  | 100                                    | 
+| failureCode      | number            | Code of an error during async creation                               | Listed below                           | 
+| failureText      | string            | Explanation of an error during async creation                        | Listed below                           | 
+
+Possible failureCode and failureText combinations. These fields are only present if charge failed async validation after it was created using charge batch creation endpoint
+
+| Failure code | Failure text                               | Explanation                                                          |
+|------------- |--------------------------------------------|--------------------------------------------------------------------- |
+| 50006        | DeclinedBySystem                           | Unspecified exception during charge creation                         | 
+| 50003        | AgreementNotActive                         | Charge is requested for non active agreement                         | 
+| 70001        | ChargeAmountTooHighForFixedAmountAgreement | Charge amount is 5 times higher than fixed amount agreement's amount | 
+| 70002        | ChargeCreationConflict                     | Trying to create charge with same idempotency key more than once     | 
+| 70004        | ChargeTooFarInFuture                       | Due date is too far in the future                                    | 
+| 70005        | ChargeDueDateTooSoon                       | Due date is too soon                                                 | 
 
 These are the possible event types in payment callback
 
@@ -441,7 +454,9 @@ This is an example of new payment callback
   "occurred": "2023-10-10T13:30:36.079765975Z",
   "amountCaptured": 0,
   "amountCanceled": 300,
-  "amountRefunded": 0
+  "amountRefunded": 0,
+  "failureCode" null,
+  "failureText" null
 }
 ```
 
