@@ -14,14 +14,12 @@ There is no need to reintegrate into the new solution. Your existing Online inte
 Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration.
 :::
 
-To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. The migration will happen in two phases:
-- **January 23rd** we will launch the new platform in **Finland** and migrate all Finnish merchants. 
+To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. 
 - **March 12th** we will launch the new platform in **Denmark** and migrate all Danish merchants.
   
 If a merchant is neither Finnish or Danish we will migrate them according to the currency of their transactions. You may encounter a slight rise in failed payments in the period between the Finnish and Danish launch. This can happen to merchants that have customers in both countries. In the intermediate period it will only be possible to offer payments to either Danish or Finnish users. Once we have launched in Denmark it will be possible to make cross border payments again. 
 
-Below changes must be implemented for the merchants depending on country. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
-
+If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
 
 ## VAT number required for all merchants
 
