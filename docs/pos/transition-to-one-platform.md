@@ -1,6 +1,7 @@
 ---
 sidebar_position: 15
 ---
+import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # Transition to One Platform
 
@@ -13,18 +14,17 @@ Early 2024, the ambition is to have one app, branded locally as MobilePay in Den
 
 To allow for the flexibility and reach that we aim for, we will have to replace the current MobilePay Point of Sale API with new APIs on the new joint platform by early of 2024. This will require a new integration.  
 
-**Nordic Wallet Launch 🚀** - this will be the the day when all MobilePay users will get new, updaraded app version. On the same date Invoice APIs will stop working and you will have to switch your trafic to ePayments APIs. 
-- **January 23rd** we will launch the new platform in **Finland** and migrate all Finnish merchants. 
+**Nordic Wallet Launch 🚀** - this will be the the day when all MobilePay users will get new, updaraded app version. On the same date Invoice APIs will stop working and you will have to switch your trafic to ePayments APIs.  
 - **March 12th** we will launch the new platform in **Denmark** and migrate all Danish merchants.
  
-**One entrance opening for several options** 
-
-The new setup will offer one entrance to our platform, opening for easier access via underlying APIs to value added services. For instore we will move even further in the direction that we have already taken, towards a much more flexible setup, putting considerable development resources into QR code solutions, which opens opportunities for features such as Receipts, Coupons, Log in and Loyalty to a start.  
-
 ## New integration
 
 We will continually send out information to all existing integrators about the new integration. To read more about the solution replacing MobilePay PoS please find details [here](https://www.mobilepaygroup.com/partner/new-platform). On this page you can also request access to the test environment to initiate the new integration work. 
 For technical changes of the integration please visit the [migration guide](https://developer.vippsmobilepay.com/docs/vipps-developers/mp-migration-guide/#point-of-sale-vs-epayment). As soon as we have more information on the documentation for the new version, we will update these page. 
+
+:::info Prepare for launch
+<Launch />
+:::
 
 ## FAQ
 ### What will happen to the merchants signed up for MobilePay PoS?

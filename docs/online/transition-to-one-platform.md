@@ -41,6 +41,9 @@ For a smooth transition, we recommend reviewing the changes and consider updatin
 `PATCH /api/v1/merchants/{merchantId}` currently only support update of VAT number. We will soon remove the endpoint completely. Note that you can only update VAT number using `PATCH` before the launch of the new platform. After launch you must instead delete the merchant and create a new using: `DELETE /v1/merchants/{merchantId}` and `POST /v1/merchants`.
 If you need to update an active merchant we recomend that you create the new merchant and then delete the old. This is to avoid downtime since it is not possible to initiate payments on deleted merchants. Authorization updates and payment updates such as capture, cancel and refund is on payment level and will therefore not be affected by this. 
 
+### PspReferenceId
+PspReferenceId must from now on be unique.
+
 ### validUntil 
 It will no longer be possible to define payment validation. It will instead default to 5 minutes. 
 
