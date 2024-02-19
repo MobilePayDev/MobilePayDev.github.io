@@ -29,13 +29,13 @@ This page contans all the changes that will be introduced to **existing integrat
 
 ## **1. Agreements**
 ### 1.1 Agreement request expiration period
-We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After Nordic Wallet Launch, we will reduce the agreement signing period to a maximum of 5 minutes. All agreements with longer expiration time will be expired on Nordic Wallet Launch day.
+We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After Nordic Wallet Launch, we will reduce the agreement signing period to a maximum of 10 minutes. All agreements with longer expiration time will be expired on Nordic Wallet Launch day.
 
-:star: **Recommendation:** If you want to give more than 5 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on a paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions 😉
+:star: **Recommendation:** If you want to give more than 10 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on a paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions 😉
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
 
-Parameter: `expiration_timeout_minutes`. The current range is from 1 to 181440 minutes, the default was 5 minutes. After Nordic Wallet Launch, the range will be from 1 to 5 minutes.
+Parameter: `expiration_timeout_minutes`. The current range is from 1 to 181440 minutes, the default was 5 minutes. After Nordic Wallet Launch, the range will be from 1 to 10 minutes.
 
 ### 1.2 Agreement deletion validations
 No one likes when an agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the Nordic Wallet Launch, this feature will be unavailable.  
@@ -111,9 +111,9 @@ We reevaluated all our product packages, and usage of this feature and we decide
 
 :star: **Recommendation:** If you want to continue charging your customers with payments where SCA is needed, please reintegrate these types of payments to Vipps MobilePay ePayment.
 
-### 3.2 One-off expiration period
+### 3.2 One-off expiration period when it's with new agreement
 
-Similarly, as with agreements, we are aligning the expiration period for one-off payments. From Nordic Wallet Launch, the maximum expiration timeout will be 5 minutes. All one-offs with longer expiration time will be expired on Nordic Wallet Launch day.
+Similarly, as with agreements, we are aligning the expiration period for one-off payments. From Nordic Wallet Launch, the maximum expiration timeout will be 10 minutes. All one-offs with longer expiration time will be expired on Nordic Wallet Launch day.
 
 :star: **Recommendation:**
 * Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes in agreements [here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#11-agreement-request-expiration-period).
@@ -122,7 +122,7 @@ Similarly, as with agreements, we are aligning the expiration period for one-off
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`  `POST:/api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`
 
-Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, the default was 5 minutes. After Nordic Wallet Launch, the range will be from 1 to 5 minutes.
+Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, the default was 10 minutes. After Nordic Wallet Launch, the range will be from 1 to 10 minutes.
 
 ### 3.3 Description of a one-off with a new agreement
 
@@ -672,6 +672,8 @@ If you have any questions, our  Developer support team (developer@vippsmobilepay
 
 
 ## **Changelog**
+
+2024-02-19 Updated 1.1 and 3.2. Default expiration time changed to 10 min. 
 
 2024-01-08 Added new section 1.4 Agreement cancelation by merchant. Recommendations how to test the facade added. 
 
