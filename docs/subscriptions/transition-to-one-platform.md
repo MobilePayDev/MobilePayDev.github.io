@@ -398,9 +398,8 @@ In the new platform reservation failure and expiration callbacks are sent only a
 
 ### 9.4. Callbacks for reintegrated merchants
 
-If you are planning to reintegrate, you will have to start using new callback(webhook) solution https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/
-By default even after reintegration you will receive webhooks in the old MobilePay format, but there is no possibility to change callback url or authentication method.
-It is important to notice that after integrating towards new webhook solution you will be receiving both new and old webhooks. You have to notify us about integration to webhooks, in order for us to turn of old mobilepay callbacks for you.
+If you are planning to reintegrate, you will have to start using new Webhook solution https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/
+By default after integrating with new Webhook solution, you will still receive old **payment** callbacks to your old payment callback URL and there is no possibility to change callback url or authentication method for old integration. This means that you will receive both old callbacks and new webhooks. Once you have integrated towards Webooks and no longer rely on old callbacks, please notify us and we will turn them off.
 
 These are the available fields of payment webhook we will be sending
 
