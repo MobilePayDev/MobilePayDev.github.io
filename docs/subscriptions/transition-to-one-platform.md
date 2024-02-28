@@ -141,6 +141,8 @@ In general: it is possible to do GET requests for pre-launch refunds. Furthermor
 ### 4.1 Refund up to 365 days
 Currently, you can refund payments that were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
 The new period will be applied only to payments that will be executed on the new platform after Nordic Wallet Launch. 
+- Payments made on the old platform starting from March 12th 2024 have a refund window of 45 days.
+- Payments made on the new platform have a refund window of 365 days.
 
 ### 4.2 Refunds description
 In Subscriptions, Refunds had no Description, but in the new Recurring setup, this field is present and mandatory. We will prefill it with a simple "Refund" for you.
