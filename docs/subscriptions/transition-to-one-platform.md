@@ -3,7 +3,7 @@ sidebar_position: 13
 ---
 import Launch from '/docs/shared-blocks/_launch.mdx';
 
-# 💙🧡 Preparation for facade period
+# 💙🧡 Preparation for the facade period
  
 
 This page contans all the changes that will be introduced to **existing integrations** on Nordic Wallet Launch 🚀. Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
@@ -62,7 +62,7 @@ Current agreements where amount is not stated will be depicted as agreements wit
 
 *Draft version of agreement screen, not final version.*
 
-### 1.4 Agreement cancelation by merchant
+### 1.4 Agreement cancellation by merchant
 
 When merchant tries to cancel agreement, which has payments in reserved state - agreement gets cancelled, payments stay in reserved state. This is changing from Nordic Wallet Launch. When merchant cancels agreement all reserved payments will be canceled too. 
 
