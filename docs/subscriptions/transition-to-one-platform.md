@@ -136,12 +136,12 @@ Parameter: `one_off_payment.description`
 
 ## **4. Refunds**
 
-In general: it is possible to do GET requests for pre-launch refunds. Furthermore, it is also possible to make refunds for pre-launch payments. Please note: We can only handle 90 days backward for pre-launch payments, whereas we can handle 365 days backward on the new platform, if the payment is completed on the new platform)  GET requests and refunds (up to 90 days) can be made for payments executed on the existing MobilePay platform  
+In general: it is possible to do GET requests for pre-launch refunds. Furthermore, it is also possible to make refunds for pre-launch payments. Please note: We can only handle 30 days backward for pre-launch payments, whereas we can handle 365 days backward on the new platform, if the payment is completed on the new platform)  GET requests and refunds (up to 30 days) can be made for payments executed on the existing MobilePay platform  
 
 ### 4.1 Refund up to 365 days
 Currently, you can refund payments that were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
 The new period will be applied only to payments that will be executed on the new platform after Nordic Wallet Launch. 
-- Payments made on the old platform starting from March 12th 2024 have a refund window of 45 days.
+- Payments made on the old platform starting from March 12th 2024 have a refund window of 30 days.
 - Payments made on the new platform have a refund window of 365 days.
 
 ### 4.2 Refunds description
