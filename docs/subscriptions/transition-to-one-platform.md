@@ -272,11 +272,11 @@ Currently you were able to select how to receive settlements: daily or instant. 
 :star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after NWL and select Single payment settlement functionality. 
 
 
-### 8.2. Settlement time changes
+### <s>8.2. Settlement time changes</s>
 
-Currently your money is settled 1 day after payments were executed, after NWL we will settle you money bit later - 2 days after payments were executed. 
+<s>Currently your money is settled 1 day after payments were executed, after NWL we will settle you money bit later - 2 days after payments were executed. </s>
 
-:star:**Recommendation:**  your feedback is very important for us, let us know if you have a need to get settlements faster.
+<s>:star:**Recommendation:**  your feedback is very important for us, let us know if you have a need to get settlements faster.</s>
 
 
 ### 8.3. Gross Settlements
@@ -575,6 +575,8 @@ If you have any questions, our  Developer support team (developer@vippsmobilepay
 
 
 ## **Changelog**
+
+2024-02-29 Removed 8.2. Settlement time does not change for Denmark and Finland.
 
 2024-02-19 Updated 1.1 and 3.2. Default expiration time changed to 10 min. 
 
