@@ -279,9 +279,9 @@ Currently you were able to select how to receive settlements: daily or instant. 
 <s>:star:**Recommendation:**  your feedback is very important for us, let us know if you have a need to get settlements faster.</s>
 
 
-### 8.3. Gross Settlements
+### <s>8.3. Gross Settlements</s>
 
-Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After NWL we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. 
+<s>Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After NWL we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. </s>
 
 ## **9. Other**
 
@@ -575,6 +575,8 @@ If you have any questions, our  Developer support team (developer@vippsmobilepay
 
 
 ## **Changelog**
+
+2024-03-01 Removed 8.3. Gross settlement type stays in use after NWL. 
 
 2024-02-29 Removed 8.2. Settlement time does not change for Denmark and Finland.
 
