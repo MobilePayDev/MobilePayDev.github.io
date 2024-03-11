@@ -267,7 +267,7 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 ### 8.1. From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
 
-Currently you were able to select how to receive settlements: daily or instant. After NWL all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settleded separately (not bundled up) and you will receive it in 2 days after payment was executed. 
+Currently you were able to select how to receive settlements: daily or instant. After NWL all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settleded separately (not bundled up) and you will receive it in 1 days after payment was executed. 
 
 :star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after NWL and select Single payment settlement functionality. 
 
