@@ -428,6 +428,11 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 :star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
 
+### 9.6 From the Nordic Wallet Launch Merchant's server must be TLS 1.2
+
+Please make sure that your servers hosting the token endpoint for callbacks supports TLS 1.2. If not, we will not be able to send callbacks back to you.
+
+
 ## **Test the Facade**
 
 Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. In rare cases, we will provide you with a designated user for testing, but with the requirement that you have clearly considered and planned your test scenarios.
