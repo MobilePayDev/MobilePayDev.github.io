@@ -5,8 +5,7 @@ import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # 💙🧡 Preparation for the facade period
  
-
-This page contans all the changes that will be introduced to **existing integrations** on Nordic Wallet Launch 🚀. Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
+ Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
  While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process. Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
 :::danger Important info
@@ -29,8 +28,9 @@ This page contans all the changes that will be introduced to **existing integrat
 
 ## **1. Agreements**
 ### 1.1 Agreement request expiration period
-We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After Nordic Wallet Launch, we will reduce the agreement signing period to a maximum of 10 minutes. All agreements with longer expiration time will be expired on Nordic Wallet Launch day.
+We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After Nordic Wallet Launch, we will reduce the agreement signing period to a maximum of 10 minutes. Please note, All agreements with longer expiration time will be expired on Nordic Wallet Launch day. To ensure the security and privacy of our users' data, all user redirects within our system must utilize HTTPS.
 
+ 
 :star: **Recommendation:** If you want to give more than 10 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on a paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions 😉
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
@@ -427,30 +427,6 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 
 :star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
-
-## **Test the Facade**
-
-Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. In rare cases, we will provide you with a designated user for testing, but with the requirement that you have clearly considered and planned your test scenarios.
- 
-
-Preparation:
-- Create a new Payment Point (nyt betalingssted) in  [the MobilePay portal](https://admin.mobilepay.dk). Click on the product for which you want to create a new Payment Point in the left menu. For example, if you have Subscriptions, click on 'Subscriptions'. Fill in the necessary information.  To enhance clarity, we suggest you name the Payment Point "facade testing." This will make it clear, which Payment Point is made for testing the facade, so you don't use the wrong Payment Point by accident. Since you are already using Subscriptions in Production, you already have a Payment Point, so that is why it is needed for you to create a new Payment Point, that will get facade traffic. A dedicated payment point for facade testing. 
-- Inform VMP (the KAM that you have either via email or slack channel) when it's completed. 
-- Our developers will initiate a switch.
-- You can start to test. 
-
-How to test:
-- Plan your test scenarios and execute actions that do not require user integration.
-- We do not help you with the test scenarios, as it is up to the merchant (you) which test scenarios need to be tested. 
-- If your testing involves user integration, we require you to outline the specific verification steps. Once you've outlined the requirements, and if the use case requires user integration, we will schedule a meeting between you and our designated test user. As previously mentioned, a new app version is necessary for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. Therefore, before the scheduled meeting, we need you to provide a step-by-step outline of the verification process. Additionally, it is a requirement that you refund any amounts paid by the designated test user during the test
-
-Important:
-- It’s up to the merchant to decide if they want to test the facade.
-- Testing the facade is not mandatory
-- There are no new features in the facade that end-users will notice
-- Specific test requirements and scenarios must be prepared in advance by the merchant.
-
-Please note that you are still testing in Production with real money and real users. You are responsible for testing the facade. Most merchants do not need to test the facade; therefore, it is crucial to exercise caution during the testing process.
  
 ## **FAQ** 
 
