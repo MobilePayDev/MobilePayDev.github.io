@@ -228,6 +228,10 @@ Please note:  user-redirect is primarily for the visual user experience. The mer
 
  MobilePay doesn't do logging on the user-redirect, since part of the data is in the app and part of the data is in the landing page, hence it would be a very complicated setup. ​ All proper data communication and logging and monitoring should be done through callbacks and GET calls.  
 
+ To ensure the security and privacy of our users' data, all user redirects within our system must utilize HTTPS.  
+
+
+
 ### sequence diagram
 
 #### Agreement creation
