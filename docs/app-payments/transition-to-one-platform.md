@@ -120,20 +120,3 @@ curl xxx/v1/integration-test/payments/{PAYMENT_ID}/reserve \
     "phoneNumber": {string}
 }'
 ```
-
-### Testing the facade (Only in production)
-
-Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees, so we will assist you with the testing.
-
-Preparation:
-- Create a new Payment point in the MobilePay portal.
-- Inform VMP when it's completed.
-- We will toggle a switch for that specific payment point so traffic is routed through the facade.
-
-How to test:
-- Make requests as usual through the API on the new payment point.
-- To test a full payment flow, user interaction is required. Contact us at developer@vippsmobilepay.com and we will schedule a meeting.
-
-Important:
-- It’s up to the merchant to decide if they want to test the facade.
-- There are no new features in the facade.
