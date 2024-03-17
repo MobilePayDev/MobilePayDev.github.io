@@ -58,3 +58,6 @@ RedirectURLs start with the basepath vipps://? follow by the token "token=(TOKEN
 If you have hardcoded dependencies make sure you allow for these.
 Example:
  "redirectToMobilePayAppUrl": "vipps://?token=(TOKEN)"
+
+## Test availability
+The sandbox environment will not be migrated to the new platform and therefore it will not be possible to test the Online facade. We are working on a test solution but currently there is no estimated time for its availability. As an alternative you can test in production but perhaps limit the capture option in order to ensure funds are not being transferred. 
