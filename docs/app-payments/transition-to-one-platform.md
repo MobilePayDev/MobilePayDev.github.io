@@ -4,7 +4,7 @@ sidebar_position: 10
 import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # Transition to One Platform
-*This document was last updated on 09.01.2024* (New content: How to test the facade)
+*This document was last updated on 18.03.2024* (New content: Managing webhooks)
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
@@ -45,6 +45,39 @@ To make the transition as smooth as possible, we will migrate all merchants and 
 <Launch />
 :::
 #### Webhooks
+
+##### Managing webhooks 
+To manage webhooks on salesunits in the App Payments Facade you will need to use the new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/). 
+
+This will require that you use the new [Access token API](https://developer.vippsmobilepay.com/api/access-token/) in order to authenticate towards the API using Vipps Authentication.
+
+When creating webhooks for the facade, the only supported webhook events are the following:
+
+`legacy-mobilepay--app-payments.payment.cancelled_by_user.v1`
+
+`legacy-mobilepay--app-payments.payment.expired.v1`
+
+`legacy-mobilepay--app-payments.payment.reserved.v1`
+
+Below is an example request for creating a new webhook listening for the reserve event for a specific MSN:
+```bash title="New Vipps MobilePay request"
+curl https://api.vipps.no/webhooks/v1/webhooks \
+-X POST \
+-H 'Authorization: Bearer {JWT}' \
+-H 'Ocp-Apim-Subscription-Key: {Subscription-Key}' \
+-H 'Merchant-Serial-Number: {Merchant-Serial-Number}' \
+-H 'Content-Type: application/json' \
+-d '{
+    "url": "{your-callback-url}",
+    "events":["legacy-mobilepay--app-payments.payment.reserved.v1"]
+}'
+```
+
+The Authorization header should contain a JWT token from the new [Access token API](https://developer.vippsmobilepay.com/api/access-token/).
+
+The Merchant-Serial-Number is optional and should only be included if you want to register the webhook on a specific MSN. If not included, a partner level webhook will be created.
+
+The Ocp-Apim-Subscription-Key is the subscription key for the salesunit or the partner key.
 
 ##### SignatureKey
 SignatureKey can no longer be fetched through the API. You will have to fetch them from the portal and store them securely for validating Webhook signatures.
