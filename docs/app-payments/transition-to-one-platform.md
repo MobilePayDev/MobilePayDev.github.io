@@ -96,6 +96,22 @@ From the launch of our new platform you will be able to use the new [ePayments A
 The payment point was deprecated in 2023 since it won't continue to function as is on the facade. It is still possible to use it, but it will be limited to only returning payments with status 'Reserved' going forward.
 Find the API spec for the endpoint here: https://developer.mobilepay.dk/api/app-payments#tag/Payments/operation/get-payments-list
 
+### Test options
+It will not be possible to test the facade. Instead you will be able to test the new ePayments API through the merchant test environment on the new platform. 
+Please note:
+1. If you want to reuse your App Payments test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created before will not be migrated from the sandbox to the merchant test environment.
+2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued API key for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) Prod API keys will continue to work.
+
+The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+
+In order to request access to the test environment, please use the following links:
+
+- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
+- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
+
+We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
+
+<!---
 #### UserSimulation endpoint
 The request to the userSimulation endpoint will be simplified. 
 ```bash title="Old MobilePay request"
@@ -120,3 +136,4 @@ curl xxx/v1/integration-test/payments/{PAYMENT_ID}/reserve \
     "phoneNumber": {string}
 }'
 ```
+-->
