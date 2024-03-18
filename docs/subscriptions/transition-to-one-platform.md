@@ -427,6 +427,10 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 
 :star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
+
+### 9.6 From the Nordic Wallet Launch Merchant's server must be TLS 1.2
+
+Please make sure that your servers hosting the token endpoint for callbacks supports TLS 1.2. If not, we will not be able to send callbacks back to you.
  
 ## **FAQ** 
 
