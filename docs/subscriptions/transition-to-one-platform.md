@@ -431,31 +431,6 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 ### 9.6 From the Nordic Wallet Launch Merchant's server must be TLS 1.2
 
 Please make sure that your servers hosting the token endpoint for callbacks supports TLS 1.2. If not, we will not be able to send callbacks back to you.
-
-
-## **Test the Facade**
-
-Facade tests can only be conducted in the Production environment. A new app version is required for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. In rare cases, we will provide you with a designated user for testing, but with the requirement that you have clearly considered and planned your test scenarios.
- 
-
-Preparation:
-- Create a new Payment Point (nyt betalingssted) in  [the MobilePay portal](https://admin.mobilepay.dk). Click on the product for which you want to create a new Payment Point in the left menu. For example, if you have Subscriptions, click on 'Subscriptions'. Fill in the necessary information.  To enhance clarity, we suggest you name the Payment Point "facade testing." This will make it clear, which Payment Point is made for testing the facade, so you don't use the wrong Payment Point by accident. Since you are already using Subscriptions in Production, you already have a Payment Point, so that is why it is needed for you to create a new Payment Point, that will get facade traffic. A dedicated payment point for facade testing. 
-- Inform VMP (the KAM that you have either via email or slack channel) when it's completed. 
-- Our developers will initiate a switch.
-- You can start to test. 
-
-How to test:
-- Plan your test scenarios and execute actions that do not require user integration.
-- We do not help you with the test scenarios, as it is up to the merchant (you) which test scenarios need to be tested. 
-- If your testing involves user integration, we require you to outline the specific verification steps. Once you've outlined the requirements, and if the use case requires user integration, we will schedule a meeting between you and our designated test user. As previously mentioned, a new app version is necessary for the test, and it is exclusively available internally for Vipps MobilePay (VMP) employees. Therefore, before the scheduled meeting, we need you to provide a step-by-step outline of the verification process. Additionally, it is a requirement that you refund any amounts paid by the designated test user during the test
-
-Important:
-- It’s up to the merchant to decide if they want to test the facade.
-- Testing the facade is not mandatory
-- There are no new features in the facade that end-users will notice
-- Specific test requirements and scenarios must be prepared in advance by the merchant.
-
-Please note that you are still testing in Production with real money and real users. You are responsible for testing the facade. Most merchants do not need to test the facade; therefore, it is crucial to exercise caution during the testing process.
  
 ## **FAQ** 
 
