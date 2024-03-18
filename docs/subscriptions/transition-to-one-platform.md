@@ -5,8 +5,7 @@ import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # 💙🧡 Preparation for the facade period
  
-
-This page contans all the changes that will be introduced to **existing integrations** on Nordic Wallet Launch 🚀. Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
+ Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
  While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process. Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
 :::danger Important info
@@ -29,8 +28,9 @@ This page contans all the changes that will be introduced to **existing integrat
 
 ## **1. Agreements**
 ### 1.1 Agreement request expiration period
-We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After Nordic Wallet Launch, we will reduce the agreement signing period to a maximum of 10 minutes. All agreements with longer expiration time will be expired on Nordic Wallet Launch day.
+We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After Nordic Wallet Launch, we will reduce the agreement signing period to a maximum of 10 minutes. Please note, All agreements with longer expiration time will be expired on Nordic Wallet Launch day. To ensure the security and privacy of our users' data, all user redirects within our system must utilize HTTPS.
 
+ 
 :star: **Recommendation:** If you want to give more than 10 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on a paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions 😉
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
