@@ -111,9 +111,9 @@ We reevaluated all our product packages, and usage of this feature and we decide
 
 :star: **Recommendation:** If you want to continue charging your customers with payments where SCA is needed, please reintegrate these types of payments to Vipps MobilePay ePayment.
 
-### 3.2 One-off expiration period when it's with new agreement
+### 3.2 One-off expiration period
 
-Similarly, as with agreements, we are aligning the expiration period for one-off payments. From Nordic Wallet Launch, the maximum expiration timeout will be 10 minutes. All one-offs with longer expiration time will be expired on Nordic Wallet Launch day.
+Similarly, as with agreements, we are aligning the expiration period for one-off payments. From Nordic Wallet Launch, the expiration timeout will be 10 minutes. All one-offs with longer expiration time will be expired on Nordic Wallet Launch day.
 
 :star: **Recommendation:**
 * Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes in agreements [here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#11-agreement-request-expiration-period).
