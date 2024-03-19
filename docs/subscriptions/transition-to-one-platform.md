@@ -113,7 +113,11 @@ We reevaluated all our product packages, and usage of this feature and we decide
 
 ### 3.2 One-off expiration period
 
-Similarly, as with agreements, we are aligning the expiration period for one-off payments. From Nordic Wallet Launch, the expiration timeout will be 10 minutes. All one-offs with longer expiration time will be expired on Nordic Wallet Launch day.
+Similarly, as with agreements, we are aligning the expiration period for one-off payments. 
+From Nordic Wallet Launch, the expiration timeout for:
+- one-off with a new agreements will always be 10 minutes. 
+- one-off for an existing agreement will always be 1 minutes.
+All one-offs with longer expiration time will be expired on Nordic Wallet Launch day.
 
 :star: **Recommendation:**
 * Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes in agreements [here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#11-agreement-request-expiration-period).
@@ -122,7 +126,9 @@ Similarly, as with agreements, we are aligning the expiration period for one-off
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`  `POST:/api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`
 
-Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, the default was 10 minutes. After Nordic Wallet Launch, the expiration time will always be 10 minutes.
+Parameter: `expiration_timeout_minutes`, `one_off_payment.expiration_timeout_minutes` Current range from 1 to 181440 min, the default was 10 minutes. After Nordic Wallet Launch, the expiration time will always be:
+- 10 minutes for one-off when it's with new agreement
+- 1 minutes for one-off created when it's for an existing agreement
 
 ### 3.3 Description of a one-off with a new agreement
 
