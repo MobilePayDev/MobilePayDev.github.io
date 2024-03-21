@@ -192,7 +192,7 @@ Note: For payments made before Nordic Wallet Launch, status_callback_url will st
 }
 ```
 
-```json title="HTTP 400 - Charge is in wrong status to refund (not charged/captured or partially captured)"
+```json title="HTTP 400 - Charge is in wrong status to refund (not charged/captured, partially captured or fully refunded)"
 {
   "status_code": 103,
   "status_text": "Invalid status"
