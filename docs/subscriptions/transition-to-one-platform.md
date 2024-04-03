@@ -264,9 +264,10 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 **For integrators/partners**
 * If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to the new setup from the beginning.
-* If you are an existing partner in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. We are sorry, but from the Nordic Wallet Launch, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work.
+* If you are an existing partner in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. We are sorry, but from the Nordic Wallet Launch, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work. To get providerId for new onboarded merchants, you can call `GET:/api/merchants/me` with the new authorization token and `Merchant-Serial-Number` header. 
 
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
+
 
 ## **8. Settlements**
 
