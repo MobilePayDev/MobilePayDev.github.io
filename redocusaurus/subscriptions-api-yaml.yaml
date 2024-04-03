@@ -29,10 +29,6 @@ tags:
       The MobilePay Subscriptions Refund API contains endpoints for the
       merchants, needed to implement MobilePay Subscriptions refunds in your
       system.
-  - name: Subscriptions User Simulation
-    description: >-
-      This API is used to simulate app functionality for testing your
-      implementation of MobilePay Subscriptions.
 paths:
   /api/merchants/me:
     get:
