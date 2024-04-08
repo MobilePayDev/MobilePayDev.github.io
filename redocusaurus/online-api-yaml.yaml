@@ -89,47 +89,6 @@ paths:
                 $ref: '#/components/schemas/MerchantDetailsResponse'
         '409':
           description: Domain error response
-    patch:
-      tags:
-        - Merchants
-      summary: Update merchant
-      description: >-
-        Update properties on a given merchant. Only provided values will be
-        updated.
-      parameters:
-        - name: merchantId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: CorrelationId
-          in: header
-          description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: x-ibm-client-id
-          in: header
-          description: Client id for authentication
-          required: true
-          schema:
-            type: string
-        - name: x-ibm-client-secret
-          in: header
-          description: Client secret for authentication
-          required: true
-          schema:
-            type: string
-      requestBody:
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/MerchantUpdateRequest'
-      responses:
-        '204':
-          description: No Content
-        '409':
-          description: Domain error response
   /api/v1/merchants:
     get:
       tags:
@@ -196,44 +155,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/MerchantCreateResponse'
-        '409':
-          description: Domain error response
-  /api/v3/payments/{paymentId}:
-    get:
-      tags:
-        - Payments
-      summary: Get payment
-      parameters:
-        - name: paymentId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: CorrelationId
-          in: header
-          description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: x-ibm-client-id
-          in: header
-          description: Client id for authentication
-          required: true
-          schema:
-            type: string
-        - name: x-ibm-client-secret
-          in: header
-          description: Client secret for authentication
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/PaymentDetailsV3Response'
         '409':
           description: Domain error response
   /api/v1/payments/{paymentId}/authorizationattempts/{authorizationAttemptId}:
@@ -498,44 +419,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/InitiatePaymentResponse'
-        '409':
-          description: Domain error response
-  /api/v1/payments/{paymentId}/invalidate:
-    put:
-      tags:
-        - Payments
-      summary: Invalidate payment
-      description: >-
-        Invalidate the payment if a successful authorization hasn't been made.
-        Invalidation means that the user cannot accept or create a request on
-        this payment.
-      parameters:
-        - name: paymentId
-          in: path
-          required: true
-          schema:
-            type: string
-            format: uuid
-        - name: CorrelationId
-          in: header
-          description: CorrelationId used for logging
-          schema:
-            type: string
-        - name: x-ibm-client-id
-          in: header
-          description: Client id for authentication
-          required: true
-          schema:
-            type: string
-        - name: x-ibm-client-secret
-          in: header
-          description: Client secret for authentication
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Success
         '409':
           description: Domain error response
   /api/v1/product/payments/simulation/enter-phone-and-swipe/{paymentId}:
