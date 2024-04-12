@@ -4,7 +4,6 @@ sidebar_position: 10
 import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # Transition to One Platform
-*This document was last updated on 18.03.2024* (New content: Managing webhooks)
 
 **Our journey to create the ultimate payment wallet in the Nordics**
 
