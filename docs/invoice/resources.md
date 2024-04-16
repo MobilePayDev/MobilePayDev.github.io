@@ -5,10 +5,6 @@ pagination_next: null
 
 # Resources
 
-[API documentation](/api/invoice): The API reference documentation for Invoice
-
- 
-
 ## New Wallet Launch - Resources  
 
 We're steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. 
