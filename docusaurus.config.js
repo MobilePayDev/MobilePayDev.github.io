@@ -39,29 +39,14 @@ module.exports = {
           to: '/docs/app-payments/',
         },
         {
-          label: 'Invoice',
-          position: 'left',
-          to: '/docs/invoice',
-        },
-        {
           label: 'Online',
           position: 'left',
           to: '/docs/online',
         },
         {
-          label: 'Point of Sale',
-          position: 'left',
-          to: '/docs/pos',
-        },
-        {
           label: 'Subscriptions',
           position: 'left',
           to: '/docs/subscriptions',
-        },
-        {
-          label: 'Reporting',
-          position: 'left',
-          to: '/docs/reporting',
         },
         {
           label: 'API references',
@@ -76,24 +61,12 @@ module.exports = {
               to: '/api/wehooks',
             },
             {
-              label: 'Invoice',
-              to: '/api/invoice',
-            },
-            {
               label: 'Online',
               to: '/api/online',
             },
             {
-              label: 'PoS',
-              to: '/api/pos',
-            },
-            {
               label: 'Subscriptions',
               to: '/api/subscriptions',
-            },
-            {
-              label: 'Reporting (v3)',
-              to: '/api/reporting',
             },
           ],
         },
