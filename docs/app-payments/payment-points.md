@@ -50,4 +50,4 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 
 ## Setting up custom transfer reference
 
-If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose [default](/docs/reporting/transfers#default-transfer-reference) transfer reference or set up [custom references](/docs/reporting/transfers#custom-transfer-reference) that would reflect in your bank account statement. [Read more about transfer references.](/docs/reporting/transfers#transfer-reference).
+If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose default transfer reference or set up custom references that would reflect in your bank account statement.
