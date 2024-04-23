@@ -365,18 +365,19 @@ Agreement callbacks (no changes):
 
 Recurring payment callbacks:
 
-| Status        | Status code      | Status text                                               |  Callback sending condition                   
-|---------------|------------------|-----------------------------------------------------------|------------------------------
-| Cancelled     | 70003            | Payment cancelled.                                        | Pending payment cancelled due to user cancelling an agreement
-|               |                  |                                                           | Pending payment cancelled due to merchant cancelling an agreement
-|               |                  |                                                           | Merchants' initiated cancellation of pending recurring payment
-|               |                  |                                                           |    
-| Executed      | 0                | null                                                      | Payment succesfully executed on due date 
-| Failed        | 50000            | Payment failed to execute during the due date             | Payment failed to execute during the due date
-| Declined      | 70001            | Payment amount is 5 times higher than agreement amount.   | Payment batch request contains a payment which amount is 5 times higher than     
-|               |                  |                                                           | agreement's amount. Applicable when agreement has an amount more than 0
-| Declined      | 50003            | Declined by system: Agreement is not in \"Active\" state. | Payment batch request contains a payment for non-active agreement 
-| Declined      | 50006            | Declined by system.                                       | Unspecified error when processing payment from payment batch request
+| Status        | Status code | Status text                                               |  Callback sending condition                   
+|---------------|-------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003       | Payment cancelled.                                        | Pending payment cancelled due to user cancelling an agreement
+|               |             |                                                           | Pending payment cancelled due to merchant cancelling an agreement
+|               |             |                                                           | Merchants' initiated cancellation of pending recurring payment
+|               |             |                                                           |    
+| Executed      | 0           | null                                                      | Payment succesfully executed on due date 
+| Failed        | 50000       | Payment failed to execute during the due date             | Payment failed to execute during the due date
+| Declined      | 70001       | Payment amount is 5 times higher than agreement amount.   | Payment batch request contains a payment which amount is 5 times higher than     
+|               |             |                                                           | agreement's amount. Applicable when agreement has an amount more than 0
+| Declined      | 50003       | Declined by system: Agreement is not in \"Active\" state. | Payment batch request contains a payment for non-active agreement 
+| Declined      | 50004       | Declined by system: Found duplicates for the same DueDate and AgreementId/ExternalId. | Payment batch request contains a duplicate payment with the same DueDate and AgreementId/ExternalId
+| Declined      | 50006       | Declined by system.                                       | Unspecified error when processing payment from payment batch request
 
 
 One-off payment sent with an agreement:
