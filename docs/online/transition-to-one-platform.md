@@ -64,3 +64,4 @@ It is currently not possible to prefill the phone number on the MobilePay landin
 
 ## Test availability
 The sandbox environment will not be migrated to the new platform and therefore it will not be possible to test the Online facade. We are working on a test solution but currently there is no estimated time for its availability. As an alternative you can test in production but perhaps limit the capture option in order to ensure funds are not being transferred. 
+Please see [limitations for test environment](https://developer.vippsmobilepay.com/docs/test-environment/#regional-limitations).
