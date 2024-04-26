@@ -474,24 +474,76 @@ Please refer to the [NEW Recurring API endpoint description](https://developer.v
 Below you can find information for when merchants will re-integrate to the [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/)
 
 
-**agreements**
+**`providerid`**
+
+There is no provider_id in the calls to Recurring API endpoints.
+
+**`agreements`**
 
 ⚙️ Docs on agreements [here](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#agreements
 ):
 
+GET Agreements endpoint
+- Path parameters pageNumber and pageSize are no longer needed. Instead, use query parameter createdAfter.
+
+GET Agreement endpoint
 - Merchants can call GET agreement using either `agr_xxxxxx` or the `uuid`.
 - We will return both `agreementId` ( "agr_xxxxxxx" format ) and a `uuid`.
+
+POST Agreement endpoint
+- Field country_code becomes countryCode, and is not required.
+- Field external_id becomes externalId, and is not nullable.
+- Field description becomes productDescription, and has a maximum of 100 characters.
+- Field frequency becomes interval. It is composed of 2 required fields :
+    - unit. Type : String. Value has to be among :  "YEAR", "MONTH", "WEEK", "DAY".
+    - count. Type : Int. Value has to be between 1 and 31.
+- Field mobile_phone_number becomes phoneNumber, and has a maximum of 15 characters.
+- Field one_off_payment becomes initialCharge.
+- Field plan becomes productName, and has a maximum of 45 characters.
+- The following fields are not needed anymore :
+    - expiration_timeout_minutes
+    - links
+    - next_payment_date
+    - retention_period_hours
+    - disable_notification_management
+    - notifications_on
+- The following fields are new :
+    - campaign
+    - pricing. Required field. Fields currency and amount are moved into this field.
+    - isApp
+    - merchantAgreementUrl. Required field.
+    - merchantRedirectUrl. Required field.
+    - scope
+    - skipLandingPage
 
 **`charges`**
 
 ⚙️ Docs on charges [here](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#charges):
-- id stays the same. charge.id = paymentId
+- id stays the same. charge.id = paymentId. chargeId = paymentid.
 
-**For `refunds`**
+GET Charges endpoint
+- New query parameter : status. It filters by status of the charge.
 
-⚙️ Docs on refunds [here](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#refund-a-charge): 
+New endpoint : POST Charge endpoint
+
+POST Charges endpoint :
+- Amount has to be equal or superior to 100.
+- Description has between 1 and 45 characters.
+- Field due_date becomes due.
+- Field grace_period_days becomes retryDays. Required field. Value is between 0 and 14.
+- Field next_payment_date is no longer needed.
+- New fields :
+    - transactionType. Required field. Type : String. Value has to be "DIRECT_CAPTURE" or "RESERVE_CAPTURE".
+    - orderId. Type : String.
+
+**`refunds`**
+
+⚙️ Docs on refunds [here](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#refund-a-charge):
 - Merchant will need to call the GET charge endpoint using the id of the charge refunded.
-- Refunds won't have their own ids. 
+- Refunds won't have their own ids.
+- Fields "amount" and "description" are required.
+- No externalId and no status_callback_url are needed.
+- Amount has to be equal or superior to 100.
 
 ### **3. When can I integrate to the Recurring API?**
 
