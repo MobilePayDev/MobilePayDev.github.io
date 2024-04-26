@@ -129,7 +129,9 @@ The payment point was deprecated in 2023 since it won't continue to function as 
 Find the API spec for the endpoint here: https://developer.mobilepay.dk/api/app-payments#tag/Payments/operation/get-payments-list
 
 ### Test options
-It will not be possible to test the facade yet. Instead you will be able to test the new ePayments API through the merchant test environment on the new platform. 
+The new test environment is being prepared for the App Payments facade. We expect to have this ready during the week 6th-10th of May. We will update this documentation when the test environment is ready. 
+
+For now you will be able to test the new ePayments API through the merchant test environment on the new platform. 
 Please note:
 1. If you want to reuse your App Payments test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created before will not be migrated from the sandbox to the merchant test environment.
 2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued API key for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) Prod API keys will continue to work.
