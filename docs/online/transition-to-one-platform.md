@@ -63,5 +63,7 @@ Example:
 It is currently not possible to prefill the phone number on the MobilePay landing page. If a phone number is supplied the page will simply ignore it. Instead users can use the "Remember me" functionality to avoid having to input phone number each time. We are looking into adding the prefill option again but have no ETA for this yet. 
 
 ## Test availability
-The sandbox environment will not be migrated to the new platform and therefore it will not be possible to test the Online facade. We are working on a test solution but currently there is no estimated time for its availability. As an alternative you can test in production but perhaps limit the capture option in order to ensure funds are not being transferred. 
+The new test environement is being prepared for the App Payments facade. We expect to have this ready during the week 6th-10th of May. We will update this documentation when the test environment is ready. 
+
+Before the test environment is ready you can test in production as an alternative. We suggest perhaps limit the capture option in order to ensure funds are not being transferred. 
 Please see [limitations for test environment](https://developer.vippsmobilepay.com/docs/test-environment/#regional-limitations).
