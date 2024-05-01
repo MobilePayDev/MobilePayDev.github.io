@@ -44,7 +44,7 @@ If you need to update an active merchant we recomend that you create the new mer
 PspReferenceId must from now on be unique.
 
 ### validUntil 
-It will no longer be possible to define payment validation. It will instead default to 5 minutes. 
+It will no longer be possible to define payment validation. It will instead default to 10 minutes. 
 
 ### Get payment
 `GET /api/v3/payments/{paymentId}` will be removed. 
