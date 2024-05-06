@@ -129,7 +129,7 @@ The payment point was deprecated in 2023 since it won't continue to function as 
 Find the API spec for the endpoint here: https://developer.mobilepay.dk/api/app-payments#tag/Payments/operation/get-payments-list
 
 ### Test options
-The new test environment is being prepared for the App Payments facade. We expect to release the first version of this during the week 6th-10th of May. We will update this documentation when the test environment is ready. 
+The new test environment is being prepared for the App Payments facade. We expect to release the first version of this during May. We will update this documentation when the test environment is ready. 
 
 For now you will be able to test the new ePayments API through the merchant test environment on the new platform. 
 Please note:
