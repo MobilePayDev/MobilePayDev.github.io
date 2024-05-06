@@ -573,7 +573,7 @@ Callbacks will work on the facade API.
  
 ### **5. Will I be able to continue testing my integration in Sandbox?**
 
-The new test environement is being prepared for the Subscriptions facade. We expect to release the first version of this during the week 6th-10th of May. We will update this documentation when the test environment is ready. 
+The new test environement is being prepared for the Subscriptions facade. We expect to release the first version of this during May. We will update this documentation when the test environment is ready. 
 
 In the meantime you will be able to test the new Recurring API through the merchant test environment on the new platform. 
 Please note:
@@ -617,6 +617,8 @@ If you have any questions, our  Developer support team (developer@vippsmobilepay
 
 
 ## **Changelog**
+
+2024-05-03 Information about test.
 
 2024-03-01 Removed 8.3. Gross settlement type stays in use after NWL. 
 
