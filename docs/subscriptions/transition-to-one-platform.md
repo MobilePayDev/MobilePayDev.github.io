@@ -173,36 +173,36 @@ Note: For payments made before Nordic Wallet Launch, status_callback_url will st
 
 ```json title="HTTP 500 - Something went wrong while trying to refund charge/payment"
 {
-  "status_code": 100,
-  "status_text": "Something went wrong while refunding charge"
+  "StatusCode": 100,
+  "StatusText": "Something went wrong while refunding charge"
 }
 ```
   
 ``` json title="HTTP 400 - Charge is too old to refund (older than 365 days)"
 {
-  "status_code": 101,
-  "status_text": "Cannot refund a charge older than 365 days"
+  "StatusCode": 101,
+  "StatusText": "Cannot refund a charge older than 365 days"
 }
 ```
  
 ``` json title="HTTP 400 - Agreement for charge is in wrong status to refund (if accepting and pending)"
 {
-  "status_code": 102,
-  "status_text": "Cannot modify an agreement which is not active"
+  "StatusCode": 102,
+  "StatusText": "Cannot modify an agreement which is not active"
 }
 ```
 
 ```json title="HTTP 400 - Charge is in wrong status to refund (not charged/captured, partially captured or fully refunded)"
 {
-  "status_code": 103,
-  "status_text": "Invalid status"
+  "StatusCode": 103,
+  "StatusText": "Invalid status"
 }
 ```
 
 ```json title="HTTP 400 - Trying to refund higher amount than what is charged/captured"
 {
-  "status_code": 104,
-  "status_text": "Invalid amount, you cannot refund more than the remaining value on this charge/payment"
+  "StatusCode": 104,
+  "StatusText": "Invalid amount, you cannot refund more than the remaining value on this charge/payment"
 }
 ```
 
