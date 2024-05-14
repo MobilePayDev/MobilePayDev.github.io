@@ -211,6 +211,8 @@ paths:
       tags:
         - Payments
       summary: Update payment
+      description: >-
+        This endpoint requires approval before it can be used. Please contact developer@vippsmobilepay.com
       parameters:
         - name: paymentId
           in: path
