@@ -20,7 +20,7 @@ There is no need to reintegrate into the new solution yet as the existing App Pa
 - **2024** Plan and integrate new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) 
 - **2025Q1** Be ready with your API integration to the App Payments API. The facade will be switched off. 
 
-## Test options
+## Test
 The first version of the new test environment is ready for the App Payments facade. All features except Refund is available.
 
 ### Test credentials
@@ -30,8 +30,19 @@ The first version of the new test environment is ready for the App Payments faca
 
 Please note: If you want to reuse your App Payments test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created on the old platform will not be migrated from the sandbox to the merchant test environment.
 
-**Authentication** 
+#### Authentication 
+
 You will  have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued API key for the sandbox will cease to function. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) Prod API keys will continue to work.
+
+### Headers and endpoints
+You must include these headers for all requests to the API
+```
+-H 'Authorization: Bearer {API_KEY or JWT}' \
+-H 'Content-Type: application/json' \
+-H 'Ocp-Apim-Subscription-Key: {subscriptions key}' \
+-H 'Merchant-Serial-Number: {MSN}'
+```
+The endpoints have not changed. Please find them in the [API specification](https://developer.mobilepay.dk/api/app-payments).
 
 ### UserSimulation endpoint
 The request to the userSimulation endpoint will be simplified. 
@@ -54,8 +65,7 @@ curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/
 -H 'Authorization: Bearer {API_KEY or JWT}' \
 -H 'Content-Type: application/json' \
 -H 'Ocp-Apim-Subscription-Key: {subscriptions key}' \
---header 'Content-Type: application/json' \
---header 'Merchant-Serial-Number: {MSN}'
+-H 'Merchant-Serial-Number: {MSN}'
 -d '{
     "phoneNumber": {string}
 }'
