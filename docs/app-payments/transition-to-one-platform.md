@@ -20,18 +20,48 @@ There is no need to reintegrate into the new solution yet as the existing App Pa
 - **2024** Plan and integrate new [ePayments API](https://developer.vippsmobilepay.com/docs/APIs/epayment-api/) 
 - **2025Q1** Be ready with your API integration to the App Payments API. The facade will be switched off. 
 
-### The test environment for the new platform
+## Test options
+The first version of the new test environment is ready for the App Payments facade. All features except Refund is available.
 
-The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+### Test credentials
+**Test merchant**: Find a guide to create test merchant [here](https://developer.vippsmobilepay.com/docs/developer-resources/portal/#how-to-create-a-test-sales-unit). The test credentials consist of a client id, client secret and subscriptions key. 
+**Test user**: Find a guide to create test users [here](https://developer.vippsmobilepay.com/docs/test-environment/#test-users) 
+*For partners*: Please contact partner@vippsmobilepay.com to request a DK or FI test merchant and user.
 
-In order to request access to the test environment, please use the following links:
+Please note: If you want to reuse your App Payments test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created on the old platform will not be migrated from the sandbox to the merchant test environment.
 
-- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
-- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
+**Authentication** 
+You will  have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued API key for the sandbox will cease to function. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) Prod API keys will continue to work.
 
+### UserSimulation endpoint
+The request to the userSimulation endpoint will be simplified. 
+```bash title="Old MobilePay request"
+curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{paymentid}/reserve \
+-X POST \
+-H 'Authorization: Bearer {API_KEY or JWT}' \
+-H 'Content-Type: application/json' \
+-d '{
+    "paymentSourceId": {UUID},
+    "userId": {UUID}
+}'
+```
 
-We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
+For  the new setup you will not need to supply a userId or paymentSourceId but instead a phoneNumber. When registering for test access on the new platform you will receive a new test phoneNumber
 
+```bash title="New Vipps MobilePay request"
+curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/reserve \
+-X POST \
+-H 'Authorization: Bearer {API_KEY or JWT}' \
+-H 'Content-Type: application/json' \
+-H 'Ocp-Apim-Subscription-Key: {subscriptions key}' \
+--header 'Content-Type: application/json' \
+--header 'Merchant-Serial-Number: {MSN}'
+-d '{
+    "phoneNumber": {string}
+}'
+```
+
+`phoneNumber` must be international phone number including contry code. For example: `4512345678`
 
 ## App Payments Facade 
 To ease the switch to a new platform we will supply a facade for the existing MobilePay App Payments API that will be available during and after the launch of the new platform. There is no need to reintegrate into the new solution now. Your existing App Payments integration will continue to work and while our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and consider updating your integration accordingly. Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. 
@@ -128,44 +158,3 @@ From the launch of our new platform you will be able to use the new [ePayments A
 The payment point was deprecated in 2023 since it won't continue to function as is on the facade. It is still possible to use it, but it will be limited to only returning payments with status 'Reserved' going forward.
 Find the API spec for the endpoint here: https://developer.mobilepay.dk/api/app-payments#tag/Payments/operation/get-payments-list
 
-### Test options
-The first version of the new test environment is ready for the App Payments facade. All features except Refund is available.
-
-#### Test credentials
-**Test merchant**: Find a guide to create test merchant [here](https://developer.vippsmobilepay.com/docs/developer-resources/portal/#how-to-create-a-test-sales-unit). The test credentials consist of a client id, client secret and subscriptions key. 
-**Test user**: Find a guide to create test users [here](https://developer.vippsmobilepay.com/docs/test-environment/#test-users) 
-*For partners*: Please contact partner@vippsmobilepay.com to request a DK or FI test merchant and user.
-
-Please note: If you want to reuse your App Payments test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created on the old platform will not be migrated from the sandbox to the merchant test environment.
-
-**Authentication** You will  have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued API key for the sandbox will cease to function. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) Prod API keys will continue to work.
-
-#### UserSimulation endpoint
-The request to the userSimulation endpoint will be simplified. 
-```bash title="Old MobilePay request"
-curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{paymentid}/reserve \
--X POST \
--H 'Authorization: Bearer {API_KEY or JWT}' \
--H 'Content-Type: application/json' \
--d '{
-    "paymentSourceId": {UUID},
-    "userId": {UUID}
-}'
-```
-
-For  the new setup you will not need to supply a userId or paymentSourceId but instead a phoneNumber. When registering for test access on the new platform you will receive a new test phoneNumber
-
-```bash title="New Vipps MobilePay request"
-curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/reserve \
--X POST \
--H 'Authorization: Bearer {API_KEY or JWT}' \
--H 'Content-Type: application/json' \
--H 'Ocp-Apim-Subscription-Key: {subscriptions key}' \
---header 'Content-Type: application/json' \
---header 'Merchant-Serial-Number: {MSN}'
--d '{
-    "phoneNumber": {string}
-}'
-```
-
-`phoneNumber` must be international phone number including contry code. For example: `4512345678`
