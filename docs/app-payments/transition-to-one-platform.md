@@ -25,7 +25,9 @@ The first version of the new test environment is ready for the App Payments faca
 
 ### Test credentials
 **Test merchant**: Find a guide to create test merchant [here](https://developer.vippsmobilepay.com/docs/developer-resources/portal/#how-to-create-a-test-sales-unit). The test credentials consist of a client id, client secret and subscriptions key. 
+
 **Test user**: Find a guide to create test users [here](https://developer.vippsmobilepay.com/docs/test-environment/#test-users) 
+
 *For partners*: Please contact partner@vippsmobilepay.com to request a DK or FI test merchant and user.
 
 Please note: If you want to reuse your App Payments test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created on the old platform will not be migrated from the sandbox to the merchant test environment.
