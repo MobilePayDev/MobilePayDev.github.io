@@ -129,23 +129,17 @@ The payment point was deprecated in 2023 since it won't continue to function as 
 Find the API spec for the endpoint here: https://developer.mobilepay.dk/api/app-payments#tag/Payments/operation/get-payments-list
 
 ### Test options
-The new test environment is being prepared for the App Payments facade. We expect to release the first version of this during May. We will update this documentation when the test environment is ready. 
+The first version of the new test environment is ready for the App Payments facade. All features except Refund is available.
 
-For now you will be able to test the new ePayments API through the merchant test environment on the new platform. 
-Please note:
-1. If you want to reuse your App Payments test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created before will not be migrated from the sandbox to the merchant test environment.
-2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued API key for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) Prod API keys will continue to work.
+#### Test credentials
+**Test merchant**: Find a guide to create test merchant [here](https://developer.vippsmobilepay.com/docs/developer-resources/portal/#how-to-create-a-test-sales-unit). The test credentials consist of a client id, client secret and subscriptions key. 
+**Test user**: Find a guide to create test users [here](https://developer.vippsmobilepay.com/docs/test-environment/#test-users) 
+*For partners*: Please contact partner@vippsmobilepay.com to request a DK or FI test merchant and user.
 
-The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+Please note: If you want to reuse your App Payments test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created on the old platform will not be migrated from the sandbox to the merchant test environment.
 
-In order to request access to the test environment, please use the following links:
+**Authentication** You will  have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued API key for the sandbox will cease to function. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) Prod API keys will continue to work.
 
-- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
-- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
-
-We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
-
-<!---
 #### UserSimulation endpoint
 The request to the userSimulation endpoint will be simplified. 
 ```bash title="Old MobilePay request"
@@ -162,12 +156,16 @@ curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{paymentid}/r
 For  the new setup you will not need to supply a userId or paymentSourceId but instead a phoneNumber. When registering for test access on the new platform you will receive a new test phoneNumber
 
 ```bash title="New Vipps MobilePay request"
-curl xxx/v1/integration-test/payments/{PAYMENT_ID}/reserve \
+curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/reserve \
 -X POST \
 -H 'Authorization: Bearer {API_KEY or JWT}' \
 -H 'Content-Type: application/json' \
+-H 'Ocp-Apim-Subscription-Key: {subscriptions key}' \
+--header 'Content-Type: application/json' \
+--header 'Merchant-Serial-Number: {MSN}'
 -d '{
     "phoneNumber": {string}
 }'
 ```
--->
+
+`phoneNumber` must be international phone number including contry code. For example: `4512345678`
