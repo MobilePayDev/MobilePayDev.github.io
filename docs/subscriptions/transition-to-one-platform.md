@@ -440,7 +440,7 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 Please make sure that your servers hosting the token endpoint for callbacks supports TLS 1.2. If not, we will not be able to send callbacks back to you.
 
-## 10 Test
+## **10. Test**
 The first version of the new test environment is ready for the Subscriptions facade. All features except Refund is available.
 
 ### 10.1. Test credentials
@@ -604,7 +604,7 @@ Callbacks will work on the facade API.
 
  
 ### **5. Will I be able to test the new Recurring API?**
-You will be able to test the new Recurring API through the merchant test environment on the new platform. If you want to test the Mobilepay Subscriptions facade instead please read here. 
+You will be able to test the new Recurring API through the merchant test environment on the new platform. If you want to test the Mobilepay Subscriptions facade instead please [read here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#10-test). 
 
 Please note:
 1. If you want to reuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
