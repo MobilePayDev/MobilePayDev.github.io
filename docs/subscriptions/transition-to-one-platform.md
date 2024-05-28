@@ -439,8 +439,40 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 ### 9.6 From the Nordic Wallet Launch Merchant's server must be TLS 1.2
 
 Please make sure that your servers hosting the token endpoint for callbacks supports TLS 1.2. If not, we will not be able to send callbacks back to you.
- 
-## **FAQ** 
+
+## 10 Test
+The first version of the new test environment is ready for the Subscriptions facade. All features except Refund is available.
+
+### 10.1. Test credentials
+**Test merchant**: Find a guide to create test merchant [here](https://developer.vippsmobilepay.com/docs/developer-resources/portal/#how-to-create-a-test-sales-unit). The test credentials consist of a client id, client secret and subscriptions key. 
+
+**Test user**: Find a guide to create test users [here](https://developer.vippsmobilepay.com/docs/test-environment/#test-users) 
+
+*For partners*: Please contact partner@vippsmobilepay.com to request a DK or FI test merchant and user.
+
+Please note: If you want to reuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created on the old platform will not be migrated from the sandbox to the merchant test environment.
+
+### 10.2. Authentication 
+
+You will  have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay OpenId consent flow for the sandbox will cease to function. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/).
+
+### 10.3 Headers and endpoints
+You must include these headers for all requests to the API
+```
+-H 'Authorization: Bearer {JWT}' \
+-H 'Content-Type: application/json' \
+-H 'Ocp-Apim-Subscription-Key: {subscriptions key}' \
+-H 'Merchant-Serial-Number: {MSN}'
+```
+The endpoints have not changed. Please find them in the [API specification](https://developer.mobilepay.dk/api/subscriptions).
+
+### 10.4 Initiate test
+1. Fetch test merchant and test use
+2. [GET access token](https://developer.vippsmobilepay.com/api/access-token/#tag/Authorization-Service/operation/fetchAuthorizationTokenUsingPost)
+3. [GET subscriptionsProviderId](https://developer.mobilepay.dk/api/subscriptions#tag/Subscriptions-Merchant/paths/~1api~1merchants~1me/get)
+4. [Create new agreement](https://developer.mobilepay.dk/api/subscriptions#tag/Subscriptions/paths/~1api~1providers~1%7Bproviderid%7D~1agreements/post)
+
+ ## **FAQ** 
 
 ### **1. Do I need to reintegrate now to the new solution, APIs?**
 
@@ -571,11 +603,9 @@ Another method is [polling](https://developer.vippsmobilepay.com/docs/knowledge-
 Callbacks will work on the facade API.  
 
  
-### **5. Will I be able to continue testing my integration in Sandbox?**
+### **5. Will I be able to test the new Recurring API?**
+You will be able to test the new Recurring API through the merchant test environment on the new platform. If you want to test the Mobilepay Subscriptions facade instead please read here. 
 
-The new test environement is being prepared for the Subscriptions facade. We expect to release the first version of this during May. We will update this documentation when the test environment is ready. 
-
-In the meantime you will be able to test the new Recurring API through the merchant test environment on the new platform. 
 Please note:
 1. If you want to reuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
 2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
