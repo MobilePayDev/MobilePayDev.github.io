@@ -162,8 +162,8 @@ void openMobilePay(String deepLink) {
         startActivityForResult(intent, MOBILEPAY_PAYMENT_REQUEST_CODE);
     } catch (android.content.ActivityNotFoundException exception) {
         // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
-        // DK: market://details?id=dk.danskebank.mobilepay
-        // FI: market://details?id=fi.danskebank.mobilepay
+        // DK: https://apps.apple.com/us/app/mobilepay/id624499138
+        // FI: https://apps.apple.com/us/app/mobilepay/id768172577
     } catch (NullPointerException exception) {
         // Null deepLink was passed in.
     }
