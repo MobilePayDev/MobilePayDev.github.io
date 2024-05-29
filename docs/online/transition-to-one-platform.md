@@ -65,7 +65,17 @@ Example:
 It is currently not possible to prefill the phone number on the MobilePay landing page. If a phone number is supplied the page will simply ignore it. Instead users can use the "Remember me" functionality to avoid having to input phone number each time. We are looking into adding the prefill option again but have no ETA for this yet. 
 
 ## Test availability
-The new test environement is being prepared for the Online facade. We expect to release the first version of this during May. We will update this documentation when the test environment is ready. 
+The first version of the new test environment is ready for the Online facade. However there are still some limitations to this:
+* No token or card callbacks are being sent
+* Authorizations are automatically updated
+* User simulation endpoint not available
+What is available:
+* Create/delete merchant
+* Initiate payment
+* Capture, cancel and refund
 
-Before the test environment is ready you can test in production as an alternative. We suggest perhaps limit the capture option in order to ensure funds are not being transferred. 
-Please see [limitations for test environment](https://developer.vippsmobilepay.com/docs/test-environment/#regional-limitations).
+### Authorization and endpoints
+You can continue to use your existing sandbox credentials which includes client id, client secret and publicKeyId. The endpoints have not changed and you can find them in the [API specification](/api/online). 
+
+### Test data and test user
+No test data have been migrated so you must create new test merchants. You will also need a new test user which can be requested by contacting developer@vippsmobilepay.com. Please state if you need a DK or FI user. It is no longer possible to add your own cards to the test users, instead you can utilize magic numbers documented [here]([/docs/APIs/psp-api/vipps-psp-api/#magic-numbers-for-emvco-tokens](https://developer.vippsmobilepay.com/docs/APIs/psp-api/vipps-psp-api/#magic-numbers-for-emvco-tokens)). Note that the documentation for the magic numbers are part of the Vipps PSP documentation. But it is only the section about magic numbers that are relevant for your MobilePay Online test, the rest is only related to Vipps PSP solution. For MobilePay Online you must still follow the existing [MobilePay Online](/docs/online) documentation.  
