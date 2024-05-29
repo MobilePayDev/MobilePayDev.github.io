@@ -24,9 +24,9 @@ POST payments/{paymentId}/refunds
 
 ## Restrictions
 
-A payment will time out by default within 35 minutes, meaning that the whole process of user accepting, callbacks made and authorization must be completed within 35 minutes.
+A payment will time out by default within 10 minutes, meaning that the whole process of user accepting, callbacks made and authorization must be completed within 10 minutes.
 
-Furthermore after you get the callback containing the card data, you must update the status of the authorization to either "authorize-succesfull" or "authorize-failed" within 32 seconds to ensure a smooth experience for the user waiting for the confirmation.
+Furthermore after you get the callback containing the card data, you must update the status of the authorization to either "authorize-succesfull" or "authorize-failed" within 20 seconds to ensure a smooth experience for the user waiting for the confirmation.
 
 ## Merchant logo
 
