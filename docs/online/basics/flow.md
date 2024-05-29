@@ -17,7 +17,7 @@ If the redirect happens on a mobile device the MobilePay app will be launched. T
 
 ## Dual device flow
 
- If the redirect happens on a desktop device our landing page will open in the browser. The user can then insert the phone number or it can be [pre-filled](/docs/online/features/phone-number#prefilled-phone-number) for more convenience. We will then send a push notification to the user's mobile device and the user can then accept or reject the payment in the MobilePay app. Afterwards the landing page in the desktop browser will redirect to redirectFromMobilePayUrl.
+ If the redirect happens on a desktop device our landing page will open in the browser. The user can then insert the phone number. We will then send a push notification to the user's mobile device and the user can then accept or reject the payment in the MobilePay app. Afterwards the landing page in the desktop browser will redirect to redirectFromMobilePayUrl.
 
 ### Landing page
 
