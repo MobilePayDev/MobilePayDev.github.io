@@ -84,8 +84,8 @@ fun openMobilePay(deepLink: String) {
       mobilePayContract.launch(intent)
   } catch (exception: ActivityNotFoundException) {
       // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
-      // DK: market://details?id=dk.danskebank.mobilepay
-      // FI: market://details?id=fi.danskebank.mobilepay
+      // DK: https://play.google.com/store/apps/details?id=dk.danskebank.mobilepay
+      // FI: https://play.google.com/store/apps/details?id=fi.danskebank.mobilepay
   }
 }
 
@@ -111,8 +111,8 @@ fun openMobilePay(deepLink: String) {
         startActivityForResult(intent, MOBILEPAY_PAYMENT_REQUEST_CODE)
     } catch (exception: ActivityNotFoundException) {
         // Inform the user that MobilePay is not installed or use these links to redirect the user to Play Store:
-        // DK: market://details?id=dk.danskebank.mobilepay
-        // FI: market://details?id=fi.danskebank.mobilepay
+        // DK: https://play.google.com/store/apps/details?id=dk.danskebank.mobilepay
+        // FI: https://play.google.com/store/apps/details?id=fi.danskebank.mobilepay
     }
 }
 
