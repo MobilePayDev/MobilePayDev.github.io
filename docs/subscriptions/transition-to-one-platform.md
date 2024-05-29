@@ -472,7 +472,7 @@ The endpoints have not changed. Please find them in the [API specification](http
 3. [GET subscriptionsProviderId](https://developer.mobilepay.dk/api/subscriptions#tag/Subscriptions-Merchant/paths/~1api~1merchants~1me/get)
 4. [Create new agreement](https://developer.mobilepay.dk/api/subscriptions#tag/Subscriptions/paths/~1api~1providers~1%7Bproviderid%7D~1agreements/post)
 
- ## **FAQ** 
+## **FAQ** 
 
 ### **1. Do I need to reintegrate now to the new solution, APIs?**
 
