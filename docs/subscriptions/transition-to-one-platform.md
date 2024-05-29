@@ -272,32 +272,32 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 ## **8. Settlements**
 
 
-### 8.1. From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
+### 8.1 From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
 
 Currently you were able to select how to receive settlements: daily or instant. After NWL all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settleded separately (not bundled up) and you will receive it in 1 days after payment was executed. 
 
 :star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after NWL and select Single payment settlement functionality. 
 
 
-### <s>8.2. Settlement time changes</s>
+### <s>8.2 Settlement time changes</s>
 
 <s>Currently your money is settled 1 day after payments were executed, after NWL we will settle you money bit later - 2 days after payments were executed. </s>
 
 <s>:star:**Recommendation:**  your feedback is very important for us, let us know if you have a need to get settlements faster.</s>
 
 
-### <s>8.3. Gross Settlements</s>
+### <s>8.3 Gross Settlements</s>
 
 <s>Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After NWL we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. </s>
 
 ## **9. Other**
 
-### 9.1. From the Nordic Wallet Launch callbacks will be sent from new DNS address
+### 9.1 From the Nordic Wallet Launch callbacks will be sent from new DNS address
 
 Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
 Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
-### 9.2. Callback changes for recurring and one-off payments
+### 9.2 Callback changes for recurring and one-off payments
 
  
 
@@ -348,7 +348,7 @@ Above callbacks will be sent in following cases:
 * For each one-off payment rejection by user
 * For each cancellation of pending one-off payment, due to merchants' initiated cancellation of pending agreement
 
-### 9.3. Callbacks for non reintegrated merchants after NWL
+### 9.3 Callbacks for non reintegrated merchants after NWL
 
 These are the callbacks we will be sending for non reintegrated merchants.
 
@@ -406,14 +406,14 @@ Autoreserve one-off payment:
 
 In the new platform reservation failure and expiration callbacks are sent only after payment expiration with few seconds delay between each other.
 
-### 9.4. Callbacks for reintegrated merchants
+### 9.4 Callbacks for reintegrated merchants
 
 If you are planning to reintegrate, you will have to start using new Webhook solution https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/
 By default after integrating with new Webhook solution, you will still receive old **payment** callbacks to your old payment callback URL and there is no possibility to change callback url or authentication method for old integration. This means that you will receive both old callbacks and new webhooks. Once you have integrated towards Webooks and no longer rely on old callbacks, please notify us and we will turn them off.
 
 Here you can find a payload and other useful information about new Webhooks https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#webhooks-integration
 
-### 9.5. Error messages
+### 9.5 Error messages
 
 We are making adjustments to error responses, specifically related to `error_description.message` and `error_description.error_type`. Some values will remain unchanged, some will be modified, and new validations will be introduced. Some messages may be less explicit than before, as they are generated directly from the backend and not specifically tailored for exact app branding (MobilePay or Vipps) responses.
 
@@ -443,7 +443,7 @@ Please make sure that your servers hosting the token endpoint for callbacks supp
 ## **10. Test**
 The first version of the new test environment is ready for the Subscriptions facade. All features except Refund is available.
 
-### 10.1. Test credentials
+### 10.1 Test credentials
 **Test merchant**: Find a guide to create test merchant [here](https://developer.vippsmobilepay.com/docs/developer-resources/portal/#how-to-create-a-test-sales-unit). The test credentials consist of a client id, client secret and subscriptions key. 
 
 **Test user**: Find a guide to create test users [here](https://developer.vippsmobilepay.com/docs/test-environment/#test-users) 
@@ -452,7 +452,7 @@ The first version of the new test environment is ready for the Subscriptions fac
 
 Please note: If you want to reuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including payments, refunds, and so on, created on the old platform will not be migrated from the sandbox to the merchant test environment.
 
-### 10.2. Authentication 
+### 10.2 Authentication 
 
 You will  have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay OpenId consent flow for the sandbox will cease to function. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/).
 
