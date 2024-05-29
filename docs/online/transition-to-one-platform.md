@@ -69,6 +69,7 @@ The first version of the new test environment is ready for the Online facade. Ho
 * No token or card callbacks are being sent
 * Authorizations are automatically updated
 * User simulation endpoint not available
+  
 What is available:
 * Create/delete merchant
 * Initiate payment
@@ -78,4 +79,6 @@ What is available:
 You can continue to use your existing sandbox credentials which includes client id, client secret and publicKeyId. The endpoints have not changed and you can find them in the [API specification](/api/online). 
 
 ### Test data and test user
-No test data have been migrated so you must create new test merchants. You will also need a new test user which can be requested by contacting developer@vippsmobilepay.com. Please state if you need a DK or FI user. It is no longer possible to add your own cards to the test users, instead you can utilize magic numbers documented [here](https://developer.vippsmobilepay.com/docs/APIs/psp-api/vipps-psp-api/#magic-numbers-for-emvco-tokens). Note that the documentation for the magic numbers are part of the Vipps PSP documentation. But it is only the section about magic numbers that are relevant for your MobilePay Online test, the rest is only related to Vipps PSP solution. For MobilePay Online you must still follow the existing [MobilePay Online](/docs/online) documentation.  
+No test data have been migrated so you must create new test merchants. You will also need a new test user which can be requested by contacting developer@vippsmobilepay.com. Please state if you need a DK or FI user. 
+
+It is no longer possible to add your own cards to the test users, instead you can utilize magic numbers documented [here](https://developer.vippsmobilepay.com/docs/APIs/psp-api/vipps-psp-api/#magic-numbers-for-emvco-tokens). Note that the documentation for the magic numbers are part of the Vipps PSP documentation. But it is only the section about magic numbers that are relevant for your MobilePay Online test, the rest is only related to Vipps PSP solution. For MobilePay Online you must still follow the existing [MobilePay Online](/docs/online) documentation.  
