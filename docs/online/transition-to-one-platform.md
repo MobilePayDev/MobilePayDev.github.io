@@ -65,15 +65,7 @@ Example:
 It is currently not possible to prefill the phone number on the MobilePay landing page. If a phone number is supplied the page will simply ignore it. Instead users can use the "Remember me" functionality to avoid having to input phone number each time. We are looking into adding the prefill option again but have no ETA for this yet. 
 
 ## Test availability
-The first version of the new test environment is ready for the Online facade. However there are still some limitations to this:
-* No token or card callbacks are being sent
-* Authorizations are automatically updated
-* User simulation endpoint not available
-  
-What is available:
-* Create/delete merchant
-* Initiate payment
-* Capture, cancel and refund
+The first version of the new test environment is ready for the Online facade. Please read the details below on how to test.
 
 ### Authorization and endpoints
 You can continue to use your existing sandbox credentials which includes client id, client secret and publicKeyId. The endpoints have not changed and you can find them in the [API specification](/api/online). 
