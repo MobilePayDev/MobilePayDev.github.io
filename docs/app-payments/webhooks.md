@@ -222,8 +222,4 @@ It is possible to provide `paymentPointId` when creating or updating webhooks. T
 </table>
 
 ## Create webhook
-You can view and manage webhooks in the [MobilePay portal](https://portal.mobilepay.dk/developer/webhooks) or via [Webhooks Api](/api/wehooks)
-
-When creating a webhook, you need to subscribe to events, and app payments events are available only if you have an App Payments product. The URL must be `HTTPS` and unique per webhook. 
-
-![](/img/create-webhook.gif)
+You can create new webhooks by using the [Vipps MobilePay webhooks API](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/) on the new platform. If the webhooks are for the App Payments facade make sure you follow the guidelines [described in the documentation here.](https://developer.mobilepay.dk/docs/app-payments/transition-to-one-platform#webhooks)
