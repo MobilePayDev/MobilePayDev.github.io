@@ -74,40 +74,6 @@ It is possible to provide `paymentPointId` when creating or updating webhooks. T
 
 ## Available webhook events
 
-### Payment Points API
-
-<table className="webhooks-table">
-  <thead>
-    <tr>
-      <th>Event</th>
-      <th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>paymentpoint.activated</td>
-      <td> Published when newly created payment point is approved and ready to be used. Relevant to integrators. </td>
-    </tr>
-    <tr>
-<td colSpan="2">
-
-```json title="Request body example"
-{
-  "notificationId": "946599d2-a6f2-4752-a1d0-b2454057f73e",
-  "eventType": "paymentpoint.activated",
-  "eventDate": "2021-10-13T11:20:53Z",
-  "data": {
-    "id": "403554fa-3147-4995-9668-1469039107c2b7",
-    "type": "paymentpoint"
-  }
-}
-```
-
-</td>
-</tr>
-</tbody>
-</table>
-
 ### Payments API
 
 <table className="webhooks-table">
