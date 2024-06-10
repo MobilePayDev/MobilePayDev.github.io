@@ -14,9 +14,7 @@ Single business can have multiple payment points. Each payment point is a locati
 
 ## Management of payment points
 
-Creating and editing payment points is done in [MobilePay portal](https://portal.mobilepay.dk/payments/paymentpoints). The payment point name and bank account are mandatory fields. If no logo image is provided the default one will be used.
-
-![Setup payment points](/img/portal-create-pp.gif)
+Payment points can be configured on the new [Vipps MobilePay portal](https://portal.vippsmobilepay.com/), where they are called Sales Units.
 
 ## Retrieve a list of payment points
 
@@ -50,4 +48,4 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 
 ## Setting up custom transfer reference
 
-If you have any transactions during the day, then you will receive collected money during the night. MobilePay runs a job that transfers all the money to your specified bank account. There is one transfer per payment point. When configuring payment points you can choose default transfer reference or set up custom references that would reflect in your bank account statement.
+When configuring payment points you can choose if the transfer reference visible on your bank account should be the default reference or a custom reference. This cacn be set up by selecting the Sales Unit in the Vipps MobilePay portal and change the reference from 'standard' to 'custom'.
