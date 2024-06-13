@@ -7,6 +7,7 @@ sidebar_position: 5
 As a rule of thumb, MobilePay Online is idempotent in all operations. Likewise, we expect PSPs to be able to handle the same callback more than once in the event of transient errors on network, ours, or your side.
 This means that if we make a callback to you on a given payment id or a given authorization attempt you may receive the same data more than once and should ensure that your systems are able to handle that.
 We will retry our callbacks for 15 seconds in the event of network errors or non 200-range http status codes in your responses. After this we will mark the callback as failed and allow the user to accept the payment again. In this case you will receive a new callback with a new authorization attempt. Please note that the 15 second limit may be subject to change.
+If you need to whitelist our servers you can find details about this [here](https://developer.vippsmobilepay.com/docs/developer-resources/servers/). 
 
 ## Card data callback
 
