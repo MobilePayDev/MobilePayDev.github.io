@@ -441,7 +441,7 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 Please make sure that your servers hosting the token endpoint for callbacks supports TLS 1.2. If not, we will not be able to send callbacks back to you.
 
 ## **10. Test**
-The first version of the new test environment is ready for the Subscriptions facade. All features except Refund is available.
+The first version of the new test environment is ready for the Subscriptions facade. All features are available.
 
 ### 10.1 Test credentials
 **Test merchant**: Find a guide to create test merchant [here](https://developer.vippsmobilepay.com/docs/developer-resources/portal/#how-to-create-a-test-sales-unit). The test credentials consist of a client id, client secret and subscriptions key. 
