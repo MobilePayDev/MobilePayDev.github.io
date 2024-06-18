@@ -36,7 +36,7 @@ Note: When receiving a PAN-based transaction from us it can't be regarded as aut
 
 ## Failed payment callback
 
-In case the payment times out a callback is made to the FailedPaymentCallbackUrl url supplied in the initiate payment call. Note that this callback is not sent if the user rejects the payment, only when payment times out.
+In case the payment times out a callback is made to the FailedPaymentCallbackUrl url supplied in the initiate payment call. Note that this callback is not sent if the user rejects the payment, only when payment times out after 10 minutes of no user interaction. This means that it will not be sent if user have inserted their phone number on the landing page, but does not accept or reject the payment. The payment will still expire after 10 minutes, but the callback will not be sent.
 
 ```json title="Failed payment callback example"
 {
