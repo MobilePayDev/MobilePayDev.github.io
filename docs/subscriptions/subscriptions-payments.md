@@ -224,7 +224,7 @@ As a MobilePay app user, the user can be informed about payment issues, dependin
 |Payment in other hiccup state - user can approve manually.   | When payment is in a hiccup state. Other issues with the Payment card, blocked, insufficient funds  | **English:** We can not complete your payment - click here to help us. **Danish:** Vi kan ikke gennemføre din betaling - klik her for at hjælpe os. **Finnish:** Maksua ei voida suorittaa - Klikkaa tästä auttaaksesi meitä. |**Text**: Vis **Navigation**: Agreement payments|OS, App| Subscription Payments
 |Payment failed  | When payment is in hiccup state  | **English:** Your payment for merchant *Merchant* failed to be completed. **Danish:** Vi kunne ikke gennemføre din betaling til *Merchant*. **Finnish:** Maksua *Merchant* ei voida toteuttaa. |**Text**: Vis **Navigation**: Agreement payments|OS, App| Subscription Payments
 
-## `Suspended`
+## Suspended
 
 It means that you can not withdraw the money from the customer's payment card, and then the payment gets suspended. There can be various reasons why it can be suspended. If the problem persists, and there are not sufficient funds on the customer's card, or/and if the card is expired or/and blocked, then the payment will fail. Suspended is a status internally for MobilePay to mark hiccupped payments, which is why it is not a part of the callback table above.
 
