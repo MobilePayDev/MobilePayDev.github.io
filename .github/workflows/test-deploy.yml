@@ -19,6 +19,6 @@ jobs:
           cache: yarn
 
       - name: Install dependencies
-        run: yarn install --no-lockfile
+        run: yarn install --mode=update-lockfile
       - name: Test build website
         run: yarn build
