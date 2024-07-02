@@ -15,7 +15,7 @@ This document does not include detailed specifications of the endpoints, respons
 
 MobilePay Subscriptions is a full-fledged HTTPS REST API using JSON as request/response communication media.
 All dates and time stamps use the ISO 8601 format: date format - `YYYY-MM-DD`, date-time format - `YYYY-MM-DDTHH:mm:ssZ`.
-Amounts are enquoted with double quotation marks using `0.00` format, decimals separated with a dot.
+Amounts are enclosed in double quotation marks using `0.00` format, decimals separated with a dot.
 When doing `POST`, `PATCH` or `PUT` requests, `Content-Type: application/json` HTTP header must be provided.
 
 ```console
@@ -57,6 +57,6 @@ In case the REST callback failed, 8 retries will be made using the [exponential 
 
 ## Merchant onboarding
 
-You enroll in the Subscriptions Production via [www.MobilePay.dk](https://mobilepay.dk/da-dk/Pages/mobilepay.aspx) or the MobilePay  Administration portal. Then you get access to the MobilePay Sandbox environment, where you can test the API.  
+You enroll in the Subscriptions Production via [www.MobilePay.dk](https://mobilepay.dk/da-dk/Pages/mobilepay.aspx) or the MobilePay Administration portal. Then you get access to the MobilePay Sandbox environment, where you can test the API.  
 
-Once you sign-up you'll receive a welcome email containing everything you need to  get going right away. While we encourage you to start exploring our API right away, we highly recommend getting in touch with us at developer@vippsmobilepay.com before you go too far down your integration path. MobilePay has dedicated technical resources available to help you plan and build the right integration, avoid pitfalls, and get live as quickly as possible.
+Once you sign up, you'll receive a welcome email containing everything you need to get going right away. While we encourage you to start exploring our API right away, we highly recommend getting in touch with us at developer@vippsmobilepay.com before you go too far down your integration path. MobilePay has dedicated technical resources available to help you plan and build the right integration, avoid pitfalls, and get live as quickly as possible.

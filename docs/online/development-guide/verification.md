@@ -52,9 +52,9 @@ Registration of publicKey in production takes longer than in sandbox. So please 
 
 ### Slim certification
 
-Before you can offer your MobilePay Online solution for your clients we will perform a 'slim certifcation' and supply merchant documenation. The 'slim certification' is performed in production and is required before you can go live.
+Before you can offer your MobilePay Online solution for your clients we will perform a 'slim certification' and supply merchant documentation. The 'slim certification' is performed in production and is required before you can go live.
 
-#### Slim certification - test webshop
+#### Slim certification - test web shop
 
 In order to complete the slim certification you must supply a test web shop in production. The test web shop should contain items for around 1 DKK for which we can test various flows. We will test the following:
 
@@ -62,9 +62,9 @@ In order to complete the slim certification you must supply a test web shop in p
     * Happy day
     * Payment expire
     * User reject
-2. Let request expire and see succesfull failedPaymentCallback (only if failedPaymenCallback is utilized)
+2. Let request expire and see successful failedPaymentCallback (only if failedPaymenCallback is utilized)
 3. Perform multiple authorization attempts for the same payment
-4. Accept payment with a not working card (e.g. no funds) and check that a PATCH on authorisationAttempt is made with succeed: false with a meaningfull responseCode
+4. Accept payment with a not working card (e.g. no funds) and check that a PATCH on authorisationAttempt is made with succeed: false with a meaningful responseCode
 5. We will ask you to capture and afterwards refund one of the test payments (the rest of the payments should be cancelled or expire)
 6. Confirm implementation of 3DS, VTS and Dankort SCA implementation
 7. Go through merchant documentation. Please see below for details.
@@ -73,7 +73,7 @@ In order to complete the slim certification you must supply a test web shop in p
 
 The documentation towards your customers, the merchants, must - at least - tell about
 
-* Merchant registration*: How to setup MobilePay Online including as minimum information about:
+* Merchant registration*: How to set up MobilePay Online including as minimum information about:
   * Name displayed in the app to the end user
   * LogoUrl linking to an image file displaying the merchant logo in the app to the end user
     * 250x250 pixels
@@ -81,7 +81,7 @@ The documentation towards your customers, the merchants, must - at least - tell 
     * PNG or JPG
     * Set content-type in the HTTP header using *MIME* types e.g. *image/png* or *image/jpeg*
 * Appswitch feature: How the solution is used from a native app (API enabled)
-* Checkout feature: How to setup and use Checkout
+* Checkout feature: How to set up and use Checkout
 * Common pitfalls of 'context switch' on client side
   * Scenario A: *‘browser A’ -> MP App -> ‘browser B’*.
 The Merchant return page should not rely on any sort of session object (e.g. a cookie), to recognise the returning customer. It should solely rely on data given in the redirect (redirectFromMobilePayUrl).

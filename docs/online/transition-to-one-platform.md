@@ -13,10 +13,10 @@ There is no need to reintegrate into the new solution. Your existing Online inte
 Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration.
 :::
 
-To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. 
+To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you need to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. 
 - **March 12th** we will launch the new platform in **Denmark** and migrate all Danish merchants.
   
-If a merchant is neither Finnish or Danish we will migrate them according to the currency of their transactions. You may encounter a slight rise in failed payments in the period between the Finnish and Danish launch. This can happen to merchants that have customers in both countries. In the intermediate period it will only be possible to offer payments to either Danish or Finnish users. Once we have launched in Denmark it will be possible to make cross border payments again. 
+If a merchant is neither Finnish nor Danish, we will migrate them according to the currency of their transactions. You may encounter a slight rise in failed payments in the period between the Finnish and Danish launch. This can happen to merchants that have customers in both countries. In the intermediate period it will only be possible to offer payments to either Danish or Finnish users. Once we have launched in Denmark it will be possible to make cross border payments again. 
 
 If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
 
@@ -38,7 +38,7 @@ For a smooth transition, we recommend reviewing the changes and consider updatin
 
 ### Update merchant 
 `PATCH /api/v1/merchants/{merchantId}` currently only support update of VAT number. We will soon remove the endpoint completely. Note that you can only update VAT number using `PATCH` before the launch of the new platform. After launch you must instead delete the merchant and create a new using: `DELETE /v1/merchants/{merchantId}` and `POST /v1/merchants`.
-If you need to update an active merchant we recomend that you create the new merchant and then delete the old. This is to avoid downtime since it is not possible to initiate payments on deleted merchants. Authorization updates and payment updates such as capture, cancel and refund is on payment level and will therefore not be affected by this. 
+If you need to update an active merchant we recommend that you create the new merchant and then delete the old. This is to avoid downtime since it is not possible to initiate payments on deleted merchants. Authorization updates and payment updates such as capture, cancel and refund is on payment level and will therefore not be affected by this. 
 
 ### PspReferenceId
 PspReferenceId must from now on be unique.

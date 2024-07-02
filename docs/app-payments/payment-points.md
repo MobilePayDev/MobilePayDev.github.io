@@ -48,4 +48,4 @@ curl https://api.mobilepay.dk/v1/paymentpoints \
 
 ## Setting up custom transfer reference
 
-When configuring payment points you can choose if the transfer reference visible on your bank account should be the default reference or a custom reference. This cacn be set up by selecting the Sales Unit in the Vipps MobilePay portal and change the reference from 'standard' to 'custom'.
+When configuring payment points you can choose if the transfer reference visible on your bank account should be the default reference or a custom reference. This can be set up by selecting the Sales Unit in the Vipps MobilePay portal and change the reference from 'standard' to 'custom'.

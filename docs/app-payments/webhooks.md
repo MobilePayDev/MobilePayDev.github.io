@@ -19,7 +19,7 @@ The specific actions your webhook endpoint may take differs based upon the event
 
 ## Best practices for using webhooks
 
-Review these best practices to ensure your webhooks remain secure and function seamlessly with your integration.
+Review these best practices ensuring your webhooks remain secure and function seamlessly with your integration.
 
 ### Event types
 

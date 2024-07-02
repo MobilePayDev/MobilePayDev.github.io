@@ -23,7 +23,7 @@ If the redirect happens on a mobile device the MobilePay app will be launched. T
 
 The link to MobilePay landing page is received in response to payment initiation as: redirectToMobilePayUrl. On the landing page the user must insert their phone number and click continue. A timer will then be shown to indicate how long time the user have to accept the payment in the MobilePay app.
 
-The language of the page is initialy defined by the countryCode of the merchant the payment is initiated on behalf of. Merchant countryCode is defined when creating a merchant with `POST /api/v1/merchants`. This setting can be overulled by setting the customerLanguageCode on payment initiation. Code can be either DK or FI. If DK the laungage on landing page will be Danish. If FI the language on landing page will be Finnish.
+The language of the page is initially defined by the countryCode of the merchant the payment is initiated on behalf of. Merchant countryCode is defined when creating a merchant with `POST /api/v1/merchants`. This setting can be overruled by setting the customerLanguageCode on payment initiation. Code can be either DK or FI. If DK the language on landing page will be Danish. If FI the language on landing page will be Finnish.
 
 The first time a user visits the landing page a functional cookie will be saved. This cookie defines the language of the page. Next time the user visits our landing page the language will be determined by cookie. Regardless of customerLanguageCode or countryCode.
 
@@ -37,7 +37,7 @@ Hierarchy:
 
 User is redirect to redirectFromMobilePayUrl when payment is either completed or rejected. This means that user is not redirected right after they swipe in the MobilePay app, but when you either patch the authorization or user rejects the payment.
 
-In single device flow the app switches to the default browser and opens the to redirectFromMobilePayUrl. If an app link is supplied the OS will open the app instead. For dual device flow the browser will redirect to to redirectFromMobilePayUrl.
+In single device flow the app switches to the default browser and opens the redirectFromMobilePayUrl. If an app link is supplied the OS will open the app instead. For dual device flow the browser will redirect to redirectFromMobilePayUrl.
 
 In the following scenario you will always see two redirects by design:
 

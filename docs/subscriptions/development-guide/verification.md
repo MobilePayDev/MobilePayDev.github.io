@@ -73,7 +73,7 @@ Once you have followed the steps above, you are ready to do the self-certificati
      * You can check our [UX inspiration site ](https://www.mobilepay.dk/erhverv/abonnementer-og-fakturering/mobilepay-subscriptions/inspiration)
 9. When the Subscription Payment is executed, request for review from developer@vippsmobilepay.com
 10. **Await approval from developer@vippsmobilepay.com**
-11. Sign up for operational maillist
+11. Sign up for operational mail list
 12. Keep updated on MobilePay Subscriptions [release notes](/docs/subscriptions/release-notes)
 
 ### UX - Checklist

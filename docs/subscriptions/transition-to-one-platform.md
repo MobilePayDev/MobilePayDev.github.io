@@ -61,7 +61,7 @@ Parameter: `retention_period_hours` will be ignored from the Nordic Wallet Launc
 
 Current agreements where amount is not stated will be depicted as agreements with variable amount.
 
-:star: **Recommendation:** We recommend you to update/create agreements with amount if its known in practice.
+:star: **Recommendation:** We recommend you to update/create agreements with amount if it's known in practice.
 
 ⚙️ Tech: API endpoint: `POST /api/providers/{providerId}/agreements` or `PATCH /api/providers/{providerId}/agreements/{agreementId}` Parameter `amount`
 
@@ -77,7 +77,7 @@ Current agreements where amount is not stated will be depicted as agreements wit
 
 When merchant tries to cancel agreement, which has payments in reserved state - agreement gets cancelled, payments stay in reserved state. This is changing from Nordic Wallet Launch. When merchant cancels agreement all reserved payments will be canceled too. 
 
-:star: **Recommendation:** Capture reserved payments if needed before calceling the agreement. This applies just if you have agreement cancelation implimented from your environment and you are using payments with reservation. 
+:star: **Recommendation:** Capture reserved payments if needed before canceling the agreement. This applies just if you have agreement cancellation implemented from your environment and you are using payments with reservation. 
 
 ## **2. Recurring payments**
 
@@ -126,7 +126,7 @@ We reevaluated all our product packages, that from Nordic Wallet Launch, flow 2 
 
 Similarly, as with agreements, we are aligning the expiration period for one-off payments. 
 From Nordic Wallet Launch, the expiration timeout for:
-- one-off with a new agreements will always be 10 minutes. 
+- one-off with a new agreement will always be 10 minutes. 
 - one-off for an existing agreement will always be 1 minutes.
 All one-offs with longer expiration time will be expired on Nordic Wallet Launch day.
 
@@ -152,7 +152,7 @@ Parameter: `one_off_payment.description`
 
 ## **4. Refunds**
 
-In general: it is possible to do GET requests for pre-launch refunds. Furthermore, it is also possible to make refunds for pre-launch payments. Please note: We can only handle 30 days backward for pre-launch payments, whereas we can handle 365 days backward on the new platform, if the payment is completed on the new platform)  GET requests and refunds (up to 30 days) can be made for payments executed on the existing MobilePay platform  
+In general: it is possible to do GET requests for pre-launch refunds. Furthermore, it is also possible to make refunds for pre-launch payments. Please note: We can only handle 30 days backward for pre-launch payments, whereas we can handle 365 days backward on the new platform, if the payment is completed on the new platform GET requests and refunds (up to 30 days) can be made for payments executed on the existing MobilePay platform  
 
 ### 4.1 Refund up to 365 days
 Currently, you can refund payments that were executed up to 90 days in the past. Good news! We will give you an amazingly long period to refund your payments on One Platform - **365 days!**  ⚡️
@@ -250,7 +250,7 @@ Currently, we are providing the possibility for you to upgrade your Subscription
 
 Parameter: `external_attachment_url`
 
-### 6.3 Attachement details
+### 6.3 Attachment details
 
 Similarly, as with External URL, we most likely will not make it to re-introduce this feature from the moment of Nordic Wallet Launch. We are really sorry if this will cause any inconvenience for you, but we promise to work on it as soon as possible and introduce the feature right after Launch. 
 
@@ -282,7 +282,7 @@ Read more about [Access token API guide](https://developer.vippsmobilepay.com/do
 
 ### 8.1 From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
 
-Currently you were able to select how to receive settlements: daily or instant. After NWL all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settleded separately (not bundled up) and you will receive it in 1 days after payment was executed. 
+Currently you were able to select how to receive settlements: daily or instant. After NWL all sales units will be switched to receive daily settlements. Instant transfers will stay as a functionality, but it will be renamed to Single payment settlements, which represents the functionality in better way. Furthermore, functionality will be for an extra fee.  With Single payment settlements every payment will be settled separately (not bundled up) and you will receive it in 1 days after payment was executed. 
 
 :star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after NWL and select Single payment settlement functionality. 
 
@@ -366,7 +366,7 @@ Recurring payment callbacks:
 |               |             |                                                           | Pending payment cancelled due to merchant cancelling an agreement
 |               |             |                                                           | Merchants' initiated cancellation of pending recurring payment
 |               |             |                                                           |    
-| Executed      | 0           | null                                                      | Payment succesfully executed on due date 
+| Executed      | 0           | null                                                      | Payment successfully executed on due date 
 | Failed        | 50000       | Payment failed to execute during the due date             | Payment failed to execute during the due date
 | Declined      | 70001       | Payment amount is 5 times higher than agreement amount.   | Payment batch request contains a payment which amount is 5 times higher than     
 |               |             |                                                           | agreement's amount. Applicable when agreement has an amount more than 0
@@ -383,7 +383,7 @@ One-off payment sent with an agreement:
 |               |                  |                                                           | Pending agreement with one-off payment was rejected by user
 |               |                  |                                                           | Merchant cancels pending agreement with one-off payment
 |               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved
-|               |                  |                                                           | Merchant cancells Reserved one-off payment
+|               |                  |                                                           | Merchant cancels Reserved one-off payment
 |               |                  |                                                           |    
 | Reserved      | 0                | Payment successfully reserved.                            | Agreement with one-off payment was accepted and payment was reserved
 
@@ -392,7 +392,7 @@ Autoreserve one-off payment:
 
 | Status        | Status code      | Status text                                               |  Callback sending condition                   
 |---------------|------------------|-----------------------------------------------------------|------------------------------
-| Cancelled     | 70003            | Payment cancelled.                                        | Merchant cancells autoreserve one-off payment in Requested or Reserved status
+| Cancelled     | 70003            | Payment cancelled.                                        | Merchant cancels autoreserve one-off payment in Requested or Reserved status
 |               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved or Requested
 |               |                  |                                                           | Payment expires
 |               |                  |                                                           |
