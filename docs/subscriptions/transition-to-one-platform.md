@@ -3,21 +3,35 @@ sidebar_position: 13
 ---
 import Launch from '/docs/shared-blocks/_launch.mdx';
 
-# 💙🧡 Preparation for the facade period
+# 💙🧡 Preparation to migrate to the NEW Recurring API 
  
 Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
-### When can I integrate to the Recurring API?**
-If you already want to reintegrate you can start now!
-
-It is still the same team as before that is here to assist you with technical questions. Just send an email to developer@vippsmobilepay.com, and we'll be happy to help! 😊
+**When can I integrate to the NEW Recurring API?**
+NOW!  It is still the same team as before that is here to assist you with technical questions. Just send an email to developer@vippsmobilepay.com, and we'll be happy to help! 😊
 
 - [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
 
 - [NEW Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
 
-- [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All notable changes to the Recurring API.
+- [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All changes to the Recurring API.
 
+**Can I test the Recurring API?**
+
+Yes - through test the new Recurring API through the merchant test environment on the new platform. If you want to test the Mobilepay Subscriptions facade instead please [read here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#10-test). 
+
+Please note:
+1. If you want to reuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
+2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
+
+The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+
+In order to request access to the test environment, please use the following links:
+
+- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
+- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
+
+We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
 
 **Timeline for existing subscriptions merchants and partners**
 
@@ -282,17 +296,6 @@ Currently you were able to select how to receive settlements: daily or instant. 
 :star:**Recommendation:** If you need to have your payments settled separately, log in to new Merchant Portal after NWL and select Single payment settlement functionality. 
 
 
-### <s>8.2 Settlement time changes</s>
-
-<s>Currently your money is settled 1 day after payments were executed, after NWL we will settle you money bit later - 2 days after payments were executed. </s>
-
-<s>:star:**Recommendation:**  your feedback is very important for us, let us know if you have a need to get settlements faster.</s>
-
-
-### <s>8.3 Gross Settlements</s>
-
-<s>Currently we are sending you gross settlements (full amount of the payments) and later we were issueing you with an invoice for service fees. After NWL we will change how we are doing settlements and you will receive net value settlement where all necessary fees are already deducted. </s>
-
 ## **9. Other**
 
 ### 9.1 From the Nordic Wallet Launch callbacks will be sent from new DNS address
@@ -301,8 +304,6 @@ Please make sure that these DNS addresses are allowed through your firewall http
 Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
 
 ### 9.2 Callback changes for recurring and one-off payments
-
- 
 
 
 We will stop sending our old callbacks for one-off payment expiration and rejection by users from Nordic Wallet Launch. 
@@ -499,9 +500,7 @@ Please refer to the [NEW Recurring API endpoint description](https://developer.v
 
 **To be clear:**
 
--Facade merchants: There will be not changes to the identifiers. The facade api will return the exact same identifiers.
-
-Below you can find information for when merchants will re-integrate to the [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/)
+-Facade merchants: There will be not changes to the identifiers. The facade api will return the exact same identifiers. Below you can find information for when merchants will re-integrate to the [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/)
 
 
 **`providerid`**
@@ -585,35 +584,15 @@ Another method is [polling](https://developer.vippsmobilepay.com/docs/knowledge-
 
 Callbacks will work on the facade API.  
 
- 
-### **3. Will I be able to test the new Recurring API?**
-You will be able to test the new Recurring API through the merchant test environment on the new platform. If you want to test the Mobilepay Subscriptions facade instead please [read here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#10-test). 
 
-Please note:
-1. If you want to reuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
-2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
-
-The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
-
-In order to request access to the test environment, please use the following links:
-
-- [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
-- [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
-
-We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
-
-### **4. How will I find data about my payments?**
+### **3. How will I find data about my payments?**
 
 We will migrate 3 years of historical data (agreements, payment requests, refunds). You will be able to access that data though:
 1. API GET calls. For new and historical data.
 3. Though [Merchant Portal](https://portal.vipps.no/register). Just for new transactions done after Nordic Wallet Launch.
 4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.
 
-### **5. I am using Transaction Reporting API, what should I do?**
-
-We are asking you to reintegrate to alternative solution [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.  
-
-### **6. What cool features are there ahead?**
+### **4. What cool features are there ahead?**
 
 For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
 
