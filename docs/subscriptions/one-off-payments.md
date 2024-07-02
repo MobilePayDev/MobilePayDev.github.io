@@ -4,12 +4,11 @@ sidebar_position: 6
 
 # One-off Payments
 
-There are 3 flows a customer can pay for a product or a service with One-Off payments.
+There are 2 flows a customer can pay for a product or a service with One-Off payments.
 You are able to:
 
 * [Flow 1](#flow-1--one-off-payment-with-a-new-agreement): Create a new Agreement with an initial One-Off Payment.
-* [Flow 2](#flow-2---one-off-payment-on-an-existing-agreement): Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement.
-* [Flow 3](#flow-3---one-off-with-auto-reserve): Merchants can send a One-Off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation
+* [Flow 2](#flow-2---one-off-with-auto-reserve): Merchants can send a One-Off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation
 
 Note: One-off payments are charged when the customer manually swipes accept or `auto_reserve` field was set to **true** when a one-off payment was requested.  
 
@@ -93,32 +92,9 @@ In this case, the response of `POST /api/providers/{providerId}/agreements` will
 }
 ```
 
-## Flow 2 - One-off Payment on an Existing Agreement
 
-Use a `POST /api/providers/{providerId}/agreements/{agreementId}/oneoffpayments` endpoint in order to charge your customer one time for extra services.  
 
-* Use case: When the customer already has an active agreement and wants to order extra services/products. It is customer-initiated, and the customer needs to swipe in the MobilePay app. It is not possible to capture expired payments.  
-* Capture and Reserve is handled by the Merchant. The Merchant needs to capture the payment, to avoid that the payment will end up as being expired. It is dependent on the merchant's use case, and how fast the Merchant wants to capture the One-Off payment. For example, a hotel may reserve a payment, then move the money when the guest checks out.
-* Merchant uses Agreement ID to make the payment request, not the phone number.
-
-The response of `POST /api/providers/{providerId}/agreements/{agreementId}/oneoffpayments` contains two values: a unique *id* of the newly requested **One-Off Payment** and a link *rel* = *mobile-pay*.
-
-```json
-{
-  "id": "07b70fdd-a300-460d-9ba1-aee2c8bb4b63",
-  "links": [
-    {
-      "rel": "mobile-pay",
-      "href": "https://<mobile-pay-landing-page>/?flow=agreement&id=1b08e244-4aea-4988-99d6-1bd22c6a5b2c&oneOffPaymentId=07b70fdd-a300-460d-9ba1-aee2c8bb4b63&redirectUrl=https%3a%2f%2fwww.example.com%2fredirect&countryCode=DK&mobile=4511100118"
-    }
-  ]
-}
-```
-
-* The *id* value can be used on the merchant's back-end system to map a one-off payment with a specific Subscription agreement on the merchant's side, and subsequently to capture a requested **One-Off Payment** when the MobilePay user accepts it.
-* The link *rel = mobile-pay* hyperlink reference must be used to redirect the user automatically using an HTTP response 302 or 303. Once the user is redirected, the MobilePay app will be opened to confirm the **One-off Payment**. This applies only if the `auto_reserve` field is omitted or set to **false**.
-
-## Flow 3 - One-off with Auto reserve
+## Flow 2 - One-off with Auto reserve
 
 * The one-off payment without swipe is sent directly to the MobilePay app. There is no MobilePay landing page. If the payment is successful, then a push message is shown that the One-off without swipe/confirmation was successful.
 * One-Off without swipe is valid for One-Offs without a new agreement.
