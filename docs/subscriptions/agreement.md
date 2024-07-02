@@ -178,14 +178,13 @@ When the **Agreement's** status changes from *Pending* we will do a callback to 
 
 The table below shows possible *status*, *status_text* and *status_code* values depending on the **Agreement** status changes.
 
-|New Status|Condition|URL| Callback *status* | Callback *status_text* |Callback *status_code*|
-|----------|---------|---|-------------------|------------------------|----------------------|
-|Accepted  |_User swiped to accept the Agreement_        |*success-callback* |Active  | |0|
-|Rejected  |_User rejected agreement in the APP_              |*cancel-callback*  |Rejected|Agreement rejected by user|40000|
-|Expired   |_User did not do anything during the agreement timeout period._|*cancel-callback*  |Expired |Pending agreement expired|40001|
-|Canceled  |_User canceled an Active agreement_          |*cancel-callback*  |Canceled|Agreement canceled by user|40002|
-|Canceled  |_Merchant canceled an Active or Pending agreement_      |*cancel-callback*  |Canceled|Agreement canceled by merchant|40003|
-|Canceled  |_System canceled an Active agreement because user was Deleted_ |*cancel-callback*  |Canceled|Agreement canceled by system|40004|
+| Status       | Status code      | Status text                                   |                           
+|--------------|------------------|-----------------------------------------------|
+| Accepted     | 0                | The agreement has been accepted.              |
+| Expired      | 40001            | Pending agreement expired.                    |
+| Rejected     | 40000            | Rejected by user.                             |
+| Canceled     | 40002            | The agreement was canceled by the user.       |                      
+| Canceled     | 40003            | The agreement was canceled by the merchant.   |     
 
 You do not get a callback that tells you specifically if/when the user closes the landing page with the timer.
 
