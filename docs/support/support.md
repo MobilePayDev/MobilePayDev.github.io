@@ -7,21 +7,15 @@ displayed_sidebar: supportSidebar
 MobilePay Developer Support provide **technical support in regards to integration and maintanance** for the following products:
 
 * MobilePay Subscriptions
-* MobilePay Invoice
 * MobilePay App Payments
-* MobilePay Point Of Sales
-* MobilePay Reporting API
 * PSP support for MobilePay Online
 
 For merchant support of your MobilePay Online solution please contact your PSP. You can find a list of PSPs providing MobilePay Online here: [DK](https://mobilepay.dk/erhverv/payment-service-providers-liste) and [FI](https://mobilepay.fi/yrityksille/maksupalveluntarjoajat)
 
-If there is an issue or you have any kind of feedback or requests regarding your **private** MobilePay please contact our nice colleagues at MobilePay Support. You can find their contact information and opening hours here: [DK](https://mobilepay.dk/hjaelp/mobilepay-til-private#kontakt) and [FI](https://mobilepay.fi/asiakastuki/mobilepay-kayttajille)
-
-If you have **business related** questions or product feedback, feel free to contact MobilePay Business support and they will assist you. You can find their contact information and opening hours here: [DK](https://mobilepay.dk/hjaelp/mobilepay-til-erhverv#kontakt) and [FI](https://mobilepay.fi/asiakastuki/mobilepay-yrityksille)
 
 ## We help with technical issues
 
-MobilePay Developer support provides support in Danish and English. You can contact us either by using the contact form below or write us an email at developer@vippsmobilepay.com or developer@mobilepay.fi. We will respond as soon as possible, within one business day. The Developer Support is closed on Danish holidays and we will reply you, as soon as possible.
+MobilePay Developer support provides support in Danish and English. You can contact us either by using the contact form below or write us an email at developer@vippsmobilepay.com We will respond as soon as possible, within one business day. 
 
 ### What to include in the email
 
