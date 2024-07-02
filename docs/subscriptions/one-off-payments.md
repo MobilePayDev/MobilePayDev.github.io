@@ -169,28 +169,31 @@ Once the one-off payment status changes from *Requested* to *Reserved*, *Rejecte
 |Expired   |_1. One-off payment was neither accepted, nor rejected by user. 2. User didn't any action after the automatic reservation failed._| 1 day after you requested one-off payment |Expired|Expired by the system.| 50008 |
 |Requested   |_The automatic reservation of a one-off payment failed. User action is needed._| Right after the automatic reservation has failed |Requested|Automatic reservation failed. User action is needed.| 50013 |
 
-### Callbacks about one-off and Agreement
+### One-off payment sent with an agreement:
 
-You will get callbacks about the payment to your callback address. Moreover, you will get callbacks about the agreement to either success or failure URL, that you have set upon agreement creation. However, unless a one-off payment automatic reservation fails, you will not get callbacks for either, before their status changes. So you should expect a callback when the agreement is *accepted* / *rejected* / *expired* and a callback when the OneOff is either `accepted`/`rejected`/`expired`. If the one-off payment's automatic reservation fails, then the status of the one-off payment will not change, but a callback about the event will be sent.
 
-The response for agreement creation, on the other hand, consists of both agreement and OneOff.
+| Status        | Status code      | Status text                                               |  Callback sending condition                   
+|---------------|------------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003            | Payment cancelled.                                        | Pending agreement with one-off payment has expired
+|               |                  |                                                           | Pending agreement with one-off payment was rejected by user
+|               |                  |                                                           | Merchant cancels pending agreement with one-off payment
+|               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved
+|               |                  |                                                           | Merchant cancells Reserved one-off payment
+|               |                  |                                                           |    
+| Reserved      | 0                | Payment successfully reserved.                            | Agreement with one-off payment was accepted and payment was reserved
 
-```json title="One-off callback body example"
-[
-    {
-        "agreement_id": "8380f9e4-10a6-4f6d-b2f4-cdb7f80a4d7f",
-        "payment_id": "022a08d8-73c6-4393-aeda-d0c8ae5172a5",
-        "amount": "19.45",
-        "currency": "DKK",
-        "payment_date": "2019-09-18",
-        "status": "Reserved",
-        "status_text": "Payment successfully reserved.",
-        "status_code": 0,
-        "external_id": "3280100",
-        "payment_type": "OneOff"
-    }
-]
-```
+### Autoreserve one-off payment:
+
+| Status        | Status code      | Status text                                               |  Callback sending condition                   
+|---------------|------------------|-----------------------------------------------------------|------------------------------
+| Cancelled     | 70003            | Payment cancelled.                                        | Merchant cancells autoreserve one-off payment in Requested or Reserved status
+|               |                  |                                                           | Merchant cancels active agreement and one-off payment is Reserved or Requested
+|               |                  |                                                           | Payment expires
+|               |                  |                                                           |
+| Reserved      | 0                | Payment successfully reserved.                            | Payment reserved
+| Requested     | 50013            | Automatic reservation failed. User action is needed.      | Reservation failed
+
+Reservation failure and expiration callbacks are sent only after payment expiration with few seconds delay between each other.
 
 ## User notifications
 
