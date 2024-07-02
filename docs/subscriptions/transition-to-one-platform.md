@@ -5,10 +5,10 @@ import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # 💙🧡 Preparation to migrate to the NEW Recurring API 
  
-Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
 **When can I integrate to the NEW Recurring API?**
-NOW!  It is still the same team as before that is here to assist you with technical questions. Just send an email to developer@vippsmobilepay.com, and we'll be happy to help! 😊
+
+It has been available since 12th of March.  Just send an email to developer@vippsmobilepay.com, and we'll be happy to help! 😊
 
 - [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
 
@@ -32,14 +32,6 @@ In order to request access to the test environment, please use the following lin
 - [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
 
 We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
-
-**Timeline for existing subscriptions merchants and partners**
-
-[![timeline](/img/timeline.png)](/img/timeline.png)
-
-- **2024Q1 March 12th** We  launch Nordic Wallet Launch in Denmark 🇩🇰 and migrate all Danish merchants
-- **2024** Integrate new [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) 
-- **2025Q1** Be ready with your API integration to the Recurring API. 🧡 💙 The facade will be switched off. 
 
 :::info Prepare for launch
 <Launch />
@@ -121,12 +113,12 @@ This one is a bit more technical. ⚙️ Currently, we are saving every payment 
 
 ### 3.1 One-off payments types
 
-One-off payments in Subscriptions are used in 3 different ways:
+One-off payments in Subscriptions were used in 3 different ways:
 * Create a new Agreement with an initial One-Off Payment. ✅ Will continue. 
 * Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. ❌ Will be terminated. 
 * Merchants can send One-Off payment, which MobilePay will attempt to automatically reserve, without user’s confirmation. ✅ Will continue. 
 
-We reevaluated all our product packages, and usage of this feature and we decided, that from Nordic Wallet Launch, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We are planning to keep flows 1 and 3 in the Subscriptions product and also in the Recurring product. Basically, all payments which are merchant initiated (MIT) and do not require Strong Customer Authentication (SCA) stay in Subscriptions and also Recurring. All payments where SCA is needed will be in ePayment product. 
+We reevaluated all our product packages, that from Nordic Wallet Launch, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 Basically, all payments which are merchant initiated (MIT) and do not require Strong Customer Authentication (SCA) stay in Subscriptions and also Recurring. All payments where SCA is needed will be in ePayment product. 
 
 :star: **Recommendation:** If you want to continue charging your customers with payments where SCA is needed, please reintegrate these types of payments to Vipps MobilePay ePayment.
 
@@ -140,7 +132,6 @@ All one-offs with longer expiration time will be expired on Nordic Wallet Launch
 
 :star: **Recommendation:**
 * Flow 1: Create a new Agreement with an initial One-Off Payment. Just set the same expiration period subtracting for the one-offs as you set for agreements. You can read about changes in agreements [here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#11-agreement-request-expiration-period).
-* Flow 2: Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. This type of flow will be moved to Vipps MobilePay  ePayments. You can find more information about the switch in ["One-off payments"](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#31-one-off-payments-types).
 * Flow 3: Merchants can send a One-Off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation. The long expiration time is not relevant for one-off auto reservation payments. So all is good here 😉.
 
 ⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`  `POST:/api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`
