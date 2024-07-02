@@ -6,20 +6,18 @@ import Launch from '/docs/shared-blocks/_launch.mdx';
 # 💙🧡 Preparation for the facade period
  
  Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
- While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀. To ensure a smooth experience, we ask you to review the upcoming changes outlined below and update your integration accordingly. We strive to keep you informed every step of the way and support you throughout this process. Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
+ While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀.  Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
 :::danger Important info
- To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you need to do is ensure that you have adjusted your integration to the changes mentioned below before 12th of martch, and we'll take care of everything else. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com
+ To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. 
 :::
 
 **Timeline for existing subscriptions merchants and partners**
 
 [![timeline](/img/timeline.png)](/img/timeline.png)
 
-- **NOW** Take a look at the change list here and implement changes if needed for the Facade period 
-- **2024Q1** Be ready with adjustments needed for your integration for the Facade period.
-- **2024Q1 March 12th** We finally launch Nordic Wallet Launch in Denmark 🇩🇰 and migrate all Danish merchants
-- **2024** Plan and integrate new [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) 
+- **2024Q1 March 12th** We  launch Nordic Wallet Launch in Denmark 🇩🇰 and migrate all Danish merchants
+- **2024** Integrate new [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) 
 - **2025Q1** Be ready with your API integration to the Recurring API. 🧡 💙 The facade will be switched off. 
 
 :::info Prepare for launch
@@ -96,7 +94,7 @@ Parameter: `disable_notification_management`, `notifications_on` will be ignored
 
 ### 2.4 Invalid recurring payments
 This one is a bit more technical. ⚙️ Currently, we are saving every payment request you send to us, even Invalid ones. You can check the whole status diagram [here](https://developer.mobilepay.dk/docs/subscriptions/subscriptions-payments#payment-state-diagram). From Nordic Wallet Launch, we will stop storing these requests. This will not impact payment validation or payment execution logic. You will still get callbacks about payment status changes.
- 
+
 
 ## **3. One-off payments**
 
@@ -211,8 +209,6 @@ Note: For payments made before Nordic Wallet Launch, status_callback_url will st
 ### 5.1 Merchant visibility
 
 We will be streamlining the user interface of the app to provide a more focused and efficient experience for you and your customers. As a result, the list of potential merchants will no longer be displayed in the app. However, please be assured that all active and stopped agreements will still be readily visible to the app users.
-
-:star:**Recommendation:** We understand that being present in the potential agreement list can be important to you. Although this feature will be going away, please know that we still value your feedback and aim to provide the best experience for our common customers. 
 
 ### 5.2 Merchant information on agreements
 
