@@ -130,21 +130,22 @@ We will post the integrator or merchant a callback, and expect a HTTP 2xx respon
 ]
 ```
 
-|New Status|Condition|When to expect|Callback *status*  | Callback *status_text* | Callback *status_code* |
-|----------|---------|--------------|-------------------|------------------------|------------------------|
-|Executed  |_The payment was successfully executed on the due-date_| After 03:15 in the morning of the due-date |Executed  | | 0 |
-|Failed    |_Payment failed to execute during the due-date or at the end of the grace period._| After 23:59 of the due-date, or the last day of the grace period. |Failed    |Payment failed to execute during the due date | 50000 |
-|Rejected  |_User rejected the Pending payment in MobilePay_       | Any time during the 8-1 days period when the user is presented with the Pending payment in the MobilePay activity list. |Rejected  |Rejected by user.| 50001 |
-|Declined  |_Merchant declined the Pending payment via the API_       | Any time during the 8-1 days period when the user is presented with the Pending payment in the MobilePay activity list. |Declined  |Declined by merchant.| 50002 |
-|Declined  |_**Agreement** is not in Active state._                | Right after the payment request was received. |Declined  |Declined by system: Agreement is not "Active" state.| 50003 |
-|Declined  |_Another payment with the same ExternalId is already scheduled on that day for the user_| Right after the payment request was received. |Declined  |Declined by system: Found duplicates for the same DueDate and AgreementId or ExternalId.| 50004 |
-|Declined  |When the **Agreement** was canceled by the merchant or by system | Any time unless the retention period is set and active.  |Declined  |Declined by system: Agreement was canceled. | 50005 |
-|Rejected  |When the **Agreement** was canceled by the user | Any time unless the retention period is set and active. |Rejected  |Declined by system: Agreement was canceled. | 50005 |
-|Declined  |A catch-all error code when payment was declined by the core system.| Right after the payment request was received. |Declined  | Declined by system. | 50006 |
-|Declined  |Declined due to user status.| Right after the payment request was received. |Declined  | Declined due to user status. | 50009 |
-|Declined  |When the **Agreement** does not exist| Right after the payment request was received. |Declined  | Agreement does not exist. | 50010 |
-|Declined  |When the due date before the rule is violated | Right after the payment request was received. |Declined  | Due date of the payment must be at least 1 day in the future. | 50011 |
-|Declined  |When the due date ahead rule is violated | Right after the payment request was received. |Declined  | Due date must be no more than 126 days in the future. | 50012 |
+
+ # Subscriptions Callbacks
+
+| Status    | Status code | Status text                                               | Callback sending condition                                            |
+|-----------|-------------|-----------------------------------------------------------|-----------------------------------------------------------------------|
+| Cancelled | 70003       | Payment cancelled.                                        | Pending payment cancelled due to user cancelling an agreement         |
+| Cancelled | 70003       | Payment cancelled.                                        | Pending payment cancelled due to merchant cancelling an agreement     |
+| Cancelled | 70003       | Payment cancelled.                                        | Merchant's initiated cancellation of pending recurring payment        |
+| Executed  | 0           | null                                                      | Payment successfully executed on due date                             |
+| Failed    | 50000       | Payment failed to execute during the due date             | Payment failed to execute during the due date                         |
+| Declined  | 70001       | Payment amount is 5 times higher than agreement amount.   | Payment batch request contains a payment which amount is 5 times higher than the agreement's amount. Applicable when agreement has an amount more than 0 |
+| Declined  | 50003       | Declined by system: Agreement is not in "Active" state.   | Payment batch request contains a payment for non-active agreement     |
+| Declined  | 50004       | Declined by system: Found duplicates for the same DueDate and AgreementId/ExternalId. | Payment batch request contains a duplicate payment with the same DueDate and AgreementId/ExternalId |
+| Declined  | 50006       | Declined by system.                                       | Unspecified error when processing payment from payment batch request  |
+
+ 
 
 ### Payment States
 
