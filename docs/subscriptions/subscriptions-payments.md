@@ -36,14 +36,14 @@ Once created, Recurring Payment Request can be updated (until it expires or is e
 
 ## How do Subscription Payments work
 
-- *Billing Cycle*: You can send your payments to us max *126 days* prior due date and min *1 day* prior due date. When creating new subscription payments, the Merchant is responsible for configuring the billing cycle so it matches their and customers needs. We support both fixed dates (for example, the 1st of the next month) and variable dates.
+- *Billing Cycle*: You can send your payments to us max *126 days* prior due date and min *1 day* prior due date. When creating new subscription payments, the Merchant is responsible for configuring the billing cycle, so it matches their and customers needs. We support both fixed dates (for example, the 1st of the next month) and variable dates.
 - It is flexible to change when an existing subscription payment is billed next time. The customer just needs to have at least 1 day to evaluate the payment. The customer can evaluate the payment by opening the MobilePay app. In the activity list the customer is presented with the Pending payment.
 - For example: if you send the payment 1st of June before midnight, the earliest DueDate can be the 3rd of June.
 - *Amount* :  The Merchant decides the amount on each Payment Request. For example: electricity will vary to a certain extent, depending on how much electricity the customer is using, which is why an electric bill will fluctuate each month. You simply specify the amount each time you send a Payment Request. This is useful in cases where you want to charge your customers a granular amount based on their consumption of your service during the billing cycle, instead of explicitly setting a fixed amount. For example, Window Wash Company can use metered billing to offer a service where they wash their customer’s windows as needed and charge at the end of the month for the total number of washes.
 - We recommend that you send the payments before 00:00:00 so that you are sure that they will be included in our payment processing.
 - The MobilePay user will be able to see Payments in the app from 8 days to 1 day before the due date depending on when you sent the payment.
 - If a payment changes status e.g. declined by users, a callback on the specific payment will be made to `/payment_status_callback_url`
-- On the due date we process the payments starting from 02:00 local time. If some payments weren't successfully completed, we will then try again at 06:00 local time and couple of more time per day. Read more about hiccups in [Failed payments](https://github.com/MobilePayDev/MobilePayDev.github.io/edit/main/docs/subscriptions/subscriptions-payments.md#failed-payments). Payment execution might take coupul of hours depending on payment load. We aim to complete all payment execution till 06:00 local time. Most heavy days is first and last days of the month, if possible we recommend you to choose other due date for your payment execution.
+- On the due date we process the payments starting from 02:00 local time. If some payments weren't successfully completed, we will then try again at 06:00 local time and a couple of more time per day. Read more about hiccups in [Failed payments](https://github.com/MobilePayDev/MobilePayDev.github.io/edit/main/docs/subscriptions/subscriptions-payments.md#failed-payments). Payment execution might take couple of hours depending on payment load. We aim to complete all payment execution till 06:00 local time. Most heavy days is first and last days of the month, if possible we recommend you to choose other due date for your payment execution.
 - When `grace_period_days` field is not set or is set to __1__, we will keep retrying to complete the payment up until 23:59 of the same day. When `grace_period_days` is set to more than __1__, we will be trying to complete the payment for the specified number of days.
 - User will get a notification of approx. at 08:30 that we cannot process the payment and that they can complete it manually (by swiping). Notification will be sent every day at the same time for the whole grace period if `grace_period_days` is specified.
 - At 23:59 we will decline the transaction and revert back with a callback  
@@ -109,7 +109,7 @@ For example: if you have a customer where the frequency of an agreement is set t
 
 ## Callbacks
 
-Once the payment status changes from *Pending* to *Executed, Declined, Rejected* or *Failed*, a callback will be done to the callback address, which is configurable via `PATCH /api/providers/{providerId}` with path value `/payment_status_callback_url`. The `/payment_status_callback_url` should be a HTTPS. If you try to configure it to HTTP, you will get a bad request with the following error message: "The hyperlink reference must use https scheme"
+Once the payment status changes from *Pending* to *Executed, Declined, Rejected* or *Failed*, a callback will be done to the callback address, which is configurable via `PATCH /api/providers/{providerId}` with path value `/payment_status_callback_url`. The `/payment_status_callback_url` should be HTTPS. If you try to configure it to HTTP, you will get a bad request with the following error message: "The hyperlink reference must use https scheme"
 
 We are sending callbacks in two ways:
 
@@ -227,7 +227,7 @@ As a MobilePay app user, the user can be informed about payment issues, dependin
 
 ## Suspended
 
-It means that you can not withdraw the money from the customer's payment card, and then the payment gets suspended. There can be various reasons why it can be suspended. If the problem persists, and there are not sufficient funds on the customer's card, or/and if the card is expired or/and blocked, then the payment will fail. Suspended is a status internally for MobilePay to mark hiccupped payments, which is why it is not a part of the callback table above.
+It means that you can not withdraw the money from the customer's payment card, and then the payment gets suspended. There can be various reasons why it can be suspended. If the problem persists, and there are not sufficient funds on the customer's card, or/and if the card is expired or/and blocked, then the payment will fail. Suspended is a status internally for MobilePay to mark hiccuped payments, which is why it is not a part of the callback table above.
 
 `Suspended` will occur as soon as we have attempted 1 time - and that attempt has failed. It's fine that the Merchant use 'suspended' themselves to, in some way, nudge the customers to 'do something.' But it is primarily MobilePay's task - which we handle through push notifications and SMS.
 

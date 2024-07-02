@@ -24,7 +24,7 @@ One-off payment does not affect the frequency and grace period. So if you create
 
 * Use this when the customer does not have an agreement already, and you need the customer to create an agreement and simultaneously pay for the service/product. This allows for products to be bundled with agreements as one transaction (for example a phone).  
 * When you create an agreement with a One-Off payment, and the user accepts the agreement, the payment will be created and reserved.
-* Capture and Reserve is handled by the Merchant. Capture is done even if the user is blocked after reservation. When the one-off payment is processed, the payment will show up in the users's activity list in the MobilePay app.
+* Capture and Reserve is handled by the Merchant. Capture is done even if the user is blocked after reservation. When the one-off payment is processed, the payment will show up in the user's activity list in the MobilePay app.
 
 Add a `one_off_payment` property to the `POST /api/providers/{providerId}/agreements` request payload if you want the agreement activated only when the user is successfully charged an initial subscription amount.
 
@@ -104,7 +104,7 @@ When using one-off without a swipe, the sliding part is omitted. There might sti
 * Merchants can send one-off payment, which MobilePay will attempt to automatically reserve, without the user’s confirmation.
 * **Value**: The customer does not need to swipe and the payment experience is seamless
 
-Merchants who want to use  `auto_reserve` field  feature, must apply for this in regards to the onboarding of Subscriptions. Merchants cannot use this feature without being pre-approved to do so.
+Merchants who want to use the `auto_reserve` field feature must apply for this in regard to the onboarding of Subscriptions. Merchants cannot use this feature without being pre-approved to do so.
 
 **Request parameters**
 

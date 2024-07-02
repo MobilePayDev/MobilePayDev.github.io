@@ -34,7 +34,7 @@ Both Visa Token Service (VTS) and Mastercard S4C (MS4C) are based on the EMVCo s
 
 When you initiate a payment, make sure to use v3 of the API. Here you give a tokenCallbackUrl for all accepted Visa and Mastercard types. However, please also provide a carddataCallbackUrl as failover, because not all cards can be tokenized. For Dynamic Linking, please give us MerchantUrl and MerchantName.
 
-When you recieve the token callback, you´ll find a cardIssuedInCountryCode (possible values DK, FI) you can use for your Acquirer routing logic.
+When you receive the token callback, you'll find a cardIssuedInCountryCode (possible values DK, FI) you can use for your Acquirer routing logic.
 
 Exactly as for encrypted card data callbacks, make sure you respond to the callback immediately. DO NOT leave the transaction "hanging" while you call out to the Acquirer. If we do not get a response to the callback in proper time we will allow the user to accept the payment again.
 

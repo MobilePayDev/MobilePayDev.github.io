@@ -26,7 +26,7 @@ POST payments/{paymentId}/refunds
 
 A payment will time out by default within 10 minutes, meaning that the whole process of user accepting, callbacks made and authorization must be completed within 10 minutes.
 
-Furthermore after you get the callback containing the card data, you must update the status of the authorization to either "authorize-succesfull" or "authorize-failed" within 20 seconds to ensure a smooth experience for the user waiting for the confirmation.
+Furthermore after you get the callback containing the card data, you must update the status of the authorization to either "authorize-successful" or "authorize-failed" within 20 seconds to ensure a smooth experience for the user waiting for the confirmation.
 
 ## Merchant logo
 
@@ -49,7 +49,7 @@ All merchants should have their own logo to give the best user experience. Only 
 [![payment with native app switching diagram](/img/online-payment-with-native-app-switching-sequence-diagrams.svg)](/img/online-payment-with-native-app-switching-sequence-diagrams.svg)
 [![after authorization sequence diagram](/img/online-after-authorization-sequence-diagram.svg)](/img/online-after-authorization-sequence-diagram.svg)
 
-### When acquirer or issurer rejects a payment
+### When acquirer or issuer rejects a payment
 
 [![acquirer or issuer reject payment sequence diagram](/img/online-acquirer-or-issuer-reject-payment-sequence-diagram.svg)](/img/online-acquirer-or-issuer-reject-payment-sequence-diagram.svg)
 

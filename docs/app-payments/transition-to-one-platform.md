@@ -73,13 +73,13 @@ curl https://api.sandbox.mobilepay.dk/v1/integration-test/payments/{PAYMENT_ID}/
 }'
 ```
 
-`phoneNumber` must be international phone number including contry code. For example: `4512345678`
+`phoneNumber` must be international phone number including country code. For example: `4512345678`
 
 ## App Payments Facade 
 To ease the switch to a new platform we will supply a facade for the existing MobilePay App Payments API that will be available during and after the launch of the new platform. There is no need to reintegrate into the new solution now. Your existing App Payments integration will continue to work and while our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the moment we transition to One Platform. To ensure a smooth experience, we recommend reviewing the upcoming changes outlined below and consider updating your integration accordingly. Please take a moment to familiarize yourself with the upcoming changes and how they may impact your integration. 
 
 :::danger Important info
-To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you needd to do is ensure that that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
+To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. All you need to do is ensure that you have adjusted your integration to the changes mentioned below, and we will take care of everything else. If you have any questions, feel free to reach out to us at developer@vippsmobilepay.com 
 :::
 ### Changes to The Facade
 :::info Prepare for launch
@@ -126,12 +126,12 @@ SignatureKey can no longer be fetched through the API. You will have to fetch th
 #### Migration and management
 We will migrate all existing webhooks to the new platform. The existing [MobilePay Webhook API](https://developer.mobilepay.dk/api/wehooks) will close but you can manage your webhooks after transition to one platform using the new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/). This will require that you use the new [Access token API](https://developer.vippsmobilepay.com/api/access-token/) in order to authenticate towards the API. 
 
-The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/) will support webhooks on partner level or merchant sales unit level. This means that partners can register one webhook for all their merchants or a webhook for each individual sales unit. Merchants has to register webhooks for each of their sales units individually. A sales unit is equal to a payment point. 
+The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/) will support webhooks on partner level or merchant sales unit level. This means that partners can register one webhook for all their merchants or a webhook for each individual sales unit. Merchants have to register webhooks for each of their sales units individually. A sales unit is equal to a payment point. 
 
 ##### Webhook Events
 The new [Vipps MobilePay Webhooks API](https://developer.vippsmobilepay.com/api/webhooks/) will contain different [events](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/events/). When registering new webhooks you will be able to choose between the [existing MobilePay events](https://developer.mobilepay.dk/docs/app-payments/webhooks#available-webhook-events) and the [new Vipps MobilePay events](https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/events/).
 
-Neither the existing or new webhook API's will support `paymentpoint.activated` and `transfer.succeeded` events. 
+Neither the existing nor new webhook API's will support `paymentpoint.activated` and `transfer.succeeded` events. 
 
 :::danger 
 For the facade we will use different webhook servers than currently used. If you have whitelisted our IP ranges for webhooks please ensure to include our new servers. You can find our server guidelines [here](https://developer.vippsmobilepay.com/docs/developer-resources/servers/).

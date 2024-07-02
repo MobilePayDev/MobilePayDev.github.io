@@ -8,7 +8,7 @@ An agreement is used to provide subscription service to sell to Customers.
 
 MobilePay Subscriptions is a flexible service, that allows merchants to tailor the user experience to their needs by using normal agreements, agreements with an initial one-off payment, agreements with a period where the price is lower than usual, and existing agreements where the customer wants to buy an add-on.
 
-Once the user is given to choose the payment method on the merchant's signup flow, an "*Pay with MobilePay*" button should be shown for the user to be able to click on. The MobilePay button must adhere to our branding guidelines [here](https://www.mobilepaygroup.com/design).  When a user clicks on this button, the merchant's back-end system must call the `POST /api/providers/{providerId}/agreements` endpoint in order to create a *Pending* Subscription **Agreement**, which can only be activated by the MobilePay user through the app. After agreement confirmation, the user is redirected to the merchant success page, and the Merchant logo is shown under Active Agreements in the MobilePay app.  If the user did not manage to confirm the agreement, the customer sees a timeout screen if they are on a dual device. If they are on the app, nothing is displayed.
+Once the user is given to choose the payment method on the merchant's signup flow, a "*Pay with MobilePay*" button should be shown for the user to be able to click on. The MobilePay button must adhere to our branding guidelines [here](https://www.mobilepaygroup.com/design).  When a user clicks on this button, the merchant's back-end system must call the `POST /api/providers/{providerId}/agreements` endpoint in order to create a *Pending* Subscription **Agreement**, which can only be activated by the MobilePay user through the app. After agreement confirmation, the user is redirected to the merchant success page, and the Merchant logo is shown under Active Agreements in the MobilePay app.  If the user did not manage to confirm the agreement, the customer sees a timeout screen if they are on a dual device. If they are on the app, nothing is displayed.
 
 When the user has accepted the agreement in the MobilePay app, then the Merchant can charge Subscription payments `POST /api/providers/{providerId}/paymentrequests` and One-Off payments `POST /api/providers/{providerId}/agreements/{agreementId}/oneoffpayments`.  
 
@@ -49,7 +49,7 @@ When the user has accepted the agreement in the MobilePay app, then the Merchant
 }
 ```
 
-`mobile_phone_number` is not required. Neither for agreement creation, or one-off creation. If you choose to add it, the phone number will be prefilled on our landing page. This means that the user will not have to type the phone number on the landing page, which makes it more convenient and time-saving for the user. We cannot enclose any phone number updates (if any) to the Merchant. We do not notify the merchant if the prefilled number was used / not used.
+`mobile_phone_number` is not required. Neither for agreement creation, nor one-off creation. If you choose to add it, the phone number will be prefilled on our landing page. This means that the user will not have to type the phone number on the landing page, which makes it more convenient and time-saving for the user. We cannot enclose any phone number updates (if any) to the Merchant. We do not notify the merchant if the prefilled number was used / not used.
 
 ### Cancel-redirect
 

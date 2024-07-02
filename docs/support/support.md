@@ -4,7 +4,7 @@ displayed_sidebar: supportSidebar
 
 # Developer Support
 
-MobilePay Developer Support provide **technical support in regards to integration and maintanance** for the following products:
+MobilePay Developer Support provide **technical support in regards to integration and maintenance** for the following products:
 
 * MobilePay Subscriptions
 * MobilePay App Payments
@@ -36,4 +36,4 @@ MobilePay Developer support provides support in Danish and English. You can cont
 * Please include any other information that may be relevant or possibly helpful.
 
 *Can I call you?*
-Nope. We do not have a phone number for Developer Support, and we do not have the capacity to help 1:1 on phone, sorry, since most cases involve information that needs to be in written form, such as ids, API requests/responses, etc. We can set-up a MS teams call in urgent cases.
+Nope. We do not have a phone number for Developer Support, and we do not have the capacity to help 1:1 on phone, sorry, since most cases involve information that needs to be in written form, such as ids, API requests/responses, etc. We can set up a MS teams call in urgent cases.

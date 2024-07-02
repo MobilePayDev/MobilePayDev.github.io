@@ -24,9 +24,9 @@ Four parameters are required when initiating a Checkout payment:
 
 * isCheckout: This will define the payment as a Checkout payment when set to true
 * addressCallbackUrl: The url where we will deliver the checkout callback with the address details. The Checkout callback will always be delivered before the card/token callback.
-* deliveryAddressAllowed: Will define whether the user is allowed to choose delivery address. If set to false the user can only choose billing address. Can be used for instance if the user has chosen 'Pick up at store' in the webshop.
+* deliveryAddressAllowed: Will define whether the user is allowed to choose delivery address. If set to false the user can only choose a billing address. Can be used for instance if the user has chosen 'Pick up at store' in the webshop.
 * deliveryAddressDisallowedReasonCode: if deliveryAddressAllowed is set to false a reason must be given:
-1: Reason not given, 2: Goods don't require physical delivery, 3: 'Pick up at store' already selected in the Webshop, 4:'Parcel Shop' already selected in the Webshop, 5: Shop will select a parcelshop close to your home"
+1: Reason not given, 2: Goods don't require physical delivery, 3: 'Pick up at store' already selected in the Webshop, 4:'Parcel Shop' already selected in the Webshop, 5: Shop will select a parcel shop close to your home.
 
 [![checkout sequence diagram](/img/online-checkout-sequence-diagram.svg)](/img/online-checkout-sequence-diagram.svg)
 

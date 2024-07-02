@@ -74,4 +74,4 @@ You can use the same integration for classic and web. Only difference is that th
 * Same payment flow
 
 ## Design guidelines
-We want to make it easy for you to ensure that the right MobilePay buttons and logo's are used by the merchants. Proper use of our logo and buttons will ensure better user experience and conversion rate. Please visit our [Design page](https://mobilepaygroup.com/design) for more information and ressources.
+We want to make it easy for you to ensure that the right MobilePay buttons and logos are used by the merchants. Proper use of our logo and buttons will ensure better user experience and conversion rate. Please visit our [Design page](https://mobilepaygroup.com/design) for more information and resources.

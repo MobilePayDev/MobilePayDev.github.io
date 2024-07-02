@@ -8,7 +8,7 @@ In order to implement MobilePay Online you must first obtain an agreement by con
 
 ### PublicKey
 
-You must supply two PublicKeys for Card encryption: The RSA public key should be provided as a X.509 SubjectPublicKeyInfo (using ASN.1 DER Encoding) represented in PEM encoding (use PEM file extension). The public key must have a length of 4096 bits. You must clearly state in the file name wich one is for Sandbox and which is for Prod.
+You must supply two PublicKeys for Card encryption: The RSA public key should be provided as X.509 SubjectPublicKeyInfo (using ASN.1 DER Encoding) represented in PEM encoding (use PEM file extension). The public key must have a length of 4096 bits. You must clearly state in the file name which one is for Sandbox and which is for Prod.
 
 Naming template for public key: `{integratorname}-{environment}-public`
 
