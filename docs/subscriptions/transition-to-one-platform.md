@@ -5,12 +5,19 @@ import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # 💙🧡 Preparation for the facade period
  
- Your existing Subscriptions APIs will continue to work until the end of 2024 through facade we build. 
- While our primary goal is to provide an effortless transition, we want to inform you that some functionality will be changing or closed starting from the Nordic Wallet Launch 🚀.  Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
+Thank you for being a part of our journey toward creating the best and most user-friendly payment wallet in the Nordics. :orange_heart: :blue_heart:
 
-:::danger Important info
- To make the transition as smooth as possible, we will migrate all merchants and automatically switch you to the new facade once it is live. 
-:::
+### When can I integrate to the Recurring API?**
+If you already want to reintegrate you can start now!
+
+It is still the same team as before that is here to assist you with technical questions. Just send an email to developer@vippsmobilepay.com, and we'll be happy to help! 😊
+
+- [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
+
+- [NEW Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
+
+- [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All notable changes to the Recurring API.
+
 
 **Timeline for existing subscriptions merchants and partners**
 
@@ -101,9 +108,9 @@ This one is a bit more technical. ⚙️ Currently, we are saving every payment 
 ### 3.1 One-off payments types
 
 One-off payments in Subscriptions are used in 3 different ways:
-* [Flow 1](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-1--one-off-payment-with-a-new-agreement): Create a new Agreement with an initial One-Off Payment. ✅ Will continue. 
-* [Flow 2](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-2---one-off-payment-on-an-existing-agreement): Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. ❌ Will be terminated. 
-* [Flow 3](https://developer.mobilepay.dk/docs/subscriptions/one-off-payments#flow-3---one-off-with-auto-reserve): Merchants can send One-Off payment, which MobilePay will attempt to automatically reserve, without user’s confirmation. ✅ Will continue. 
+* Create a new Agreement with an initial One-Off Payment. ✅ Will continue. 
+* Customer can initiate and request arbitrary One-Off Payment payments on their existing Agreement. ❌ Will be terminated. 
+* Merchants can send One-Off payment, which MobilePay will attempt to automatically reserve, without user’s confirmation. ✅ Will continue. 
 
 We reevaluated all our product packages, and usage of this feature and we decided, that from Nordic Wallet Launch, flow 2 will be moved from Subscriptions (Recurring) product to another Vipps MobilePay product - ePayment! 🍀 We are planning to keep flows 1 and 3 in the Subscriptions product and also in the Recurring product. Basically, all payments which are merchant initiated (MIT) and do not require Strong Customer Authentication (SCA) stay in Subscriptions and also Recurring. All payments where SCA is needed will be in ePayment product. 
 
@@ -470,11 +477,8 @@ The endpoints have not changed. Please find them in the [API specification](http
 
 ## **FAQ** 
 
-### **1. Do I need to reintegrate now to the new solution, APIs?**
 
-No, you don't need to reintegrate to the new solution right now. We are building Facade which will forward all your integration messages to the new solution and return needed responses. The only thing we ask you is to review the upcoming changes outlined above and update your integration accordingly. 
-
-### **2. How will the migration of data work?**
+### **1. How will the migration of data work?**
 
 Vipps MobilePay will make sure that all needed data is migrated from Subscriptions to Recurring:
 - All active merchants and their payment points will be migrated to the new system. The primary identifiers are `provider_id`, `agreement_id`, `payment_id`, and `refund_id`. These remain unchanged; there is no changes there.
@@ -489,7 +493,6 @@ Vipps MobilePay will make sure that all needed data is migrated from Subscriptio
 
 - We will migrate 3 years of historical production data (agreements, payment requests, refunds) to the new environment.
   
-Sandbox data will not be migrated due to different merchant and payment point setups. 
 
 If you have a need to have a list of old and new ID's, we have an endpoint for obtaining agreements that offers both `ExternalId` and `AgreementUuid`.
 Please refer to the [NEW Recurring API endpoint description](https://developer.vippsmobilepay.com/api/recurring/) - You can utilize `Agreement-v3-endpoints ListAgreementsV3`  endpoint for mapping.  
@@ -497,7 +500,6 @@ Please refer to the [NEW Recurring API endpoint description](https://developer.v
 **To be clear:**
 
 -Facade merchants: There will be not changes to the identifiers. The facade api will return the exact same identifiers.
-
 
 Below you can find information for when merchants will re-integrate to the [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/)
 
@@ -573,22 +575,7 @@ POST Charges endpoint :
 - No externalId and no status_callback_url are needed.
 - Amount has to be equal or superior to 100.
 
-### **3. When can I integrate to the Recurring API?**
-
-If you already want to reintegrate you can start now!
-
-It is still the same team as before that is here to assist you with technical questions. Just send an email to developer@vippsmobilepay.com, and we'll be happy to help! 😊
-
-- [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
-
-- [NEW Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
-
-- [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All notable changes to the Recurring API.
-
-
-
-
-### **4. Does the Recurring API have callbacks?**
+### **2. Does the Recurring API have callbacks?**
 Yes! [webhooks](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#webhooks-integration)
 * [Webhooks technical documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#webhooks-integration
 )
@@ -599,7 +586,7 @@ Another method is [polling](https://developer.vippsmobilepay.com/docs/knowledge-
 Callbacks will work on the facade API.  
 
  
-### **5. Will I be able to test the new Recurring API?**
+### **3. Will I be able to test the new Recurring API?**
 You will be able to test the new Recurring API through the merchant test environment on the new platform. If you want to test the Mobilepay Subscriptions facade instead please [read here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#10-test). 
 
 Please note:
@@ -615,59 +602,23 @@ In order to request access to the test environment, please use the following lin
 
 We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
 
-### **6. How will I find data about my payments?**
+### **4. How will I find data about my payments?**
 
 We will migrate 3 years of historical data (agreements, payment requests, refunds). You will be able to access that data though:
 1. API GET calls. For new and historical data.
 3. Though [Merchant Portal](https://portal.vipps.no/register). Just for new transactions done after Nordic Wallet Launch.
 4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.
 
-### **7. I am using Transaction Reporting API, what should I do?**
+### **5. I am using Transaction Reporting API, what should I do?**
 
-Sadly, we are not builing any facade for Transaction reporting API. We are asking you to reintegrate to alternative solution [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.  
-### **8. Will users get a new app?**
+We are asking you to reintegrate to alternative solution [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.  
 
-Yes, all app users will need to download the new app versions; this will be a mandatory upgrade on Nordic Wallet Launch day. We will ensure that users do not need to create new accounts; their profiles will be seamlessly migrated to the new platform. However, since users need to download the new app version, there is an increased risk of expired payments around 12th of march. 
+### **6. What cool features are there ahead?**
 
-### **9. What cool features are there ahead?**
-
-There are several exciting features on the horizon. For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
- 
+For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
 
 
 ## **Developer Support**
 
 We're Here to Help!
-If you have any questions, our  Developer support team (developer@vippsmobilepay.com) is available to provide guidance and support. We're like your trusty sidekick, always by your side, committed to making your payment experience as smooth as a well-oiled machine.  
-
-
-
-## **Changelog**
-
-2024-05-03 Information about test.
-
-2024-03-01 Removed 8.3. Gross settlement type stays in use after NWL. 
-
-2024-02-29 Removed 8.2. Settlement time does not change for Denmark and Finland.
-
-2024-02-19 Updated 1.1 and 3.2. Default expiration time changed to 10 min. 
-
-2024-01-08 Added new section 1.4 Agreement cancelation by merchant. Recommendations how to test the facade added. 
-
-2023-11-28 FAQ #6 and #7 updated regarding Report API
-
-2023-11-22 FAQ #2 updated
-
-2023-09-05 Added section 8. Callbacks
-
-2023-09-07 Added callback sending DNS address list
-
-2023-09-20 FAQ "How will I find data about my payments?" updated; FAQ "I am using Transaction Reportin API, what should I do?" added
-
-2023-10-05 New section "Settlements" with 3 new items added 
-
-2023-10-09 Changed callback status codes from "6000..." to "7000..."
-
-2023-10-11 Section 9 renamed to Other and new topic added 9.3 Error messages. 
-
-2023-10-11 Clarification, that OAuth2 token retrieval requests will be sent from new DNS address
+If you have any questions, our  Developer support team (developer@vippsmobilepay.com) is available to provide guidance and support. 
