@@ -8,21 +8,13 @@ pagination_next: null
 
 ## Nordic Wallet Launch :rocket:  
 
-We're steadily moving towards one unified platform that offers new opportunities, flexibility across channels, and simplification. Depending on your integration setup, your customers will experience benefits from the start. Feel free to explore the following links for more information, and share them with your collegues.  
-
-**Refiew your option for migration in decision tree**
-
-[![decision tree](/img/Subs_reintegration_treemap.png)](/img/Subs_reintegration_treemap.png)
+ Feel free to explore the following links for more information, and share them with your collegues.  
 
 :::caution Change of Subscriptions API 
  
-After we have switched to One platform, you can transition to our [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) using the [Subscriptions to Recurring migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/subscriptions/) Familiarize yourself with what migration entails, so you are prepared for the migration process.
+You can transition to our [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) using the [Subscriptions to Recurring migration guide](https://developer.vippsmobilepay.com/docs/mp-migration-guide/subscriptions/) Familiarize yourself with what migration entails, so you are prepared for the migration process.
 
 Key dates: 
-- **NOW** Take a look at the change list here and implement changes if needed for the Facade period
-- **2024** Plan and integrate new [Recurring API](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/)
-- **2024.01.01** Be ready with adjustments needed for your integration for the Facade period .
-- **2024Q1** We finally launch Nordic Wallet Launch in Finland 🇫🇮 and then Denmark on the 12th of march 🇩🇰 
 - **2025Q1** Be ready with your API integration to the Recurring API. 🧡 💙 The facade will be switched off. 
 
 :::
@@ -35,10 +27,6 @@ Familiarize yourself with what migration entails, so you are prepared for the mi
 - [Subscriptions Migration (full reintegration)](https://developer.vippsmobilepay.com/docs/mp-migration-guide/subscriptions/): Read our migration guide and prepare for migrating to the Recurring API. This is relevant for existing merchants and partner who wants to do full reintegration.
 
 Please note: We are continuously working on improving our migration guide so it includes  step-by-step instructions, best practices, and FAQs to help merchants smoothly transition to the new platform.  
-
-
-- [Prepare for the facade period](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform): Get an overview of changes in functionality and recommendations for the existing MobilePay Subscriptions API and how you best can prepare for facade period without full reintegration.
-  
 
 ## New Platform Resources
 
