@@ -54,9 +54,3 @@ In case the REST callback failed, 8 retries will be made using the [exponential 
 * 6th retry – 5h 10 minutes after 5th retry
 * 7th retry – 10h 30 minutes after 6th retry
 * 8th retry – 21h 10 minutes after 7th retry
-
-## Merchant onboarding
-
-You enroll in the Subscriptions Production via [www.MobilePay.dk](https://mobilepay.dk/da-dk/Pages/mobilepay.aspx) or the MobilePay Administration portal. Then you get access to the MobilePay Sandbox environment, where you can test the API.  
-
-Once you sign up, you'll receive a welcome email containing everything you need to get going right away. While we encourage you to start exploring our API right away, we highly recommend getting in touch with us at developer@vippsmobilepay.com before you go too far down your integration path. MobilePay has dedicated technical resources available to help you plan and build the right integration, avoid pitfalls, and get live as quickly as possible.

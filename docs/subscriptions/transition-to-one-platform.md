@@ -38,48 +38,40 @@ You'll receive an email with the required information, even if you're an existin
 :::info Prepare for launch
 <Launch />
 :::
-
 ## **1. Agreements**
-### 1.1 Agreement request expiration period
-We know that you have various ways to send agreement requests to your customer, such as from your website, through customer self-service portals, by email, printed as a QR on paper invoices, and while chatting on the phone. Some of these scenarios require that the agreement request is valid for a very long time, like when it's sent by email or printed as a QR on a paper invoice. After Nordic Wallet Launch, we will reduce the agreement signing period to 10 minutes. Please note, All agreements with longer expiration time will be expired on Nordic Wallet Launch day. To ensure the security and privacy of our users' data, all user redirects within our system must utilize HTTPS.
 
- 
-:star: **Recommendation:** If you want to give more than 10 minutes for your customer to sign the agreement, we recommend that you create a middle layer of communication on your private infrastructure. This means that when the user initiates agreement signing from your email or scans the QR on a paper invoice, they should be redirected to your environment. At that moment, you can create the agreement request in Vipps MobilePay and redirect the customer to us. You will be in control of a bigger part of the agreement signing flow, providing more flexibility for you to manage the process.  In addition, you will have no need to send us all potential agreement requests, even if they will never be initiated by the customer. This means less data send to us, and less GDPR related questions 😉
+### 1.1 Agreement Request Expiration
+- **Change:** Signing period will be reduced to 10 minutes after Nordic Wallet Launch. Existing agreements with longer expiration will expire on launch day.
+- **Recommendation:** Create a middle layer to handle agreement requests on your infrastructure, allowing more than 10 minutes for signing. This reduces unnecessary data and GDPR concerns.
+- **Tech:** 
+  - **API Endpoint:** `POST:/api/providers/{providerId}/agreements`
+  - **Parameter:** `expiration_timeout_minutes` (will always be 10 minutes post-launch).
 
-⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
+### 1.2 Agreement Deletion Validations
+- **Change:** Preventing customer cancellations within 24 hours will be unavailable after Nordic Wallet Launch.
+- **Recommendation:** Provide a seamless payment experience to avoid cancellations.
+- **Tech:** 
+  - **API Endpoint:** `POST:/api/providers/{providerId}/agreements`
+  - **Parameter:** `retention_period_hours` (will be ignored post-launch).
 
-Parameter: `expiration_timeout_minutes`. The current range is from 1 to 181440 minutes, the default was 5 minutes. After Nordic Wallet Launch, the expiration time will always be 10 minutes.
+### 1.3 Agreements Without Amount
+- **Change:** Agreements without a stated amount will be considered variable amount agreements.
+- **Recommendation:** Update/create agreements with known amounts.
+- **Tech:** 
+  - **API Endpoint:** `POST /api/providers/{providerId}/agreements` or `PATCH /api/providers/{providerId}/agreements/{agreementId}`
+  - **Parameter:** `amount`
 
-### 1.2 Agreement deletion validations
-No one likes when an agreement gets canceled, right? We do not like it either. The Subscriptions API offers you the option to prevent the customer from canceling an agreement for up to 24 hours from the time it's signed. From the Nordic Wallet Launch, this feature will be unavailable.  
-
-:star: **Recommendation:** We will help you to provide the best payment experience and keep the customer happy so that canceling an agreement will not come into his mind. 
-
-⚙️ Tech: API endpoint: `POST:/api/providers/{providerId}/agreements`
-
-Parameter: `retention_period_hours` will be ignored from the Nordic Wallet Launch.
-
-### 1.3 Agreements without amount
-
-Current agreements where amount is not stated will be depicted as agreements with variable amount.
-
-:star: **Recommendation:** We recommend you to update/create agreements with amount if it's known in practice.
-
-⚙️ Tech: API endpoint: `POST /api/providers/{providerId}/agreements` or `PATCH /api/providers/{providerId}/agreements/{agreementId}` Parameter `amount`
-
+![WMP Amount](path/to/img/vmpamount.png)
 [<img
   src={require('/img/vmpamount.png').default}
   alt="WMP Amount"
   width="250"
 />](/img/vmpamount.png)
 
-*Draft version of agreement screen, not final version.*
+### 1.4 Agreement Cancellation by Merchant
+- **Change:** Canceling agreements will also cancel any reserved payments post-launch.
+- **Recommendation:** Capture reserved payments before canceling agreements if applicable.
 
-### 1.4 Agreement cancellation by merchant
-
-When merchant tries to cancel agreement, which has payments in reserved state - agreement gets cancelled, payments stay in reserved state. This is changing from Nordic Wallet Launch. When merchant cancels agreement all reserved payments will be canceled too. 
-
-:star: **Recommendation:** Capture reserved payments if needed before canceling the agreement. This applies just if you have agreement cancellation implemented from your environment and you are using payments with reservation. 
 
 ## **2. Recurring payments**
 
@@ -264,23 +256,22 @@ Parameter: `attachment_details`
 
 ### 7.1 Authorisation 
 
+
 **For merchants**
 
-* If you are using or are planning to start using Subscriptions on the MobilePay platform before transitioning to One Platform. All good, nothing to do for you, just make sure you complete the authorization setup before Nordic Wallet Launch.
-* If by any chance you will need to restart the consent flow, e.g. get a new refresh token after Nordic Wallet Launch, you will have to do that already though new Vipps MobilePay platform.
+* If you will need to restart the consent flow, e.g. get a new refresh token after Nordic Wallet Launch, you will have to do that already though new Vipps MobilePay platform.
 * If you are planning to start using Recurring on the New Vipps MobilePay platform, just integrate into the new setup from the beginning. 
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/).
 
 **For integrators/partners**
 * If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to the new setup from the beginning.
-* If you are an existing partner in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. We are sorry, but from the Nordic Wallet Launch, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work. To get providerId for new onboarded merchants, you can call `GET:/api/merchants/me` with the new authorization token and `Merchant-Serial-Number` header. 
+* If you are an existing partner in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. From the Nordic Wallet Launch, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work. To get providerId for new onboarded merchants, you can call `GET:/api/merchants/me` with the new authorization token and `Merchant-Serial-Number` header. 
 
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
 
 ## **8. Settlements**
-
 
 ### 8.1 From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
 
@@ -433,9 +424,6 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 :star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
 
-### 9.6 From the Nordic Wallet Launch Merchant's server must be TLS 1.2
-
-Please make sure that your servers hosting the token endpoint for callbacks supports TLS 1.2. If not, we will not be able to send callbacks back to you.
 
 ## **10. Test**
 The first version of the new test environment is ready for the Subscriptions facade. All features are available.
@@ -585,12 +573,4 @@ We will migrate 3 years of historical data (agreements, payment requests, refund
 3. Though [Merchant Portal](https://portal.vipps.no/register). Just for new transactions done after Nordic Wallet Launch.
 4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.
 
-### **4. What cool features are there ahead?**
 
-For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
-
-
-## **Developer Support**
-
-We're Here to Help!
-If you have any questions, our  Developer support team (developer@vippsmobilepay.com) is available to provide guidance and support. 
