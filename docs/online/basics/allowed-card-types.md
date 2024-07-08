@@ -4,16 +4,4 @@ sidebar_position: 9
 
 # Allowed card types
 
-The following card types are allowed:
-
-| Card name | Code
-|:---|:---|
-| Visa electron | ELEC-DEBIT |
-| Mastercard credit | MC-CREDIT |
-| Mastercard debit | MC-DEBIT |
-| ~~Maestro~~* | MTRO-DEBIT |
-| Visa credit | VISA-CREDIT |
-| Visa debit | VISA-DEBIT |
-| Dankort | DANKORT |
-
-*Maestro is deprecated and should not be used
+The documentation have been moved to the [Vipps MobilePay documentation](https://developer.vippsmobilepay.com/docs/APIs/psp-mp-api/mp-psp-api-api/#allowed-card-types)
