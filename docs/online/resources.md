@@ -1,6 +1,4 @@
 ---
-sidebar_position: 6
-pagination_next: null
 layout: forward
 target: https://developer.vippsmobilepay.com/docs/APIs/psp-mp-api/
 ---
