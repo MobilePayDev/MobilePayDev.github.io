@@ -256,23 +256,22 @@ Parameter: `attachment_details`
 
 ### 7.1 Authorisation 
 
+
 **For merchants**
 
-* If you are using or are planning to start using Subscriptions on the MobilePay platform before transitioning to One Platform. All good, nothing to do for you, just make sure you complete the authorization setup before Nordic Wallet Launch.
-* If by any chance you will need to restart the consent flow, e.g. get a new refresh token after Nordic Wallet Launch, you will have to do that already though new Vipps MobilePay platform.
+* If you will need to restart the consent flow, e.g. get a new refresh token after Nordic Wallet Launch, you will have to do that already though new Vipps MobilePay platform.
 * If you are planning to start using Recurring on the New Vipps MobilePay platform, just integrate into the new setup from the beginning. 
 
 Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/).
 
 **For integrators/partners**
 * If you are planning to start using Recurring on New Vipps MobilePay platform, just integrate to the new setup from the beginning.
-* If you are an existing partner in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. We are sorry, but from the Nordic Wallet Launch, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work. To get providerId for new onboarded merchants, you can call `GET:/api/merchants/me` with the new authorization token and `Merchant-Serial-Number` header. 
+* If you are an existing partner in Subscriptions on the MobilePay platform and you want to onboard new merchants, we will ask you to change your authorization setup. From the Nordic Wallet Launch, we will not be able to support the existing flow where the merchant grants consent to you. Access and refresh tokens that were issued before the transition will remain valid and continue to work. To get providerId for new onboarded merchants, you can call `GET:/api/merchants/me` with the new authorization token and `Merchant-Serial-Number` header. 
 
 - Read more about [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/) and [Technical information for partners](https://developer.vippsmobilepay.com/docs/vipps-partner/#technical-information-for-partners).
 
 
 ## **8. Settlements**
-
 
 ### 8.1 From the Nordic Wallet Launch all sales units (payment points) will be switched to daily settlements
 
@@ -425,9 +424,6 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 :star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
 
-### 9.6 From the Nordic Wallet Launch Merchant's server must be TLS 1.2
-
-Please make sure that your servers hosting the token endpoint for callbacks supports TLS 1.2. If not, we will not be able to send callbacks back to you.
 
 ## **10. Test**
 The first version of the new test environment is ready for the Subscriptions facade. All features are available.
@@ -577,12 +573,4 @@ We will migrate 3 years of historical data (agreements, payment requests, refund
 3. Though [Merchant Portal](https://portal.vipps.no/register). Just for new transactions done after Nordic Wallet Launch.
 4. Integrate it into the [Report API](https://developer.vippsmobilepay.com/docs/APIs/report-api/). Read more [here](https://developer.vippsmobilepay.com/docs/mp-migration-guide/reporting/) about transition period.
 
-### **4. What cool features are there ahead?**
 
-For instance, there's profile sharing, allowing merchants to request users to share various information from the app, thereby streamlining the signup process. Additionally, we have upcoming campaigns, improved refund processes, enhanced capture capabilities, increased limits, expansion into three new markets, and various other flexibility improvements.
-
-
-## **Developer Support**
-
-We're Here to Help!
-If you have any questions, our  Developer support team (developer@vippsmobilepay.com) is available to provide guidance and support. 
