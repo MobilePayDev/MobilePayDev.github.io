@@ -1,9 +1,0 @@
-Sandboxes are isolated from your production organisation, so operations that you perform in the MobilePay sandbox don’t affect your production organisation. The production version of the API provides access to the real customer data, i.e. you will be able to initiate real payments. Once you go to test in production, you will use another basepath, the live MobilePay app and a real MobilePay user.
-
-| | Sandbox | Production |
-|-|---------|------------|
-|User|We have test users available. Visit the product sites to find information about test users|A real MobilePay user, that has downloaded the MobilePay app on their smartphone. We **do not** have test user that you can use in production.|
-|Payment limit|Same as in production. Read here: [DK](https://www.mobilepay.dk/hjaelp/mobilepay-til-private/fakta/hvor-meget-kan-jeg-overfoere-med-mobilepay) - [FI](https://www.mobilepay.fi/asiakastuki/mobilepay-kayttajille/tietoa-mobilepaysta/kuinka-paljon-voin-siirtaa-mobilepaylla#scroll)|
-|Functionality|Sandbox processes API calls in exactly the same manner as the production environment, except you are not dealing with real money and transactions.|Only real transaction can be completed|
-|Endpoint|https://api.sandbox.mobilepay.dk|https://api.mobilepay.dk|
-|Mobilepay Portal|https://sandprod-admin.mobilepay.dk|https://admin.mobilepay.dk|

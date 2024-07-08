@@ -61,7 +61,7 @@ You'll receive an email with the required information, even if you're an existin
   - **API Endpoint:** `POST /api/providers/{providerId}/agreements` or `PATCH /api/providers/{providerId}/agreements/{agreementId}`
   - **Parameter:** `amount`
 
-![WMP Amount](path/to/img/vmpamount.png)
+![WMP Amount](/img/vmpamount.png)
 [<img
   src={require('/img/vmpamount.png').default}
   alt="WMP Amount"

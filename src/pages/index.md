@@ -1,13 +1,10 @@
 ---
 hide_table_of_contents: true
+title: We moved!
 ---
 
-<img
-  src={require('/img/main_hero.png').default}
-  alt="Banner"
-  style={{paddingBottom : 30}}
-/>
+# <img  src="/img/icon_checkout.png" alt="drawing" width="150" align="center"/> We moved! But not very far :star: 
 
-We're thrilled to embark on the journey of creating the ultimate payment wallet experience for our wonderful customers, partners, and users in the Nordics. We are launching a single, unified platform: MobilePay in Denmark and Finland, and Vipps in Norway. Together this will be [**Vipps MobilePay**](https://developer.vippsmobilepay.com/).
+We have packed up most of our documentation and moved to: https://developer.vippsmobilepay.com/
 
-The old MobilePay platform have now been closed and it is no longer possible to make new integrations for these. Please visit our new developer documentation to see our new products: https://developer.vippsmobilepay.com/
+[![docs](/img/front_docs.png)](https://developer.vippsmobilepay.com/)

@@ -19,25 +19,30 @@ export default function NotFound() {
                 <Translate
                   id="theme.NotFound.title"
                   description="The title of the 404 page">
-                  Whoops
+                  We moved!
                 </Translate>
               </h1>
               <p>
               <Translate
                   id="theme.NotFound.p1"
                   description="The first paragraph of the 404 page">
-                  We tried really hard but we could not find whatever you were looking for. But we are sure it is here somewhere. We have been rearranging a lot lately so it may have been lost in the moving process. Although fear not as we are here to help!
+                   So that is probably why you didn't find what you looked for 
+                  
 
-                  If you know what product it concerns you could try the menu right at the very top. If you look to the right there is also a search option which we think might be really helpfull in times of need.
                 </Translate>
+                <img src="/img/icon_checkout.png" alt="Italian Trulli"></img>
               </p>
               <p>
                 <Translate
                   id="theme.NotFound.p2"
                   description="The 2nd paragraph of the 404 page">
-                  If everything else fails you are very welcome to contact us at developer@vippsmobilepay.com. We will gladly help you find what you are looking for or answer any questions you might have. 
+                  But don't stress, try to go to our new page and see if you can find it there: 
+
+                 
                 </Translate>
+                <a href="https://developer.vippsmobilepay.com/"> https://developer.vippsmobilepay.com/</a>
               </p>
+              
             </div>
           </div>
         </main>

@@ -34,17 +34,12 @@ module.exports = {
       },
       items: [   
         {
-          label: 'App Payments',
+          label: 'App Payments Facade',
           position: 'left',
           to: '/docs/app-payments/',
         },
         {
-          label: 'Online',
-          position: 'left',
-          to: '/docs/online',
-        },
-        {
-          label: 'Subscriptions',
+          label: 'Subscriptions Facade',
           position: 'left',
           to: '/docs/subscriptions',
         },
@@ -53,31 +48,18 @@ module.exports = {
           position: 'left',
           items: [
             {
-              label: 'App payments',
+              label: 'App payments Facade',
               to: '/api/app-payments',
             },
             {
-              label: 'Webhooks',
-              to: '/api/wehooks',
-            },
-            {
-              label: 'Online',
-              to: '/api/online',
-            },
-            {
-              label: 'Subscriptions',
+              label: 'Subscriptions Facade',
               to: '/api/subscriptions',
             },
           ],
         },
         {
-          label: "Support",
-          to: '/docs/support',
-          position: "right",
-        },
-        {
-          href: "https://github.com/MobilePayDev/MobilePayDev.github.io",
-          label: "GitHub",
+          href: "https://developer.vippsmobilepay.com/",
+          label: "Vipps MobilePay Documentation",
           position: "right",
         },
       ],
