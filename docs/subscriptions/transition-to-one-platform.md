@@ -5,33 +5,35 @@ import Launch from '/docs/shared-blocks/_launch.mdx';
 
 # 💙🧡 Preparation to migrate to the NEW Recurring API 
  
+**Integration Availability:**
+The NEW Recurring API is available since March 12th. Email developer@vippsmobilepay.com for help.
 
-**When can I integrate to the NEW Recurring API?**
 
-It has been available since 12th of March.  Just send an email to developer@vippsmobilepay.com, and we'll be happy to help! 😊
+**Documentation and Changelogs**
 
-- [NEW Recurring API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
+- [API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
 
-- [NEW Recurring API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
+- [API Documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/): Find detailed information on the New Recurring API.   
 
-- [NEW Recurring Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All changes to the Recurring API.
+- [Changelogs](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/CHANGELOG/): All changes to the Recurring API.
 
-**Can I test the Recurring API?**
+**Testing the API**
 
-Yes - through test the new Recurring API through the merchant test environment on the new platform. If you want to test the Mobilepay Subscriptions facade instead please [read here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#10-test). 
+Test the new Recurring API in the merchant test environment. Recreate your test data as previous data won’t be migrated. Use the new Access Token API; old tokens are invalid post-launch. If you want to test the Mobilepay Subscriptions facade instead please [read here](https://developer.mobilepay.dk/docs/subscriptions/transition-to-one-platform#10-test). 
 
-Please note:
-1. If you want to reuse your Subscriptions test data you will need to recreate your test data. Please note that all test data, including agreements, payments, refunds, and so on, created before will not be migrated from the Subscriptions sandbox to the Recurring merchant test environment.
-2. You will also have to integrate with the new and simplified Access Token API designed for the merchant test environment. The old MobilePay-issued access and refresh tokens for the sandbox will cease to function after the launch of Nordic Wallet. [Access token API guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
+**Please note:**
 
-The test environment is called Merchant Test (MT) and is now open for test. MT currently only allows Norwegian phone numbers, currency and merchants, but you can test the API and payment flow. Please see the details of [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/)
+1. You must recreate your Subscriptions test data as previous data (agreements, payments, refunds, etc.) won't be migrated to the Recurring merchant test environment.
+2. Integrate with the new Access Token API. Old MobilePay-issued tokens are be invalid post-Nordic Wallet launch. [Access Token API Guide](https://developer.vippsmobilepay.com/docs/APIs/access-token-api/)
 
-In order to request access to the test environment, please use the following links:
+The Merchant Test (MT) environment is now open for testing. See [limitations of the test environment](https://developer.vippsmobilepay.com/docs/test-environment/) for more details.
+
+**Request Access**
 
 - [Partners](https://www.vippsmobilepay.com/partner/become-a-partner)
 - [Merchants](https://vippsmobilepay.com/merchant-test-account-sign-up)
 
-We will send you an e-mail with the information you need to get started. This is also needed even though you are an existing MobilePay integrator or merchant, since we need your information registered on our new joint platform.
+You'll receive an email with the required information, even if you're an existing integrator or merchant.
 
 :::info Prepare for launch
 <Launch />
