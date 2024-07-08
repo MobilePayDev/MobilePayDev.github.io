@@ -35,9 +35,7 @@ The Merchant Test (MT) environment is now open for testing. See [limitations of 
 
 You'll receive an email with the required information, even if you're an existing integrator or merchant.
 
-:::info Prepare for launch
-<Launch />
-:::
+
 ## **1. Agreements**
 
 ### 1.1 Agreement Request Expiration
@@ -214,13 +212,13 @@ Note: For payments made before Nordic Wallet Launch, status_callback_url will st
 
 ### 5.1 Merchant visibility
 
-We will be streamlining the user interface of the app to provide a more focused and efficient experience for you and your customers. As a result, the list of potential merchants will no longer be displayed in the app. However, please be assured that all active and stopped agreements will still be readily visible to the app users.
+The list of potential merchants is no longer be displayed in the app. However, all active and stopped agreements will still be readily visible to the app users.
 
 ### 5.2 Merchant information on agreements
 
 Currently, you are able to show your contact information in every agreement for your customer in the agreement Info tab: Website, Customer Support, Self Service, FAQ. From Nordic Wallet Launch, this contact information will no longer be displayed for the user. 
 
-:star:**Recommendation:** We understand that contact information on the agreement can be important to you and your customers. You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description if this is necessary. 
+:star:**Recommendation:**  You can always provide an agreement management URL to the user (we call it cancel-redirect in our documentation) which enables them to reach your environment from the app. Or you could add contact information in the agreement description if this is necessary. 
 
 ## **6. Payment attachments**
 
@@ -228,9 +226,9 @@ Read more [here](https://developer.mobilepay.dk/docs/subscriptions/invoice#payme
 
 ### 6.1 PDF generation
  
-Currently, you can attach extra information about payments, such as a link to an external PDF file or other environment, payment details, or PDF file generation from payment details. After reviewing this feature and its usage, we have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from Nordic Wallet Launch.
+ We have decided to focus more on payment execution and agreement signing success rather than PDF generation capabilities. So, the PDF generation option will no longer be available from 12th of March.
 
-:star:**Recommendation:** We are sorry if this feature was important to you, we hope you will find other ways to send PDF documents to your customers. Your satisfaction is our top priority, and we are here to support you throughout this process.
+:star:**Recommendation:** We hope you will find other ways to send PDF documents to your customers.  
 
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
@@ -238,15 +236,14 @@ Parameter: `generate_pdf` : true will be ignored from Nordic Wallet Launch.
 
 ### 6.2 External URL
 
-Currently, we are providing the possibility for you to upgrade your Subscription payment with extra attachments like External URL. Sadly we most likely will not make it to re-introduce this feature from the moment of Nordic Wallet Launch 😢. We are really sorry if this will cause any inconvenience for you, but we promise to work on it as soon as possible and introduce the feature right after Launch. 
-
+Before the 12th of March, we provided the possibility for you to update your Subscription payment with extra attachments like External URL. We will not be able to re-introduce this feature from the moment of Nordic Wallet Launch  
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
 Parameter: `external_attachment_url`
 
 ### 6.3 Attachment details
 
-Similarly, as with External URL, we most likely will not make it to re-introduce this feature from the moment of Nordic Wallet Launch. We are really sorry if this will cause any inconvenience for you, but we promise to work on it as soon as possible and introduce the feature right after Launch. 
+Similarly, as with External URL, we will not make it to re-introduce this feature from the moment of 12th of march. We promise to work on it as soon as possible and introduce the feature right after Launch. 
 
 ⚙️ Tech: API endpoint:  `PUT:/api/providers/{providerId}/payments/{paymentId}/attachment`
 
@@ -282,12 +279,7 @@ Currently you were able to select how to receive settlements: daily or instant. 
 
 ## **9. Other**
 
-### 9.1 From the Nordic Wallet Launch callbacks will be sent from new DNS address
-
-Please make sure that these DNS addresses are allowed through your firewall https://developer.vippsmobilepay.com/docs/developer-resources/servers/#vipps-request-servers
-Above DNS addresses will also be used to call token retrieval endpoint for merchants who are using OAuth2 authentication.
-
-### 9.2 Callback changes for recurring and one-off payments
+### 9.1 Callback changes for recurring and one-off payments
 
 
 We will stop sending our old callbacks for one-off payment expiration and rejection by users from Nordic Wallet Launch. 
@@ -396,7 +388,7 @@ In the new platform reservation failure and expiration callbacks are sent only a
 
 ### 9.4 Callbacks for reintegrated merchants
 
-If you are planning to reintegrate, you will have to start using new Webhook solution https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/
+When you are reintegrating, you will use Webhook solution https://developer.vippsmobilepay.com/docs/APIs/webhooks-api/
 By default after integrating with new Webhook solution, you will still receive old **payment** callbacks to your old payment callback URL and there is no possibility to change callback url or authentication method for old integration. This means that you will receive both old callbacks and new webhooks. Once you have integrated towards Webooks and no longer rely on old callbacks, please notify us and we will turn them off.
 
 Here you can find a payload and other useful information about new Webhooks https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#webhooks-integration
