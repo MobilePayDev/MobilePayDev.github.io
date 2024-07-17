@@ -352,12 +352,16 @@ Recurring payment callbacks:
 |               |             |                                                           | Merchants' initiated cancellation of pending recurring payment
 |               |             |                                                           |    
 | Executed      | 0           | null                                                      | Payment successfully executed on due date 
-| Failed        | 50000       | Payment failed to execute during the due date             | Payment failed to execute during the due date
+| Failed        | 50000       | `See note below`                                          | Payment failed to execute during the due date
 | Declined      | 70001       | Payment amount is 5 times higher than agreement amount.   | Payment batch request contains a payment which amount is 5 times higher than     
 |               |             |                                                           | agreement's amount. Applicable when agreement has an amount more than 0
 | Declined      | 50003       | Declined by system: Agreement is not in \"Active\" state. | Payment batch request contains a payment for non-active agreement 
 | Declined      | 50004       | Declined by system: Found duplicates for the same DueDate and AgreementId/ExternalId. | Payment batch request contains a duplicate payment with the same DueDate and AgreementId/ExternalId
 | Declined      | 50006       | Declined by system.                                       | Unspecified error when processing payment from payment batch request
+
+**Please note:**
+Recurring payment callback with status `Failed` and status code `50000` will be sent with different status text, depending on the reason for the recurring payment failure. For more information, please refer to https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#charge-failure-reasons.
+Please also note that the `charge_amount_too_high` failure reason is not applicable to non-reintegrated merchants.
 
 
 One-off payment sent with an agreement:
