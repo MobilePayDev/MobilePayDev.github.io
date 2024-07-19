@@ -40,7 +40,7 @@ Use the `POST /api/providers/{providerId}/agreements/{agreementId}/payments/{pay
 
 |Parameter             |Type        |Required  |Description                                                      |Valid values|
 |----------------------|------------|----------|-----------------------------------------------------------------|------------|
-|**amount**            |number(0.01)| optional |*The requested amount to be returned.*|>= 0.01, decimals separated with a dot. If not specified, payment will be fully refunded.|
+|**amount**            |number(0.10)| optional |*The requested amount to be returned.*|>= 0.10, decimals separated with a dot. If not specified, payment will be fully refunded.|
 |**status_callback_url**  |string| required |*Link relation hyperlink reference.*|Merchant's url|
 |**external_id**  |string| optional |*Refund's identifier on the merchant’s side. This will be included in the request body of the refund callback.*||
 
