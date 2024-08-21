@@ -8,7 +8,6 @@ import Launch from '/docs/shared-blocks/_launch.mdx';
 **Integration Availability:**
 The NEW Recurring API is available since March 12th. Email developer@vippsmobilepay.com for help.
 
-
 **Documentation and Changelogs**
 
 - [API Reference](https://developer.vippsmobilepay.com/api/recurring/): Explore the documentation for the New Recurring API.   
@@ -38,21 +37,25 @@ You'll receive an email with the required information, even if you're an existin
 
 ## **1. Agreements**
 
-### 1.1 Agreement Request Expiration
+### 1.1 Agreement Identifier
+-**Change:** Agreement main identifier is `agreementId`. Example of id: agr_e5Gd2fIjr
+-**Recommendation:** We strongly recommend to use the `agreementId` instead of the `uuid` when transitioning to the recurring-api. While it is possible for merchants to fetch agreement by uuid or fetch charge using agreement uuid, it is less efficient and slower than fetching by id. This approach also eliminates the need for you to keep a mapping between `uuid` and `agreementId`. Read more about agreements in recurring in [the api guide](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#agreements).
+
+### 1.2 Agreement Request Expiration
 - **Change:** Signing period will be reduced to 10 minutes after Nordic Wallet Launch. Existing agreements with longer expiration will expire on launch day.
 - **Recommendation:** Create a middle layer to handle agreement requests on your infrastructure, allowing more than 10 minutes for signing. This reduces unnecessary data and GDPR concerns.
 - **Tech:** 
   - **API Endpoint:** `POST:/api/providers/{providerId}/agreements`
   - **Parameter:** `expiration_timeout_minutes` (will always be 10 minutes post-launch).
 
-### 1.2 Agreement Deletion Validations
+### 1.3 Agreement Deletion Validations
 - **Change:** Preventing customer cancellations within 24 hours will be unavailable after Nordic Wallet Launch.
 - **Recommendation:** Provide a seamless payment experience to avoid cancellations.
 - **Tech:** 
   - **API Endpoint:** `POST:/api/providers/{providerId}/agreements`
   - **Parameter:** `retention_period_hours` (will be ignored post-launch).
 
-### 1.3 Agreements Without Amount
+### 1.4 Agreements Without Amount
 - **Change:** Agreements without a stated amount will be considered variable amount agreements.
 - **Recommendation:** Update/create agreements with known amounts.
 - **Tech:** 
