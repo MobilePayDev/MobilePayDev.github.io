@@ -424,7 +424,7 @@ Some field names, like `mobile_phone_number`, will undergo changes; for instance
 
 ### 9.6 Rate limiting
 
-We have rate limiting in place for each endpoints of the facade. For simplicity reasons, we have put in place the same policies are the recurring-api. See [Rate limiting for recurring documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/recurring-api-guide/#rate-limiting) for details. 
+We have rate limiting in place for each endpoints of the facade. For simplicity reasons, we have put in place the same policies as the recurring-api for most of the endpoints. 
 
 | Endpoint                                                                                     | Limit                                      |                                  
 |----------------------------------------------------------------------------------------------|--------------------------------------------|
