@@ -420,8 +420,30 @@ Example:
 
 Some field names, like `mobile_phone_number`, will undergo changes; for instance, it will be referred to as `phoneNumber`. If clarity is needed, refer to [Recurring documentation](https://developer.vippsmobilepay.com/docs/APIs/recurring-api/) for field specifications.
 
-
 :star: **Recommendation:** Avoid relying on specific values in `error_description.message` and `error_description.error_type`. Update your error handling processes to ensure flexibility in these two fields.
+
+### 9.6 Rate limiting
+
+We have rate limiting in place for each endpoints of the facade. For simplicity reasons, we have put in place the same policies as the recurring-api for most of the endpoints. 
+
+| Endpoint                                                                                     | Limit                                      |                                  
+|----------------------------------------------------------------------------------------------|--------------------------------------------|
+| `POST api/providers/{providerid}/agreements`                                                 | 300 per minute per provider                |
+| `GET api/providers/{providerid}/agreements`                                                  | 5 per minute per pageNumber and pageSize combination |
+| `GET api/providers/{providerid}/agreements/{agreementId}`                                    | 120 per minute per agreementId             |
+| `PATCH api/providers/{providerid}/agreements/{agreementId}`                                  | 5 per minute per agreementId               |
+| `DELETE api/providers/{providerid}/agreements/{agreementId}`                                 | 5 per minute per agreementId               |
+| `POST api/providers/{providerid}/paymentrequests`                                            | 400 per minute per provider                |
+| `GET api/providers/{providerid}/agreements/{agreementid}/paymentrequests`                    | 10 per minute per agreementId              |
+| `GET api/providers/{providerid}/agreements/{agreementid}/paymentrequests/{paymentId}`        | 10 per minute per paymentId                |
+| `POST api/providers/{providerid}/agreements/{agreementid}/oneoffpayments`                    | 300 per minute per provider per agreementId|
+| `GET api/providers/{providerid}/agreements/{agreementid}/oneoffpayments`                     | 10 per minute per provider per agreementId |
+| `GET api/providers/{providerid}/agreements/{agreementid}/oneoffpayments{paymentId}`          | 10 per minute per oneoffpaymentId          |
+| `POST api/providers/{providerid}/agreements/{agreementid}/oneoffpayments{paymentId}/capture` | 5 per minute per oneoffpaymentId           |
+| `DELETE api/providers/{providerid}/agreements/{agreementid}/oneoffpayments{paymentId}`       | 5 per minute per oneoffpaymentId           |
+| `POST api/providers/{providerid}/agreements/{agreementid}/oneoffpayments{paymentId}`         | 5 per minute per oneoffpaymentId           |
+| `GET api/providers/{providerid}/agreements/{agreementid}/payments/{paymentid}/refunds`       | 10 per minute per paymentId                |
+| `POST api/providers/{providerid}/agreements/{agreementid}/payments/{paymentid}/refunds`      | 5 per minute per paymentId                 |
 
 
 ## **10. Test**
