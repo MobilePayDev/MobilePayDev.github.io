@@ -104,39 +104,19 @@ module.exports = {
         // Plugin Options for loading OpenAPI files
         specs: [
           {
-            id: 'payments-api-yaml',
+            id: 'payments-api-yaml',  // KEEP FOR FACADE
             spec: "openapi/app_payments_api.yaml",
             route: "/api/app-payments",
           },
           {
-            id: 'webhooks-api-yaml',
+            id: 'webhooks-api-yaml',  // KEEP FOR FACADE
             spec: "openapi/webhooks.yaml",
             route: "/api/wehooks",
           },
           {
-            id: 'reporting-api-yaml',
-            spec: "openapi/reporting.yaml",
-            route: "/api/reporting",
-          },
-          {
-            id: 'subscriptions-api-yaml',
+            id: 'subscriptions-api-yaml', // KEEP FOR FACADE
             spec: "openapi/subscriptions.yaml",
             route: "/api/subscriptions",
-          },
-          {
-            id: 'invoice-api-yaml',
-            spec: "openapi/invoice.yaml",
-            route: "/api/invoice",
-          },
-          {
-            id: 'pos-api-yaml',
-            spec: "openapi/pos.yaml",
-            route: "/api/pos",
-          },
-          {
-            id: 'online-api-yaml',
-            spec: "openapi/online.yaml",
-            route: "/api/online",
           },
         ],
         // Theme Options for modifying how redoc renders them
