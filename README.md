@@ -1,1 +1,3 @@
-This repository contains MobilePay Developer documentation. It is hosted [here](https://mobilepaydev.github.io)
+Please don't delete this repo - we still refer to it sometimes.
+This was the old MobilePay developer documentation.
+
